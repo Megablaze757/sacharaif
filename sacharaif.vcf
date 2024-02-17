@@ -1,0 +1,36 @@
+BEGIN:VCARD
+VERSION:3.0
+N;CHARSET=UTF-8:Raif;Sacha;; ;
+FN: Sacha Raif
+ORG:Connect Wiser
+COMPANY:Connect Wiser
+TITLE:CEO
+
+ADR;CHARSET=UTF-8;TYPE=WORK:;;2b grange road;London;;rm37du;United Kingdom
+TEL;TYPE=Work,pref:+447543737488
+TEL;CELL;TYPE=Mobile,VOICE:
+TEL;TYPE=WORK,VOICE:
+
+TEL;TYPE=Work,Fax:
+TEL;TYPE=Home,VOICE:
+TEL;TYPE=sms:
+URL;TYPE=Messenger:
+TEL;TYPE=SIGNAL:
+EMAIL;TYPE=Email:sacharaif@gmail.com
+URL;TYPE=Digital Business Card:
+
+
+URL;TYPE=Location:
+KEY:OPENPGP4FPR:
+UID:SMART vCARD-100082488
+URL;TYPE=Website:
+URL;TYPE=Calendar:https://calendy.com/sacharaif
+URL;TYPE=WhatsApp:
+
+
+URL;TYPE=Instagram:https://instagram.com/connectwiser
+
+PHOTO;ENCODING=b:
+NOTE;CHARSET=UTF-8:
+
+END:VCARD
