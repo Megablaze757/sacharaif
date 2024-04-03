@@ -1,0 +1,36 @@
+BEGIN:VCARD
+VERSION:3.0
+N;CHARSET=UTF-8:Raif;Sacha;; ;
+FN: Sacha Raif
+ORG:Connectwiser
+COMPANY:Connectwiser
+TITLE:
+
+ADR;CHARSET=UTF-8;TYPE=WORK:;;;;;;
+TEL;TYPE=Work,pref:+447543737488
+TEL;CELL;TYPE=Mobile,VOICE:
+TEL;TYPE=WORK,VOICE:
+
+TEL;TYPE=Work,Fax:
+TEL;TYPE=Home,VOICE:
+TEL;TYPE=sms:
+URL;TYPE=Messenger:
+TEL;TYPE=SIGNAL:
+EMAIL;TYPE=Email:sacharaif@gmail.com
+URL;TYPE=Digital Business Card:
+
+
+URL;TYPE=Location:
+KEY:OPENPGP4FPR:
+UID:SMART vCARD-100087657
+URL;TYPE=Website:connectwiser.co.uk
+URL;TYPE=Calendar:
+URL;TYPE=WhatsApp:
+
+
+URL;TYPE=Instagram:https://instagram.com/connectwiser
+
+PHOTO;ENCODING=b:
+NOTE;CHARSET=UTF-8:
+
+END:VCARD
