@@ -324,6 +324,124 @@
             }
         }
 
+        /* NEW: Work Showcase Section */
+        .work-showcase {
+            padding: 100px 0;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .showcase-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            transition: var(--transition);
+            cursor: pointer;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .showcase-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .showcase-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(2, 6, 23, 0.9), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .showcase-item:hover .showcase-overlay {
+            opacity: 1;
+        }
+
+        .showcase-label {
+            font-size: 14px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .showcase-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .showcase-description {
+            font-size: 14px;
+            color: var(--gray);
+        }
+
+        /* NEW: Project Gallery Section */
+        .project-gallery {
+            padding: 100px 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .gallery-item {
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            position: relative;
+            transition: var(--transition);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+
+        .gallery-item.large {
+            grid-column: span 2;
+            grid-row: span 2;
+            aspect-ratio: 1/1;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(2, 6, 23, 0.95), transparent);
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
         /* Enhanced Skills Grid with 3D Effects */
         .skills-section {
             padding: 120px 0;
@@ -643,6 +761,61 @@
 
         .tag:hover::before {
             left: 0;
+        }
+
+        /* Portfolio Images Section */
+        .portfolio-images {
+            padding: 100px 0;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .image-showcase {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .image-item {
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 1;
+            cursor: pointer;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .image-item.wide {
+            grid-column: span 2;
+            aspect-ratio: 2/1;
+        }
+
+        .image-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(2, 6, 23, 0.95), transparent);
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .image-item:hover .image-caption {
+            transform: translateY(0);
         }
 
         /* Enhanced Buttons with Ripple Effect */
@@ -966,6 +1139,21 @@
                 grid-template-columns: 1fr;
             }
 
+            .showcase-grid,
+            .gallery-grid,
+            .image-showcase {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item.large {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            .image-item.wide {
+                grid-column: span 1;
+            }
+
             .whatsapp-float {
                 bottom: 20px;
                 right: 20px;
@@ -1000,6 +1188,26 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Placeholder images with gradient backgrounds */
+        .placeholder-img {
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        /* Fallback image styling */
+        .fallback-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     </style>
 </head>
 
@@ -1022,8 +1230,10 @@
                 <a href="#" class="logo">Sacha Raif</a>
                 <nav class="nav-links">
                     <a href="#home" class="nav-link">Home</a>
+                    <a href="#work" class="nav-link">Work Showcase</a>
                     <a href="#skills" class="nav-link">Skills</a>
                     <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#gallery" class="nav-link">Gallery</a>
                     <a href="#contact" class="nav-link">Contact</a>
                 </nav>
             </div>
@@ -1042,7 +1252,7 @@
                 </p>
 
                 <div class="btn-group">
-                    <a href="#projects" class="btn btn-primary">
+                    <a href="#work" class="btn btn-primary">
                         <span>See My Work</span>
                         <i class="fas fa-arrow-down"></i>
                     </a>
@@ -1050,6 +1260,46 @@
                         <span>Get a Quote</span>
                         <i class="fas fa-paper-plane"></i>
                     </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Showcase Section with Your Images -->
+    <section class="work-showcase" id="work">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Work Showcase</h2>
+            <p style="text-align: center; color: var(--gray); max-width: 600px; margin: 0 auto 40px; font-size: 18px;"
+                class="animate-on-scroll">
+                A visual journey through my recent projects and design implementations
+            </p>
+
+            <div class="showcase-grid">
+                <!-- Green Glo Desktop -->
+                <div class="showcase-item animate-on-scroll" id="greenglo-desktop-img" style="background-image: url('greengloadmingsg.png');">
+                    <div class="showcase-overlay">
+                        <div class="showcase-label">Web Development</div>
+                        <div class="showcase-title">Green Glo Cleaning</div>
+                        <div class="showcase-description">Full booking system & admin dashboard</div>
+                    </div>
+                </div>
+
+                <!-- AR Building Services -->
+                <div class="showcase-item animate-on-scroll" id="arbuilding-hero-img" style="background-image: url('arbuldinghero.png');">
+                    <div class="showcase-overlay">
+                        <div class="showcase-label">Lead Generation</div>
+                        <div class="showcase-title">AR Building Services</div>
+                        <div class="showcase-description">Construction company website</div>
+                    </div>
+                </div>
+
+                <!-- Exposure Boost -->
+                <div class="showcase-item animate-on-scroll" id="exposureboost-hero-img" style="background-image: url('exposureboosthero.png');">
+                    <div class="showcase-overlay">
+                        <div class="showcase-label">Web Application</div>
+                        <div class="showcase-title">Exposure Boost</div>
+                        <div class="showcase-description">Photography web app with galleries</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1099,6 +1349,54 @@
                     <p style="color: var(--gray); font-size: 15px; line-height: 1.6;">
                         Strategic page flows that guide visitors to conversion with clear CTAs and UX
                     </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Gallery Section with Your Images -->
+    <section class="project-gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Project Gallery</h2>
+            <p style="text-align: center; color: var(--gray); max-width: 600px; margin: 0 auto 40px; font-size: 18px;"
+                class="animate-on-scroll">
+                Screenshots and visuals from completed projects
+            </p>
+
+            <div class="gallery-grid">
+                <!-- Green Glo Mobile -->
+                <div class="gallery-item animate-on-scroll" id="greenglo-mobile-img" style="background-image: url('greenglomobile.png');">
+                    <div class="gallery-caption">
+                        <div style="font-size: 16px; font-weight: 600;">Green Glo Mobile</div>
+                        <div style="font-size: 14px; color: var(--gray); margin-top: 5px;">Responsive mobile design</div>
+                    </div>
+                </div>
+
+                <!-- AR Building Gallery -->
+                <div class="gallery-item large animate-on-scroll" id="argallery-img" style="background-image: url('argallery.png');">
+                    <div class="gallery-caption">
+                        <div style="font-size: 18px; font-weight: 600;">AR Building Gallery</div>
+                        <div style="font-size: 14px; color: var(--gray); margin-top: 5px;">Project showcase gallery</div>
+                    </div>
+                </div>
+
+                <!-- Analytics Dashboard -->
+                <div class="gallery-item animate-on-scroll" id="analytics-img" style="background-image: url('analyics.png');">
+                    <div class="gallery-caption">
+                        <div style="font-size: 16px; font-weight: 600;">Analytics Dashboard</div>
+                        <div style="font-size: 14px; color: var(--gray); margin-top: 5px;">Performance tracking interface</div>
+                    </div>
+                </div>
+
+                <!-- Green Glo Alternate -->
+                <div class="gallery-item animate-on-scroll" style="background: var(--gradient);">
+                    <div class="placeholder-img">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="gallery-caption">
+                        <div style="font-size: 16px; font-weight: 600;">More Projects</div>
+                        <div style="font-size: 14px; color: var(--gray); margin-top: 5px;">Additional work samples</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1224,6 +1522,49 @@
                             <span>Try App</span>
                             <i class="fas fa-external-link-alt"></i>
                         </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Images Section -->
+    <section class="portfolio-images">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Design Process</h2>
+            <p style="text-align: center; color: var(--gray); max-width: 600px; margin: 0 auto 40px; font-size: 18px;"
+                class="animate-on-scroll">
+                From concept to completion - my approach to web development
+            </p>
+
+            <div class="image-showcase">
+                <div class="image-item animate-on-scroll" style="background: var(--gradient);">
+                    <div class="placeholder-img">
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                    <div class="image-caption">
+                        <div style="font-size: 16px; font-weight: 600;">Planning & Wireframing</div>
+                        <div style="font-size: 14px; color: var(--gray);">Strategic layout planning</div>
+                    </div>
+                </div>
+
+                <div class="image-item wide animate-on-scroll" style="background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);">
+                    <div class="placeholder-img" style="font-size: 32px;">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="image-caption">
+                        <div style="font-size: 18px; font-weight: 600;">Development Phase</div>
+                        <div style="font-size: 14px; color: var(--gray);">Clean, efficient coding</div>
+                    </div>
+                </div>
+
+                <div class="image-item animate-on-scroll" style="background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);">
+                    <div class="placeholder-img">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="image-caption">
+                        <div style="font-size: 16px; font-weight: 600;">Launch & Optimization</div>
+                        <div style="font-size: 14px; color: var(--gray);">Performance testing & SEO</div>
                     </div>
                 </div>
             </div>
@@ -1452,6 +1793,16 @@
         `;
         document.head.appendChild(style);
 
+        // Image error handling
+        function handleImageError(imgElement, fallbackColor = 'var(--gradient)') {
+            imgElement.style.background = fallbackColor;
+            imgElement.innerHTML = `
+                <div class="placeholder-img">
+                    <i class="fas fa-image"></i>
+                </div>
+            `;
+        }
+
         // Initialize everything
         document.addEventListener('DOMContentLoaded', () => {
             createParticles();
@@ -1468,6 +1819,33 @@
             setTimeout(() => {
                 document.body.style.opacity = '1';
             }, 100);
+
+            // Add image error handlers
+            const imageElements = [
+                'greenglo-desktop-img',
+                'arbuilding-hero-img',
+                'exposureboost-hero-img',
+                'greenglo-mobile-img',
+                'argallery-img',
+                'analytics-img'
+            ];
+
+            imageElements.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    // Check if image loads properly
+                    const img = new Image();
+                    img.src = element.style.backgroundImage.slice(5, -2); // Extract URL from background-image
+                    img.onerror = () => {
+                        element.style.backgroundImage = 'none';
+                        element.innerHTML = `
+                            <div class="placeholder-img">
+                                <i class="fas fa-image"></i>
+                            </div>
+                        `;
+                    };
+                }
+            });
         });
     </script>
 </body>
