@@ -324,7 +324,7 @@
             }
         }
 
-        /* NEW: Work Showcase Section */
+        /* Work Showcase Section */
         .work-showcase {
             padding: 100px 0;
             background: rgba(0, 0, 0, 0.2);
@@ -344,6 +344,7 @@
             aspect-ratio: 4/3;
             transition: var(--transition);
             cursor: pointer;
+            background-color: var(--darker);
             background-size: cover;
             background-position: center;
         }
@@ -359,7 +360,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to top, rgba(2, 6, 23, 0.9), transparent);
+            background: linear-gradient(to top, rgba(2, 6, 23, 0.9) 30%, rgba(2, 6, 23, 0.4) 60%, transparent);
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -393,7 +394,7 @@
             color: var(--gray);
         }
 
-        /* NEW: Project Gallery Section */
+        /* Project Gallery Section */
         .project-gallery {
             padding: 100px 0;
         }
@@ -411,6 +412,7 @@
             aspect-ratio: 1;
             position: relative;
             transition: var(--transition);
+            background-color: var(--darker);
             background-size: cover;
             background-position: center;
         }
@@ -442,7 +444,7 @@
             transform: translateY(0);
         }
 
-        /* Enhanced Skills Grid with 3D Effects */
+        /* Skills Grid */
         .skills-section {
             padding: 120px 0;
             position: relative;
@@ -574,7 +576,7 @@
             }
         }
 
-        /* Enhanced Project Cards with Staggered Animation */
+        /* Enhanced Project Cards */
         .projects-section {
             padding: 120px 0;
         }
@@ -771,7 +773,7 @@
 
         .image-showcase {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
             margin-top: 50px;
         }
@@ -782,6 +784,7 @@
             position: relative;
             aspect-ratio: 1;
             cursor: pointer;
+            background-color: var(--darker);
             background-size: cover;
             background-position: center;
         }
@@ -789,10 +792,6 @@
         .image-item.wide {
             grid-column: span 2;
             aspect-ratio: 2/1;
-        }
-
-        .image-item:hover img {
-            transform: scale(1.1);
         }
 
         .image-item img {
@@ -818,7 +817,7 @@
             transform: translateY(0);
         }
 
-        /* Enhanced Buttons with Ripple Effect */
+        /* Enhanced Buttons */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -883,7 +882,7 @@
             margin-top: 40px;
         }
 
-        /* Enhanced Contact Section with Wave Animation */
+        /* Contact Section */
         .contact-section {
             padding: 120px 0;
             position: relative;
@@ -1019,7 +1018,7 @@
             }
         }
 
-        /* Enhanced Floating WhatsApp Button */
+        /* Floating WhatsApp Button */
         .whatsapp-float {
             position: fixed;
             bottom: 40px;
@@ -1189,7 +1188,7 @@
             transform: translateY(0);
         }
 
-        /* Placeholder images with gradient backgrounds */
+        /* Placeholder images */
         .placeholder-img {
             width: 100%;
             height: 100%;
@@ -1202,11 +1201,33 @@
             font-weight: 600;
         }
 
-        /* Fallback image styling */
-        .fallback-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        /* Image crop helper classes */
+        .crop-top {
+            background-position: top center !important;
+        }
+
+        .crop-center {
+            background-position: center center !important;
+        }
+
+        .crop-bottom {
+            background-position: bottom center !important;
+        }
+
+        .crop-left {
+            background-position: left center !important;
+        }
+
+        .crop-right {
+            background-position: right center !important;
+        }
+
+        .crop-contain {
+            background-size: contain !important;
+        }
+
+        .crop-cover {
+            background-size: cover !important;
         }
     </style>
 </head>
@@ -1265,7 +1286,7 @@
         </div>
     </section>
 
-    <!-- Work Showcase Section with Your Images -->
+    <!-- Work Showcase Section - ALL BOXES FILLED -->
     <section class="work-showcase" id="work">
         <div class="container">
             <h2 class="section-title animate-on-scroll">Work Showcase</h2>
@@ -1275,17 +1296,19 @@
             </p>
 
             <div class="showcase-grid">
-                <!-- Green Glo Desktop -->
-                <div class="showcase-item animate-on-scroll" id="greenglo-desktop-img" style="background-image: url('greengloadmingsg.png');">
+                <!-- Green Glo Desktop - Optimized cropping -->
+                <div class="showcase-item animate-on-scroll crop-center crop-cover" 
+                     style="background-image: url('greengloadmingsg.png');">
                     <div class="showcase-overlay">
                         <div class="showcase-label">Web Development</div>
                         <div class="showcase-title">Green Glo Cleaning</div>
-                        <div class="showcase-description">Full booking system & admin dashboard</div>
+                        <div class="showcase-description">Complete booking system & admin dashboard</div>
                     </div>
                 </div>
 
-                <!-- AR Building Services -->
-                <div class="showcase-item animate-on-scroll" id="arbuilding-hero-img" style="background-image: url('arbuldinghero.png');">
+                <!-- AR Building Services - Optimized cropping -->
+                <div class="showcase-item animate-on-scroll crop-center crop-cover" 
+                     style="background-image: url('arbuldinghero.png');">
                     <div class="showcase-overlay">
                         <div class="showcase-label">Lead Generation</div>
                         <div class="showcase-title">AR Building Services</div>
@@ -1293,8 +1316,9 @@
                     </div>
                 </div>
 
-                <!-- Exposure Boost -->
-                <div class="showcase-item animate-on-scroll" id="exposureboost-hero-img" style="background-image: url('exposureboosthero.png');">
+                <!-- Exposure Boost - Optimized cropping -->
+                <div class="showcase-item animate-on-scroll crop-center crop-cover" 
+                     style="background-image: url('exposureboosthero.png');">
                     <div class="showcase-overlay">
                         <div class="showcase-label">Web Application</div>
                         <div class="showcase-title">Exposure Boost</div>
@@ -1354,7 +1378,7 @@
         </div>
     </section>
 
-    <!-- Project Gallery Section with Your Images -->
+    <!-- Project Gallery Section - ALL BOXES FILLED -->
     <section class="project-gallery" id="gallery">
         <div class="container">
             <h2 class="section-title animate-on-scroll">Project Gallery</h2>
@@ -1364,38 +1388,42 @@
             </p>
 
             <div class="gallery-grid">
-                <!-- Green Glo Mobile -->
-                <div class="gallery-item animate-on-scroll" id="greenglo-mobile-img" style="background-image: url('greenglomobile.png');">
-                    <div class="gallery-caption">
-                        <div style="font-size: 16px; font-weight: 600;">Green Glo Mobile</div>
-                        <div style="font-size: 14px; color: var(--gray); margin-top: 5px;">Responsive mobile design</div>
-                    </div>
-                </div>
-
-                <!-- AR Building Gallery -->
-                <div class="gallery-item large animate-on-scroll" id="argallery-img" style="background-image: url('argallery.png');">
-                    <div class="gallery-caption">
-                        <div style="font-size: 18px; font-weight: 600;">AR Building Gallery</div>
-                        <div style="font-size: 14px; color: var(--gray); margin-top: 5px;">Project showcase gallery</div>
-                    </div>
-                </div>
-
-                <!-- Analytics Dashboard -->
-                <div class="gallery-item animate-on-scroll" id="analytics-img" style="background-image: url('analyics.png');">
+                <!-- Analytics Dashboard - Optimized cropping -->
+                <div class="gallery-item animate-on-scroll crop-center crop-cover" 
+                     style="background-image: url('analyics.png');">
                     <div class="gallery-caption">
                         <div style="font-size: 16px; font-weight: 600;">Analytics Dashboard</div>
                         <div style="font-size: 14px; color: var(--gray); margin-top: 5px;">Performance tracking interface</div>
                     </div>
                 </div>
 
-                <!-- Green Glo Alternate -->
-                <div class="gallery-item animate-on-scroll" style="background: var(--gradient);">
+                <!-- AR Building Gallery - Large item - Optimized cropping -->
+                <div class="gallery-item large animate-on-scroll crop-center crop-cover" 
+                     style="background-image: url('argallery.png');">
+                    <div class="gallery-caption">
+                        <div style="font-size: 18px; font-weight: 600;">AR Building Gallery</div>
+                        <div style="font-size: 14px; color: var(--gray); margin-top: 5px;">Project showcase gallery</div>
+                    </div>
+                </div>
+
+                <!-- Green Glo Mobile - Optimized cropping -->
+                <div class="gallery-item animate-on-scroll crop-center crop-cover" 
+                     style="background-image: url('greenglomobile.png');">
+                    <div class="gallery-caption">
+                        <div style="font-size: 16px; font-weight: 600;">Green Glo Mobile</div>
+                        <div style="font-size: 14px; color: var(--gray); margin-top: 5px;">Responsive mobile design</div>
+                    </div>
+                </div>
+
+                <!-- Project Process - Filled with gradient -->
+                <div class="gallery-item animate-on-scroll" 
+                     style="background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);">
                     <div class="placeholder-img">
-                        <i class="fas fa-chart-bar"></i>
+                        <i class="fas fa-project-diagram"></i>
                     </div>
                     <div class="gallery-caption">
-                        <div style="font-size: 16px; font-weight: 600;">More Projects</div>
-                        <div style="font-size: 14px; color: var(--gray); margin-top: 5px;">Additional work samples</div>
+                        <div style="font-size: 16px; font-weight: 600;">Project Process</div>
+                        <div style="font-size: 14px; color: var(--gray); margin-top: 5px;">Development workflow</div>
                     </div>
                 </div>
             </div>
@@ -1528,7 +1556,7 @@
         </div>
     </section>
 
-    <!-- Portfolio Images Section -->
+    <!-- Portfolio Images Section - ALL BOXES FILLED -->
     <section class="portfolio-images">
         <div class="container">
             <h2 class="section-title animate-on-scroll">Design Process</h2>
@@ -1538,7 +1566,9 @@
             </p>
 
             <div class="image-showcase">
-                <div class="image-item animate-on-scroll" style="background: var(--gradient);">
+                <!-- Planning & Wireframing - Filled -->
+                <div class="image-item animate-on-scroll" 
+                     style="background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);">
                     <div class="placeholder-img">
                         <i class="fas fa-pencil-ruler"></i>
                     </div>
@@ -1548,7 +1578,9 @@
                     </div>
                 </div>
 
-                <div class="image-item wide animate-on-scroll" style="background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);">
+                <!-- Development Phase - Wide item - Filled -->
+                <div class="image-item wide animate-on-scroll" 
+                     style="background: linear-gradient(135deg, #2563eb 0%, #10b981 100%);">
                     <div class="placeholder-img" style="font-size: 32px;">
                         <i class="fas fa-laptop-code"></i>
                     </div>
@@ -1558,7 +1590,9 @@
                     </div>
                 </div>
 
-                <div class="image-item animate-on-scroll" style="background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);">
+                <!-- Launch & Optimization - Filled -->
+                <div class="image-item animate-on-scroll" 
+                     style="background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);">
                     <div class="placeholder-img">
                         <i class="fas fa-rocket"></i>
                     </div>
@@ -1793,16 +1827,6 @@
         `;
         document.head.appendChild(style);
 
-        // Image error handling
-        function handleImageError(imgElement, fallbackColor = 'var(--gradient)') {
-            imgElement.style.background = fallbackColor;
-            imgElement.innerHTML = `
-                <div class="placeholder-img">
-                    <i class="fas fa-image"></i>
-                </div>
-            `;
-        }
-
         // Initialize everything
         document.addEventListener('DOMContentLoaded', () => {
             createParticles();
@@ -1819,33 +1843,6 @@
             setTimeout(() => {
                 document.body.style.opacity = '1';
             }, 100);
-
-            // Add image error handlers
-            const imageElements = [
-                'greenglo-desktop-img',
-                'arbuilding-hero-img',
-                'exposureboost-hero-img',
-                'greenglo-mobile-img',
-                'argallery-img',
-                'analytics-img'
-            ];
-
-            imageElements.forEach(id => {
-                const element = document.getElementById(id);
-                if (element) {
-                    // Check if image loads properly
-                    const img = new Image();
-                    img.src = element.style.backgroundImage.slice(5, -2); // Extract URL from background-image
-                    img.onerror = () => {
-                        element.style.backgroundImage = 'none';
-                        element.innerHTML = `
-                            <div class="placeholder-img">
-                                <i class="fas fa-image"></i>
-                            </div>
-                        `;
-                    };
-                }
-            });
         });
     </script>
 </body>
