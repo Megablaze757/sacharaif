@@ -324,7 +324,7 @@
             }
         }
 
-        /* Work Showcase Section */
+        /* Work Showcase Section - IMAGES REMOVED */
         .work-showcase {
             padding: 100px 0;
             background: rgba(0, 0, 0, 0.2);
@@ -344,34 +344,50 @@
             aspect-ratio: 4/3;
             transition: var(--transition);
             cursor: pointer;
-            background-color: var(--darker);
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        .showcase-item:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .showcase-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to top, rgba(2, 6, 23, 0.9) 30%, rgba(2, 6, 23, 0.4) 60%, transparent);
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
             padding: 30px;
-            opacity: 0;
-            transition: opacity 0.4s ease;
         }
 
-        .showcase-item:hover .showcase-overlay {
-            opacity: 1;
+        .showcase-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.15) 0%, rgba(16, 185, 129, 0.15) 100%);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .showcase-item::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        .showcase-item:nth-child(1)::before {
+            content: '🎯';
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        }
+
+        .showcase-item:nth-child(2)::before {
+            content: '🚀';
+            background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+        }
+
+        .showcase-item:nth-child(3)::before {
+            content: '📈';
+            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
         }
 
         .showcase-label {
@@ -381,21 +397,27 @@
             margin-bottom: 8px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
         }
 
         .showcase-title {
             font-size: 22px;
             font-weight: 700;
             color: white;
-            margin-bottom: 5px;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 2;
         }
 
         .showcase-description {
             font-size: 14px;
             color: var(--gray);
+            position: relative;
+            z-index: 2;
         }
 
-        /* Project Gallery Section */
+        /* Project Gallery Section - IMAGES REMOVED */
         .project-gallery {
             padding: 100px 0;
         }
@@ -413,15 +435,19 @@
             aspect-ratio: 1;
             position: relative;
             transition: var(--transition);
-            background-color: var(--darker);
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 25px;
         }
 
         .gallery-item:hover {
             transform: scale(1.05);
-            z-index: 10;
+            box-shadow: var(--shadow-glow);
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.12) 0%, rgba(16, 185, 129, 0.12) 100%);
+            border-color: rgba(59, 130, 246, 0.3);
         }
 
         .gallery-item.large {
@@ -430,20 +456,40 @@
             aspect-ratio: 1/1;
         }
 
-        .gallery-caption {
+        .gallery-item::before {
+            content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px;
-            background: linear-gradient(to top, rgba(2, 6, 23, 0.95), transparent);
+            top: 25px;
+            left: 25px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
-            transform: translateY(100%);
-            transition: transform 0.4s ease;
+            font-size: 20px;
         }
 
-        .gallery-item:hover .gallery-caption {
-            transform: translateY(0);
+        .gallery-item:nth-child(1)::before {
+            content: '📊';
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        }
+
+        .gallery-item:nth-child(2)::before {
+            content: '🏗️';
+            background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+        }
+
+        .gallery-item:nth-child(3)::before {
+            content: '📱';
+            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+        }
+
+        .gallery-item:nth-child(4)::before {
+            content: '💻';
+            background: linear-gradient(135deg, #ec4899 0%, #f59e0b 100%);
         }
 
         /* Skills Grid */
@@ -767,7 +813,7 @@
             left: 0;
         }
 
-        /* Portfolio Images Section - REMOVED PLACEHOLDERS */
+        /* Portfolio Images Section - IMAGES REMOVED */
         .portfolio-images {
             padding: 100px 0;
             background: rgba(255, 255, 255, 0.02);
@@ -786,10 +832,12 @@
             position: relative;
             aspect-ratio: 1;
             cursor: pointer;
-            background-color: var(--darker);
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 25px;
         }
 
         .image-item.wide {
@@ -797,27 +845,42 @@
             aspect-ratio: 2/1;
         }
 
-        .image-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
+        .image-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-glow);
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.12) 0%, rgba(16, 185, 129, 0.12) 100%);
+            border-color: rgba(59, 130, 246, 0.3);
         }
 
-        .image-caption {
+        .image-item::before {
+            content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px;
-            background: linear-gradient(to top, rgba(2, 6, 23, 0.95), transparent);
+            top: 25px;
+            left: 25px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
-            transform: translateY(100%);
-            transition: transform 0.4s ease;
+            font-size: 20px;
         }
 
-        .image-item:hover .image-caption {
-            transform: translateY(0);
+        .image-item:nth-child(1)::before {
+            content: '✏️';
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        }
+
+        .image-item:nth-child(2)::before {
+            content: '💻';
+            background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+        }
+
+        .image-item:nth-child(3)::before {
+            content: '🚀';
+            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
         }
 
         /* Enhanced Buttons */
@@ -1147,13 +1210,10 @@
                 grid-template-columns: 1fr;
             }
 
-            .gallery-item.large {
-                grid-column: span 1;
-                grid-row: span 1;
-            }
-
+            .gallery-item.large,
             .image-item.wide {
                 grid-column: span 1;
+                aspect-ratio: 1;
             }
 
             .whatsapp-float {
@@ -1247,7 +1307,7 @@
         </div>
     </section>
 
-    <!-- Work Showcase Section - NO PLACEHOLDERS -->
+    <!-- Work Showcase Section - NO IMAGES -->
     <section class="work-showcase" id="work">
         <div class="container">
             <h2 class="section-title animate-on-scroll">Work Showcase</h2>
@@ -1257,34 +1317,25 @@
             </p>
 
             <div class="showcase-grid">
-                <!-- Green Glo Desktop -->
-                <div class="showcase-item animate-on-scroll" 
-                     style="background-image: url('greengloadmingsg.png');">
-                    <div class="showcase-overlay">
-                        <div class="showcase-label">Web Development</div>
-                        <div class="showcase-title">Green Glo Cleaning</div>
-                        <div class="showcase-description">Complete booking system & admin dashboard</div>
-                    </div>
+                <!-- Green Glo Cleaning -->
+                <div class="showcase-item animate-on-scroll">
+                    <div class="showcase-label">Web Development</div>
+                    <div class="showcase-title">Green Glo Cleaning</div>
+                    <div class="showcase-description">Complete booking system & admin dashboard with real-time scheduling and customer management</div>
                 </div>
 
                 <!-- AR Building Services -->
-                <div class="showcase-item animate-on-scroll" 
-                     style="background-image: url('arbuldinghero.png');">
-                    <div class="showcase-overlay">
-                        <div class="showcase-label">Lead Generation</div>
-                        <div class="showcase-title">AR Building Services</div>
-                        <div class="showcase-description">Construction company website</div>
-                    </div>
+                <div class="showcase-item animate-on-scroll">
+                    <div class="showcase-label">Lead Generation</div>
+                    <div class="showcase-title">AR Building Services</div>
+                    <div class="showcase-description">Construction company website optimized for local SEO and lead capture</div>
                 </div>
 
                 <!-- Exposure Boost -->
-                <div class="showcase-item animate-on-scroll" 
-                     style="background-image: url('exposureboosthero.png');">
-                    <div class="showcase-overlay">
-                        <div class="showcase-label">Web Application</div>
-                        <div class="showcase-title">Exposure Boost</div>
-                        <div class="showcase-description">Photography web app with galleries</div>
-                    </div>
+                <div class="showcase-item animate-on-scroll">
+                    <div class="showcase-label">Web Application</div>
+                    <div class="showcase-title">Exposure Boost</div>
+                    <div class="showcase-description">Photography web app with interactive galleries and image filtering</div>
                 </div>
             </div>
         </div>
@@ -1339,50 +1390,38 @@
         </div>
     </section>
 
-    <!-- Project Gallery Section - NO PLACEHOLDERS -->
+    <!-- Project Gallery Section - NO IMAGES -->
     <section class="project-gallery" id="gallery">
         <div class="container">
             <h2 class="section-title animate-on-scroll">Project Gallery</h2>
             <p style="text-align: center; color: var(--gray); max-width: 600px; margin: 0 auto 40px; font-size: 18px;"
                 class="animate-on-scroll">
-                Screenshots and visuals from completed projects
+                Key features and interface elements from completed projects
             </p>
 
             <div class="gallery-grid">
                 <!-- Analytics Dashboard -->
-                <div class="gallery-item animate-on-scroll" 
-                     style="background-image: url('analyics.png');">
-                    <div class="gallery-caption">
-                        <div style="font-size: 16px; font-weight: 600;">Analytics Dashboard</div>
-                        <div style="font-size: 14px; color: var(--gray); margin-top: 5px;">Performance tracking interface</div>
-                    </div>
+                <div class="gallery-item animate-on-scroll">
+                    <div style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Analytics Dashboard</div>
+                    <div style="font-size: 14px; color: var(--gray);">Real-time performance tracking and data visualization interface</div>
                 </div>
 
-                <!-- AR Building Gallery - Large item -->
-                <div class="gallery-item large animate-on-scroll" 
-                     style="background-image: url('argallery.png');">
-                    <div class="gallery-caption">
-                        <div style="font-size: 18px; font-weight: 600;">AR Building Gallery</div>
-                        <div style="font-size: 14px; color: var(--gray); margin-top: 5px;">Project showcase gallery</div>
-                    </div>
+                <!-- AR Building Gallery -->
+                <div class="gallery-item large animate-on-scroll">
+                    <div style="font-size: 18px; font-weight: 600; margin-bottom: 8px;">AR Building Gallery</div>
+                    <div style="font-size: 14px; color: var(--gray);">Project showcase with filtering and lightbox functionality</div>
                 </div>
 
                 <!-- Green Glo Mobile -->
-                <div class="gallery-item animate-on-scroll" 
-                     style="background-image: url('greenglomobile.png');">
-                    <div class="gallery-caption">
-                        <div style="font-size: 16px; font-weight: 600;">Green Glo Mobile</div>
-                        <div style="font-size: 14px; color: var(--gray); margin-top: 5px;">Responsive mobile design</div>
-                    </div>
+                <div class="gallery-item animate-on-scroll">
+                    <div style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Green Glo Mobile</div>
+                    <div style="font-size: 14px; color: var(--gray);">Touch-optimized responsive booking interface</div>
                 </div>
 
-                <!-- Green Glo Desktop (reused) -->
-                <div class="gallery-item animate-on-scroll" 
-                     style="background-image: url('greengloadmingsg.png');">
-                    <div class="gallery-caption">
-                        <div style="font-size: 16px; font-weight: 600;">Green Glo Desktop</div>
-                        <div style="font-size: 14px; color: var(--gray); margin-top: 5px;">Full desktop interface</div>
-                    </div>
+                <!-- Admin Panel -->
+                <div class="gallery-item animate-on-scroll">
+                    <div style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Admin Panel</div>
+                    <div style="font-size: 14px; color: var(--gray);">Customer and appointment management dashboard</div>
                 </div>
             </div>
         </div>
@@ -1514,41 +1553,32 @@
         </div>
     </section>
 
-    <!-- Portfolio Images Section - NO PLACEHOLDERS, REUSED IMAGES -->
+    <!-- Portfolio Images Section - NO IMAGES -->
     <section class="portfolio-images">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">Design Details</h2>
+            <h2 class="section-title animate-on-scroll">Design Process</h2>
             <p style="text-align: center; color: var(--gray); max-width: 600px; margin: 0 auto 40px; font-size: 18px;"
                 class="animate-on-scroll">
-                Close-up views of interface elements and design features
+                From concept to completion - my approach to web development
             </p>
 
             <div class="image-showcase">
-                <!-- AR Building Hero (reused) -->
-                <div class="image-item animate-on-scroll" 
-                     style="background-image: url('arbuldinghero.png');">
-                    <div class="image-caption">
-                        <div style="font-size: 16px; font-weight: 600;">Hero Section</div>
-                        <div style="font-size: 14px; color: var(--gray);">Attention-grabbing design</div>
-                    </div>
+                <!-- Planning -->
+                <div class="image-item animate-on-scroll">
+                    <div style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Planning & Strategy</div>
+                    <div style="font-size: 14px; color: var(--gray);">User research, wireframing, and conversion-focused planning</div>
                 </div>
 
-                <!-- Exposure Boost (reused) -->
-                <div class="image-item wide animate-on-scroll" 
-                     style="background-image: url('exposureboosthero.png');">
-                    <div class="image-caption">
-                        <div style="font-size: 18px; font-weight: 600;">Gallery Interface</div>
-                        <div style="font-size: 14px; color: var(--gray);">Image filtering system</div>
-                    </div>
+                <!-- Development -->
+                <div class="image-item wide animate-on-scroll">
+                    <div style="font-size: 18px; font-weight: 600; margin-bottom: 8px;">Development & Implementation</div>
+                    <div style="font-size: 14px; color: var(--gray);">Clean code, responsive design, and performance optimization</div>
                 </div>
 
-                <!-- Green Glo Mobile (reused) -->
-                <div class="image-item animate-on-scroll" 
-                     style="background-image: url('greenglomobile.png');">
-                    <div class="image-caption">
-                        <div style="font-size: 16px; font-weight: 600;">Mobile UI</div>
-                        <div style="font-size: 14px; color: var(--gray);">Touch-friendly interface</div>
-                    </div>
+                <!-- Launch -->
+                <div class="image-item animate-on-scroll">
+                    <div style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Launch & Optimization</div>
+                    <div style="font-size: 14px; color: var(--gray);">SEO implementation, analytics setup, and ongoing improvements</div>
                 </div>
             </div>
         </div>
