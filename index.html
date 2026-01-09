@@ -347,6 +347,7 @@
             background-color: var(--darker);
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
         }
 
         .showcase-item:hover {
@@ -415,6 +416,7 @@
             background-color: var(--darker);
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
         }
 
         .gallery-item:hover {
@@ -765,7 +767,7 @@
             left: 0;
         }
 
-        /* Portfolio Images Section */
+        /* Portfolio Images Section - REMOVED PLACEHOLDERS */
         .portfolio-images {
             padding: 100px 0;
             background: rgba(255, 255, 255, 0.02);
@@ -787,6 +789,7 @@
             background-color: var(--darker);
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
         }
 
         .image-item.wide {
@@ -1187,48 +1190,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Placeholder images */
-        .placeholder-img {
-            width: 100%;
-            height: 100%;
-            background: var(--gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-            font-weight: 600;
-        }
-
-        /* Image crop helper classes */
-        .crop-top {
-            background-position: top center !important;
-        }
-
-        .crop-center {
-            background-position: center center !important;
-        }
-
-        .crop-bottom {
-            background-position: bottom center !important;
-        }
-
-        .crop-left {
-            background-position: left center !important;
-        }
-
-        .crop-right {
-            background-position: right center !important;
-        }
-
-        .crop-contain {
-            background-size: contain !important;
-        }
-
-        .crop-cover {
-            background-size: cover !important;
-        }
     </style>
 </head>
 
@@ -1286,7 +1247,7 @@
         </div>
     </section>
 
-    <!-- Work Showcase Section - ALL BOXES FILLED -->
+    <!-- Work Showcase Section - NO PLACEHOLDERS -->
     <section class="work-showcase" id="work">
         <div class="container">
             <h2 class="section-title animate-on-scroll">Work Showcase</h2>
@@ -1296,8 +1257,8 @@
             </p>
 
             <div class="showcase-grid">
-                <!-- Green Glo Desktop - Optimized cropping -->
-                <div class="showcase-item animate-on-scroll crop-center crop-cover" 
+                <!-- Green Glo Desktop -->
+                <div class="showcase-item animate-on-scroll" 
                      style="background-image: url('greengloadmingsg.png');">
                     <div class="showcase-overlay">
                         <div class="showcase-label">Web Development</div>
@@ -1306,8 +1267,8 @@
                     </div>
                 </div>
 
-                <!-- AR Building Services - Optimized cropping -->
-                <div class="showcase-item animate-on-scroll crop-center crop-cover" 
+                <!-- AR Building Services -->
+                <div class="showcase-item animate-on-scroll" 
                      style="background-image: url('arbuldinghero.png');">
                     <div class="showcase-overlay">
                         <div class="showcase-label">Lead Generation</div>
@@ -1316,8 +1277,8 @@
                     </div>
                 </div>
 
-                <!-- Exposure Boost - Optimized cropping -->
-                <div class="showcase-item animate-on-scroll crop-center crop-cover" 
+                <!-- Exposure Boost -->
+                <div class="showcase-item animate-on-scroll" 
                      style="background-image: url('exposureboosthero.png');">
                     <div class="showcase-overlay">
                         <div class="showcase-label">Web Application</div>
@@ -1378,7 +1339,7 @@
         </div>
     </section>
 
-    <!-- Project Gallery Section - ALL BOXES FILLED -->
+    <!-- Project Gallery Section - NO PLACEHOLDERS -->
     <section class="project-gallery" id="gallery">
         <div class="container">
             <h2 class="section-title animate-on-scroll">Project Gallery</h2>
@@ -1388,8 +1349,8 @@
             </p>
 
             <div class="gallery-grid">
-                <!-- Analytics Dashboard - Optimized cropping -->
-                <div class="gallery-item animate-on-scroll crop-center crop-cover" 
+                <!-- Analytics Dashboard -->
+                <div class="gallery-item animate-on-scroll" 
                      style="background-image: url('analyics.png');">
                     <div class="gallery-caption">
                         <div style="font-size: 16px; font-weight: 600;">Analytics Dashboard</div>
@@ -1397,8 +1358,8 @@
                     </div>
                 </div>
 
-                <!-- AR Building Gallery - Large item - Optimized cropping -->
-                <div class="gallery-item large animate-on-scroll crop-center crop-cover" 
+                <!-- AR Building Gallery - Large item -->
+                <div class="gallery-item large animate-on-scroll" 
                      style="background-image: url('argallery.png');">
                     <div class="gallery-caption">
                         <div style="font-size: 18px; font-weight: 600;">AR Building Gallery</div>
@@ -1406,8 +1367,8 @@
                     </div>
                 </div>
 
-                <!-- Green Glo Mobile - Optimized cropping -->
-                <div class="gallery-item animate-on-scroll crop-center crop-cover" 
+                <!-- Green Glo Mobile -->
+                <div class="gallery-item animate-on-scroll" 
                      style="background-image: url('greenglomobile.png');">
                     <div class="gallery-caption">
                         <div style="font-size: 16px; font-weight: 600;">Green Glo Mobile</div>
@@ -1415,15 +1376,12 @@
                     </div>
                 </div>
 
-                <!-- Project Process - Filled with gradient -->
+                <!-- Green Glo Desktop (reused) -->
                 <div class="gallery-item animate-on-scroll" 
-                     style="background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);">
-                    <div class="placeholder-img">
-                        <i class="fas fa-project-diagram"></i>
-                    </div>
+                     style="background-image: url('greengloadmingsg.png');">
                     <div class="gallery-caption">
-                        <div style="font-size: 16px; font-weight: 600;">Project Process</div>
-                        <div style="font-size: 14px; color: var(--gray); margin-top: 5px;">Development workflow</div>
+                        <div style="font-size: 16px; font-weight: 600;">Green Glo Desktop</div>
+                        <div style="font-size: 14px; color: var(--gray); margin-top: 5px;">Full desktop interface</div>
                     </div>
                 </div>
             </div>
@@ -1556,49 +1514,40 @@
         </div>
     </section>
 
-    <!-- Portfolio Images Section - ALL BOXES FILLED -->
+    <!-- Portfolio Images Section - NO PLACEHOLDERS, REUSED IMAGES -->
     <section class="portfolio-images">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">Design Process</h2>
+            <h2 class="section-title animate-on-scroll">Design Details</h2>
             <p style="text-align: center; color: var(--gray); max-width: 600px; margin: 0 auto 40px; font-size: 18px;"
                 class="animate-on-scroll">
-                From concept to completion - my approach to web development
+                Close-up views of interface elements and design features
             </p>
 
             <div class="image-showcase">
-                <!-- Planning & Wireframing - Filled -->
+                <!-- AR Building Hero (reused) -->
                 <div class="image-item animate-on-scroll" 
-                     style="background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);">
-                    <div class="placeholder-img">
-                        <i class="fas fa-pencil-ruler"></i>
-                    </div>
+                     style="background-image: url('arbuldinghero.png');">
                     <div class="image-caption">
-                        <div style="font-size: 16px; font-weight: 600;">Planning & Wireframing</div>
-                        <div style="font-size: 14px; color: var(--gray);">Strategic layout planning</div>
+                        <div style="font-size: 16px; font-weight: 600;">Hero Section</div>
+                        <div style="font-size: 14px; color: var(--gray);">Attention-grabbing design</div>
                     </div>
                 </div>
 
-                <!-- Development Phase - Wide item - Filled -->
+                <!-- Exposure Boost (reused) -->
                 <div class="image-item wide animate-on-scroll" 
-                     style="background: linear-gradient(135deg, #2563eb 0%, #10b981 100%);">
-                    <div class="placeholder-img" style="font-size: 32px;">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
+                     style="background-image: url('exposureboosthero.png');">
                     <div class="image-caption">
-                        <div style="font-size: 18px; font-weight: 600;">Development Phase</div>
-                        <div style="font-size: 14px; color: var(--gray);">Clean, efficient coding</div>
+                        <div style="font-size: 18px; font-weight: 600;">Gallery Interface</div>
+                        <div style="font-size: 14px; color: var(--gray);">Image filtering system</div>
                     </div>
                 </div>
 
-                <!-- Launch & Optimization - Filled -->
+                <!-- Green Glo Mobile (reused) -->
                 <div class="image-item animate-on-scroll" 
-                     style="background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);">
-                    <div class="placeholder-img">
-                        <i class="fas fa-rocket"></i>
-                    </div>
+                     style="background-image: url('greenglomobile.png');">
                     <div class="image-caption">
-                        <div style="font-size: 16px; font-weight: 600;">Launch & Optimization</div>
-                        <div style="font-size: 14px; color: var(--gray);">Performance testing & SEO</div>
+                        <div style="font-size: 16px; font-weight: 600;">Mobile UI</div>
+                        <div style="font-size: 14px; color: var(--gray);">Touch-friendly interface</div>
                     </div>
                 </div>
             </div>
