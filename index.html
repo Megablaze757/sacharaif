@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sacha Raif | HTML, CSS, JS Developer | SEO & Conversion Specialist</title>
+    <title>Sacha Raif | Interactive Portfolio with Live Demos</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -149,7 +149,7 @@
             box-shadow: 0 20px 40px rgba(37, 99, 235, 0.5);
         }
 
-        /* Browser Window Container */
+        /* IMPROVED Browser Window Container */
         .browser-window {
             background: rgba(30, 41, 59, 0.5);
             border-radius: var(--iframe-radius);
@@ -157,7 +157,7 @@
             box-shadow: var(--shadow-xl);
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: var(--transition);
-            margin-bottom: 40px;
+            margin-bottom: 60px;
         }
 
         .browser-window:hover {
@@ -202,52 +202,130 @@
             white-space: nowrap;
         }
 
-        .browser-actions {
+        /* IMPROVED Viewport Controls */
+        .viewport-controls {
             display: flex;
-            gap: 12px;
+            gap: 8px;
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: 20px;
+            padding: 4px;
         }
 
-        .viewport-toggle {
-            background: rgba(37, 99, 235, 0.15);
-            border: 1px solid rgba(37, 99, 235, 0.3);
-            color: var(--primary-light);
-            padding: 6px 16px;
-            border-radius: 20px;
+        .viewport-btn {
+            background: transparent;
+            border: none;
+            color: var(--gray);
+            padding: 8px 16px;
+            border-radius: 16px;
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .viewport-toggle:hover {
-            background: rgba(37, 99, 235, 0.25);
+        .viewport-btn:hover {
+            color: var(--light);
+            background: rgba(255, 255, 255, 0.1);
         }
 
-        .viewport-toggle.active {
+        .viewport-btn.active {
             background: var(--primary);
             color: white;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
         }
 
-        .browser-content {
+        .device-frame {
             position: relative;
-            height: 500px;
+            transition: var(--transition);
+        }
+
+        /* Desktop Frame */
+        .desktop-frame {
+            width: 100%;
+            height: 600px;
+            background: white;
+            border-radius: 0 0 var(--iframe-radius) var(--iframe-radius);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Tablet Frame */
+        .tablet-frame {
+            width: 768px;
+            height: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            border: 12px solid #1f2937;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .tablet-frame::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 6px;
+            background: #374151;
+            border-radius: 0 0 6px 6px;
+            z-index: 10;
+        }
+
+        /* Mobile Frame */
+        .mobile-frame {
+            width: 375px;
+            height: 667px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 40px;
+            overflow: hidden;
+            position: relative;
+            border: 12px solid #1f2937;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .mobile-frame::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 30px;
+            background: #1f2937;
+            border-radius: 0 0 20px 20px;
+            z-index: 10;
+        }
+
+        .mobile-frame::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 30px;
+            background: #1f2937;
+            border-radius: 20px 20px 0 0;
+            z-index: 10;
+        }
+
+        /* Device Frame Content */
+        .device-content {
+            width: 100%;
+            height: 100%;
+            position: relative;
             overflow: hidden;
         }
 
-        .iframe-container {
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-
-        .website-iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            background: white;
-        }
-
-        .loading-overlay {
+        .iframe-loader {
             position: absolute;
             top: 0;
             left: 0;
@@ -258,10 +336,16 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            z-index: 5;
             transition: opacity 0.3s ease;
         }
 
-        .loading-spinner {
+        .iframe-loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
             width: 50px;
             height: 50px;
             border: 3px solid rgba(37, 99, 235, 0.3);
@@ -275,14 +359,30 @@
             to { transform: rotate(360deg); }
         }
 
-        .iframe-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .preview-iframe {
             width: 100%;
             height: 100%;
-            pointer-events: none;
-            background: transparent;
+            border: none;
+            background: white;
+        }
+
+        .viewport-notice {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 10;
+            display: none;
+        }
+
+        .mobile-frame .viewport-notice,
+        .tablet-frame .viewport-notice {
+            display: block;
         }
 
         /* Work Showcase Section */
@@ -329,7 +429,24 @@
             line-height: 1.6;
         }
 
-        .iframe-stats {
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tech-tag {
+            background: rgba(37, 99, 235, 0.15);
+            color: var(--primary-light);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid rgba(37, 99, 235, 0.3);
+        }
+
+        .project-stats {
             display: flex;
             gap: 30px;
             flex-wrap: wrap;
@@ -353,80 +470,10 @@
             margin-top: 5px;
         }
 
-        /* Portfolio Gallery */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin-top: 50px;
-        }
-
-        .portfolio-item {
-            background: rgba(30, 41, 59, 0.3);
-            border-radius: var(--iframe-radius);
-            overflow: hidden;
-            transition: var(--transition);
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .portfolio-preview {
-            height: 300px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .preview-iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            transform-origin: top left;
-            transition: transform 0.3s ease;
-        }
-
-        .preview-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, transparent 70%, rgba(2, 6, 23, 0.9) 100%);
-            display: flex;
-            align-items: flex-end;
-            padding: 25px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .portfolio-item:hover .preview-overlay {
-            opacity: 1;
-        }
-
-        .preview-btn {
-            background: var(--gradient);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .preview-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
-        }
-
         /* Skills Section */
         .skills-section {
             padding: 100px 0;
+            background: rgba(0, 0, 0, 0.2);
         }
 
         .skills-grid {
@@ -460,7 +507,6 @@
         /* Contact Section */
         .contact-section {
             padding: 100px 0;
-            background: rgba(0, 0, 0, 0.2);
         }
 
         .contact-grid {
@@ -532,25 +578,28 @@
                 flex-direction: column;
             }
             
-            .browser-content {
+            .desktop-frame {
                 height: 400px;
             }
             
-            .portfolio-grid {
-                grid-template-columns: 1fr;
+            .tablet-frame {
+                width: 90%;
+                height: 500px;
             }
             
-            .iframe-stats {
-                flex-direction: column;
-                gap: 15px;
+            .mobile-frame {
+                width: 90%;
+                max-width: 375px;
+                height: 600px;
+            }
+            
+            .viewport-controls {
+                flex-wrap: wrap;
+                justify-content: center;
             }
         }
 
         @media (max-width: 480px) {
-            .browser-content {
-                height: 300px;
-            }
-            
             .container {
                 padding: 0 16px;
             }
@@ -558,21 +607,30 @@
             .section-title {
                 font-size: 32px;
             }
+            
+            .desktop-frame {
+                height: 350px;
+            }
+            
+            .tablet-frame {
+                height: 400px;
+            }
+            
+            .mobile-frame {
+                height: 500px;
+            }
+            
+            .browser-url {
+                display: none;
+            }
         }
 
-        /* Viewport size classes */
-        .viewport-mobile {
-            max-width: 375px;
-            margin: 0 auto;
-        }
-        
-        .viewport-tablet {
-            max-width: 768px;
-            margin: 0 auto;
-        }
-        
-        .viewport-desktop {
-            max-width: 100%;
+        /* Mobile Frame Responsive Adjustments */
+        @media (max-width: 400px) {
+            .mobile-frame {
+                border-radius: 30px;
+                border-width: 8px;
+            }
         }
     </style>
 </head>
@@ -585,7 +643,7 @@
                 <a href="#" class="logo">Sacha Raif</a>
                 <nav class="nav-links">
                     <a href="#home" class="nav-link">Home</a>
-                    <a href="#work" class="nav-link">Work Showcase</a>
+                    <a href="#work" class="nav-link">Live Demos</a>
                     <a href="#skills" class="nav-link">Skills</a>
                     <a href="#contact" class="nav-link">Contact</a>
                 </nav>
@@ -597,18 +655,18 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Interactive Portfolio Showcase</h1>
+                <h1 class="hero-title">Interactive Responsive Portfolio</h1>
                 <p style="font-size: 22px; color: var(--gray); margin-bottom: 40px; max-width: 600px;">
-                    Explore my live websites directly in your browser. Click, scroll, and interact with real projects built with HTML, CSS & JavaScript.
+                    Experience my responsive designs in real-time. Switch between desktop, tablet, and mobile views to see how each website adapts.
                 </p>
                 <div class="btn-group">
                     <a href="#work" class="btn btn-primary">
-                        <span>Explore Live Demos</span>
+                        <span>View Live Demos</span>
                         <i class="fas fa-arrow-down"></i>
                     </a>
                     <a href="#contact" class="btn btn-primary" style="background: rgba(255,255,255,0.1);">
-                        <span>Get in Touch</span>
-                        <i class="fas fa-paper-plane"></i>
+                        <span>Start a Project</span>
+                        <i class="fas fa-rocket"></i>
                     </a>
                 </div>
             </div>
@@ -618,13 +676,13 @@
     <!-- Main Website Showcase -->
     <section class="work-showcase" id="work">
         <div class="container">
-            <h2 class="section-title">Interactive Website Previews</h2>
+            <h2 class="section-title">Responsive Website Previews</h2>
             <p style="text-align: center; color: var(--gray); max-width: 700px; margin: 0 auto 60px; font-size: 18px;">
-                Fully functional website embeds with navigation controls. Switch between mobile, tablet, and desktop views to see responsive design in action.
+                Each project is displayed in realistic device frames. Click the viewport buttons to see how they adapt to different screen sizes.
             </p>
 
             <!-- Green Glo Cleaning -->
-            <div class="browser-window">
+            <div class="browser-window" id="project-1">
                 <div class="browser-header">
                     <div class="browser-controls">
                         <div class="control-btn close"></div>
@@ -632,38 +690,83 @@
                         <div class="control-btn maximize"></div>
                     </div>
                     <div class="browser-url" id="url-1">https://greenglocleaningco.com</div>
-                    <div class="browser-actions">
-                        <button class="viewport-toggle active" data-iframe="iframe-1" data-viewport="desktop">
+                    <div class="viewport-controls">
+                        <button class="viewport-btn active" data-project="1" data-viewport="desktop">
                             <i class="fas fa-desktop"></i> Desktop
                         </button>
-                        <button class="viewport-toggle" data-iframe="iframe-1" data-viewport="tablet">
+                        <button class="viewport-btn" data-project="1" data-viewport="tablet">
                             <i class="fas fa-tablet-alt"></i> Tablet
                         </button>
-                        <button class="viewport-toggle" data-iframe="iframe-1" data-viewport="mobile">
+                        <button class="viewport-btn" data-project="1" data-viewport="mobile">
                             <i class="fas fa-mobile-alt"></i> Mobile
                         </button>
                     </div>
                 </div>
-                <div class="browser-content">
-                    <div class="iframe-container viewport-desktop" id="container-1">
-                        <div class="loading-overlay" id="loading-1">
-                            <div class="loading-spinner"></div>
+                
+                <!-- Desktop View -->
+                <div class="device-frame desktop-frame" id="frame-1-desktop">
+                    <div class="viewport-notice">Desktop View</div>
+                    <div class="device-content">
+                        <div class="iframe-loader" id="loader-1-desktop">
+                            <div class="spinner"></div>
                             <p>Loading Green Glo Cleaning...</p>
                         </div>
                         <iframe src="https://greenglocleaningco.com" 
-                                class="website-iframe" 
-                                id="iframe-1"
+                                class="preview-iframe"
                                 loading="lazy"
                                 allow="fullscreen"
-                                onload="document.getElementById('loading-1').style.opacity='0'; setTimeout(() => {document.getElementById('loading-1').style.display='none'}, 300);">
+                                onload="document.getElementById('loader-1-desktop').classList.add('hidden')">
                         </iframe>
-                        <div class="iframe-overlay"></div>
                     </div>
                 </div>
+                
+                <!-- Tablet View -->
+                <div class="device-frame tablet-frame" id="frame-1-tablet" style="display: none;">
+                    <div class="viewport-notice">Tablet View</div>
+                    <div class="device-content">
+                        <div class="iframe-loader" id="loader-1-tablet">
+                            <div class="spinner"></div>
+                            <p>Loading tablet view...</p>
+                        </div>
+                        <iframe src="https://greenglocleaningco.com" 
+                                class="preview-iframe"
+                                loading="lazy"
+                                allow="fullscreen"
+                                onload="document.getElementById('loader-1-tablet').classList.add('hidden')">
+                        </iframe>
+                    </div>
+                </div>
+                
+                <!-- Mobile View -->
+                <div class="device-frame mobile-frame" id="frame-1-mobile" style="display: none;">
+                    <div class="viewport-notice">Mobile View</div>
+                    <div class="device-content">
+                        <div class="iframe-loader" id="loader-1-mobile">
+                            <div class="spinner"></div>
+                            <p>Loading mobile view...</p>
+                        </div>
+                        <iframe src="https://greenglocleaningco.com" 
+                                class="preview-iframe"
+                                loading="lazy"
+                                allow="fullscreen"
+                                onload="document.getElementById('loader-1-mobile').classList.add('hidden')">
+                        </iframe>
+                    </div>
+                </div>
+                
                 <div class="iframe-info">
                     <h3>Green Glo Cleaning Co.</h3>
-                    <p>A complete booking system and admin panel built with pure JavaScript, featuring real-time availability tracking and customer management.</p>
-                    <div class="iframe-stats">
+                    <p>A complete booking system and admin panel built with pure JavaScript, featuring real-time availability tracking, customer management, and mobile-responsive design.</p>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">SEO Optimization</span>
+                        <span class="tech-tag">Mobile First</span>
+                    </div>
+                    
+                    <div class="project-stats">
                         <div class="stat">
                             <div class="stat-value">98%</div>
                             <div class="stat-label">Mobile Score</div>
@@ -673,15 +776,15 @@
                             <div class="stat-label">Load Time</div>
                         </div>
                         <div class="stat">
-                            <div class="stat-value">100%</div>
-                            <div class="stat-label">SEO Optimized</div>
+                            <div class="stat-value">↑ 40%</div>
+                            <div class="stat-label">Conversions</div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- AR Building Services -->
-            <div class="browser-window">
+            <div class="browser-window" id="project-2">
                 <div class="browser-header">
                     <div class="browser-controls">
                         <div class="control-btn close"></div>
@@ -689,37 +792,83 @@
                         <div class="control-btn maximize"></div>
                     </div>
                     <div class="browser-url" id="url-2">https://arbuildingservices.co.uk</div>
-                    <div class="browser-actions">
-                        <button class="viewport-toggle active" data-iframe="iframe-2" data-viewport="desktop">
+                    <div class="viewport-controls">
+                        <button class="viewport-btn active" data-project="2" data-viewport="desktop">
                             <i class="fas fa-desktop"></i> Desktop
                         </button>
-                        <button class="viewport-toggle" data-iframe="iframe-2" data-viewport="tablet">
+                        <button class="viewport-btn" data-project="2" data-viewport="tablet">
                             <i class="fas fa-tablet-alt"></i> Tablet
                         </button>
-                        <button class="viewport-toggle" data-iframe="iframe-2" data-viewport="mobile">
+                        <button class="viewport-btn" data-project="2" data-viewport="mobile">
                             <i class="fas fa-mobile-alt"></i> Mobile
                         </button>
                     </div>
                 </div>
-                <div class="browser-content">
-                    <div class="iframe-container viewport-desktop" id="container-2">
-                        <div class="loading-overlay" id="loading-2">
-                            <div class="loading-spinner"></div>
+                
+                <!-- Desktop View -->
+                <div class="device-frame desktop-frame" id="frame-2-desktop">
+                    <div class="viewport-notice">Desktop View</div>
+                    <div class="device-content">
+                        <div class="iframe-loader" id="loader-2-desktop">
+                            <div class="spinner"></div>
                             <p>Loading AR Building Services...</p>
                         </div>
                         <iframe src="https://arbuildingservices.co.uk" 
-                                class="website-iframe" 
-                                id="iframe-2"
+                                class="preview-iframe"
                                 loading="lazy"
-                                onload="document.getElementById('loading-2').style.opacity='0'; setTimeout(() => {document.getElementById('loading-2').style.display='none'}, 300);">
+                                allow="fullscreen"
+                                onload="document.getElementById('loader-2-desktop').classList.add('hidden')">
                         </iframe>
-                        <div class="iframe-overlay"></div>
                     </div>
                 </div>
+                
+                <!-- Tablet View -->
+                <div class="device-frame tablet-frame" id="frame-2-tablet" style="display: none;">
+                    <div class="viewport-notice">Tablet View</div>
+                    <div class="device-content">
+                        <div class="iframe-loader" id="loader-2-tablet">
+                            <div class="spinner"></div>
+                            <p>Loading tablet view...</p>
+                        </div>
+                        <iframe src="https://arbuildingservices.co.uk" 
+                                class="preview-iframe"
+                                loading="lazy"
+                                allow="fullscreen"
+                                onload="document.getElementById('loader-2-tablet').classList.add('hidden')">
+                        </iframe>
+                    </div>
+                </div>
+                
+                <!-- Mobile View -->
+                <div class="device-frame mobile-frame" id="frame-2-mobile" style="display: none;">
+                    <div class="viewport-notice">Mobile View</div>
+                    <div class="device-content">
+                        <div class="iframe-loader" id="loader-2-mobile">
+                            <div class="spinner"></div>
+                            <p>Loading mobile view...</p>
+                        </div>
+                        <iframe src="https://arbuildingservices.co.uk" 
+                                class="preview-iframe"
+                                loading="lazy"
+                                allow="fullscreen"
+                                onload="document.getElementById('loader-2-mobile').classList.add('hidden')">
+                        </iframe>
+                    </div>
+                </div>
+                
                 <div class="iframe-info">
                     <h3>AR Building Services</h3>
-                    <p>Construction company website optimized for lead generation with strategic CTAs and service-focused content for local SEO.</p>
-                    <div class="iframe-stats">
+                    <p>Construction company website optimized for lead generation with strategic CTAs, service-focused content, and local SEO targeting for maximum visibility.</p>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">Responsive Design</span>
+                        <span class="tech-tag">Lead Generation</span>
+                        <span class="tech-tag">Local SEO</span>
+                        <span class="tech-tag">Contact Forms</span>
+                        <span class="tech-tag">Project Gallery</span>
+                    </div>
+                    
+                    <div class="project-stats">
                         <div class="stat">
                             <div class="stat-value">95%</div>
                             <div class="stat-label">Performance</div>
@@ -729,55 +878,111 @@
                             <div class="stat-label">Load Time</div>
                         </div>
                         <div class="stat">
-                            <div class="stat-value">40%</div>
-                            <div class="stat-label">Lead Increase</div>
+                            <div class="stat-value">+35%</div>
+                            <div class="stat-label">Traffic</div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Portfolio Gallery -->
-    <section class="work-showcase">
-        <div class="container">
-            <h2 class="section-title">Portfolio Gallery</h2>
-            <p style="text-align: center; color: var(--gray); max-width: 700px; margin: 0 auto 60px; font-size: 18px;">
-                Quick previews of additional projects. Hover to explore and click "View Live" to interact with the full site.
-            </p>
-
-            <div class="portfolio-grid">
-                <!-- Exposure Boost -->
-                <div class="portfolio-item">
-                    <div class="portfolio-preview">
-                        <iframe src="https://megablaze.github.io/Exposureboost" 
-                                class="preview-iframe"
-                                loading="lazy">
-                        </iframe>
-                        <div class="preview-overlay">
-                            <button class="preview-btn" onclick="openFullScreen('iframe-3', 'https://megablaze.github.io/Exposureboost')">
-                                <i class="fas fa-external-link-alt"></i> View Live
-                            </button>
-                        </div>
+            <!-- Exposure Boost -->
+            <div class="browser-window" id="project-3">
+                <div class="browser-header">
+                    <div class="browser-controls">
+                        <div class="control-btn close"></div>
+                        <div class="control-btn minimize"></div>
+                        <div class="control-btn maximize"></div>
                     </div>
-                    <div class="iframe-info">
-                        <h3>Exposure Boost</h3>
-                        <p>Photography web app with interactive galleries, image filters, and smooth animations. Features dark/light mode toggle.</p>
+                    <div class="browser-url" id="url-3">https://megablaze.github.io/Exposureboost</div>
+                    <div class="viewport-controls">
+                        <button class="viewport-btn active" data-project="3" data-viewport="desktop">
+                            <i class="fas fa-desktop"></i> Desktop
+                        </button>
+                        <button class="viewport-btn" data-project="3" data-viewport="tablet">
+                            <i class="fas fa-tablet-alt"></i> Tablet
+                        </button>
+                        <button class="viewport-btn" data-project="3" data-viewport="mobile">
+                            <i class="fas fa-mobile-alt"></i> Mobile
+                        </button>
                     </div>
                 </div>
-
-                <!-- Project 4 Placeholder -->
-                <div class="portfolio-item">
-                    <div class="portfolio-preview" style="background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); display: flex; align-items: center; justify-content: center;">
-                        <div style="text-align: center; padding: 40px;">
-                            <i class="fas fa-code" style="font-size: 60px; color: white; margin-bottom: 20px;"></i>
-                            <h3 style="color: white; margin-bottom: 10px;">Custom Project</h3>
-                            <p style="color: rgba(255,255,255,0.8);">Your next website could be here</p>
+                
+                <!-- Desktop View -->
+                <div class="device-frame desktop-frame" id="frame-3-desktop">
+                    <div class="viewport-notice">Desktop View</div>
+                    <div class="device-content">
+                        <div class="iframe-loader" id="loader-3-desktop">
+                            <div class="spinner"></div>
+                            <p>Loading Exposure Boost...</p>
                         </div>
+                        <iframe src="https://megablaze.github.io/Exposureboost" 
+                                class="preview-iframe"
+                                loading="lazy"
+                                allow="fullscreen"
+                                onload="document.getElementById('loader-3-desktop').classList.add('hidden')">
+                        </iframe>
                     </div>
-                    <div class="iframe-info">
-                        <h3>Your Project Here</h3>
-                        <p>Let's build something amazing together. Contact me to discuss your next web development project.</p>
+                </div>
+                
+                <!-- Tablet View -->
+                <div class="device-frame tablet-frame" id="frame-3-tablet" style="display: none;">
+                    <div class="viewport-notice">Tablet View</div>
+                    <div class="device-content">
+                        <div class="iframe-loader" id="loader-3-tablet">
+                            <div class="spinner"></div>
+                            <p>Loading tablet view...</p>
+                        </div>
+                        <iframe src="https://megablaze.github.io/Exposureboost" 
+                                class="preview-iframe"
+                                loading="lazy"
+                                allow="fullscreen"
+                                onload="document.getElementById('loader-3-tablet').classList.add('hidden')">
+                        </iframe>
+                    </div>
+                </div>
+                
+                <!-- Mobile View -->
+                <div class="device-frame mobile-frame" id="frame-3-mobile" style="display: none;">
+                    <div class="viewport-notice">Mobile View</div>
+                    <div class="device-content">
+                        <div class="iframe-loader" id="loader-3-mobile">
+                            <div class="spinner"></div>
+                            <p>Loading mobile view...</p>
+                        </div>
+                        <iframe src="https://megablaze.github.io/Exposureboost" 
+                                class="preview-iframe"
+                                loading="lazy"
+                                allow="fullscreen"
+                                onload="document.getElementById('loader-3-mobile').classList.add('hidden')">
+                        </iframe>
+                    </div>
+                </div>
+                
+                <div class="iframe-info">
+                    <h3>Exposure Boost</h3>
+                    <p>Photography web application with interactive galleries, image filters, smooth animations, and dark/light mode toggle. Built with vanilla JavaScript and CSS animations.</p>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">Vanilla JS</span>
+                        <span class="tech-tag">CSS Animations</span>
+                        <span class="tech-tag">Image Gallery</span>
+                        <span class="tech-tag">Dark Mode</span>
+                        <span class="tech-tag">LocalStorage</span>
+                    </div>
+                    
+                    <div class="project-stats">
+                        <div class="stat">
+                            <div class="stat-value">100%</div>
+                            <div class="stat-label">Accessibility</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">0.5s</div>
+                            <div class="stat-label">Animation Speed</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">90%</div>
+                            <div class="stat-label">User Rating</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -787,7 +992,7 @@
     <!-- Skills Section -->
     <section class="skills-section">
         <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
+            <h2 class="section-title">Technical Expertise</h2>
             
             <div class="skills-grid">
                 <div class="skill-card">
@@ -796,7 +1001,7 @@
                     </div>
                     <h3 style="color: var(--light); margin-bottom: 12px; font-size: 22px;">HTML5 & CSS3</h3>
                     <p style="color: var(--gray); font-size: 15px; line-height: 1.6;">
-                        Semantic, accessible markup with modern CSS layouts, animations, and responsive design principles.
+                        Semantic, accessible markup with modern CSS Grid, Flexbox, animations, and responsive design principles.
                     </p>
                 </div>
 
@@ -812,21 +1017,21 @@
 
                 <div class="skill-card">
                     <div class="skill-icon">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <h3 style="color: var(--light); margin-bottom: 12px; font-size: 22px;">SEO Optimization</h3>
-                    <p style="color: var(--gray); font-size: 15px; line-height: 1.6;">
-                        Fast-loading sites with proper meta tags, schema markup, keyword optimization, and performance tuning.
-                    </p>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-icon">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
                     <h3 style="color: var(--light); margin-bottom: 12px; font-size: 22px;">Responsive Design</h3>
                     <p style="color: var(--gray); font-size: 15px; line-height: 1.6;">
                         Mobile-first approach ensuring perfect user experience across all devices and screen sizes.
+                    </p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 style="color: var(--light); margin-bottom: 12px; font-size: 22px;">SEO & Performance</h3>
+                    <p style="color: var(--gray); font-size: 15px; line-height: 1.6;">
+                        Fast-loading sites with proper meta tags, schema markup, keyword optimization, and performance tuning.
                     </p>
                 </div>
             </div>
@@ -836,7 +1041,7 @@
     <!-- Contact Section -->
     <section class="contact-section" id="contact">
         <div class="container">
-            <h2 class="section-title">Let's Work Together</h2>
+            <h2 class="section-title">Ready to Build Something?</h2>
             
             <div class="contact-grid">
                 <div class="contact-info">
@@ -862,6 +1067,16 @@
                         </div>
                     </div>
 
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--gray); margin-bottom: 5px;">Response Time</h4>
+                            <p style="font-size: 20px; color: var(--light); font-weight: 600;">Within 24 hours</p>
+                        </div>
+                    </div>
+
                     <a href="mailto:sacharaif@gmail.com" class="btn btn-primary" style="width: 100%; margin-top: 20px;">
                         <span>Send Email</span>
                         <i class="fas fa-paper-plane"></i>
@@ -869,30 +1084,37 @@
                 </div>
 
                 <div class="contact-info">
-                    <h3 style="font-size: 26px; margin-bottom: 30px; color: var(--light);">What I Deliver</h3>
+                    <h3 style="font-size: 26px; margin-bottom: 30px; color: var(--light);">Why Work With Me</h3>
                     
                     <ul style="list-style: none;">
                         <li style="margin-bottom: 15px; padding-left: 25px; position: relative;">
                             <i class="fas fa-check" style="color: var(--accent); position: absolute; left: 0;"></i>
-                            <strong>SEO-Optimized Code:</strong> Clean HTML structure for better search rankings
+                            <strong>Real Responsive Design:</strong> Not just breakpoints, but true mobile-first development
                         </li>
                         <li style="margin-bottom: 15px; padding-left: 25px; position: relative;">
                             <i class="fas fa-check" style="color: var(--accent); position: absolute; left: 0;"></i>
-                            <strong>Mobile-First Design:</strong> Perfect experience across all devices
+                            <strong>Performance Focused:</strong> Fast loading sites that rank better and convert more
                         </li>
                         <li style="margin-bottom: 15px; padding-left: 25px; position: relative;">
                             <i class="fas fa-check" style="color: var(--accent); position: absolute; left: 0;"></i>
-                            <strong>Fast Loading:</strong> Optimized assets and minimal JavaScript
+                            <strong>SEO Built-in:</strong> Every site is optimized for search engines from day one
                         </li>
                         <li style="margin-bottom: 15px; padding-left: 25px; position: relative;">
                             <i class="fas fa-check" style="color: var(--accent); position: absolute; left: 0;"></i>
-                            <strong>Conversion Focus:</strong> Strategic CTAs and intuitive page flows
+                            <strong>Clear Communication:</strong> Regular updates and transparent process
                         </li>
                         <li style="margin-bottom: 15px; padding-left: 25px; position: relative;">
                             <i class="fas fa-check" style="color: var(--accent); position: absolute; left: 0;"></i>
-                            <strong>Clear Communication:</strong> Regular updates throughout the project
+                            <strong>On-Time Delivery:</strong> Projects completed as promised, every time
                         </li>
                     </ul>
+                    
+                    <div style="margin-top: 30px; padding: 20px; background: rgba(16, 185, 129, 0.1); border-radius: 16px; border: 1px solid rgba(16, 185, 129, 0.2);">
+                        <p style="color: var(--accent); font-size: 15px; margin: 0; line-height: 1.6;">
+                            <i class="fas fa-lightbulb" style="margin-right: 10px; font-size: 18px;"></i>
+                            <strong>Free consultation:</strong> Let's discuss your goals and create a plan before you commit to anything.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -912,88 +1134,67 @@
     </footer>
 
     <script>
-        // Viewport Toggle Functionality
-        document.querySelectorAll('.viewport-toggle').forEach(button => {
+        // Enhanced Viewport Switching with Proper Device Frames
+        document.querySelectorAll('.viewport-btn').forEach(button => {
             button.addEventListener('click', function() {
-                const iframeId = this.dataset.iframe;
+                const projectId = this.dataset.project;
                 const viewport = this.dataset.viewport;
-                const container = document.getElementById(`container-${iframeId.split('-')[1]}`);
                 
                 // Update active button
-                this.parentElement.querySelectorAll('.viewport-toggle').forEach(btn => {
+                const controls = this.parentElement;
+                controls.querySelectorAll('.viewport-btn').forEach(btn => {
                     btn.classList.remove('active');
                 });
                 this.classList.add('active');
                 
-                // Update container class
-                container.className = 'iframe-container';
-                container.classList.add(`viewport-${viewport}`);
+                // Hide all frames for this project
+                const projectContainer = document.getElementById(`project-${projectId}`);
+                projectContainer.querySelectorAll('.device-frame').forEach(frame => {
+                    frame.style.display = 'none';
+                });
                 
-                // Adjust iframe scaling for mobile/tablet
-                const iframe = document.getElementById(iframeId);
-                if (viewport === 'mobile') {
-                    iframe.style.transform = 'scale(0.5)';
-                    iframe.style.transformOrigin = 'top left';
-                    iframe.style.width = '200%';
-                } else if (viewport === 'tablet') {
-                    iframe.style.transform = 'scale(0.75)';
-                    iframe.style.transformOrigin = 'top left';
-                    iframe.style.width = '133.33%';
-                } else {
-                    iframe.style.transform = 'scale(1)';
-                    iframe.style.transformOrigin = 'top left';
-                    iframe.style.width = '100%';
+                // Show selected frame
+                const selectedFrame = document.getElementById(`frame-${projectId}-${viewport}`);
+                selectedFrame.style.display = 'block';
+                
+                // Force iframe reload for better mobile simulation
+                const iframe = selectedFrame.querySelector('iframe');
+                if (iframe) {
+                    // Show loader
+                    const loaderId = `loader-${projectId}-${viewport}`;
+                    const loader = document.getElementById(loaderId);
+                    if (loader) {
+                        loader.classList.remove('hidden');
+                    }
+                    
+                    // Reload iframe with viewport simulation
+                    const currentSrc = iframe.src.split('?')[0];
+                    if (viewport === 'mobile') {
+                        // For mobile, we could add URL parameters if the site supports them
+                        iframe.src = currentSrc;
+                        // Inject viewport meta tag simulation
+                        setTimeout(() => {
+                            try {
+                                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                                const viewportMeta = iframeDoc.querySelector('meta[name="viewport"]');
+                                if (viewportMeta) {
+                                    viewportMeta.content = 'width=375, initial-scale=1, maximum-scale=1, user-scalable=no';
+                                }
+                            } catch (e) {
+                                // Cross-origin restriction - can't modify iframe content
+                                console.log('Cross-origin restriction prevents viewport modification');
+                            }
+                        }, 1000);
+                    } else if (viewport === 'tablet') {
+                        iframe.src = currentSrc;
+                    } else {
+                        iframe.src = currentSrc;
+                    }
                 }
             });
         });
 
-        // Fullscreen view function
-        function openFullScreen(iframeId, url) {
-            const iframe = document.getElementById(iframeId);
-            if (!iframe) {
-                window.open(url, '_blank');
-                return;
-            }
-            
-            // Create modal for fullscreen view
-            const modal = document.createElement('div');
-            modal.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: var(--darker);
-                z-index: 9999;
-                display: flex;
-                flex-direction: column;
-            `;
-            
-            modal.innerHTML = `
-                <div style="background: rgba(15,23,42,0.95); padding: 20px; display: flex; justify-content: space-between; align-items: center;">
-                    <div style="display: flex; align-items: center; gap: 15px;">
-                        <div style="display: flex; gap: 8px;">
-                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #ff5f56;"></div>
-                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #ffbd2e;"></div>
-                            <div style="width: 12px; height: 12px; border-radius: 50%; background: #27ca3f;"></div>
-                        </div>
-                        <div style="color: var(--gray); font-family: monospace; font-size: 14px;">${url}</div>
-                    </div>
-                    <button id="close-modal" style="background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600;">
-                        Close <i class="fas fa-times"></i>
-                    </button>
-                </div>
-                <iframe src="${url}" style="flex: 1; border: none; background: white;"></iframe>
-            `;
-            
-            document.body.appendChild(modal);
-            
-            modal.querySelector('#close-modal').addEventListener('click', () => {
-                document.body.removeChild(modal);
-            });
-        }
-
-        // Smooth scrolling
+        // Smooth scrolling for navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1018,26 +1219,76 @@
             const header = document.querySelector('header');
             if (window.scrollY > 50) {
                 header.style.background = 'rgba(2, 6, 23, 0.98)';
+                header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3)';
             } else {
                 header.style.background = 'rgba(2, 6, 23, 0.95)';
+                header.style.boxShadow = 'none';
             }
         });
 
         // Lazy loading for iframes
-        const observer = new IntersectionObserver((entries) => {
+        const iframeObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const iframe = entry.target;
-                    if (!iframe.dataset.loaded) {
-                        iframe.dataset.loaded = true;
-                        // Iframes already have src set, so they'll load naturally
+                    // Iframes are already loaded, we just need to trigger the viewport switch
+                    if (iframe.dataset.loaded !== 'true') {
+                        iframe.dataset.loaded = 'true';
+                        // Additional lazy loading logic if needed
                     }
                 }
             });
         }, { threshold: 0.1 });
 
+        // Observe all iframes
         document.querySelectorAll('iframe').forEach(iframe => {
-            observer.observe(iframe);
+            iframeObserver.observe(iframe);
+        });
+
+        // Initialize first project in desktop view (others will follow)
+        document.addEventListener('DOMContentLoaded', () => {
+            // All projects start in desktop view by default
+            console.log('Portfolio loaded with enhanced device frame previews');
+            
+            // Add subtle animation to skill cards on scroll
+            const skillCards = document.querySelectorAll('.skill-card');
+            const cardObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, index * 100);
+                    }
+                });
+            }, { threshold: 0.2 });
+            
+            skillCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                cardObserver.observe(card);
+            });
+        });
+
+        // Handle iframe loading errors
+        document.querySelectorAll('iframe').forEach(iframe => {
+            iframe.addEventListener('error', function() {
+                const parent = this.parentElement;
+                const loader = parent.querySelector('.iframe-loader');
+                if (loader) {
+                    loader.innerHTML = `
+                        <div style="text-align: center; color: #ef4444;">
+                            <i class="fas fa-exclamation-triangle" style="font-size: 48px; margin-bottom: 20px;"></i>
+                            <p>Unable to load preview</p>
+                            <p style="font-size: 14px; margin-top: 10px;">The website may restrict embedding</p>
+                            <a href="${this.src}" target="_blank" style="color: var(--primary); text-decoration: underline; margin-top: 10px; display: inline-block;">
+                                Open in new tab instead
+                            </a>
+                        </div>
+                    `;
+                }
+            });
         });
     </script>
 </body>
