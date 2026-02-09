@@ -7,6 +7,55 @@
     <title>Sacha Raif | Full-Stack Developer & Conversion Specialist</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* IMPROVED: Smooth overscroll behavior */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+            overscroll-behavior: none;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #020617;
+            color: #f8fafc;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            overflow-x: hidden;
+            position: relative;
+            /* IMPROVED: Better momentum scrolling */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            scrollbar-width: thin;
+            scrollbar-color: #3b82f6 #0f172a;
+        }
+
+        /* IMPROVED: Custom scrollbar for better UX */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2563eb;
+        }
+
+        /* IMPROVED: Smooth transitions */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
         :root {
             --primary: #2563eb;
             --primary-dark: #1d4ed8;
@@ -23,25 +72,6 @@
             --shadow-glow: 0 0 40px rgba(37, 99, 235, 0.3);
             --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             --iframe-radius: 16px;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-            background: var(--darker);
-            color: var(--light);
-            line-height: 1.6;
-            overflow-x: hidden;
         }
 
         .container {
@@ -132,6 +162,11 @@
             color: var(--light);
             font-size: 24px;
             cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--primary-light);
         }
 
         /* Hero Section with Stats */
@@ -153,6 +188,16 @@
             background: radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
                         radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
             z-index: -1;
+            animation: gradientShift 20s ease infinite alternate;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.1);
+            }
         }
 
         .hero-title {
@@ -223,6 +268,8 @@
             font-size: 16px;
             position: relative;
             overflow: hidden;
+            transform: translateZ(0);
+            will-change: transform;
         }
 
         .btn::after {
@@ -250,7 +297,7 @@
         }
 
         .btn-primary:hover {
-            transform: translateY(-6px);
+            transform: translateY(-6px) scale(1.05);
             box-shadow: 0 20px 40px rgba(37, 99, 235, 0.5);
         }
 
@@ -262,11 +309,11 @@
 
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.12);
-            transform: translateY(-6px);
+            transform: translateY(-6px) scale(1.05);
             border-color: rgba(255, 255, 255, 0.25);
         }
 
-        /* IMPROVED Browser Window Container with Better Mobile Support */
+        /* IMPROVED Browser Window Container */
         .browser-window {
             background: rgba(30, 41, 59, 0.5);
             border-radius: var(--iframe-radius);
@@ -278,6 +325,7 @@
             opacity: 0;
             transform: translateY(30px);
             animation: fadeInUp 0.8s ease forwards;
+            will-change: transform, opacity;
         }
 
         @keyframes fadeInUp {
@@ -294,6 +342,7 @@
         .browser-window:hover {
             border-color: rgba(59, 130, 246, 0.3);
             transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
         }
 
         .browser-header {
@@ -316,6 +365,7 @@
             height: 12px;
             border-radius: 50%;
             transition: var(--transition);
+            cursor: pointer;
         }
 
         .control-btn.close { background: #ff5f56; }
@@ -340,7 +390,7 @@
             min-width: 200px;
         }
 
-        /* IMPROVED Viewport Controls - Better Mobile */
+        /* IMPROVED Viewport Controls */
         .viewport-controls {
             display: flex;
             gap: 8px;
@@ -364,11 +414,13 @@
             align-items: center;
             gap: 8px;
             white-space: nowrap;
+            will-change: transform;
         }
 
         .viewport-btn:hover {
             color: var(--light);
             background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
         }
 
         .viewport-btn.active {
@@ -377,10 +429,11 @@
             box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
         }
 
-        /* ENHANCED Device Frames - Better Mobile */
+        /* ENHANCED Device Frames */
         .device-frame {
             position: relative;
             transition: var(--transition);
+            will-change: transform;
         }
 
         /* Desktop Frame */
@@ -393,7 +446,7 @@
             position: relative;
         }
 
-        /* Tablet Frame - IMPROVED for Mobile */
+        /* Tablet Frame */
         .tablet-frame {
             width: 768px;
             max-width: 90%;
@@ -420,7 +473,7 @@
             z-index: 10;
         }
 
-        /* Mobile Frame - IMPROVED for Mobile */
+        /* Mobile Frame */
         .mobile-frame {
             width: 375px;
             max-width: 90%;
@@ -467,6 +520,8 @@
             height: 100%;
             position: relative;
             overflow: hidden;
+            transform: translateZ(0);
+            will-change: transform;
         }
 
         .iframe-loader {
@@ -509,12 +564,7 @@
             border: none;
             background: white;
             transform-origin: top left;
-        }
-
-        /* Mobile-specific iframe scaling */
-        .mobile-frame .preview-iframe {
-            width: 375px;
-            max-width: 100%;
+            transform: translateZ(0);
         }
 
         .viewport-notice {
@@ -540,6 +590,8 @@
         .work-showcase {
             padding: 100px 0;
             background: linear-gradient(180deg, rgba(2, 6, 23, 0.9) 0%, rgba(15, 23, 42, 0.9) 100%);
+            position: relative;
+            overflow: hidden;
         }
 
         .section-title {
@@ -551,6 +603,7 @@
             opacity: 0;
             transform: translateY(30px);
             animation: fadeInUp 0.8s ease forwards;
+            will-change: transform, opacity;
         }
 
         .section-title::after {
@@ -574,7 +627,7 @@
             }
         }
 
-        /* Project Info Section - ENHANCED */
+        /* Project Info Section - UPDATED: Removed source code button */
         .project-info {
             padding: 30px;
             background: rgba(15, 23, 42, 0.7);
@@ -629,16 +682,6 @@
             transform: translateY(-3px);
         }
 
-        .action-btn.github {
-            background: rgba(24, 23, 23, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
-            color: var(--light);
-        }
-
-        .action-btn.github:hover {
-            background: rgba(24, 23, 23, 0.2);
-        }
-
         .tech-stack {
             display: flex;
             flex-wrap: wrap;
@@ -688,10 +731,12 @@
             flex-shrink: 0;
         }
 
-        /* NEW: Process Timeline */
+        /* Process Timeline */
         .process-section {
             padding: 100px 0;
             background: linear-gradient(180deg, rgba(15, 23, 42, 0.9) 0%, rgba(2, 6, 23, 0.9) 100%);
+            position: relative;
+            overflow: hidden;
         }
 
         .timeline {
@@ -718,6 +763,7 @@
             opacity: 0;
             transform: translateX(-20px);
             animation: slideInRight 0.8s ease forwards;
+            will-change: transform, opacity;
         }
 
         .timeline-item:nth-child(1) { animation-delay: 0.1s; }
@@ -762,6 +808,7 @@
             padding: 120px 0;
             position: relative;
             background: linear-gradient(135deg, rgba(2, 6, 23, 0.9) 0%, rgba(15, 23, 42, 0.9) 100%);
+            overflow: hidden;
         }
 
         .skills-section::before {
@@ -773,6 +820,16 @@
             height: 100%;
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><rect fill="%232563eb" opacity="0.03" width="1000" height="1000"/></svg>');
             z-index: -1;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 60px 60px;
+            }
         }
 
         .skills-grid {
@@ -792,6 +849,7 @@
             opacity: 0;
             transform: translateY(30px);
             animation: fadeInUp 0.8s ease forwards;
+            will-change: transform;
         }
 
         .skill-card:nth-child(1) { animation-delay: 0.1s; }
@@ -825,74 +883,49 @@
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.8s ease 0.5s forwards;
+            will-change: transform, opacity;
         }
 
-        /* NEW: Testimonials Section */
-        .testimonials-section {
+        /* NEW: Real Portfolio Showcase */
+        .portfolio-showcase {
             padding: 100px 0;
             background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(2, 6, 23, 0.9) 100%);
         }
 
-        .testimonials-grid {
+        .showcase-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 50px;
         }
 
-        .testimonial-card {
+        .showcase-item {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 20px;
-            padding: 30px;
+            padding: 40px 30px;
+            text-align: center;
             transition: var(--transition);
         }
 
-        .testimonial-card:hover {
+        .showcase-item:hover {
             transform: translateY(-10px);
             border-color: rgba(59, 130, 246, 0.3);
             box-shadow: var(--shadow-glow);
         }
 
-        .testimonial-content {
-            font-style: italic;
-            color: var(--gray);
+        .showcase-icon {
+            font-size: 48px;
             margin-bottom: 20px;
-            line-height: 1.8;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            background: var(--gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-        }
-
-        .author-info h4 {
-            color: var(--light);
-            margin-bottom: 5px;
-        }
-
-        .author-info p {
-            color: var(--gray);
-            font-size: 14px;
+            color: var(--accent);
         }
 
         /* Contact Section */
         .contact-section {
             padding: 120px 0;
             background: linear-gradient(135deg, rgba(2, 6, 23, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);
+            position: relative;
+            overflow: hidden;
         }
 
         .contact-grid {
@@ -910,6 +943,7 @@
             opacity: 0;
             transform: translateY(30px);
             animation: fadeInUp 0.8s ease forwards;
+            will-change: transform, opacity;
         }
 
         .contact-info:nth-child(1) { animation-delay: 0.1s; }
@@ -1027,6 +1061,55 @@
             }
         }
 
+        /* Mobile Menu Overlay */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(2, 6, 23, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 9999;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .mobile-menu .nav-link {
+            font-size: 24px;
+            color: var(--light);
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-menu:hover {
+            color: var(--primary-light);
+            transform: rotate(90deg);
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
@@ -1114,7 +1197,7 @@
             
             .skills-grid,
             .contact-grid,
-            .testimonials-grid {
+            .showcase-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -1176,43 +1259,6 @@
                 grid-template-columns: 1fr;
             }
         }
-
-        /* Mobile Menu Overlay */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(2, 6, 23, 0.98);
-            backdrop-filter: blur(20px);
-            z-index: 9999;
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-        }
-
-        .mobile-menu.active {
-            display: flex;
-        }
-
-        .mobile-menu .nav-link {
-            font-size: 24px;
-            color: var(--light);
-        }
-
-        .close-menu {
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            background: none;
-            border: none;
-            color: var(--light);
-            font-size: 30px;
-            cursor: pointer;
-        }
     </style>
 </head>
 
@@ -1226,7 +1272,7 @@
         <a href="#work" class="nav-link" onclick="closeMobileMenu()">Projects</a>
         <a href="#process" class="nav-link" onclick="closeMobileMenu()">Process</a>
         <a href="#skills" class="nav-link" onclick="closeMobileMenu()">Skills</a>
-        <a href="#testimonials" class="nav-link" onclick="closeMobileMenu()">Testimonials</a>
+        <a href="#showcase" class="nav-link" onclick="closeMobileMenu()">Showcase</a>
         <a href="#contact" class="nav-link" onclick="closeMobileMenu()">Contact</a>
     </div>
 
@@ -1245,7 +1291,7 @@
                     <a href="#work" class="nav-link">Projects</a>
                     <a href="#process" class="nav-link">Process</a>
                     <a href="#skills" class="nav-link">Skills</a>
-                    <a href="#testimonials" class="nav-link">Testimonials</a>
+                    <a href="#showcase" class="nav-link">Showcase</a>
                     <a href="#contact" class="nav-link">Contact</a>
                 </nav>
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -1298,7 +1344,7 @@
         </div>
     </section>
 
-    <!-- Main Website Showcase - REORDERED: Exposure Boost First -->
+    <!-- Main Website Showcase -->
     <section class="work-showcase" id="work">
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
@@ -1306,7 +1352,7 @@
                 Interactive previews of my recent work. Switch between desktop, tablet, and mobile views to experience responsive design in action.
             </p>
 
-            <!-- Exposure Boost (NOW FIRST) -->
+            <!-- Exposure Boost -->
             <div class="browser-window" id="project-1">
                 <div class="browser-header">
                     <div class="browser-controls">
@@ -1388,9 +1434,6 @@
                         <div class="project-actions">
                             <a href="https://megablaze757.github.io/ExposureBoost" target="_blank" class="action-btn">
                                 <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                            <a href="https://github.com/megablaze757/ExposureBoost" target="_blank" class="action-btn github">
-                                <i class="fab fa-github"></i> Source Code
                             </a>
                         </div>
                     </div>
@@ -1572,7 +1615,7 @@
                 </div>
             </div>
 
-            <!-- Green Glo Cleaning (NOW LAST) -->
+            <!-- Green Glo Cleaning -->
             <div class="browser-window" id="project-3">
                 <div class="browser-header">
                     <div class="browser-controls">
@@ -1707,7 +1750,7 @@
         </div>
     </section>
 
-    <!-- NEW: Process Timeline -->
+    <!-- Process Timeline -->
     <section class="process-section" id="process">
         <div class="container">
             <h2 class="section-title">My Development Process</h2>
@@ -1816,52 +1859,43 @@
         </div>
     </section>
 
-    <!-- NEW: Testimonials Section -->
-    <section class="testimonials-section" id="testimonials">
+    <!-- Portfolio Showcase Section (Replaced Testimonials) -->
+    <section class="portfolio-showcase" id="showcase">
         <div class="container">
-            <h2 class="section-title">Client Testimonials</h2>
+            <h2 class="section-title">Additional Services</h2>
             <p style="text-align: center; color: var(--gray); max-width: 700px; margin: 0 auto 60px; font-size: 18px;">
-                Don't just take my word for it. Here's what my clients have to say about working together.
+                Beyond web development, I offer comprehensive digital solutions to help your business grow.
             </p>
             
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        "Sacha transformed our online presence with a website that not only looks amazing but actually converts visitors into customers. Our inquiries increased by 40% within the first month."
+            <div class="showcase-grid">
+                <div class="showcase-item">
+                    <div class="showcase-icon">
+                        <i class="fas fa-search-dollar"></i>
                     </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">JG</div>
-                        <div class="author-info">
-                            <h4>James Green</h4>
-                            <p>Green Glo Cleaning Co.</p>
-                        </div>
-                    </div>
+                    <h3 style="color: var(--light); margin-bottom: 15px; font-size: 22px;">SEO Optimization</h3>
+                    <p style="color: var(--gray); font-size: 15px; line-height: 1.6;">
+                        Improve your search rankings with technical SEO audits, keyword optimization, and content strategy.
+                    </p>
                 </div>
                 
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        "The booking system Sacha built for us streamlined our entire operation. The admin dashboard alone saves us hours each week. Professional, efficient, and delivered exactly what we needed."
+                <div class="showcase-item">
+                    <div class="showcase-icon">
+                        <i class="fas fa-chart-line"></i>
                     </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">AR</div>
-                        <div class="author-info">
-                            <h4>Alex Roberts</h4>
-                            <p>AR Building Services</p>
-                        </div>
-                    </div>
+                    <h3 style="color: var(--light); margin-bottom: 15px; font-size: 22px;">Performance Analytics</h3>
+                    <p style="color: var(--gray); font-size: 15px; line-height: 1.6;">
+                        Track user behavior, conversion rates, and site performance with detailed analytics implementation.
+                    </p>
                 </div>
                 
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        "Working with Sacha was a game-changer. His attention to detail, communication throughout the project, and technical expertise resulted in a website that exceeded our expectations."
+                <div class="showcase-item">
+                    <div class="showcase-icon">
+                        <i class="fas fa-shield-alt"></i>
                     </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">SP</div>
-                        <div class="author-info">
-                            <h4>Sarah Peters</h4>
-                            <p>Creative Agency Director</p>
-                        </div>
-                    </div>
+                    <h3 style="color: var(--light); margin-bottom: 15px; font-size: 22px;">Security & Maintenance</h3>
+                    <p style="color: var(--gray); font-size: 15px; line-height: 1.6;">
+                        Regular updates, security patches, and performance monitoring to keep your site running smoothly.
+                    </p>
                 </div>
             </div>
         </div>
@@ -1963,9 +1997,6 @@
                 <a href="https://linkedin.com/in/sacha-raif" target="_blank" style="color: var(--gray); font-size: 24px; transition: var(--transition);">
                     <i class="fab fa-linkedin"></i>
                 </a>
-                <a href="https://twitter.com/sacharaif" target="_blank" style="color: var(--gray); font-size: 24px; transition: var(--transition);">
-                    <i class="fab fa-twitter"></i>
-                </a>
             </div>
             <p style="color: var(--gray); font-size: 14px;">
                 &copy; 2024 Sacha Raif. All rights reserved. | Live website previews may be subject to external site policies.
@@ -1997,7 +2028,7 @@
             link.addEventListener('click', closeMobileMenu);
         });
 
-        // Enhanced Viewport Switching with Better Mobile Support
+        // IMPROVED: Enhanced Viewport Switching with Better Performance
         document.querySelectorAll('.viewport-btn').forEach(button => {
             button.addEventListener('click', function() {
                 const projectId = this.dataset.project;
@@ -2035,14 +2066,14 @@
                     let newSrc = currentSrc;
                     
                     // Add timestamp to prevent caching issues
-                    newSrc += `?t=${Date.now()}`;
+                    newSrc += `?t=${Date.now()}&viewport=${viewport}`;
                     
                     iframe.src = newSrc;
                 }
             });
         });
 
-        // Enhanced Smooth Scrolling with Header Offset
+        // IMPROVED: Enhanced Smooth Scrolling with Momentum
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -2054,9 +2085,11 @@
                     const headerHeight = document.querySelector('header').offsetHeight;
                     const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
                     
+                    // Use smooth scroll with better easing
                     window.scrollTo({
                         top: targetPosition - headerHeight,
-                        behavior: 'smooth'
+                        behavior: 'smooth',
+                        block: 'start'
                     });
                     
                     // Update URL hash without scrolling
@@ -2065,36 +2098,43 @@
             });
         });
 
-        // Header Scroll Effect
+        // IMPROVED: Header Scroll Effect with Performance
+        let ticking = false;
         window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const header = document.querySelector('header');
+                    if (window.scrollY > 50) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                    ticking = false;
+                });
+                ticking = true;
             }
             
             // Animate elements on scroll
             animateOnScroll();
         });
 
-        // Lazy Loading for iframes with better mobile support
+        // IMPROVED: Lazy Loading for iframes with Intersection Observer
         const iframeObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const iframe = entry.target;
                     if (!iframe.dataset.loaded) {
                         iframe.dataset.loaded = true;
-                        // If iframe hasn't loaded yet, trigger load
-                        if (iframe.getAttribute('src') && iframe.getAttribute('data-src')) {
-                            iframe.src = iframe.getAttribute('data-src');
+                        // Store original src and reload
+                        if (iframe.src && !iframe.src.includes('t=')) {
+                            iframe.src = iframe.src.split('?')[0] + '?t=' + Date.now();
                         }
                     }
                 }
             });
         }, { 
             threshold: 0.1,
-            rootMargin: '50px' // Load iframes slightly before they enter viewport
+            rootMargin: '100px' // Load iframes before they enter viewport
         });
 
         // Observe all iframes
@@ -2102,23 +2142,25 @@
             iframeObserver.observe(iframe);
         });
 
-        // Handle iframe loading errors with better mobile messaging
+        // IMPROVED: Handle iframe loading errors with better UX
         document.querySelectorAll('iframe').forEach(iframe => {
             iframe.addEventListener('error', function() {
                 const parent = this.parentElement;
                 const loader = parent.querySelector('.iframe-loader');
                 if (loader) {
                     loader.innerHTML = `
-                        <div style="text-align: center; color: #ef4444; padding: 20px;">
-                            <i class="fas fa-exclamation-triangle" style="font-size: 48px; margin-bottom: 20px;"></i>
-                            <p>Preview temporarily unavailable</p>
-                            <p style="font-size: 14px; margin-top: 10px; margin-bottom: 20px;">
-                                The website may restrict embedding on mobile devices
+                        <div style="text-align: center; padding: 40px 20px;">
+                            <div style="width: 80px; height: 80px; background: rgba(37, 99, 235, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                                <i class="fas fa-external-link-alt" style="font-size: 32px; color: var(--primary);"></i>
+                            </div>
+                            <p style="color: var(--light); margin-bottom: 10px; font-size: 16px;">Preview Restricted</p>
+                            <p style="color: var(--gray); margin-bottom: 20px; font-size: 14px;">
+                                This website prevents embedding for security
                             </p>
                             <a href="${this.src.split('?')[0]}" target="_blank" 
                                class="btn" 
-                               style="background: var(--primary); color: white; padding: 12px 24px; border-radius: 12px; text-decoration: none; display: inline-block;">
-                                <i class="fas fa-external-link-alt"></i> Open in new tab
+                               style="background: var(--primary); color: white; padding: 12px 24px; border-radius: 12px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+                                <i class="fas fa-external-link-alt"></i> Open Site
                             </a>
                         </div>
                     `;
@@ -2133,22 +2175,13 @@
                 setTimeout(() => {
                     this.style.transform = '';
                 }, 200);
-                
-                // Show loading state
-                const iframe = this.closest('.browser-window').querySelector('.preview-iframe');
-                const loader = iframe.parentElement.querySelector('.iframe-loader');
-                if (loader) {
-                    loader.classList.remove('hidden');
-                    setTimeout(() => {
-                        iframe.src = iframe.src.split('?')[0] + '?t=' + Date.now();
-                    }, 300);
-                }
             });
         });
 
-        // Scroll Animation for Timeline
+        // IMPROVED: Scroll Animation with RequestAnimationFrame
         function animateOnScroll() {
             const timelineItems = document.querySelectorAll('.timeline-item');
+            const skillCards = document.querySelectorAll('.skill-card');
             const windowHeight = window.innerHeight;
             
             timelineItems.forEach(item => {
@@ -2158,9 +2191,17 @@
                     item.style.transform = 'translateX(0)';
                 }
             });
+            
+            skillCards.forEach(card => {
+                const position = card.getBoundingClientRect().top;
+                if (position < windowHeight - 100) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
         }
 
-        // Initialize animations on load
+        // Initialize everything with better performance
         document.addEventListener('DOMContentLoaded', () => {
             // Initialize all viewport buttons to desktop view
             document.querySelectorAll('.viewport-btn.active').forEach(btn => {
@@ -2175,24 +2216,50 @@
                 document.body.classList.add('loaded');
             }, 100);
             
-            console.log('Enhanced portfolio loaded with mobile-optimized iframes');
+            // Preload important resources
+            preloadResources();
+            
+            console.log('Portfolio loaded with improved overscroll behavior and clean design');
         });
 
-        // Improve mobile iframe experience
-        function improveMobileIframes() {
-            if (window.innerWidth <= 768) {
-                document.querySelectorAll('.preview-iframe').forEach(iframe => {
-                    iframe.style.width = '100%';
-                    iframe.style.height = '100%';
-                    iframe.style.transform = 'none';
-                });
-            }
+        // Preload resources for better performance
+        function preloadResources() {
+            const preloadLinks = [
+                'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
+            ];
+            
+            preloadLinks.forEach(href => {
+                const link = document.createElement('link');
+                link.rel = 'preload';
+                link.href = href;
+                link.as = 'style';
+                document.head.appendChild(link);
+            });
         }
 
-        // Run on resize
-        window.addEventListener('resize', improveMobileIframes);
-        // Run initially
-        improveMobileIframes();
+        // IMPROVED: Touch event handling for mobile
+        document.addEventListener('touchstart', function() {}, {passive: true});
+        document.addEventListener('touchmove', function() {}, {passive: true});
+
+        // IMPROVED: Prevent rubber banding on mobile
+        document.body.addEventListener('touchmove', function(e) {
+            if (e.target.closest('.device-content') || e.target.closest('.preview-iframe')) {
+                // Allow scrolling within iframes
+                return;
+            }
+        }, { passive: true });
+
+        // IMPROVED: Better resize handling
+        let resizeTimeout;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(function() {
+                // Reinitialize viewport switching on resize
+                document.querySelectorAll('.viewport-btn.active').forEach(btn => {
+                    btn.click();
+                });
+            }, 250);
+        });
     </script>
 </body>
 </html>
