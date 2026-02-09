@@ -58,6 +58,13 @@
             background: rgba(2, 6, 23, 0.95);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 15px 0;
+            background: rgba(2, 6, 23, 0.98);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .header-content {
@@ -73,6 +80,13 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            text-decoration: none;
+            display: inline-block;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         .nav-links {
@@ -87,10 +101,26 @@
             position: relative;
             padding: 8px 0;
             transition: var(--transition);
+            font-size: 15px;
         }
 
         .nav-link:hover {
             color: var(--light);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
         }
 
         /* Hero Section */
@@ -123,6 +153,7 @@
             display: flex;
             gap: 20px;
             margin-top: 40px;
+            flex-wrap: wrap;
         }
 
         .btn {
@@ -136,6 +167,7 @@
             transition: var(--transition);
             border: none;
             cursor: pointer;
+            font-size: 16px;
         }
 
         .btn-primary {
@@ -149,6 +181,18 @@
             box-shadow: 0 20px 40px rgba(37, 99, 235, 0.5);
         }
 
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--light);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-6px);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
         /* IMPROVED Browser Window Container */
         .browser-window {
             background: rgba(30, 41, 59, 0.5);
@@ -158,11 +202,25 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: var(--transition);
             margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
         }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .browser-window:nth-child(1) { animation-delay: 0.1s; }
+        .browser-window:nth-child(2) { animation-delay: 0.2s; }
+        .browser-window:nth-child(3) { animation-delay: 0.3s; }
 
         .browser-window:hover {
             border-color: rgba(59, 130, 246, 0.3);
-            transform: translateY(-5px);
+            transform: translateY(-8px);
         }
 
         .browser-header {
@@ -183,11 +241,16 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
+            transition: var(--transition);
         }
 
         .control-btn.close { background: #ff5f56; }
         .control-btn.minimize { background: #ffbd2e; }
         .control-btn.maximize { background: #27ca3f; }
+
+        .control-btn:hover {
+            transform: scale(1.2);
+        }
 
         .browser-url {
             flex: 1;
@@ -388,6 +451,7 @@
         /* Work Showcase Section */
         .work-showcase {
             padding: 100px 0;
+            background: rgba(0, 0, 0, 0.2);
         }
 
         .section-title {
@@ -396,6 +460,9 @@
             text-align: center;
             margin-bottom: 60px;
             position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
         }
 
         .section-title::after {
@@ -408,6 +475,15 @@
             height: 5px;
             background: var(--gradient);
             border-radius: 3px;
+            animation: lineExpand 1s ease 0.5s forwards;
+            transform-origin: center;
+            transform: scaleX(0);
+        }
+
+        @keyframes lineExpand {
+            to {
+                transform: translateX(-50%) scaleX(1);
+            }
         }
 
         .iframe-info {
@@ -444,6 +520,12 @@
             font-size: 13px;
             font-weight: 600;
             border: 1px solid rgba(37, 99, 235, 0.3);
+            transition: var(--transition);
+        }
+
+        .tech-tag:hover {
+            background: rgba(37, 99, 235, 0.25);
+            transform: translateY(-2px);
         }
 
         .project-stats {
@@ -470,15 +552,27 @@
             margin-top: 5px;
         }
 
-        /* Skills Section */
+        /* FIXED Skills Section with Button */
         .skills-section {
-            padding: 100px 0;
-            background: rgba(0, 0, 0, 0.2);
+            padding: 120px 0;
+            position: relative;
+            background: linear-gradient(135deg, rgba(2, 6, 23, 0.9) 0%, rgba(15, 23, 42, 0.9) 100%);
+        }
+
+        .skills-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><rect fill="%232563eb" opacity="0.03" width="1000" height="1000"/></svg>');
+            z-index: -1;
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 50px;
         }
@@ -490,28 +584,53 @@
             padding: 40px 30px;
             text-align: center;
             transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
         }
 
+        .skill-card:nth-child(1) { animation-delay: 0.1s; }
+        .skill-card:nth-child(2) { animation-delay: 0.2s; }
+        .skill-card:nth-child(3) { animation-delay: 0.3s; }
+        .skill-card:nth-child(4) { animation-delay: 0.4s; }
+
         .skill-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-10px) scale(1.02);
             border-color: rgba(59, 130, 246, 0.3);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .skill-icon {
             font-size: 48px;
             margin-bottom: 24px;
             color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .skill-card:hover .skill-icon {
+            transform: scale(1.2);
+            color: var(--primary-light);
+        }
+
+        /* Skills Button Container */
+        .skills-button-container {
+            text-align: center;
+            margin-top: 60px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.5s forwards;
         }
 
         /* Contact Section */
         .contact-section {
-            padding: 100px 0;
+            padding: 120px 0;
+            background: linear-gradient(135deg, rgba(2, 6, 23, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);
         }
 
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 50px;
             margin-top: 50px;
         }
@@ -521,13 +640,28 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 20px;
             padding: 40px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
         }
+
+        .contact-info:nth-child(1) { animation-delay: 0.1s; }
+        .contact-info:nth-child(2) { animation-delay: 0.2s; }
 
         .contact-method {
             display: flex;
             align-items: center;
             gap: 20px;
             margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            transition: var(--transition);
+        }
+
+        .contact-method:hover {
+            background: rgba(37, 99, 235, 0.1);
+            transform: translateX(10px);
         }
 
         .contact-icon {
@@ -540,13 +674,69 @@
             justify-content: center;
             font-size: 24px;
             color: white;
+            transition: var(--transition);
+        }
+
+        .contact-method:hover .contact-icon {
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+            text-decoration: none;
+            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: var(--transition);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.15) rotate(15deg);
+            box-shadow: 0 20px 45px rgba(37, 211, 102, 0.6);
         }
 
         /* Footer */
         footer {
-            padding: 60px 0 30px;
+            padding: 80px 0 40px;
             text-align: center;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            animation: footerLineExpand 1.5s ease 0.5s forwards;
+        }
+
+        @keyframes footerLineExpand {
+            to {
+                transform: scaleX(1);
+            }
         }
 
         .footer-logo {
@@ -558,6 +748,16 @@
             color: transparent;
             margin-bottom: 20px;
             display: inline-block;
+            animation: logoGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes logoGlow {
+            0% {
+                filter: drop-shadow(0 0 5px rgba(37, 99, 235, 0.3));
+            }
+            100% {
+                filter: drop-shadow(0 0 20px rgba(37, 99, 235, 0.6));
+            }
         }
 
         /* Responsive Design */
@@ -576,6 +776,12 @@
             
             .btn-group {
                 flex-direction: column;
+                width: 100%;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
             }
             
             .desktop-frame {
@@ -596,6 +802,19 @@
             .viewport-controls {
                 flex-wrap: wrap;
                 justify-content: center;
+            }
+            
+            .skills-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 60px;
+                height: 60px;
+                font-size: 28px;
             }
         }
 
@@ -623,24 +842,31 @@
             .browser-url {
                 display: none;
             }
-        }
-
-        /* Mobile Frame Responsive Adjustments */
-        @media (max-width: 400px) {
-            .mobile-frame {
-                border-radius: 30px;
-                border-width: 8px;
+            
+            .viewport-controls {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .viewport-btn {
+                padding: 8px 12px;
+                font-size: 12px;
             }
         }
     </style>
 </head>
 
 <body>
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/447543737488" class="whatsapp-float" target="_blank" aria-label="Contact on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <!-- Header -->
     <header id="header">
         <div class="container">
             <div class="header-content">
-                <a href="#" class="logo">Sacha Raif</a>
+                <a href="#home" class="logo">Sacha Raif</a>
                 <nav class="nav-links">
                     <a href="#home" class="nav-link">Home</a>
                     <a href="#work" class="nav-link">Live Demos</a>
@@ -655,18 +881,18 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Interactive Responsive Portfolio</h1>
+                <h1 class="hero-title">Build Websites That Convert</h1>
                 <p style="font-size: 22px; color: var(--gray); margin-bottom: 40px; max-width: 600px;">
-                    Experience my responsive designs in real-time. Switch between desktop, tablet, and mobile views to see how each website adapts.
+                    I create <strong style="color: var(--accent);">SEO-optimized, high-converting websites</strong> using HTML, CSS, and JavaScript. Every pixel drives results.
                 </p>
                 <div class="btn-group">
                     <a href="#work" class="btn btn-primary">
                         <span>View Live Demos</span>
                         <i class="fas fa-arrow-down"></i>
                     </a>
-                    <a href="#contact" class="btn btn-primary" style="background: rgba(255,255,255,0.1);">
-                        <span>Start a Project</span>
-                        <i class="fas fa-rocket"></i>
+                    <a href="#contact" class="btn btn-secondary">
+                        <span>Get a Quote</span>
+                        <i class="fas fa-paper-plane"></i>
                     </a>
                 </div>
             </div>
@@ -676,9 +902,9 @@
     <!-- Main Website Showcase -->
     <section class="work-showcase" id="work">
         <div class="container">
-            <h2 class="section-title">Responsive Website Previews</h2>
-            <p style="text-align: center; color: var(--gray); max-width: 700px; margin: 0 auto 60px; font-size: 18px;">
-                Each project is displayed in realistic device frames. Click the viewport buttons to see how they adapt to different screen sizes.
+            <h2 class="section-title">Interactive Website Previews</h2>
+            <p style="text-align: center; color: var(--gray); max-width: 700px; margin: 0 auto 60px; font-size: 18px; opacity: 0; transform: translateY(20px); animation: fadeInUp 0.8s ease 0.3s forwards;">
+                Fully functional website embeds. Switch between desktop, tablet, and mobile views to experience responsive design in action.
             </p>
 
             <!-- Green Glo Cleaning -->
@@ -885,7 +1111,7 @@
                 </div>
             </div>
 
-            <!-- Exposure Boost -->
+            <!-- Exposure Boost (UPDATED LINK) -->
             <div class="browser-window" id="project-3">
                 <div class="browser-header">
                     <div class="browser-controls">
@@ -893,7 +1119,7 @@
                         <div class="control-btn minimize"></div>
                         <div class="control-btn maximize"></div>
                     </div>
-                    <div class="browser-url" id="url-3">https://megablaze.github.io/Exposureboost</div>
+                    <div class="browser-url" id="url-3">https://megablaze757.github.io/ExposureBoost</div>
                     <div class="viewport-controls">
                         <button class="viewport-btn active" data-project="3" data-viewport="desktop">
                             <i class="fas fa-desktop"></i> Desktop
@@ -915,7 +1141,7 @@
                             <div class="spinner"></div>
                             <p>Loading Exposure Boost...</p>
                         </div>
-                        <iframe src="https://megablaze.github.io/Exposureboost" 
+                        <iframe src="https://megablaze757.github.io/ExposureBoost" 
                                 class="preview-iframe"
                                 loading="lazy"
                                 allow="fullscreen"
@@ -932,7 +1158,7 @@
                             <div class="spinner"></div>
                             <p>Loading tablet view...</p>
                         </div>
-                        <iframe src="https://megablaze.github.io/Exposureboost" 
+                        <iframe src="https://megablaze757.github.io/ExposureBoost" 
                                 class="preview-iframe"
                                 loading="lazy"
                                 allow="fullscreen"
@@ -949,7 +1175,7 @@
                             <div class="spinner"></div>
                             <p>Loading mobile view...</p>
                         </div>
-                        <iframe src="https://megablaze.github.io/Exposureboost" 
+                        <iframe src="https://megablaze757.github.io/ExposureBoost" 
                                 class="preview-iframe"
                                 loading="lazy"
                                 allow="fullscreen"
@@ -989,8 +1215,8 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section class="skills-section">
+    <!-- FIXED Skills Section with Working Button -->
+    <section class="skills-section" id="skills">
         <div class="container">
             <h2 class="section-title">Technical Expertise</h2>
             
@@ -1034,6 +1260,14 @@
                         Fast-loading sites with proper meta tags, schema markup, keyword optimization, and performance tuning.
                     </p>
                 </div>
+            </div>
+
+            <!-- Working Skills Button -->
+            <div class="skills-button-container">
+                <a href="#contact" class="btn btn-primary">
+                    <span>Start Your Project</span>
+                    <i class="fas fa-rocket"></i>
+                </a>
             </div>
         </div>
     </section>
@@ -1124,7 +1358,7 @@
     <footer>
         <div class="container">
             <div class="footer-logo">Sacha Raif</div>
-            <p style="color: var(--gray); margin-bottom: 20px;">
+            <p style="color: var(--gray); margin-bottom: 20px; max-width: 500px; margin-left: auto; margin-right: auto;">
                 HTML, CSS, JavaScript Developer | SEO & Conversion Specialist
             </p>
             <p style="color: var(--gray); font-size: 14px;">
@@ -1167,34 +1401,14 @@
                         loader.classList.remove('hidden');
                     }
                     
-                    // Reload iframe with viewport simulation
-                    const currentSrc = iframe.src.split('?')[0];
-                    if (viewport === 'mobile') {
-                        // For mobile, we could add URL parameters if the site supports them
-                        iframe.src = currentSrc;
-                        // Inject viewport meta tag simulation
-                        setTimeout(() => {
-                            try {
-                                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-                                const viewportMeta = iframeDoc.querySelector('meta[name="viewport"]');
-                                if (viewportMeta) {
-                                    viewportMeta.content = 'width=375, initial-scale=1, maximum-scale=1, user-scalable=no';
-                                }
-                            } catch (e) {
-                                // Cross-origin restriction - can't modify iframe content
-                                console.log('Cross-origin restriction prevents viewport modification');
-                            }
-                        }, 1000);
-                    } else if (viewport === 'tablet') {
-                        iframe.src = currentSrc;
-                    } else {
-                        iframe.src = currentSrc;
-                    }
+                    // Reload iframe with current source
+                    const currentSrc = iframe.src;
+                    iframe.src = currentSrc;
                 }
             });
         });
 
-        // Smooth scrolling for navigation
+        // FIXED: Enhanced Smooth Scrolling with Header Offset
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1210,30 +1424,38 @@
                         top: targetPosition - headerHeight,
                         behavior: 'smooth'
                     });
+                    
+                    // Update URL hash without scrolling
+                    history.pushState(null, null, targetId);
                 }
             });
         });
 
-        // Header scroll effect
+        // Header Scroll Effect
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 50) {
-                header.style.background = 'rgba(2, 6, 23, 0.98)';
-                header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3)';
+                header.classList.add('scrolled');
             } else {
-                header.style.background = 'rgba(2, 6, 23, 0.95)';
-                header.style.boxShadow = 'none';
+                header.classList.remove('scrolled');
+            }
+            
+            // Parallax effect for hero title
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            const heroTitle = document.querySelector('.hero-title');
+            if (heroTitle && scrolled < 500) {
+                heroTitle.style.transform = `translateY(${rate}px)`;
             }
         });
 
-        // Lazy loading for iframes
+        // Lazy Loading for iframes
         const iframeObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const iframe = entry.target;
-                    // Iframes are already loaded, we just need to trigger the viewport switch
-                    if (iframe.dataset.loaded !== 'true') {
-                        iframe.dataset.loaded = 'true';
+                    if (!iframe.dataset.loaded) {
+                        iframe.dataset.loaded = true;
                         // Additional lazy loading logic if needed
                     }
                 }
@@ -1243,32 +1465,6 @@
         // Observe all iframes
         document.querySelectorAll('iframe').forEach(iframe => {
             iframeObserver.observe(iframe);
-        });
-
-        // Initialize first project in desktop view (others will follow)
-        document.addEventListener('DOMContentLoaded', () => {
-            // All projects start in desktop view by default
-            console.log('Portfolio loaded with enhanced device frame previews');
-            
-            // Add subtle animation to skill cards on scroll
-            const skillCards = document.querySelectorAll('.skill-card');
-            const cardObserver = new IntersectionObserver((entries) => {
-                entries.forEach((entry, index) => {
-                    if (entry.isIntersecting) {
-                        setTimeout(() => {
-                            entry.target.style.opacity = '1';
-                            entry.target.style.transform = 'translateY(0)';
-                        }, index * 100);
-                    }
-                });
-            }, { threshold: 0.2 });
-            
-            skillCards.forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                cardObserver.observe(card);
-            });
         });
 
         // Handle iframe loading errors
@@ -1289,6 +1485,43 @@
                     `;
                 }
             });
+        });
+
+        // Enhanced Browser Controls Animation
+        document.querySelectorAll('.control-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.style.transform = 'scale(0.8)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 200);
+            });
+        });
+
+        // Initialize animations on load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add loaded class to body for CSS animations
+            document.body.classList.add('loaded');
+            
+            // Initialize all viewport buttons to desktop view
+            document.querySelectorAll('.viewport-btn.active').forEach(btn => {
+                btn.click();
+            });
+            
+            console.log('Portfolio fully loaded with fixed navigation and updated links');
+        });
+
+        // Scroll-triggered animations for elements
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Observe elements for scroll animations
+        document.querySelectorAll('.skill-card, .contact-info, .browser-window').forEach(el => {
+            scrollObserver.observe(el);
         });
     </script>
 </body>
