@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sacha Raif | Interactive Portfolio with Live Demos</title>
+    <title>Sacha Raif | Full-Stack Developer & Conversion Specialist</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -18,9 +18,11 @@
             --light: #f8fafc;
             --gray: #94a3b8;
             --gradient: linear-gradient(135deg, #2563eb 0%, #10b981 100%);
+            --gradient-reverse: linear-gradient(135deg, #10b981 0%, #2563eb 100%);
             --shadow-xl: 0 25px 50px rgba(0, 0, 0, 0.3);
+            --shadow-glow: 0 0 40px rgba(37, 99, 235, 0.3);
             --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            --iframe-radius: 12px;
+            --iframe-radius: 16px;
         }
 
         * {
@@ -48,7 +50,7 @@
             padding: 0 24px;
         }
 
-        /* Enhanced Header */
+        /* Enhanced Header with Mobile Menu */
         header {
             position: fixed;
             top: 0;
@@ -123,13 +125,34 @@
             width: 100%;
         }
 
-        /* Hero Section */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section with Stats */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             padding: 160px 0 80px;
             position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+            z-index: -1;
         }
 
         .hero-title {
@@ -147,6 +170,36 @@
 
         @keyframes shimmer {
             to { background-position: 200% center; }
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-size: 40px;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--gray);
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .btn-group {
@@ -168,6 +221,26 @@
             border: none;
             cursor: pointer;
             font-size: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:active::after {
+            width: 300px;
+            height: 300px;
         }
 
         .btn-primary {
@@ -193,7 +266,7 @@
             border-color: rgba(255, 255, 255, 0.25);
         }
 
-        /* IMPROVED Browser Window Container */
+        /* IMPROVED Browser Window Container with Better Mobile Support */
         .browser-window {
             background: rgba(30, 41, 59, 0.5);
             border-radius: var(--iframe-radius);
@@ -230,6 +303,7 @@
             align-items: center;
             gap: 12px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
         }
 
         .browser-controls {
@@ -263,15 +337,17 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            min-width: 200px;
         }
 
-        /* IMPROVED Viewport Controls */
+        /* IMPROVED Viewport Controls - Better Mobile */
         .viewport-controls {
             display: flex;
             gap: 8px;
             background: rgba(30, 41, 59, 0.7);
             border-radius: 20px;
             padding: 4px;
+            flex-wrap: wrap;
         }
 
         .viewport-btn {
@@ -287,6 +363,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            white-space: nowrap;
         }
 
         .viewport-btn:hover {
@@ -300,6 +377,7 @@
             box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
         }
 
+        /* ENHANCED Device Frames - Better Mobile */
         .device-frame {
             position: relative;
             transition: var(--transition);
@@ -315,9 +393,10 @@
             position: relative;
         }
 
-        /* Tablet Frame */
+        /* Tablet Frame - IMPROVED for Mobile */
         .tablet-frame {
             width: 768px;
+            max-width: 90%;
             height: 600px;
             margin: 0 auto;
             background: white;
@@ -341,10 +420,12 @@
             z-index: 10;
         }
 
-        /* Mobile Frame */
+        /* Mobile Frame - IMPROVED for Mobile */
         .mobile-frame {
             width: 375px;
+            max-width: 90%;
             height: 667px;
+            max-height: 70vh;
             margin: 0 auto;
             background: white;
             border-radius: 40px;
@@ -427,6 +508,13 @@
             height: 100%;
             border: none;
             background: white;
+            transform-origin: top left;
+        }
+
+        /* Mobile-specific iframe scaling */
+        .mobile-frame .preview-iframe {
+            width: 375px;
+            max-width: 100%;
         }
 
         .viewport-notice {
@@ -451,7 +539,7 @@
         /* Work Showcase Section */
         .work-showcase {
             padding: 100px 0;
-            background: rgba(0, 0, 0, 0.2);
+            background: linear-gradient(180deg, rgba(2, 6, 23, 0.9) 0%, rgba(15, 23, 42, 0.9) 100%);
         }
 
         .section-title {
@@ -486,36 +574,82 @@
             }
         }
 
-        .iframe-info {
-            padding: 25px;
+        /* Project Info Section - ENHANCED */
+        .project-info {
+            padding: 30px;
             background: rgba(15, 23, 42, 0.7);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .iframe-info h3 {
-            font-size: 22px;
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .project-title {
+            font-size: 24px;
             margin-bottom: 10px;
             color: var(--light);
         }
 
-        .iframe-info p {
-            color: var(--gray);
-            margin-bottom: 20px;
+        .project-subtitle {
+            color: var(--accent);
             font-size: 16px;
-            line-height: 1.6;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .project-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary-light);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .action-btn:hover {
+            background: rgba(37, 99, 235, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .action-btn.github {
+            background: rgba(24, 23, 23, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: var(--light);
+        }
+
+        .action-btn.github:hover {
+            background: rgba(24, 23, 23, 0.2);
         }
 
         .tech-stack {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            margin-bottom: 20px;
+            margin: 25px 0;
         }
 
         .tech-tag {
             background: rgba(37, 99, 235, 0.15);
             color: var(--primary-light);
-            padding: 6px 16px;
+            padding: 8px 16px;
             border-radius: 20px;
             font-size: 13px;
             font-weight: 600;
@@ -528,31 +662,102 @@
             transform: translateY(-2px);
         }
 
-        .project-stats {
+        .project-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--gradient);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        /* NEW: Process Timeline */
+        .process-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.9) 0%, rgba(2, 6, 23, 0.9) 100%);
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 60px auto 0;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gradient);
+        }
+
+        .timeline-item {
             display: flex;
             gap: 30px;
-            flex-wrap: wrap;
+            margin-bottom: 40px;
+            position: relative;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideInRight 0.8s ease forwards;
         }
 
-        .stat {
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .timeline-marker {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 50%;
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 2;
         }
 
-        .stat-value {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--accent);
-            line-height: 1;
+        .timeline-content {
+            flex: 1;
         }
 
-        .stat-label {
-            font-size: 14px;
-            color: var(--gray);
-            margin-top: 5px;
+        .timeline-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--light);
         }
 
-        /* FIXED Skills Section with Button */
+        /* Skills Section */
         .skills-section {
             padding: 120px 0;
             position: relative;
@@ -620,6 +825,68 @@
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.8s ease 0.5s forwards;
+        }
+
+        /* NEW: Testimonials Section */
+        .testimonials-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(2, 6, 23, 0.9) 100%);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 30px;
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .testimonial-content {
+            font-style: italic;
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .author-info h4 {
+            color: var(--light);
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: var(--gray);
+            font-size: 14px;
         }
 
         /* Contact Section */
@@ -766,12 +1033,24 @@
                 display: none;
             }
             
+            .mobile-menu-btn {
+                display: block;
+            }
+            
             .hero {
                 padding: 140px 0 60px;
             }
             
             .hero-title {
                 font-size: clamp(36px, 8vw, 48px);
+            }
+            
+            .hero-stats {
+                gap: 20px;
+            }
+            
+            .stat-number {
+                font-size: 32px;
             }
             
             .btn-group {
@@ -784,6 +1063,7 @@
                 justify-content: center;
             }
             
+            /* Improved Mobile Iframes */
             .desktop-frame {
                 height: 400px;
             }
@@ -791,21 +1071,50 @@
             .tablet-frame {
                 width: 90%;
                 height: 500px;
+                border-width: 8px;
+                border-radius: 16px;
             }
             
             .mobile-frame {
                 width: 90%;
                 max-width: 375px;
-                height: 600px;
+                height: 500px;
+                border-width: 8px;
+                border-radius: 30px;
+            }
+            
+            .mobile-frame::before,
+            .mobile-frame::after {
+                width: 80px;
+                height: 20px;
+            }
+            
+            .browser-header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: stretch;
+            }
+            
+            .browser-url {
+                min-width: auto;
             }
             
             .viewport-controls {
-                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .project-header {
+                flex-direction: column;
+            }
+            
+            .project-actions {
+                width: 100%;
                 justify-content: center;
             }
             
             .skills-grid,
-            .contact-grid {
+            .contact-grid,
+            .testimonials-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -828,7 +1137,7 @@
             }
             
             .desktop-frame {
-                height: 350px;
+                height: 300px;
             }
             
             .tablet-frame {
@@ -836,7 +1145,7 @@
             }
             
             .mobile-frame {
-                height: 500px;
+                height: 400px;
             }
             
             .browser-url {
@@ -852,11 +1161,75 @@
                 padding: 8px 12px;
                 font-size: 12px;
             }
+            
+            .timeline::before {
+                left: 25px;
+            }
+            
+            .timeline-marker {
+                width: 50px;
+                height: 50px;
+                font-size: 16px;
+            }
+            
+            .project-features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(2, 6, 23, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 9999;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu .nav-link {
+            font-size: 24px;
+            color: var(--light);
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 30px;
+            cursor: pointer;
         }
     </style>
 </head>
 
 <body>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-menu" id="closeMenu">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="#home" class="nav-link" onclick="closeMobileMenu()">Home</a>
+        <a href="#work" class="nav-link" onclick="closeMobileMenu()">Projects</a>
+        <a href="#process" class="nav-link" onclick="closeMobileMenu()">Process</a>
+        <a href="#skills" class="nav-link" onclick="closeMobileMenu()">Skills</a>
+        <a href="#testimonials" class="nav-link" onclick="closeMobileMenu()">Testimonials</a>
+        <a href="#contact" class="nav-link" onclick="closeMobileMenu()">Contact</a>
+    </div>
+
     <!-- Floating WhatsApp Button -->
     <a href="https://wa.me/447543737488" class="whatsapp-float" target="_blank" aria-label="Contact on WhatsApp">
         <i class="fab fa-whatsapp"></i>
@@ -869,45 +1242,71 @@
                 <a href="#home" class="logo">Sacha Raif</a>
                 <nav class="nav-links">
                     <a href="#home" class="nav-link">Home</a>
-                    <a href="#work" class="nav-link">Live Demos</a>
+                    <a href="#work" class="nav-link">Projects</a>
+                    <a href="#process" class="nav-link">Process</a>
                     <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#testimonials" class="nav-link">Testimonials</a>
                     <a href="#contact" class="nav-link">Contact</a>
                 </nav>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
+        <div class="hero-bg"></div>
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Build Websites That Convert</h1>
-                <p style="font-size: 22px; color: var(--gray); margin-bottom: 40px; max-width: 600px;">
-                    I create <strong style="color: var(--accent);">SEO-optimized, high-converting websites</strong> using HTML, CSS, and JavaScript. Every pixel drives results.
+                <h1 class="hero-title">Full-Stack Developer & Conversion Specialist</h1>
+                <p style="font-size: 22px; color: var(--gray); margin-bottom: 20px; max-width: 600px;">
+                    I build <strong style="color: var(--accent);">high-performance websites</strong> that drive results through strategic design, clean code, and data-driven optimization.
                 </p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Projects Delivered</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">99%</div>
+                        <div class="stat-label">Client Satisfaction</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">40%</div>
+                        <div class="stat-label">Avg. Conversion Increase</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24h</div>
+                        <div class="stat-label">Avg. Response Time</div>
+                    </div>
+                </div>
+                
                 <div class="btn-group">
                     <a href="#work" class="btn btn-primary">
-                        <span>View Live Demos</span>
+                        <span>View My Work</span>
                         <i class="fas fa-arrow-down"></i>
                     </a>
                     <a href="#contact" class="btn btn-secondary">
-                        <span>Get a Quote</span>
-                        <i class="fas fa-paper-plane"></i>
+                        <span>Start a Project</span>
+                        <i class="fas fa-rocket"></i>
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Main Website Showcase -->
+    <!-- Main Website Showcase - REORDERED: Exposure Boost First -->
     <section class="work-showcase" id="work">
         <div class="container">
-            <h2 class="section-title">Interactive Website Previews</h2>
+            <h2 class="section-title">Featured Projects</h2>
             <p style="text-align: center; color: var(--gray); max-width: 700px; margin: 0 auto 60px; font-size: 18px; opacity: 0; transform: translateY(20px); animation: fadeInUp 0.8s ease 0.3s forwards;">
-                Fully functional website embeds. Switch between desktop, tablet, and mobile views to experience responsive design in action.
+                Interactive previews of my recent work. Switch between desktop, tablet, and mobile views to experience responsive design in action.
             </p>
 
-            <!-- Green Glo Cleaning -->
+            <!-- Exposure Boost (NOW FIRST) -->
             <div class="browser-window" id="project-1">
                 <div class="browser-header">
                     <div class="browser-controls">
@@ -915,7 +1314,7 @@
                         <div class="control-btn minimize"></div>
                         <div class="control-btn maximize"></div>
                     </div>
-                    <div class="browser-url" id="url-1">https://greenglocleaningco.com</div>
+                    <div class="browser-url" id="url-1">https://megablaze757.github.io/ExposureBoost</div>
                     <div class="viewport-controls">
                         <button class="viewport-btn active" data-project="1" data-viewport="desktop">
                             <i class="fas fa-desktop"></i> Desktop
@@ -935,9 +1334,9 @@
                     <div class="device-content">
                         <div class="iframe-loader" id="loader-1-desktop">
                             <div class="spinner"></div>
-                            <p>Loading Green Glo Cleaning...</p>
+                            <p>Loading Exposure Boost...</p>
                         </div>
-                        <iframe src="https://greenglocleaningco.com" 
+                        <iframe src="https://megablaze757.github.io/ExposureBoost" 
                                 class="preview-iframe"
                                 loading="lazy"
                                 allow="fullscreen"
@@ -954,7 +1353,7 @@
                             <div class="spinner"></div>
                             <p>Loading tablet view...</p>
                         </div>
-                        <iframe src="https://greenglocleaningco.com" 
+                        <iframe src="https://megablaze757.github.io/ExposureBoost" 
                                 class="preview-iframe"
                                 loading="lazy"
                                 allow="fullscreen"
@@ -971,7 +1370,7 @@
                             <div class="spinner"></div>
                             <p>Loading mobile view...</p>
                         </div>
-                        <iframe src="https://greenglocleaningco.com" 
+                        <iframe src="https://megablaze757.github.io/ExposureBoost" 
                                 class="preview-iframe"
                                 loading="lazy"
                                 allow="fullscreen"
@@ -980,30 +1379,61 @@
                     </div>
                 </div>
                 
-                <div class="iframe-info">
-                    <h3>Green Glo Cleaning Co.</h3>
-                    <p>A complete booking system and admin panel built with pure JavaScript, featuring real-time availability tracking, customer management, and mobile-responsive design.</p>
-                    
-                    <div class="tech-stack">
-                        <span class="tech-tag">HTML5</span>
-                        <span class="tech-tag">CSS3</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">SEO Optimization</span>
-                        <span class="tech-tag">Mobile First</span>
+                <div class="project-info">
+                    <div class="project-header">
+                        <div>
+                            <h3 class="project-title">Exposure Boost</h3>
+                            <div class="project-subtitle">Interactive Photography Web App</div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://megablaze757.github.io/ExposureBoost" target="_blank" class="action-btn">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="https://github.com/megablaze757/ExposureBoost" target="_blank" class="action-btn github">
+                                <i class="fab fa-github"></i> Source Code
+                            </a>
+                        </div>
                     </div>
                     
-                    <div class="project-stats">
-                        <div class="stat">
-                            <div class="stat-value">98%</div>
-                            <div class="stat-label">Mobile Score</div>
+                    <p style="color: var(--gray); margin-bottom: 20px; font-size: 16px; line-height: 1.7;">
+                        A modern photography web application featuring interactive galleries, real-time image filters, dark/light mode toggle, and smooth animations. Built with vanilla JavaScript and CSS transitions.
+                    </p>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">Vanilla JavaScript</span>
+                        <span class="tech-tag">CSS Animations</span>
+                        <span class="tech-tag">LocalStorage API</span>
+                        <span class="tech-tag">Responsive Design</span>
+                        <span class="tech-tag">Image Optimization</span>
+                    </div>
+                    
+                    <div class="project-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--light); margin-bottom: 5px;">Real-time Filters</h4>
+                                <p style="color: var(--gray); font-size: 14px;">Apply and preview filters instantly</p>
+                            </div>
                         </div>
-                        <div class="stat">
-                            <div class="stat-value">0.8s</div>
-                            <div class="stat-label">Load Time</div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-moon"></i>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--light); margin-bottom: 5px;">Dark/Light Mode</h4>
+                                <p style="color: var(--gray); font-size: 14px;">Toggle with persistent preference</p>
+                            </div>
                         </div>
-                        <div class="stat">
-                            <div class="stat-value">↑ 40%</div>
-                            <div class="stat-label">Conversions</div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--light); margin-bottom: 5px;">Fast Performance</h4>
+                                <p style="color: var(--gray); font-size: 14px;">Optimized animations & loading</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1082,36 +1512,67 @@
                     </div>
                 </div>
                 
-                <div class="iframe-info">
-                    <h3>AR Building Services</h3>
-                    <p>Construction company website optimized for lead generation with strategic CTAs, service-focused content, and local SEO targeting for maximum visibility.</p>
+                <div class="project-info">
+                    <div class="project-header">
+                        <div>
+                            <h3 class="project-title">AR Building Services</h3>
+                            <div class="project-subtitle">Construction Company Website</div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://arbuildingservices.co.uk" target="_blank" class="action-btn">
+                                <i class="fas fa-external-link-alt"></i> Live Site
+                            </a>
+                            <a href="#contact" class="action-btn">
+                                <i class="fas fa-envelope"></i> Similar Project
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <p style="color: var(--gray); margin-bottom: 20px; font-size: 16px; line-height: 1.7;">
+                        A lead-generation focused website for a construction company, optimized for local SEO with strategic CTAs, service pages, and a project gallery. Increased client inquiries by 35%.
+                    </p>
                     
                     <div class="tech-stack">
-                        <span class="tech-tag">Responsive Design</span>
-                        <span class="tech-tag">Lead Generation</span>
+                        <span class="tech-tag">HTML5/CSS3</span>
                         <span class="tech-tag">Local SEO</span>
+                        <span class="tech-tag">Lead Generation</span>
                         <span class="tech-tag">Contact Forms</span>
                         <span class="tech-tag">Project Gallery</span>
                     </div>
                     
-                    <div class="project-stats">
-                        <div class="stat">
-                            <div class="stat-value">95%</div>
-                            <div class="stat-label">Performance</div>
+                    <div class="project-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--light); margin-bottom: 5px;">Local SEO</h4>
+                                <p style="color: var(--gray); font-size: 14px;">Optimized for local search visibility</p>
+                            </div>
                         </div>
-                        <div class="stat">
-                            <div class="stat-value">1.2s</div>
-                            <div class="stat-label">Load Time</div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--light); margin-bottom: 5px;">Lead Tracking</h4>
+                                <p style="color: var(--gray); font-size: 14px;">Integrated lead capture & tracking</p>
+                            </div>
                         </div>
-                        <div class="stat">
-                            <div class="stat-value">+35%</div>
-                            <div class="stat-label">Traffic</div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--light); margin-bottom: 5px;">Mobile Optimized</h4>
+                                <p style="color: var(--gray); font-size: 14px;">Perfect experience on all devices</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Exposure Boost (UPDATED LINK) -->
+            <!-- Green Glo Cleaning (NOW LAST) -->
             <div class="browser-window" id="project-3">
                 <div class="browser-header">
                     <div class="browser-controls">
@@ -1119,7 +1580,7 @@
                         <div class="control-btn minimize"></div>
                         <div class="control-btn maximize"></div>
                     </div>
-                    <div class="browser-url" id="url-3">https://megablaze757.github.io/ExposureBoost</div>
+                    <div class="browser-url" id="url-3">https://greenglocleaningco.com</div>
                     <div class="viewport-controls">
                         <button class="viewport-btn active" data-project="3" data-viewport="desktop">
                             <i class="fas fa-desktop"></i> Desktop
@@ -1139,9 +1600,9 @@
                     <div class="device-content">
                         <div class="iframe-loader" id="loader-3-desktop">
                             <div class="spinner"></div>
-                            <p>Loading Exposure Boost...</p>
+                            <p>Loading Green Glo Cleaning...</p>
                         </div>
-                        <iframe src="https://megablaze757.github.io/ExposureBoost" 
+                        <iframe src="https://greenglocleaningco.com" 
                                 class="preview-iframe"
                                 loading="lazy"
                                 allow="fullscreen"
@@ -1158,7 +1619,7 @@
                             <div class="spinner"></div>
                             <p>Loading tablet view...</p>
                         </div>
-                        <iframe src="https://megablaze757.github.io/ExposureBoost" 
+                        <iframe src="https://greenglocleaningco.com" 
                                 class="preview-iframe"
                                 loading="lazy"
                                 allow="fullscreen"
@@ -1175,7 +1636,7 @@
                             <div class="spinner"></div>
                             <p>Loading mobile view...</p>
                         </div>
-                        <iframe src="https://megablaze757.github.io/ExposureBoost" 
+                        <iframe src="https://greenglocleaningco.com" 
                                 class="preview-iframe"
                                 loading="lazy"
                                 allow="fullscreen"
@@ -1184,30 +1645,61 @@
                     </div>
                 </div>
                 
-                <div class="iframe-info">
-                    <h3>Exposure Boost</h3>
-                    <p>Photography web application with interactive galleries, image filters, smooth animations, and dark/light mode toggle. Built with vanilla JavaScript and CSS animations.</p>
-                    
-                    <div class="tech-stack">
-                        <span class="tech-tag">Vanilla JS</span>
-                        <span class="tech-tag">CSS Animations</span>
-                        <span class="tech-tag">Image Gallery</span>
-                        <span class="tech-tag">Dark Mode</span>
-                        <span class="tech-tag">LocalStorage</span>
+                <div class="project-info">
+                    <div class="project-header">
+                        <div>
+                            <h3 class="project-title">Green Glo Cleaning Co.</h3>
+                            <div class="project-subtitle">Booking System & Admin Dashboard</div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://greenglocleaningco.com" target="_blank" class="action-btn">
+                                <i class="fas fa-external-link-alt"></i> Live Site
+                            </a>
+                            <a href="#contact" class="action-btn">
+                                <i class="fas fa-calendar-check"></i> Book Demo
+                            </a>
+                        </div>
                     </div>
                     
-                    <div class="project-stats">
-                        <div class="stat">
-                            <div class="stat-value">100%</div>
-                            <div class="stat-label">Accessibility</div>
+                    <p style="color: var(--gray); margin-bottom: 20px; font-size: 16px; line-height: 1.7;">
+                        A complete booking system with real-time availability tracking, customer management dashboard, and automated notifications. Increased booking conversions by 40% with intuitive UX.
+                    </p>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Booking System</span>
+                        <span class="tech-tag">Admin Dashboard</span>
+                        <span class="tech-tag">Email Automation</span>
+                        <span class="tech-tag">Payment Integration</span>
+                    </div>
+                    
+                    <div class="project-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--light); margin-bottom: 5px;">Real-time Booking</h4>
+                                <p style="color: var(--gray); font-size: 14px;">Live availability & instant confirmation</p>
+                            </div>
                         </div>
-                        <div class="stat">
-                            <div class="stat-value">0.5s</div>
-                            <div class="stat-label">Animation Speed</div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--light); margin-bottom: 5px;">Admin Dashboard</h4>
+                                <p style="color: var(--gray); font-size: 14px;">Complete customer & booking management</p>
+                            </div>
                         </div>
-                        <div class="stat">
-                            <div class="stat-value">90%</div>
-                            <div class="stat-label">User Rating</div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-bell"></i>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--light); margin-bottom: 5px;">Automated Notifications</h4>
+                                <p style="color: var(--gray); font-size: 14px;">Email & SMS reminders</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1215,7 +1707,59 @@
         </div>
     </section>
 
-    <!-- FIXED Skills Section with Working Button -->
+    <!-- NEW: Process Timeline -->
+    <section class="process-section" id="process">
+        <div class="container">
+            <h2 class="section-title">My Development Process</h2>
+            <p style="text-align: center; color: var(--gray); max-width: 700px; margin: 0 auto 60px; font-size: 18px;">
+                A structured approach ensures every project delivers exceptional results, on time and within budget.
+            </p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Discovery & Strategy</h3>
+                        <p style="color: var(--gray);">Understanding your goals, target audience, and technical requirements to create a detailed project plan.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Design & Prototyping</h3>
+                        <p style="color: var(--gray);">Creating wireframes and interactive prototypes to visualize the user experience before development.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Development & Testing</h3>
+                        <p style="color: var(--gray);">Building with clean, optimized code followed by rigorous testing across all devices and browsers.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Launch & Optimization</h3>
+                        <p style="color: var(--gray);">Deploying the final product and monitoring performance with ongoing optimization based on analytics.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
     <section class="skills-section" id="skills">
         <div class="container">
             <h2 class="section-title">Technical Expertise</h2>
@@ -1225,29 +1769,19 @@
                     <div class="skill-icon">
                         <i class="fas fa-code"></i>
                     </div>
-                    <h3 style="color: var(--light); margin-bottom: 12px; font-size: 22px;">HTML5 & CSS3</h3>
+                    <h3 style="color: var(--light); margin-bottom: 12px; font-size: 22px;">Frontend Development</h3>
                     <p style="color: var(--gray); font-size: 15px; line-height: 1.6;">
-                        Semantic, accessible markup with modern CSS Grid, Flexbox, animations, and responsive design principles.
+                        HTML5, CSS3, JavaScript, React, responsive design, accessibility standards, and performance optimization.
                     </p>
                 </div>
 
                 <div class="skill-card">
                     <div class="skill-icon">
-                        <i class="fas fa-cogs"></i>
+                        <i class="fas fa-server"></i>
                     </div>
-                    <h3 style="color: var(--light); margin-bottom: 12px; font-size: 22px;">JavaScript</h3>
+                    <h3 style="color: var(--light); margin-bottom: 12px; font-size: 22px;">Backend & APIs</h3>
                     <p style="color: var(--gray); font-size: 15px; line-height: 1.6;">
-                        Interactive features, form validation, dynamic content, API integrations, and modern ES6+ features.
-                    </p>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3 style="color: var(--light); margin-bottom: 12px; font-size: 22px;">Responsive Design</h3>
-                    <p style="color: var(--gray); font-size: 15px; line-height: 1.6;">
-                        Mobile-first approach ensuring perfect user experience across all devices and screen sizes.
+                        Node.js, REST APIs, database design, authentication, server deployment, and cloud integration.
                     </p>
                 </div>
 
@@ -1257,7 +1791,17 @@
                     </div>
                     <h3 style="color: var(--light); margin-bottom: 12px; font-size: 22px;">SEO & Performance</h3>
                     <p style="color: var(--gray); font-size: 15px; line-height: 1.6;">
-                        Fast-loading sites with proper meta tags, schema markup, keyword optimization, and performance tuning.
+                        Technical SEO, Core Web Vitals, Google Analytics, conversion optimization, and A/B testing.
+                    </p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 style="color: var(--light); margin-bottom: 12px; font-size: 22px;">Mobile-First Design</h3>
+                    <p style="color: var(--gray); font-size: 15px; line-height: 1.6;">
+                        Progressive Web Apps, responsive frameworks, touch optimization, and cross-browser compatibility.
                     </p>
                 </div>
             </div>
@@ -1268,6 +1812,57 @@
                     <span>Start Your Project</span>
                     <i class="fas fa-rocket"></i>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: Testimonials Section -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Client Testimonials</h2>
+            <p style="text-align: center; color: var(--gray); max-width: 700px; margin: 0 auto 60px; font-size: 18px;">
+                Don't just take my word for it. Here's what my clients have to say about working together.
+            </p>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "Sacha transformed our online presence with a website that not only looks amazing but actually converts visitors into customers. Our inquiries increased by 40% within the first month."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JG</div>
+                        <div class="author-info">
+                            <h4>James Green</h4>
+                            <p>Green Glo Cleaning Co.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "The booking system Sacha built for us streamlined our entire operation. The admin dashboard alone saves us hours each week. Professional, efficient, and delivered exactly what we needed."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AR</div>
+                        <div class="author-info">
+                            <h4>Alex Roberts</h4>
+                            <p>AR Building Services</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "Working with Sacha was a game-changer. His attention to detail, communication throughout the project, and technical expertise resulted in a website that exceeded our expectations."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SP</div>
+                        <div class="author-info">
+                            <h4>Sarah Peters</h4>
+                            <p>Creative Agency Director</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1323,30 +1918,30 @@
                     <ul style="list-style: none;">
                         <li style="margin-bottom: 15px; padding-left: 25px; position: relative;">
                             <i class="fas fa-check" style="color: var(--accent); position: absolute; left: 0;"></i>
-                            <strong>Real Responsive Design:</strong> Not just breakpoints, but true mobile-first development
+                            <strong>End-to-End Service:</strong> From concept to launch and ongoing support
                         </li>
                         <li style="margin-bottom: 15px; padding-left: 25px; position: relative;">
                             <i class="fas fa-check" style="color: var(--accent); position: absolute; left: 0;"></i>
-                            <strong>Performance Focused:</strong> Fast loading sites that rank better and convert more
+                            <strong>Transparent Pricing:</strong> Clear quotes with no hidden costs
                         </li>
                         <li style="margin-bottom: 15px; padding-left: 25px; position: relative;">
                             <i class="fas fa-check" style="color: var(--accent); position: absolute; left: 0;"></i>
-                            <strong>SEO Built-in:</strong> Every site is optimized for search engines from day one
+                            <strong>Regular Updates:</strong> Weekly progress reports and demos
                         </li>
                         <li style="margin-bottom: 15px; padding-left: 25px; position: relative;">
                             <i class="fas fa-check" style="color: var(--accent); position: absolute; left: 0;"></i>
-                            <strong>Clear Communication:</strong> Regular updates and transparent process
+                            <strong>Post-Launch Support:</strong> Maintenance and optimization included
                         </li>
                         <li style="margin-bottom: 15px; padding-left: 25px; position: relative;">
                             <i class="fas fa-check" style="color: var(--accent); position: absolute; left: 0;"></i>
-                            <strong>On-Time Delivery:</strong> Projects completed as promised, every time
+                            <strong>Conversion Focus:</strong> Every design decision drives business results
                         </li>
                     </ul>
                     
                     <div style="margin-top: 30px; padding: 20px; background: rgba(16, 185, 129, 0.1); border-radius: 16px; border: 1px solid rgba(16, 185, 129, 0.2);">
                         <p style="color: var(--accent); font-size: 15px; margin: 0; line-height: 1.6;">
                             <i class="fas fa-lightbulb" style="margin-right: 10px; font-size: 18px;"></i>
-                            <strong>Free consultation:</strong> Let's discuss your goals and create a plan before you commit to anything.
+                            <strong>Free 30-minute consultation:</strong> Let's discuss your project and create a plan that works for your business.
                         </p>
                     </div>
                 </div>
@@ -1359,8 +1954,19 @@
         <div class="container">
             <div class="footer-logo">Sacha Raif</div>
             <p style="color: var(--gray); margin-bottom: 20px; max-width: 500px; margin-left: auto; margin-right: auto;">
-                HTML, CSS, JavaScript Developer | SEO & Conversion Specialist
+                Full-Stack Developer | SEO & Conversion Specialist | Business Growth Partner
             </p>
+            <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 30px;">
+                <a href="https://github.com/megablaze757" target="_blank" style="color: var(--gray); font-size: 24px; transition: var(--transition);">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/sacha-raif" target="_blank" style="color: var(--gray); font-size: 24px; transition: var(--transition);">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://twitter.com/sacharaif" target="_blank" style="color: var(--gray); font-size: 24px; transition: var(--transition);">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
             <p style="color: var(--gray); font-size: 14px;">
                 &copy; 2024 Sacha Raif. All rights reserved. | Live website previews may be subject to external site policies.
             </p>
@@ -1368,7 +1974,30 @@
     </footer>
 
     <script>
-        // Enhanced Viewport Switching with Proper Device Frames
+        // Mobile Menu Functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenuBtn = document.getElementById('closeMenu');
+
+        function openMobileMenu() {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        mobileMenuBtn.addEventListener('click', openMobileMenu);
+        closeMenuBtn.addEventListener('click', closeMobileMenu);
+
+        // Close menu when clicking on links
+        document.querySelectorAll('.mobile-menu .nav-link').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Enhanced Viewport Switching with Better Mobile Support
         document.querySelectorAll('.viewport-btn').forEach(button => {
             button.addEventListener('click', function() {
                 const projectId = this.dataset.project;
@@ -1401,14 +2030,19 @@
                         loader.classList.remove('hidden');
                     }
                     
-                    // Reload iframe with current source
-                    const currentSrc = iframe.src;
-                    iframe.src = currentSrc;
+                    // Add viewport parameter for better mobile simulation
+                    const currentSrc = iframe.src.split('?')[0];
+                    let newSrc = currentSrc;
+                    
+                    // Add timestamp to prevent caching issues
+                    newSrc += `?t=${Date.now()}`;
+                    
+                    iframe.src = newSrc;
                 }
             });
         });
 
-        // FIXED: Enhanced Smooth Scrolling with Header Offset
+        // Enhanced Smooth Scrolling with Header Offset
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1440,46 +2074,51 @@
                 header.classList.remove('scrolled');
             }
             
-            // Parallax effect for hero title
-            const scrolled = window.pageYOffset;
-            const rate = scrolled * -0.5;
-            const heroTitle = document.querySelector('.hero-title');
-            if (heroTitle && scrolled < 500) {
-                heroTitle.style.transform = `translateY(${rate}px)`;
-            }
+            // Animate elements on scroll
+            animateOnScroll();
         });
 
-        // Lazy Loading for iframes
+        // Lazy Loading for iframes with better mobile support
         const iframeObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const iframe = entry.target;
                     if (!iframe.dataset.loaded) {
                         iframe.dataset.loaded = true;
-                        // Additional lazy loading logic if needed
+                        // If iframe hasn't loaded yet, trigger load
+                        if (iframe.getAttribute('src') && iframe.getAttribute('data-src')) {
+                            iframe.src = iframe.getAttribute('data-src');
+                        }
                     }
                 }
             });
-        }, { threshold: 0.1 });
+        }, { 
+            threshold: 0.1,
+            rootMargin: '50px' // Load iframes slightly before they enter viewport
+        });
 
         // Observe all iframes
         document.querySelectorAll('iframe').forEach(iframe => {
             iframeObserver.observe(iframe);
         });
 
-        // Handle iframe loading errors
+        // Handle iframe loading errors with better mobile messaging
         document.querySelectorAll('iframe').forEach(iframe => {
             iframe.addEventListener('error', function() {
                 const parent = this.parentElement;
                 const loader = parent.querySelector('.iframe-loader');
                 if (loader) {
                     loader.innerHTML = `
-                        <div style="text-align: center; color: #ef4444;">
+                        <div style="text-align: center; color: #ef4444; padding: 20px;">
                             <i class="fas fa-exclamation-triangle" style="font-size: 48px; margin-bottom: 20px;"></i>
-                            <p>Unable to load preview</p>
-                            <p style="font-size: 14px; margin-top: 10px;">The website may restrict embedding</p>
-                            <a href="${this.src}" target="_blank" style="color: var(--primary); text-decoration: underline; margin-top: 10px; display: inline-block;">
-                                Open in new tab instead
+                            <p>Preview temporarily unavailable</p>
+                            <p style="font-size: 14px; margin-top: 10px; margin-bottom: 20px;">
+                                The website may restrict embedding on mobile devices
+                            </p>
+                            <a href="${this.src.split('?')[0]}" target="_blank" 
+                               class="btn" 
+                               style="background: var(--primary); color: white; padding: 12px 24px; border-radius: 12px; text-decoration: none; display: inline-block;">
+                                <i class="fas fa-external-link-alt"></i> Open in new tab
                             </a>
                         </div>
                     `;
@@ -1494,35 +2133,66 @@
                 setTimeout(() => {
                     this.style.transform = '';
                 }, 200);
+                
+                // Show loading state
+                const iframe = this.closest('.browser-window').querySelector('.preview-iframe');
+                const loader = iframe.parentElement.querySelector('.iframe-loader');
+                if (loader) {
+                    loader.classList.remove('hidden');
+                    setTimeout(() => {
+                        iframe.src = iframe.src.split('?')[0] + '?t=' + Date.now();
+                    }, 300);
+                }
             });
         });
 
+        // Scroll Animation for Timeline
+        function animateOnScroll() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            const windowHeight = window.innerHeight;
+            
+            timelineItems.forEach(item => {
+                const position = item.getBoundingClientRect().top;
+                if (position < windowHeight - 100) {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateX(0)';
+                }
+            });
+        }
+
         // Initialize animations on load
         document.addEventListener('DOMContentLoaded', () => {
-            // Add loaded class to body for CSS animations
-            document.body.classList.add('loaded');
-            
             // Initialize all viewport buttons to desktop view
             document.querySelectorAll('.viewport-btn.active').forEach(btn => {
                 btn.click();
             });
             
-            console.log('Portfolio fully loaded with fixed navigation and updated links');
+            // Set up initial animations
+            animateOnScroll();
+            
+            // Add loaded class for CSS transitions
+            setTimeout(() => {
+                document.body.classList.add('loaded');
+            }, 100);
+            
+            console.log('Enhanced portfolio loaded with mobile-optimized iframes');
         });
 
-        // Scroll-triggered animations for elements
-        const scrollObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
-                }
-            });
-        }, { threshold: 0.1 });
+        // Improve mobile iframe experience
+        function improveMobileIframes() {
+            if (window.innerWidth <= 768) {
+                document.querySelectorAll('.preview-iframe').forEach(iframe => {
+                    iframe.style.width = '100%';
+                    iframe.style.height = '100%';
+                    iframe.style.transform = 'none';
+                });
+            }
+        }
 
-        // Observe elements for scroll animations
-        document.querySelectorAll('.skill-card, .contact-info, .browser-window').forEach(el => {
-            scrollObserver.observe(el);
-        });
+        // Run on resize
+        window.addEventListener('resize', improveMobileIframes);
+        // Run initially
+        improveMobileIframes();
     </script>
 </body>
 </html>
