@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Portfolio Gallery | Sacha Raif</title> 
+    <title>Portfolio Gallery | Sacha Raif</title>
     <meta name="description" content="A curated gallery of live websites designed and built by Sacha Raif." />
     <link rel="canonical" href="https://sacharaif.com/gallery.html" />
     <meta name="theme-color" content="#05070d" />
@@ -295,7 +295,7 @@
 
         /* ── gallery hero ── */
         .gallery-hero {
-            padding: 140px 0 30px;
+            padding: 140px 0 20px;
             text-align: center;
             position: relative;
         }
@@ -343,46 +343,82 @@
             line-height: 1.7;
         }
 
-        .gallery-hero .counter {
-            margin-top: 20px;
-            font-size: 13px;
-            color: var(--gray);
-            letter-spacing: 2px;
-            font-weight: 500;
-            opacity: 0.5;
+        /* ── MAGAZINE-STYLE PROJECT ROWS ── */
+        .magazine {
+            padding: 20px 0 40px;
         }
 
-        /* ── FEATURED PROJECT (Hero card) ── */
-        .featured-project {
-            margin: 30px 0 60px;
-            position: relative;
-        }
-
-        .featured-project .featured-inner {
+        .magazine-item {
             display: grid;
-            grid-template-columns: 1.4fr 0.6fr;
+            grid-template-columns: 1.3fr 0.7fr;
             gap: 0;
+            margin-bottom: 50px;
             background: var(--surface-strong);
             border-radius: 24px;
             overflow: hidden;
             border: 1px solid var(--surface-border);
-            transition: var(--transition);
+            transition: var(--transition), background-color 0.4s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeUp 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
         }
 
-        .featured-project .featured-inner:hover {
+        .magazine-item:nth-child(1) {
+            animation-delay: 0.05s;
+        }
+        .magazine-item:nth-child(2) {
+            animation-delay: 0.12s;
+        }
+        .magazine-item:nth-child(3) {
+            animation-delay: 0.19s;
+        }
+        .magazine-item:nth-child(4) {
+            animation-delay: 0.26s;
+        }
+        .magazine-item:nth-child(5) {
+            animation-delay: 0.33s;
+        }
+        .magazine-item:nth-child(6) {
+            animation-delay: 0.40s;
+        }
+        .magazine-item:nth-child(7) {
+            animation-delay: 0.47s;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .magazine-item:hover {
+            transform: translateY(-6px);
             border-color: rgba(107, 138, 253, 0.2);
             box-shadow: var(--shadow-xl);
-            transform: translateY(-4px);
         }
 
-        .featured-project .featured-preview {
+        .magazine-item:nth-child(even) {
+            grid-template-columns: 0.7fr 1.3fr;
+        }
+        .magazine-item:nth-child(even) .mag-preview {
+            order: 2;
+        }
+        .magazine-item:nth-child(even) .mag-info {
+            order: 1;
+            padding: 40px 40px 40px 44px;
+        }
+
+        /* ── preview side ── */
+        .mag-preview {
             position: relative;
-            padding-top: 60%;
+            padding-top: 72%;
             overflow: hidden;
             background: var(--darker);
+            min-height: 280px;
         }
 
-        .featured-project .featured-preview iframe {
+        .mag-preview iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -391,9 +427,14 @@
             border: 0;
             pointer-events: none;
             background: white;
+            transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-        .featured-project .featured-preview .preview-loader {
+        .magazine-item:hover .mag-preview iframe {
+            transform: scale(1.03);
+        }
+
+        .mag-preview .preview-loader {
             position: absolute;
             inset: 0;
             background: var(--darker);
@@ -405,14 +446,14 @@
             transition: opacity 0.4s ease;
         }
 
-        .featured-project .featured-preview .preview-loader.hidden {
+        .mag-preview .preview-loader.hidden {
             opacity: 0;
             pointer-events: none;
         }
 
-        .featured-project .featured-preview .preview-loader .spinner {
-            width: 36px;
-            height: 36px;
+        .mag-preview .preview-loader .spinner {
+            width: 32px;
+            height: 32px;
             border: 3px solid rgba(59, 95, 217, 0.2);
             border-radius: 50%;
             border-top-color: var(--primary);
@@ -425,43 +466,63 @@
             }
         }
 
-        .featured-project .featured-preview .featured-badge {
+        .mag-preview .preview-loader p {
+            color: var(--gray);
+            font-size: 13px;
+        }
+
+        .mag-preview .mag-badge {
             position: absolute;
-            top: 20px;
-            left: 20px;
+            top: 18px;
+            left: 18px;
             z-index: 3;
-            background: var(--gradient);
-            padding: 6px 18px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 5px 16px;
             border-radius: 20px;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            color: #fff;
-            border: none;
+            color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             pointer-events: none;
-            box-shadow: 0 8px 24px rgba(59, 95, 217, 0.3);
         }
 
-        .featured-project .featured-info {
+        .mag-preview .mag-number {
+            position: absolute;
+            bottom: 18px;
+            right: 18px;
+            z-index: 3;
+            font-family: var(--font-display);
+            font-size: 48px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.05);
+            pointer-events: none;
+            letter-spacing: -3px;
+            line-height: 1;
+        }
+
+        /* ── info side ── */
+        .mag-info {
             padding: 40px 44px 40px 40px;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
-        .featured-project .featured-info .fi-label {
+        .mag-info .mag-tag {
             font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2.5px;
             color: var(--accent);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
-        .featured-project .featured-info .fi-title {
+        .mag-info .mag-title {
             font-family: var(--font-display);
-            font-size: 34px;
+            font-size: 32px;
             font-weight: 500;
             color: var(--light);
             letter-spacing: -0.5px;
@@ -469,28 +530,29 @@
             line-height: 1.1;
         }
 
-        .featured-project .featured-info .fi-sub {
-            font-size: 15px;
+        .mag-info .mag-sub {
+            font-size: 14px;
             color: var(--gray);
             margin-bottom: 14px;
+            font-weight: 400;
         }
 
-        .featured-project .featured-info .fi-desc {
+        .mag-info .mag-desc {
             color: var(--gray);
             font-size: 15px;
             line-height: 1.7;
-            margin-bottom: 20px;
-            max-width: 400px;
+            margin-bottom: 18px;
+            max-width: 420px;
         }
 
-        .featured-project .featured-info .fi-tech {
+        .mag-info .mag-tech {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
             margin-bottom: 22px;
         }
 
-        .featured-project .featured-info .fi-tech span {
+        .mag-info .mag-tech span {
             background: rgba(59, 95, 217, 0.08);
             color: var(--primary-light);
             padding: 4px 14px;
@@ -500,7 +562,7 @@
             border: 1px solid rgba(59, 95, 217, 0.06);
         }
 
-        .featured-project .featured-info .fi-link {
+        .mag-info .mag-link {
             display: inline-flex;
             align-items: center;
             gap: 10px;
@@ -516,180 +578,10 @@
             box-shadow: 0 8px 24px rgba(59, 95, 217, 0.2);
         }
 
-        .featured-project .featured-info .fi-link:hover {
+        .mag-info .mag-link:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 32px rgba(59, 95, 217, 0.3);
             gap: 14px;
-        }
-
-        /* ── gallery grid (compact cards) ── */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            padding: 20px 0 60px;
-        }
-
-        .grid-card {
-            background: var(--surface-strong);
-            border: 1px solid var(--surface-border);
-            border-radius: 18px;
-            overflow: hidden;
-            transition: var(--transition), background-color 0.4s ease;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .grid-card:nth-child(1) {
-            animation-delay: 0.05s;
-        }
-        .grid-card:nth-child(2) {
-            animation-delay: 0.10s;
-        }
-        .grid-card:nth-child(3) {
-            animation-delay: 0.15s;
-        }
-        .grid-card:nth-child(4) {
-            animation-delay: 0.20s;
-        }
-        .grid-card:nth-child(5) {
-            animation-delay: 0.25s;
-        }
-        .grid-card:nth-child(6) {
-            animation-delay: 0.30s;
-        }
-
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .grid-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(107, 138, 253, 0.2);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .grid-card .gc-preview {
-            position: relative;
-            padding-top: 66%;
-            overflow: hidden;
-            background: var(--darker);
-        }
-
-        .grid-card .gc-preview iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-            pointer-events: none;
-            background: white;
-            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-
-        .grid-card:hover .gc-preview iframe {
-            transform: scale(1.04);
-        }
-
-        .grid-card .gc-preview .gc-loader {
-            position: absolute;
-            inset: 0;
-            background: var(--darker);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 2;
-            transition: opacity 0.4s ease;
-        }
-
-        .grid-card .gc-preview .gc-loader.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .grid-card .gc-preview .gc-loader .spinner {
-            width: 28px;
-            height: 28px;
-            border: 3px solid rgba(59, 95, 217, 0.2);
-            border-radius: 50%;
-            border-top-color: var(--primary);
-            animation: spin 1s linear infinite;
-            margin-bottom: 10px;
-        }
-
-        .grid-card .gc-preview .gc-badge {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            z-index: 3;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(8px);
-            padding: 3px 12px;
-            border-radius: 16px;
-            font-size: 9px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            pointer-events: none;
-        }
-
-        .grid-card .gc-info {
-            padding: 18px 20px 22px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .grid-card .gc-info .gc-title {
-            font-size: 17px;
-            font-weight: 700;
-            color: var(--light);
-            margin-bottom: 2px;
-        }
-
-        .grid-card .gc-info .gc-sub {
-            font-size: 12px;
-            color: var(--gray);
-            margin-bottom: 10px;
-        }
-
-        .grid-card .gc-info .gc-desc {
-            color: var(--gray);
-            font-size: 13px;
-            line-height: 1.6;
-            margin-bottom: 14px;
-            flex: 1;
-        }
-
-        .grid-card .gc-info .gc-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--primary-light);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 13px;
-            transition: var(--transition);
-            align-self: flex-start;
-        }
-
-        .grid-card .gc-info .gc-link:hover {
-            gap: 12px;
-            color: var(--light);
-        }
-
-        .grid-card .gc-info .gc-link i {
-            font-size: 12px;
         }
 
         /* ── cta ── */
@@ -805,25 +697,30 @@
         }
 
         /* ── responsive ── */
-        @media (max-width: 992px) {
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
+        @media (max-width: 900px) {
+            .magazine-item {
+                grid-template-columns: 1fr !important;
+                margin-bottom: 36px;
             }
-        }
-
-        @media (max-width: 820px) {
-            .featured-project .featured-inner {
-                grid-template-columns: 1fr;
+            .magazine-item:nth-child(even) .mag-preview {
+                order: 1;
             }
-            .featured-project .featured-preview {
+            .magazine-item:nth-child(even) .mag-info {
+                padding: 24px 28px 32px !important;
+                order: 2;
+            }
+            .mag-info {
+                padding: 24px 28px 32px !important;
+            }
+            .mag-preview {
+                min-height: 200px;
                 padding-top: 56%;
             }
-            .featured-project .featured-info {
-                padding: 28px 30px 32px;
+            .mag-info .mag-title {
+                font-size: 26px;
             }
-            .featured-project .featured-info .fi-title {
-                font-size: 28px;
+            .mag-preview .mag-number {
+                font-size: 36px;
             }
         }
 
@@ -835,18 +732,19 @@
                 display: block;
             }
             .gallery-hero {
-                padding: 120px 0 20px;
+                padding: 120px 0 10px;
             }
             .gallery-hero h1 {
                 font-size: 32px;
             }
-            .gallery-grid {
-                grid-template-columns: 1fr;
-                gap: 18px;
-                padding: 10px 0 40px;
+            .magazine {
+                padding: 10px 0 20px;
             }
-            .grid-card .gc-preview {
-                padding-top: 56%;
+            .mag-info .mag-title {
+                font-size: 22px;
+            }
+            .mag-info .mag-desc {
+                font-size: 14px;
             }
             .whatsapp-float {
                 bottom: 18px;
@@ -854,6 +752,11 @@
                 width: 52px;
                 height: 52px;
                 font-size: 24px;
+            }
+            .mag-preview .mag-number {
+                font-size: 28px;
+                bottom: 14px;
+                right: 14px;
             }
         }
 
@@ -867,17 +770,37 @@
             .gallery-hero p {
                 font-size: 15px;
             }
-            .featured-project .featured-info .fi-title {
-                font-size: 24px;
+            .magazine-item {
+                border-radius: 16px;
+                margin-bottom: 24px;
             }
-            .featured-project .featured-info .fi-desc {
-                font-size: 14px;
+            .mag-info .mag-title {
+                font-size: 20px;
             }
-            .grid-card .gc-info .gc-title {
-                font-size: 16px;
+            .mag-info .mag-sub {
+                font-size: 12px;
             }
-            .grid-card .gc-info .gc-desc {
+            .mag-info .mag-desc {
                 font-size: 13px;
+            }
+            .mag-preview {
+                min-height: 160px;
+                padding-top: 60%;
+            }
+            .mag-info .mag-link {
+                font-size: 13px;
+                padding: 10px 18px;
+            }
+            .mag-preview .mag-number {
+                font-size: 22px;
+                bottom: 12px;
+                right: 12px;
+            }
+            .mag-preview .mag-badge {
+                font-size: 9px;
+                padding: 4px 12px;
+                top: 14px;
+                left: 14px;
             }
             .whatsapp-float {
                 width: 48px;
@@ -889,8 +812,7 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .grid-card,
-            .featured-project .featured-inner {
+            .magazine-item {
                 animation-play-state: running !important;
                 transition: none !important;
             }
@@ -994,135 +916,169 @@
             <div class="hero-eyebrow">Portfolio Gallery</div>
             <h1>Every site, <em>in one place</em></h1>
             <p>Live previews of every website I've designed and built — from photography apps to trade and service businesses.</p>
-            <div class="counter">07 projects</div>
         </div>
     </section>
 
     <!-- ============================================================
-    FEATURED PROJECT — Exposure Boost (Hero card)
+    MAGAZINE-STYLE PROJECT ROWS
     ============================================================ -->
-    <section class="featured-project">
+    <section class="magazine">
         <div class="container">
-            <div class="featured-inner">
-                <div class="featured-preview">
-                    <div class="preview-loader" id="f-loader"><div class="spinner"></div><p>Loading...</p></div>
-                    <iframe src="https://exposureboost.co.uk" loading="lazy" onload="document.getElementById('f-loader').classList.add('hidden')"></iframe>
-                    <span class="featured-badge">Featured</span>
+
+            <!-- 1. Exposure Boost -->
+            <div class="magazine-item">
+                <div class="mag-preview">
+                    <div class="preview-loader" id="g-loader-1"><div class="spinner"></div><p>Loading...</p></div>
+                    <iframe src="https://exposureboost.co.uk" loading="lazy" onload="document.getElementById('g-loader-1').classList.add('hidden')"></iframe>
+                    <span class="mag-badge">Featured</span>
+                    <span class="mag-number">01</span>
                 </div>
-                <div class="featured-info">
-                    <div class="fi-label">Web App</div>
-                    <div class="fi-title">Exposure Boost</div>
-                    <div class="fi-sub">Photography Web App</div>
-                    <p class="fi-desc">Interactive galleries, real-time image filters, and dark/light mode — built with vanilla JavaScript.</p>
-                    <div class="fi-tech">
+                <div class="mag-info">
+                    <div class="mag-tag">Web App</div>
+                    <div class="mag-title">Exposure Boost</div>
+                    <div class="mag-sub">Photography Web App</div>
+                    <p class="mag-desc">Interactive galleries, real-time image filters, and dark/light mode — built with vanilla JavaScript.</p>
+                    <div class="mag-tech">
                         <span>JavaScript</span>
                         <span>CSS</span>
                         <span>LocalStorage</span>
                     </div>
-                    <a href="https://exposureboost.co.uk" target="_blank" class="fi-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
+                    <a href="https://exposureboost.co.uk" target="_blank" class="mag-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- ============================================================
-    GALLERY GRID — All other projects
-    ============================================================ -->
-    <section class="gallery-grid-section">
-        <div class="container">
-            <div class="gallery-grid">
-
-                <!-- Hamilton Decorating -->
-                <div class="grid-card">
-                    <div class="gc-preview">
-                        <div class="gc-loader" id="g-loader-1"><div class="spinner"></div><p style="color:var(--gray);font-size:11px;">Loading...</p></div>
-                        <iframe src="https://megablaze757.github.io/HamiltonDecorating" loading="lazy" onload="document.getElementById('g-loader-1').classList.add('hidden')"></iframe>
-                        <span class="gc-badge">Live</span>
-                    </div>
-                    <div class="gc-info">
-                        <div class="gc-title">Hamilton Decorating</div>
-                        <div class="gc-sub">Decorating &amp; Interiors</div>
-                        <p class="gc-desc">Clean, service-led site for a decorating business with quote requests.</p>
-                        <a href="https://megablaze757.github.io/HamiltonDecorating" target="_blank" class="gc-link">Visit Site <i class="fas fa-arrow-right"></i></a>
-                    </div>
+            <!-- 2. Hamilton Decorating -->
+            <div class="magazine-item">
+                <div class="mag-preview">
+                    <div class="preview-loader" id="g-loader-2"><div class="spinner"></div><p>Loading...</p></div>
+                    <iframe src="https://megablaze757.github.io/HamiltonDecorating" loading="lazy" onload="document.getElementById('g-loader-2').classList.add('hidden')"></iframe>
+                    <span class="mag-badge">Live</span>
+                    <span class="mag-number">02</span>
                 </div>
-
-                <!-- AR Building -->
-                <div class="grid-card">
-                    <div class="gc-preview">
-                        <div class="gc-loader" id="g-loader-2"><div class="spinner"></div><p style="color:var(--gray);font-size:11px;">Loading...</p></div>
-                        <iframe src="https://arbuildingservices.co.uk" loading="lazy" onload="document.getElementById('g-loader-2').classList.add('hidden')"></iframe>
-                        <span class="gc-badge">Live</span>
+                <div class="mag-info">
+                    <div class="mag-tag">Service Site</div>
+                    <div class="mag-title">Hamilton Decorating</div>
+                    <div class="mag-sub">Decorating &amp; Interiors</div>
+                    <p class="mag-desc">A clean, service-led website for a decorating business, showcasing work and making it easy to request a quote.</p>
+                    <div class="mag-tech">
+                        <span>HTML/CSS</span>
+                        <span>Service Pages</span>
+                        <span>Contact Forms</span>
                     </div>
-                    <div class="gc-info">
-                        <div class="gc-title">AR Building Services</div>
-                        <div class="gc-sub">Construction Company</div>
-                        <p class="gc-desc">Lead-gen site with local SEO. 35% increase in inquiries.</p>
-                        <a href="https://arbuildingservices.co.uk" target="_blank" class="gc-link">Visit Site <i class="fas fa-arrow-right"></i></a>
-                    </div>
+                    <a href="https://megablaze757.github.io/HamiltonDecorating" target="_blank" class="mag-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
                 </div>
-
-                <!-- Green Glo -->
-                <div class="grid-card">
-                    <div class="gc-preview">
-                        <div class="gc-loader" id="g-loader-3"><div class="spinner"></div><p style="color:var(--gray);font-size:11px;">Loading...</p></div>
-                        <iframe src="https://greenglocleaningco.com" loading="lazy" onload="document.getElementById('g-loader-3').classList.add('hidden')"></iframe>
-                        <span class="gc-badge">Live</span>
-                    </div>
-                    <div class="gc-info">
-                        <div class="gc-title">Green Glo Cleaning</div>
-                        <div class="gc-sub">Booking System</div>
-                        <p class="gc-desc">Real-time booking &amp; admin dashboard. 40% conversion increase.</p>
-                        <a href="https://greenglocleaningco.com" target="_blank" class="gc-link">Visit Site <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- JR Sash -->
-                <div class="grid-card">
-                    <div class="gc-preview">
-                        <div class="gc-loader" id="g-loader-4"><div class="spinner"></div><p style="color:var(--gray);font-size:11px;">Loading...</p></div>
-                        <iframe src="https://jrsashsolutions.co.uk" loading="lazy" onload="document.getElementById('g-loader-4').classList.add('hidden')"></iframe>
-                        <span class="gc-badge">Live</span>
-                    </div>
-                    <div class="gc-info">
-                        <div class="gc-title">JR Sash Solutions</div>
-                        <div class="gc-sub">Heritage Restoration</div>
-                        <p class="gc-desc">Conversion-focused site with verified reviews and enquiry flow.</p>
-                        <a href="https://jrsashsolutions.co.uk" target="_blank" class="gc-link">Visit Site <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- 203 Carpentry -->
-                <div class="grid-card">
-                    <div class="gc-preview">
-                        <div class="gc-loader" id="g-loader-5"><div class="spinner"></div><p style="color:var(--gray);font-size:11px;">Loading...</p></div>
-                        <iframe src="https://203carpentry.co.uk" loading="lazy" onload="document.getElementById('g-loader-5').classList.add('hidden')"></iframe>
-                        <span class="gc-badge">Live</span>
-                    </div>
-                    <div class="gc-info">
-                        <div class="gc-title">203 Carpentry</div>
-                        <div class="gc-sub">Carpentry &amp; Joinery</div>
-                        <p class="gc-desc">Service-led site showcasing work with quote request flow.</p>
-                        <a href="https://203carpentry.co.uk" target="_blank" class="gc-link">Visit Site <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Hastings Build Co -->
-                <div class="grid-card">
-                    <div class="gc-preview">
-                        <div class="gc-loader" id="g-loader-6"><div class="spinner"></div><p style="color:var(--gray);font-size:11px;">Loading...</p></div>
-                        <iframe src="https://megablaze757.github.io/HastingsBuildCo" loading="lazy" onload="document.getElementById('g-loader-6').classList.add('hidden')"></iframe>
-                        <span class="gc-badge">Live</span>
-                    </div>
-                    <div class="gc-info">
-                        <div class="gc-title">Hastings Build Co</div>
-                        <div class="gc-sub">Construction &amp; Renovation</div>
-                        <p class="gc-desc">Bold, trustworthy site for a construction company with 30+ years experience.</p>
-                        <a href="https://megablaze757.github.io/HastingsBuildCo" target="_blank" class="gc-link">Visit Site <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
             </div>
+
+            <!-- 3. AR Building -->
+            <div class="magazine-item">
+                <div class="mag-preview">
+                    <div class="preview-loader" id="g-loader-3"><div class="spinner"></div><p>Loading...</p></div>
+                    <iframe src="https://arbuildingservices.co.uk" loading="lazy" onload="document.getElementById('g-loader-3').classList.add('hidden')"></iframe>
+                    <span class="mag-badge">Live</span>
+                    <span class="mag-number">03</span>
+                </div>
+                <div class="mag-info">
+                    <div class="mag-tag">Lead Gen</div>
+                    <div class="mag-title">AR Building Services</div>
+                    <div class="mag-sub">Construction Company</div>
+                    <p class="mag-desc">Lead-generation site optimized for local SEO with strategic CTAs and a project gallery. 35% increase in inquiries.</p>
+                    <div class="mag-tech">
+                        <span>HTML/CSS</span>
+                        <span>Local SEO</span>
+                        <span>Lead Gen</span>
+                    </div>
+                    <a href="https://arbuildingservices.co.uk" target="_blank" class="mag-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
+                </div>
+            </div>
+
+            <!-- 4. Green Glo -->
+            <div class="magazine-item">
+                <div class="mag-preview">
+                    <div class="preview-loader" id="g-loader-4"><div class="spinner"></div><p>Loading...</p></div>
+                    <iframe src="https://greenglocleaningco.com" loading="lazy" onload="document.getElementById('g-loader-4').classList.add('hidden')"></iframe>
+                    <span class="mag-badge">Live</span>
+                    <span class="mag-number">04</span>
+                </div>
+                <div class="mag-info">
+                    <div class="mag-tag">Web App</div>
+                    <div class="mag-title">Green Glo Cleaning</div>
+                    <div class="mag-sub">Booking System</div>
+                    <p class="mag-desc">Real-time booking, admin dashboard, and automated notifications. 40% increase in booking conversions.</p>
+                    <div class="mag-tech">
+                        <span>JavaScript</span>
+                        <span>Booking System</span>
+                        <span>Dashboard</span>
+                    </div>
+                    <a href="https://greenglocleaningco.com" target="_blank" class="mag-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
+                </div>
+            </div>
+
+            <!-- 5. JR Sash -->
+            <div class="magazine-item">
+                <div class="mag-preview">
+                    <div class="preview-loader" id="g-loader-5"><div class="spinner"></div><p>Loading...</p></div>
+                    <iframe src="https://jrsashsolutions.co.uk" loading="lazy" onload="document.getElementById('g-loader-5').classList.add('hidden')"></iframe>
+                    <span class="mag-badge">Live</span>
+                    <span class="mag-number">05</span>
+                </div>
+                <div class="mag-info">
+                    <div class="mag-tag">Lead Gen</div>
+                    <div class="mag-title">JR Sash Solutions</div>
+                    <div class="mag-sub">Heritage Restoration</div>
+                    <p class="mag-desc">Conversion-focused site with verified reviews, clear service breakdowns, and a simple enquiry flow.</p>
+                    <div class="mag-tech">
+                        <span>Lead Gen</span>
+                        <span>Reviews</span>
+                        <span>Forms</span>
+                    </div>
+                    <a href="https://jrsashsolutions.co.uk" target="_blank" class="mag-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
+                </div>
+            </div>
+
+            <!-- 6. 203 Carpentry -->
+            <div class="magazine-item">
+                <div class="mag-preview">
+                    <div class="preview-loader" id="g-loader-6"><div class="spinner"></div><p>Loading...</p></div>
+                    <iframe src="https://203carpentry.co.uk" loading="lazy" onload="document.getElementById('g-loader-6').classList.add('hidden')"></iframe>
+                    <span class="mag-badge">Live</span>
+                    <span class="mag-number">06</span>
+                </div>
+                <div class="mag-info">
+                    <div class="mag-tag">Service Site</div>
+                    <div class="mag-title">203 Carpentry</div>
+                    <div class="mag-sub">Carpentry &amp; Joinery</div>
+                    <p class="mag-desc">Clean, service-led website showcasing completed work with a simple quote request flow.</p>
+                    <div class="mag-tech">
+                        <span>HTML/CSS</span>
+                        <span>Service Pages</span>
+                        <span>Contact Forms</span>
+                    </div>
+                    <a href="https://203carpentry.co.uk" target="_blank" class="mag-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
+                </div>
+            </div>
+
+            <!-- 7. Hastings Build Co -->
+            <div class="magazine-item">
+                <div class="mag-preview">
+                    <div class="preview-loader" id="g-loader-7"><div class="spinner"></div><p>Loading...</p></div>
+                    <iframe src="https://megablaze757.github.io/HastingsBuildCo" loading="lazy" onload="document.getElementById('g-loader-7').classList.add('hidden')"></iframe>
+                    <span class="mag-badge">Live</span>
+                    <span class="mag-number">07</span>
+                </div>
+                <div class="mag-info">
+                    <div class="mag-tag">Lead Gen</div>
+                    <div class="mag-title">Hastings Build Co</div>
+                    <div class="mag-sub">Construction &amp; Renovation</div>
+                    <p class="mag-desc">A bold, trustworthy site for a construction company with 30+ years of experience, featuring project galleries and service breakdowns.</p>
+                    <div class="mag-tech">
+                        <span>HTML/CSS</span>
+                        <span>Local SEO</span>
+                        <span>Project Gallery</span>
+                    </div>
+                    <a href="https://megablaze757.github.io/HastingsBuildCo" target="_blank" class="mag-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -1237,12 +1193,12 @@
             }
             animateRing();
 
-            document.querySelectorAll('a, button, .grid-card, .featured-inner').forEach(el => {
+            document.querySelectorAll('a, button, .magazine-item').forEach(el => {
                 el.addEventListener('mouseenter', () => ring.classList.add('cursor-hover'));
                 el.addEventListener('mouseleave', () => ring.classList.remove('cursor-hover'));
             });
 
-            document.querySelectorAll('.btn, .theme-toggle, .fi-link, .gc-link').forEach(btn => {
+            document.querySelectorAll('.btn, .theme-toggle, .mag-link').forEach(btn => {
                 btn.style.transition =
                     'transform 0.15s ease-out, background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease, gap 0.35s ease';
                 btn.addEventListener('mousemove', (e) => {
@@ -1253,6 +1209,23 @@
                 });
                 btn.addEventListener('mouseleave', () => {
                     btn.style.transform = '';
+                });
+            });
+
+            document.querySelectorAll('.magazine-item').forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    item.style.transition = 'none';
+                });
+                item.addEventListener('mousemove', (e) => {
+                    const r = item.getBoundingClientRect();
+                    const px = (e.clientX - r.left) / r.width - 0.5;
+                    const py = (e.clientY - r.top) / r.height - 0.5;
+                    item.style.transform =
+                        `perspective(1200px) rotateX(${-py * 2.5}deg) rotateY(${px * 2.5}deg) translateY(-6px)`;
+                });
+                item.addEventListener('mouseleave', () => {
+                    item.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                    item.style.transform = '';
                 });
             });
         })();
@@ -1306,7 +1279,7 @@
         });
 
         // ── Hide loaders after timeout ──
-        document.querySelectorAll('.preview-loader, .gc-loader').forEach(loader => {
+        document.querySelectorAll('.preview-loader').forEach(loader => {
             setTimeout(() => loader.classList.add('hidden'), 4000);
         });
     </script>
