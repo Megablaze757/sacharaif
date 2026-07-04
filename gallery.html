@@ -345,21 +345,21 @@
 
         /* ── MAGAZINE-STYLE PROJECT ROWS ── */
         .magazine {
-            padding: 20px 0 40px;
+            padding: 10px 0 20px;
         }
 
         .magazine-item {
             display: grid;
             grid-template-columns: 1.3fr 0.7fr;
             gap: 0;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             background: var(--surface-strong);
-            border-radius: 24px;
+            border-radius: 20px;
             overflow: hidden;
             border: 1px solid var(--surface-border);
             transition: var(--transition), background-color 0.4s ease;
             opacity: 0;
-            transform: translateY(50px);
+            transform: translateY(40px);
             animation: fadeUp 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
         }
 
@@ -367,22 +367,19 @@
             animation-delay: 0.05s;
         }
         .magazine-item:nth-child(2) {
-            animation-delay: 0.12s;
+            animation-delay: 0.10s;
         }
         .magazine-item:nth-child(3) {
-            animation-delay: 0.19s;
+            animation-delay: 0.15s;
         }
         .magazine-item:nth-child(4) {
-            animation-delay: 0.26s;
+            animation-delay: 0.20s;
         }
         .magazine-item:nth-child(5) {
-            animation-delay: 0.33s;
+            animation-delay: 0.25s;
         }
         .magazine-item:nth-child(6) {
-            animation-delay: 0.40s;
-        }
-        .magazine-item:nth-child(7) {
-            animation-delay: 0.47s;
+            animation-delay: 0.30s;
         }
 
         @keyframes fadeUp {
@@ -393,7 +390,7 @@
         }
 
         .magazine-item:hover {
-            transform: translateY(-6px);
+            transform: translateY(-4px);
             border-color: rgba(107, 138, 253, 0.2);
             box-shadow: var(--shadow-xl);
         }
@@ -406,16 +403,16 @@
         }
         .magazine-item:nth-child(even) .mag-info {
             order: 1;
-            padding: 40px 40px 40px 44px;
+            padding: 32px 36px 32px 40px;
         }
 
         /* ── preview side ── */
         .mag-preview {
             position: relative;
-            padding-top: 72%;
+            padding-top: 70%;
             overflow: hidden;
             background: var(--darker);
-            min-height: 280px;
+            min-height: 260px;
         }
 
         .mag-preview iframe {
@@ -452,13 +449,13 @@
         }
 
         .mag-preview .preview-loader .spinner {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             border: 3px solid rgba(59, 95, 217, 0.2);
             border-radius: 50%;
             border-top-color: var(--primary);
             animation: spin 1s linear infinite;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
         @keyframes spin {
             to {
@@ -468,19 +465,19 @@
 
         .mag-preview .preview-loader p {
             color: var(--gray);
-            font-size: 13px;
+            font-size: 12px;
         }
 
         .mag-preview .mag-badge {
             position: absolute;
-            top: 18px;
-            left: 18px;
+            top: 16px;
+            left: 16px;
             z-index: 3;
             background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(10px);
-            padding: 5px 16px;
-            border-radius: 20px;
-            font-size: 10px;
+            padding: 4px 14px;
+            border-radius: 18px;
+            font-size: 9px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1.5px;
@@ -491,11 +488,11 @@
 
         .mag-preview .mag-number {
             position: absolute;
-            bottom: 18px;
-            right: 18px;
+            bottom: 14px;
+            right: 16px;
             z-index: 3;
             font-family: var(--font-display);
-            font-size: 48px;
+            font-size: 40px;
             font-weight: 500;
             color: rgba(255, 255, 255, 0.05);
             pointer-events: none;
@@ -505,59 +502,59 @@
 
         /* ── info side ── */
         .mag-info {
-            padding: 40px 44px 40px 40px;
+            padding: 32px 40px 32px 36px;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
         .mag-info .mag-tag {
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2.5px;
             color: var(--accent);
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .mag-info .mag-title {
             font-family: var(--font-display);
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 500;
             color: var(--light);
             letter-spacing: -0.5px;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
             line-height: 1.1;
         }
 
         .mag-info .mag-sub {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--gray);
-            margin-bottom: 14px;
+            margin-bottom: 12px;
             font-weight: 400;
         }
 
         .mag-info .mag-desc {
             color: var(--gray);
-            font-size: 15px;
+            font-size: 14px;
             line-height: 1.7;
-            margin-bottom: 18px;
-            max-width: 420px;
+            margin-bottom: 16px;
+            max-width: 400px;
         }
 
         .mag-info .mag-tech {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 22px;
+            gap: 5px;
+            margin-bottom: 18px;
         }
 
         .mag-info .mag-tech span {
             background: rgba(59, 95, 217, 0.08);
             color: var(--primary-light);
-            padding: 4px 14px;
-            border-radius: 16px;
-            font-size: 11px;
+            padding: 3px 12px;
+            border-radius: 14px;
+            font-size: 10px;
             font-weight: 500;
             border: 1px solid rgba(59, 95, 217, 0.06);
         }
@@ -569,10 +566,10 @@
             color: #fff;
             text-decoration: none;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
             background: var(--gradient);
-            padding: 12px 26px;
-            border-radius: 12px;
+            padding: 10px 22px;
+            border-radius: 10px;
             transition: var(--transition);
             align-self: flex-start;
             box-shadow: 0 8px 24px rgba(59, 95, 217, 0.2);
@@ -587,12 +584,12 @@
         /* ── cta ── */
         .gallery-cta {
             text-align: center;
-            padding: 20px 0 100px;
+            padding: 10px 0 80px;
         }
 
         .gallery-cta p {
             color: var(--gray);
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             font-size: 17px;
         }
 
@@ -700,27 +697,34 @@
         @media (max-width: 900px) {
             .magazine-item {
                 grid-template-columns: 1fr !important;
-                margin-bottom: 36px;
+                margin-bottom: 30px;
+                border-radius: 16px;
             }
             .magazine-item:nth-child(even) .mag-preview {
                 order: 1;
             }
             .magazine-item:nth-child(even) .mag-info {
-                padding: 24px 28px 32px !important;
+                padding: 20px 22px 26px !important;
                 order: 2;
             }
             .mag-info {
-                padding: 24px 28px 32px !important;
+                padding: 20px 22px 26px !important;
             }
             .mag-preview {
-                min-height: 200px;
+                min-height: 180px;
                 padding-top: 56%;
             }
             .mag-info .mag-title {
-                font-size: 26px;
+                font-size: 22px;
+            }
+            .mag-info .mag-desc {
+                font-size: 13px;
+                max-width: 100%;
             }
             .mag-preview .mag-number {
-                font-size: 36px;
+                font-size: 30px;
+                bottom: 12px;
+                right: 14px;
             }
         }
 
@@ -735,16 +739,27 @@
                 padding: 120px 0 10px;
             }
             .gallery-hero h1 {
-                font-size: 32px;
+                font-size: 30px;
             }
             .magazine {
-                padding: 10px 0 20px;
+                padding: 0;
+            }
+            .magazine-item {
+                margin-bottom: 24px;
+                border-radius: 14px;
             }
             .mag-info .mag-title {
-                font-size: 22px;
+                font-size: 20px;
             }
-            .mag-info .mag-desc {
-                font-size: 14px;
+            .mag-info .mag-sub {
+                font-size: 12px;
+            }
+            .mag-preview {
+                min-height: 160px;
+                padding-top: 56%;
+            }
+            .mag-preview .mag-number {
+                font-size: 26px;
             }
             .whatsapp-float {
                 bottom: 18px;
@@ -753,54 +768,71 @@
                 height: 52px;
                 font-size: 24px;
             }
-            .mag-preview .mag-number {
-                font-size: 28px;
-                bottom: 14px;
-                right: 14px;
-            }
         }
 
         @media (max-width: 480px) {
             .container {
-                padding: 0 16px;
+                padding: 0 14px;
+            }
+            .gallery-hero {
+                padding: 110px 0 6px;
             }
             .gallery-hero h1 {
-                font-size: 28px;
+                font-size: 26px;
             }
             .gallery-hero p {
-                font-size: 15px;
+                font-size: 14px;
             }
             .magazine-item {
-                border-radius: 16px;
-                margin-bottom: 24px;
+                margin-bottom: 18px;
+                border-radius: 12px;
             }
             .mag-info .mag-title {
-                font-size: 20px;
+                font-size: 18px;
             }
             .mag-info .mag-sub {
-                font-size: 12px;
+                font-size: 11px;
+                margin-bottom: 8px;
             }
             .mag-info .mag-desc {
                 font-size: 13px;
+                margin-bottom: 12px;
             }
-            .mag-preview {
-                min-height: 160px;
-                padding-top: 60%;
+            .mag-info .mag-tech {
+                margin-bottom: 14px;
+            }
+            .mag-info .mag-tech span {
+                font-size: 9px;
+                padding: 2px 10px;
             }
             .mag-info .mag-link {
-                font-size: 13px;
-                padding: 10px 18px;
+                font-size: 12px;
+                padding: 8px 18px;
+            }
+            .mag-preview {
+                min-height: 140px;
+                padding-top: 56%;
             }
             .mag-preview .mag-number {
-                font-size: 22px;
-                bottom: 12px;
+                font-size: 20px;
+                bottom: 10px;
                 right: 12px;
             }
             .mag-preview .mag-badge {
-                font-size: 9px;
-                padding: 4px 12px;
-                top: 14px;
-                left: 14px;
+                font-size: 8px;
+                padding: 3px 10px;
+                top: 12px;
+                left: 12px;
+            }
+            .gallery-cta {
+                padding: 0 0 60px;
+            }
+            .gallery-cta p {
+                font-size: 15px;
+            }
+            .btn {
+                font-size: 14px;
+                padding: 14px 26px;
             }
             .whatsapp-float {
                 width: 48px;
@@ -1057,28 +1089,6 @@
                 </div>
             </div>
 
-            <!-- 7. Hastings Build Co -->
-            <div class="magazine-item">
-                <div class="mag-preview">
-                    <div class="preview-loader" id="g-loader-7"><div class="spinner"></div><p>Loading...</p></div>
-                    <iframe src="https://megablaze757.github.io/HastingsBuildCo" loading="lazy" onload="document.getElementById('g-loader-7').classList.add('hidden')"></iframe>
-                    <span class="mag-badge">Live</span>
-                    <span class="mag-number">07</span>
-                </div>
-                <div class="mag-info">
-                    <div class="mag-tag">Lead Gen</div>
-                    <div class="mag-title">Hastings Build Co</div>
-                    <div class="mag-sub">Construction &amp; Renovation</div>
-                    <p class="mag-desc">A bold, trustworthy site for a construction company with 30+ years of experience, featuring project galleries and service breakdowns.</p>
-                    <div class="mag-tech">
-                        <span>HTML/CSS</span>
-                        <span>Local SEO</span>
-                        <span>Project Gallery</span>
-                    </div>
-                    <a href="https://megablaze757.github.io/HastingsBuildCo" target="_blank" class="mag-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
-                </div>
-            </div>
-
         </div>
     </section>
 
@@ -1209,23 +1219,6 @@
                 });
                 btn.addEventListener('mouseleave', () => {
                     btn.style.transform = '';
-                });
-            });
-
-            document.querySelectorAll('.magazine-item').forEach(item => {
-                item.addEventListener('mouseenter', () => {
-                    item.style.transition = 'none';
-                });
-                item.addEventListener('mousemove', (e) => {
-                    const r = item.getBoundingClientRect();
-                    const px = (e.clientX - r.left) / r.width - 0.5;
-                    const py = (e.clientY - r.top) / r.height - 0.5;
-                    item.style.transform =
-                        `perspective(1200px) rotateX(${-py * 2.5}deg) rotateY(${px * 2.5}deg) translateY(-6px)`;
-                });
-                item.addEventListener('mouseleave', () => {
-                    item.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-                    item.style.transform = '';
                 });
             });
         })();
