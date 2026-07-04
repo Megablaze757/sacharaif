@@ -560,7 +560,6 @@
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
         }
 
-        /* ── reel controls ── */
         .reel-controls {
             position: absolute;
             bottom: 40px;
@@ -610,7 +609,6 @@
             transform: scale(1.2);
         }
 
-        /* ── slide backgrounds ── */
         .slide-bg-1 {
             background: radial-gradient(ellipse at 30% 40%, #1a2a6c, #0d1b2a 70%);
         }
@@ -627,23 +625,6 @@
             background: radial-gradient(ellipse at 70% 50%, #2d1a4a, #0d0a1a 70%);
         }
 
-        .slide-accent-1 {
-            color: #6b8afd;
-        }
-        .slide-accent-2 {
-            color: #e0c393;
-        }
-        .slide-accent-3 {
-            color: #6bd9a8;
-        }
-        .slide-accent-4 {
-            color: #ef8a6b;
-        }
-        .slide-accent-5 {
-            color: #a78bfa;
-        }
-
-        /* ── responsive reel ── */
         @media (max-width: 768px) {
             .brand-reel {
                 min-height: 500px;
@@ -702,22 +683,54 @@
 
         /* ── IFRAME SHOWCASE ── */
         .iframe-showcase {
-            padding: 100px 0;
+            padding: 80px 0 100px;
             background: var(--grad-work);
             position: relative;
             overflow: hidden;
         }
 
         .iframe-showcase .section-title {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .iframe-showcase .section-sub {
             text-align: center;
             color: var(--gray);
-            max-width: 700px;
+            max-width: 600px;
             margin: 0 auto 50px;
-            font-size: 18px;
+            font-size: 17px;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(34px, 4.2vw, 48px);
+            font-weight: 500;
+            letter-spacing: -0.3px;
+            text-align: center;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+            will-change: transform, opacity;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 48px;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 3px;
+            animation: lineExpand 1s ease 0.5s forwards;
+            transform-origin: center;
+            transform: scaleX(0);
+        }
+        @keyframes lineExpand {
+            to {
+                transform: translateX(-50%) scaleX(1);
+            }
         }
 
         .browser-window {
@@ -727,7 +740,7 @@
             box-shadow: var(--shadow-xl);
             border: 1px solid var(--surface-border);
             transition: var(--transition), background-color 0.4s ease;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             opacity: 0;
             transform: translateY(30px);
             animation: fadeInUp 0.8s ease forwards;
@@ -735,24 +748,24 @@
         }
 
         .browser-window:nth-child(1) {
-            animation-delay: 0.1s;
+            animation-delay: 0.08s;
         }
         .browser-window:nth-child(2) {
-            animation-delay: 0.2s;
+            animation-delay: 0.16s;
         }
         .browser-window:nth-child(3) {
-            animation-delay: 0.3s;
+            animation-delay: 0.24s;
         }
         .browser-window:nth-child(4) {
-            animation-delay: 0.4s;
+            animation-delay: 0.32s;
         }
         .browser-window:nth-child(5) {
-            animation-delay: 0.5s;
+            animation-delay: 0.40s;
         }
 
         .browser-window:hover {
             border-color: rgba(107, 138, 253, 0.3);
-            transform: translateY(-6px);
+            transform: translateY(-4px);
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
         }
 
@@ -802,12 +815,12 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-            min-width: 120px;
+            min-width: 100px;
         }
 
         .viewport-controls {
             display: flex;
-            gap: 5px;
+            gap: 4px;
             background: var(--surface-2);
             border-radius: 20px;
             padding: 3px;
@@ -818,15 +831,15 @@
             background: transparent;
             border: none;
             color: var(--gray);
-            padding: 5px 12px;
-            border-radius: 16px;
-            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 14px;
+            font-size: 11px;
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 4px;
             white-space: nowrap;
         }
 
@@ -849,7 +862,7 @@
 
         .desktop-frame {
             width: 100%;
-            height: 500px;
+            height: 580px;
             background: white;
             border-radius: 0 0 var(--iframe-radius) var(--iframe-radius);
             overflow: hidden;
@@ -857,9 +870,9 @@
         }
 
         .tablet-frame {
-            width: 680px;
+            width: 700px;
             max-width: 94%;
-            height: 480px;
+            height: 540px;
             margin: 0 auto;
             background: white;
             border-radius: 20px;
@@ -883,10 +896,10 @@
         }
 
         .mobile-frame {
-            width: 340px;
+            width: 360px;
             max-width: 90%;
-            height: 560px;
-            max-height: 70vh;
+            height: 620px;
+            max-height: 72vh;
             margin: 0 auto;
             background: white;
             border-radius: 34px;
@@ -994,32 +1007,26 @@
         }
 
         .project-info {
-            padding: 20px 24px;
+            padding: 14px 20px;
             background: var(--browser-header-bg);
             border-top: 1px solid var(--surface-border);
-        }
-
-        .project-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 14px;
+            align-items: center;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 10px;
         }
 
         .project-title {
-            font-size: 20px;
-            margin-bottom: 4px;
+            font-size: 16px;
+            font-weight: 700;
             color: var(--light);
         }
 
         .project-subtitle {
-            color: var(--accent);
+            color: var(--gray);
             font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-weight: 400;
         }
 
         .project-actions {
@@ -1031,11 +1038,11 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 7px 16px;
-            background: rgba(59, 95, 217, 0.1);
+            padding: 6px 14px;
+            background: rgba(59, 95, 217, 0.12);
             color: var(--primary-light);
-            border: 1px solid rgba(59, 95, 217, 0.3);
-            border-radius: 10px;
+            border: 1px solid rgba(59, 95, 217, 0.2);
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
             font-size: 12px;
@@ -1046,64 +1053,21 @@
             transform: translateY(-2px);
         }
 
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin: 14px 0;
-        }
-
-        .tech-tag {
-            background: rgba(59, 95, 217, 0.15);
-            color: var(--primary-light);
-            padding: 4px 12px;
-            border-radius: 16px;
-            font-size: 11px;
-            font-weight: 600;
-            border: 1px solid rgba(59, 95, 217, 0.3);
-        }
-
-        .project-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 12px;
-            margin: 14px 0;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-
-        .feature-icon {
-            width: 20px;
-            height: 20px;
-            background: var(--gradient);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 10px;
-            flex-shrink: 0;
-        }
-
         /* ── responsive iframes ── */
         @media (max-width: 768px) {
             .desktop-frame {
-                height: 380px;
+                height: 420px;
             }
             .tablet-frame {
                 width: 94%;
-                height: 380px;
+                height: 400px;
                 border-width: 8px;
                 border-radius: 16px;
             }
             .mobile-frame {
                 width: 90%;
                 max-width: 320px;
-                height: 440px;
+                height: 480px;
                 border-width: 8px;
                 border-radius: 26px;
             }
@@ -1114,37 +1078,39 @@
             }
             .browser-header {
                 flex-direction: column;
-                gap: 10px;
+                gap: 8px;
                 align-items: stretch;
-                padding: 10px 12px;
+                padding: 8px 12px;
             }
             .browser-url {
                 min-width: auto;
                 font-size: 11px;
             }
             .viewport-btn {
-                padding: 4px 10px;
+                padding: 3px 8px;
+                font-size: 10px;
+            }
+            .project-info {
+                padding: 10px 14px;
+            }
+            .project-title {
+                font-size: 14px;
+            }
+            .project-subtitle {
                 font-size: 11px;
-            }
-            .project-header {
-                flex-direction: column;
-            }
-            .project-actions {
-                width: 100%;
-                justify-content: flex-start;
             }
         }
 
         @media (max-width: 480px) {
             .desktop-frame {
-                height: 280px;
+                height: 300px;
             }
             .tablet-frame {
-                height: 300px;
+                height: 320px;
                 border-width: 6px;
             }
             .mobile-frame {
-                height: 360px;
+                height: 400px;
                 border-width: 6px;
                 border-radius: 20px;
             }
@@ -1161,17 +1127,8 @@
                 justify-content: space-between;
             }
             .viewport-btn {
-                padding: 3px 7px;
-                font-size: 10px;
-            }
-            .project-features {
-                grid-template-columns: 1fr;
-            }
-            .project-info {
-                padding: 14px 16px;
-            }
-            .project-title {
-                font-size: 17px;
+                padding: 2px 6px;
+                font-size: 9px;
             }
         }
 
@@ -1226,40 +1183,6 @@
             .cursor-dot,
             .cursor-ring {
                 display: none !important;
-            }
-        }
-
-        /* ── section title ── */
-        .section-title {
-            font-family: var(--font-display);
-            font-size: clamp(34px, 4.2vw, 48px);
-            font-weight: 500;
-            letter-spacing: -0.3px;
-            text-align: center;
-            margin-bottom: 60px;
-            position: relative;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease forwards;
-            will-change: transform, opacity;
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 48px;
-            height: 2px;
-            background: var(--accent);
-            border-radius: 3px;
-            animation: lineExpand 1s ease 0.5s forwards;
-            transform-origin: center;
-            transform: scaleX(0);
-        }
-        @keyframes lineExpand {
-            to {
-                transform: translateX(-50%) scaleX(1);
             }
         }
 
@@ -1786,7 +1709,6 @@
             }
         }
 
-        /* scroll-triggered reveals */
         .browser-window,
         .skill-card,
         .contact-info,
@@ -1800,9 +1722,6 @@
         .showcase-item.revealed,
         .section-title.revealed {
             animation-play-state: running;
-        }
-        .browser-window {
-            perspective: 1200px;
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -1893,11 +1812,10 @@
     </section>
 
     <!-- ============================================================
-    BRAND REEL — Full-screen showcase
+    BRAND REEL
     ============================================================ -->
     <section class="brand-reel" id="reel">
         <div class="reel-track" id="reelTrack">
-
             <div class="reel-slide active" data-index="0">
                 <div class="slide-bg slide-bg-1"></div>
                 <div class="slide-overlay"></div>
@@ -1909,7 +1827,6 @@
                     <a href="#project-2" class="slide-btn">View Project <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-
             <div class="reel-slide" data-index="1">
                 <div class="slide-bg slide-bg-2"></div>
                 <div class="slide-overlay"></div>
@@ -1921,7 +1838,6 @@
                     <a href="#project-1" class="slide-btn">View Project <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-
             <div class="reel-slide" data-index="2">
                 <div class="slide-bg slide-bg-3"></div>
                 <div class="slide-overlay"></div>
@@ -1933,7 +1849,6 @@
                     <a href="#project-3" class="slide-btn">View Project <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-
             <div class="reel-slide" data-index="3">
                 <div class="slide-bg slide-bg-4"></div>
                 <div class="slide-overlay"></div>
@@ -1945,7 +1860,6 @@
                     <a href="#project-4" class="slide-btn">View Project <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-
             <div class="reel-slide" data-index="4">
                 <div class="slide-bg slide-bg-5"></div>
                 <div class="slide-overlay"></div>
@@ -1957,9 +1871,7 @@
                     <a href="#project-5" class="slide-btn">View Project <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-
         </div>
-
         <div class="reel-controls">
             <button class="arrow" id="reelPrev"><i class="fas fa-chevron-left"></i></button>
             <button class="dot active" data-index="0"></button>
@@ -1970,17 +1882,14 @@
             <button class="arrow" id="reelNext"><i class="fas fa-chevron-right"></i></button>
         </div>
     </section>
-    <!-- ============================================================
-    END BRAND REEL
-    ============================================================ -->
 
     <!-- ============================================================
-    IFRAME SHOWCASE — Interactive live previews
+    IFRAME SHOWCASE — Clean, minimal, no extra text
     ============================================================ -->
     <section class="iframe-showcase" id="projects">
         <div class="container">
             <h2 class="section-title">Live Project Previews</h2>
-            <p class="section-sub">Switch between desktop, tablet, and mobile views to see each site in action.</p>
+            <p class="section-sub">Switch between desktop, tablet, and mobile views.</p>
 
             <!-- Project 1: Exposure Boost -->
             <div class="browser-window" id="project-1">
@@ -1992,9 +1901,9 @@
                     </div>
                     <div class="browser-url">exposureboost.co.uk</div>
                     <div class="viewport-controls">
-                        <button class="viewport-btn active" data-project="1" data-viewport="desktop"><i class="fas fa-desktop"></i> Desktop</button>
-                        <button class="viewport-btn" data-project="1" data-viewport="tablet"><i class="fas fa-tablet-alt"></i> Tablet</button>
-                        <button class="viewport-btn" data-project="1" data-viewport="mobile"><i class="fas fa-mobile-alt"></i> Mobile</button>
+                        <button class="viewport-btn active" data-project="1" data-viewport="desktop"><i class="fas fa-desktop"></i></button>
+                        <button class="viewport-btn" data-project="1" data-viewport="tablet"><i class="fas fa-tablet-alt"></i></button>
+                        <button class="viewport-btn" data-project="1" data-viewport="mobile"><i class="fas fa-mobile-alt"></i></button>
                     </div>
                 </div>
                 <div class="device-frame desktop-frame" id="frame-1-desktop">
@@ -2019,15 +1928,10 @@
                     </div>
                 </div>
                 <div class="project-info">
-                    <div class="project-header">
-                        <div><h3 class="project-title">Exposure Boost</h3><div class="project-subtitle">Interactive Photography Web App</div></div>
-                        <div class="project-actions"><a href="https://exposureboost.co.uk" target="_blank" class="action-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a></div>
-                    </div>
-                    <p style="color:var(--gray);margin-bottom:14px;font-size:14px;line-height:1.7;">A modern photography web app featuring interactive galleries, real-time filters, and dark/light mode.</p>
-                    <div class="tech-stack"><span class="tech-tag">Vanilla JS</span><span class="tech-tag">CSS</span><span class="tech-tag">LocalStorage</span></div>
-                    <div class="project-features">
-                        <div class="feature-item"><div class="feature-icon"><i class="fas fa-palette"></i></div><div><h4 style="color:var(--light);margin-bottom:2px;font-size:13px;">Real-time Filters</h4><p style="color:var(--gray);font-size:12px;">Instant preview</p></div></div>
-                        <div class="feature-item"><div class="feature-icon"><i class="fas fa-moon"></i></div><div><h4 style="color:var(--light);margin-bottom:2px;font-size:13px;">Dark/Light Mode</h4><p style="color:var(--gray);font-size:12px;">Persistent toggle</p></div></div>
+                    <span class="project-title">Exposure Boost</span>
+                    <span class="project-subtitle">Photography Web App</span>
+                    <div class="project-actions">
+                        <a href="https://exposureboost.co.uk" target="_blank" class="action-btn"><i class="fas fa-external-link-alt"></i> Visit</a>
                     </div>
                 </div>
             </div>
@@ -2042,9 +1946,9 @@
                     </div>
                     <div class="browser-url">arbuildingservices.co.uk</div>
                     <div class="viewport-controls">
-                        <button class="viewport-btn active" data-project="2" data-viewport="desktop"><i class="fas fa-desktop"></i> Desktop</button>
-                        <button class="viewport-btn" data-project="2" data-viewport="tablet"><i class="fas fa-tablet-alt"></i> Tablet</button>
-                        <button class="viewport-btn" data-project="2" data-viewport="mobile"><i class="fas fa-mobile-alt"></i> Mobile</button>
+                        <button class="viewport-btn active" data-project="2" data-viewport="desktop"><i class="fas fa-desktop"></i></button>
+                        <button class="viewport-btn" data-project="2" data-viewport="tablet"><i class="fas fa-tablet-alt"></i></button>
+                        <button class="viewport-btn" data-project="2" data-viewport="mobile"><i class="fas fa-mobile-alt"></i></button>
                     </div>
                 </div>
                 <div class="device-frame desktop-frame" id="frame-2-desktop">
@@ -2069,15 +1973,10 @@
                     </div>
                 </div>
                 <div class="project-info">
-                    <div class="project-header">
-                        <div><h3 class="project-title">AR Building Services</h3><div class="project-subtitle">Construction Company</div></div>
-                        <div class="project-actions"><a href="https://arbuildingservices.co.uk" target="_blank" class="action-btn"><i class="fas fa-external-link-alt"></i> Live Site</a></div>
-                    </div>
-                    <p style="color:var(--gray);margin-bottom:14px;font-size:14px;line-height:1.7;">Lead-gen site with local SEO, service pages, and project gallery. 35% increase in inquiries.</p>
-                    <div class="tech-stack"><span class="tech-tag">HTML/CSS</span><span class="tech-tag">Local SEO</span><span class="tech-tag">Lead Gen</span></div>
-                    <div class="project-features">
-                        <div class="feature-item"><div class="feature-icon"><i class="fas fa-map-marker-alt"></i></div><div><h4 style="color:var(--light);margin-bottom:2px;font-size:13px;">Local SEO</h4><p style="color:var(--gray);font-size:12px;">Search visibility</p></div></div>
-                        <div class="feature-item"><div class="feature-icon"><i class="fas fa-chart-line"></i></div><div><h4 style="color:var(--light);margin-bottom:2px;font-size:13px;">Lead Tracking</h4><p style="color:var(--gray);font-size:12px;">Capture & track</p></div></div>
+                    <span class="project-title">AR Building Services</span>
+                    <span class="project-subtitle">Construction</span>
+                    <div class="project-actions">
+                        <a href="https://arbuildingservices.co.uk" target="_blank" class="action-btn"><i class="fas fa-external-link-alt"></i> Visit</a>
                     </div>
                 </div>
             </div>
@@ -2092,9 +1991,9 @@
                     </div>
                     <div class="browser-url">greenglocleaningco.com</div>
                     <div class="viewport-controls">
-                        <button class="viewport-btn active" data-project="3" data-viewport="desktop"><i class="fas fa-desktop"></i> Desktop</button>
-                        <button class="viewport-btn" data-project="3" data-viewport="tablet"><i class="fas fa-tablet-alt"></i> Tablet</button>
-                        <button class="viewport-btn" data-project="3" data-viewport="mobile"><i class="fas fa-mobile-alt"></i> Mobile</button>
+                        <button class="viewport-btn active" data-project="3" data-viewport="desktop"><i class="fas fa-desktop"></i></button>
+                        <button class="viewport-btn" data-project="3" data-viewport="tablet"><i class="fas fa-tablet-alt"></i></button>
+                        <button class="viewport-btn" data-project="3" data-viewport="mobile"><i class="fas fa-mobile-alt"></i></button>
                     </div>
                 </div>
                 <div class="device-frame desktop-frame" id="frame-3-desktop">
@@ -2119,15 +2018,10 @@
                     </div>
                 </div>
                 <div class="project-info">
-                    <div class="project-header">
-                        <div><h3 class="project-title">Green Glo Cleaning</h3><div class="project-subtitle">Booking System</div></div>
-                        <div class="project-actions"><a href="https://greenglocleaningco.com" target="_blank" class="action-btn"><i class="fas fa-external-link-alt"></i> Live Site</a></div>
-                    </div>
-                    <p style="color:var(--gray);margin-bottom:14px;font-size:14px;line-height:1.7;">Real-time booking, admin dashboard, automated notifications — 40% conversion increase.</p>
-                    <div class="tech-stack"><span class="tech-tag">JavaScript</span><span class="tech-tag">Booking</span><span class="tech-tag">Dashboard</span></div>
-                    <div class="project-features">
-                        <div class="feature-item"><div class="feature-icon"><i class="fas fa-calendar-alt"></i></div><div><h4 style="color:var(--light);margin-bottom:2px;font-size:13px;">Real-time Booking</h4><p style="color:var(--gray);font-size:12px;">Live availability</p></div></div>
-                        <div class="feature-item"><div class="feature-icon"><i class="fas fa-chart-bar"></i></div><div><h4 style="color:var(--light);margin-bottom:2px;font-size:13px;">Admin Dashboard</h4><p style="color:var(--gray);font-size:12px;">Full management</p></div></div>
+                    <span class="project-title">Green Glo Cleaning</span>
+                    <span class="project-subtitle">Booking System</span>
+                    <div class="project-actions">
+                        <a href="https://greenglocleaningco.com" target="_blank" class="action-btn"><i class="fas fa-external-link-alt"></i> Visit</a>
                     </div>
                 </div>
             </div>
@@ -2142,9 +2036,9 @@
                     </div>
                     <div class="browser-url">jrsashsolutions.co.uk</div>
                     <div class="viewport-controls">
-                        <button class="viewport-btn active" data-project="4" data-viewport="desktop"><i class="fas fa-desktop"></i> Desktop</button>
-                        <button class="viewport-btn" data-project="4" data-viewport="tablet"><i class="fas fa-tablet-alt"></i> Tablet</button>
-                        <button class="viewport-btn" data-project="4" data-viewport="mobile"><i class="fas fa-mobile-alt"></i> Mobile</button>
+                        <button class="viewport-btn active" data-project="4" data-viewport="desktop"><i class="fas fa-desktop"></i></button>
+                        <button class="viewport-btn" data-project="4" data-viewport="tablet"><i class="fas fa-tablet-alt"></i></button>
+                        <button class="viewport-btn" data-project="4" data-viewport="mobile"><i class="fas fa-mobile-alt"></i></button>
                     </div>
                 </div>
                 <div class="device-frame desktop-frame" id="frame-4-desktop">
@@ -2169,15 +2063,10 @@
                     </div>
                 </div>
                 <div class="project-info">
-                    <div class="project-header">
-                        <div><h3 class="project-title">JR Sash Solutions</h3><div class="project-subtitle">Heritage Restoration</div></div>
-                        <div class="project-actions"><a href="https://jrsashsolutions.co.uk" target="_blank" class="action-btn"><i class="fas fa-external-link-alt"></i> Live Site</a></div>
-                    </div>
-                    <p style="color:var(--gray);margin-bottom:14px;font-size:14px;line-height:1.7;">Conversion-focused site with verified reviews, clear service breakdowns, and enquiry flow.</p>
-                    <div class="tech-stack"><span class="tech-tag">Lead Gen</span><span class="tech-tag">Reviews</span><span class="tech-tag">Forms</span></div>
-                    <div class="project-features">
-                        <div class="feature-item"><div class="feature-icon"><i class="fas fa-star"></i></div><div><h4 style="color:var(--light);margin-bottom:2px;font-size:13px;">Trust Signals</h4><p style="color:var(--gray);font-size:12px;">Verified reviews</p></div></div>
-                        <div class="feature-item"><div class="feature-icon"><i class="fas fa-route"></i></div><div><h4 style="color:var(--light);margin-bottom:2px;font-size:13px;">Clear Process</h4><p style="color:var(--gray);font-size:12px;">Step-by-step</p></div></div>
+                    <span class="project-title">JR Sash Solutions</span>
+                    <span class="project-subtitle">Heritage Restoration</span>
+                    <div class="project-actions">
+                        <a href="https://jrsashsolutions.co.uk" target="_blank" class="action-btn"><i class="fas fa-external-link-alt"></i> Visit</a>
                     </div>
                 </div>
             </div>
@@ -2192,9 +2081,9 @@
                     </div>
                     <div class="browser-url">203carpentry.co.uk</div>
                     <div class="viewport-controls">
-                        <button class="viewport-btn active" data-project="5" data-viewport="desktop"><i class="fas fa-desktop"></i> Desktop</button>
-                        <button class="viewport-btn" data-project="5" data-viewport="tablet"><i class="fas fa-tablet-alt"></i> Tablet</button>
-                        <button class="viewport-btn" data-project="5" data-viewport="mobile"><i class="fas fa-mobile-alt"></i> Mobile</button>
+                        <button class="viewport-btn active" data-project="5" data-viewport="desktop"><i class="fas fa-desktop"></i></button>
+                        <button class="viewport-btn" data-project="5" data-viewport="tablet"><i class="fas fa-tablet-alt"></i></button>
+                        <button class="viewport-btn" data-project="5" data-viewport="mobile"><i class="fas fa-mobile-alt"></i></button>
                     </div>
                 </div>
                 <div class="device-frame desktop-frame" id="frame-5-desktop">
@@ -2219,27 +2108,19 @@
                     </div>
                 </div>
                 <div class="project-info">
-                    <div class="project-header">
-                        <div><h3 class="project-title">203 Carpentry</h3><div class="project-subtitle">Carpentry &amp; Joinery</div></div>
-                        <div class="project-actions"><a href="https://203carpentry.co.uk" target="_blank" class="action-btn"><i class="fas fa-external-link-alt"></i> Live Site</a></div>
-                    </div>
-                    <p style="color:var(--gray);margin-bottom:14px;font-size:14px;line-height:1.7;">Clean, service-led website showcasing completed work with a simple quote request flow.</p>
-                    <div class="tech-stack"><span class="tech-tag">HTML/CSS</span><span class="tech-tag">Service Pages</span><span class="tech-tag">Contact Forms</span></div>
-                    <div class="project-features">
-                        <div class="feature-item"><div class="feature-icon"><i class="fas fa-hammer"></i></div><div><h4 style="color:var(--light);margin-bottom:2px;font-size:13px;">Work Showcase</h4><p style="color:var(--gray);font-size:12px;">Portfolio-driven</p></div></div>
-                        <div class="feature-item"><div class="feature-icon"><i class="fas fa-clipboard-check"></i></div><div><h4 style="color:var(--light);margin-bottom:2px;font-size:13px;">Quick Quotes</h4><p style="color:var(--gray);font-size:12px;">Simple enquiry</p></div></div>
+                    <span class="project-title">203 Carpentry</span>
+                    <span class="project-subtitle">Carpentry &amp; Joinery</span>
+                    <div class="project-actions">
+                        <a href="https://203carpentry.co.uk" target="_blank" class="action-btn"><i class="fas fa-external-link-alt"></i> Visit</a>
                     </div>
                 </div>
             </div>
 
-            <div style="text-align:center;margin-top:20px;">
+            <div style="text-align:center;margin-top:30px;">
                 <a href="gallery.html" class="btn btn-secondary"><span>View Full Gallery</span><i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
-    <!-- ============================================================
-    END IFRAME SHOWCASE
-    ============================================================ -->
 
     <!-- Process -->
     <section class="process-section" id="process">
@@ -2453,19 +2334,18 @@
             });
 
             document.querySelectorAll('.btn, .theme-toggle, .terminal-replay, .reel-controls button, .viewport-btn')
-            .forEach(btn => {
-                btn.style.transition =
-                    'transform 0.15s ease-out, background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease';
-                btn.addEventListener('mousemove', (e) => {
-                    const r = btn.getBoundingClientRect();
-                    const x = e.clientX - r.left - r.width / 2;
-                    const y = e.clientY - r.top - r.height / 2;
-                    btn.style.transform = `translate(${x * 0.2}px, ${y * 0.3}px)`;
+                .forEach(btn => {
+                    btn.style.transition =
+                        'transform 0.15s ease-out, background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease';
+                    btn.addEventListener('mousemove', (e) => {
+                        const r = btn.getBoundingClientRect();
+                        const x = e.clientX - r.left - r.width / 2;
+                        const y = e.clientY - r.top - r.height / 2;
+                        btn.style.transform = `translate(${x * 0.2}px, ${y * 0.3}px)`;
+                    });
+                    btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
                 });
-                btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
-            });
 
-            // Hero parallax
             const heroBg = document.getElementById('heroBgWrap');
             const hero = document.querySelector('.hero');
             if (heroBg && hero) {
@@ -2708,7 +2588,6 @@
             startAutoplay();
         })();
 
-        // ── Init viewports ──
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.viewport-btn.active').forEach(btn => btn.click());
         });
