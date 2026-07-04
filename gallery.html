@@ -4,21 +4,21 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Site Gallery | Sacha Raif</title>
-    <meta name="description" content="A gallery of live websites designed and built by Sacha Raif, full-stack developer and conversion specialist." />
+    <title>Portfolio Gallery | Sacha Raif</title>
+    <meta name="description" content="A curated gallery of live websites designed and built by Sacha Raif." />
     <link rel="canonical" href="https://sacharaif.com/gallery.html" />
     <meta name="theme-color" content="#05070d" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Site Gallery | Sacha Raif" />
-    <meta property="og:description" content="A gallery of live websites designed and built by Sacha Raif." />
+    <meta property="og:title" content="Portfolio Gallery | Sacha Raif" />
+    <meta property="og:description" content="A curated gallery of live websites designed and built by Sacha Raif." />
     <meta property="og:url" content="https://sacharaif.com/gallery.html" />
     <meta property="og:image" content="https://sacharaif.com/cover.png" />
     <meta property="og:site_name" content="Sacha Raif" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Site Gallery | Sacha Raif" />
-    <meta name="twitter:description" content="A gallery of live websites designed and built by Sacha Raif." />
+    <meta name="twitter:title" content="Portfolio Gallery | Sacha Raif" />
+    <meta name="twitter:description" content="A curated gallery of live websites designed and built by Sacha Raif." />
     <meta name="twitter:image" content="https://sacharaif.com/cover.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -295,7 +295,7 @@
 
         /* ── gallery hero ── */
         .gallery-hero {
-            padding: 140px 0 40px;
+            padding: 140px 0 20px;
             text-align: center;
             position: relative;
         }
@@ -323,7 +323,7 @@
             font-size: clamp(38px, 5vw, 56px);
             font-weight: 500;
             letter-spacing: -0.5px;
-            margin-bottom: 14px;
+            margin-bottom: 10px;
             color: var(--light);
         }
 
@@ -343,29 +343,33 @@
             line-height: 1.7;
         }
 
-        /* ── gallery grid ── */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            padding: 30px 0 80px;
-            max-width: 1100px;
-            margin: 0 auto;
+        .gallery-hero .counter {
+            margin-top: 24px;
+            font-size: 13px;
+            color: var(--gray);
+            letter-spacing: 2px;
+            font-weight: 500;
+            opacity: 0.6;
+        }
+
+        /* ── gallery items ── */
+        .gallery-items {
+            padding: 40px 0 20px;
         }
 
         .gallery-item {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 32px;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 0;
+            margin-bottom: 60px;
             background: var(--surface-strong);
-            border: 1px solid var(--surface-border);
             border-radius: 20px;
             overflow: hidden;
+            border: 1px solid var(--surface-border);
             transition: var(--transition), background-color 0.4s ease;
             opacity: 0;
-            transform: translateY(40px);
-            animation: fadeInUp 0.7s ease forwards;
-            will-change: transform, opacity;
+            transform: translateY(50px);
+            animation: fadeUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
         }
 
         .gallery-item:nth-child(1) {
@@ -383,8 +387,14 @@
         .gallery-item:nth-child(5) {
             animation-delay: 0.33s;
         }
+        .gallery-item:nth-child(6) {
+            animation-delay: 0.40s;
+        }
+        .gallery-item:nth-child(7) {
+            animation-delay: 0.47s;
+        }
 
-        @keyframes fadeInUp {
+        @keyframes fadeUp {
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -393,17 +403,17 @@
 
         .gallery-item:hover {
             transform: translateY(-6px);
-            border-color: rgba(107, 138, 253, 0.25);
+            border-color: rgba(107, 138, 253, 0.2);
             box-shadow: var(--shadow-xl);
         }
 
         /* ── preview side ── */
         .item-preview {
             position: relative;
-            padding-top: 75%;
+            padding-top: 70%;
             overflow: hidden;
             background: var(--darker);
-            min-height: 280px;
+            min-height: 300px;
         }
 
         .item-preview iframe {
@@ -415,11 +425,11 @@
             border: 0;
             pointer-events: none;
             background: white;
-            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         .gallery-item:hover .item-preview iframe {
-            transform: scale(1.02);
+            transform: scale(1.03);
         }
 
         .item-preview .preview-loader {
@@ -459,83 +469,95 @@
             font-size: 13px;
         }
 
-        .item-preview .preview-badge {
+        .item-preview .badge {
             position: absolute;
             top: 16px;
             left: 16px;
             z-index: 3;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(8px);
-            padding: 5px 14px;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(10px);
+            padding: 4px 14px;
             border-radius: 20px;
             font-size: 10px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             color: rgba(255, 255, 255, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             pointer-events: none;
+        }
+
+        .item-preview .number-badge {
+            position: absolute;
+            bottom: 16px;
+            left: 16px;
+            z-index: 3;
+            font-family: var(--font-display);
+            font-size: 42px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.06);
+            pointer-events: none;
+            letter-spacing: -2px;
+            line-height: 1;
         }
 
         /* ── info side ── */
         .item-info {
-            padding: 32px 36px 32px 0;
+            padding: 40px 44px 40px 40px;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
-        .item-info .item-number {
-            font-size: 12px;
+        .item-info .item-tag {
+            font-size: 11px;
             font-weight: 700;
-            color: var(--gray);
-            letter-spacing: 2px;
             text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
             margin-bottom: 8px;
-            opacity: 0.5;
         }
 
         .item-info .item-title {
             font-family: var(--font-display);
-            font-size: 28px;
+            font-size: 30px;
             font-weight: 500;
             color: var(--light);
             letter-spacing: -0.5px;
             margin-bottom: 4px;
+            line-height: 1.15;
         }
 
-        .item-info .item-subtitle {
-            color: var(--accent);
+        .item-info .item-sub {
             font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            color: var(--gray);
             margin-bottom: 14px;
+            font-weight: 400;
         }
 
         .item-info .item-desc {
             color: var(--gray);
             font-size: 15px;
             line-height: 1.7;
-            margin-bottom: 18px;
-            max-width: 460px;
+            margin-bottom: 20px;
+            max-width: 420px;
         }
 
         .item-info .item-tech {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
 
         .item-info .item-tech span {
-            background: rgba(59, 95, 217, 0.1);
+            background: rgba(59, 95, 217, 0.08);
             color: var(--primary-light);
             padding: 4px 14px;
             border-radius: 16px;
             font-size: 11px;
-            font-weight: 600;
-            border: 1px solid rgba(59, 95, 217, 0.08);
+            font-weight: 500;
+            border: 1px solid rgba(59, 95, 217, 0.06);
         }
 
         .item-info .item-link {
@@ -547,25 +569,32 @@
             font-weight: 600;
             font-size: 14px;
             background: var(--gradient);
-            padding: 12px 24px;
+            padding: 12px 26px;
             border-radius: 12px;
             transition: var(--transition);
             align-self: flex-start;
-            box-shadow: 0 8px 24px rgba(59, 95, 217, 0.25);
+            box-shadow: 0 8px 24px rgba(59, 95, 217, 0.2);
         }
 
         .item-info .item-link:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 32px rgba(59, 95, 217, 0.35);
+            box-shadow: 0 12px 32px rgba(59, 95, 217, 0.3);
             gap: 14px;
         }
 
-        /* ── alternating layout ── */
+        .item-info .item-link i {
+            font-size: 13px;
+        }
+
+        /* ── alternating ── */
+        .gallery-item:nth-child(even) {
+            grid-template-columns: 0.8fr 1.2fr;
+        }
         .gallery-item:nth-child(even) .item-preview {
             order: 2;
         }
         .gallery-item:nth-child(even) .item-info {
-            padding: 32px 0 32px 36px;
+            padding: 40px 40px 40px 44px;
             order: 1;
         }
 
@@ -684,22 +713,25 @@
         /* ── responsive ── */
         @media (max-width: 900px) {
             .gallery-item {
-                grid-template-columns: 1fr;
-                gap: 0;
+                grid-template-columns: 1fr !important;
+                margin-bottom: 40px;
             }
             .gallery-item:nth-child(even) .item-preview {
                 order: 1;
             }
             .gallery-item:nth-child(even) .item-info {
-                padding: 24px 28px 32px;
+                padding: 24px 28px 32px !important;
                 order: 2;
             }
             .item-info {
-                padding: 24px 28px 32px;
+                padding: 24px 28px 32px !important;
             }
             .item-preview {
                 min-height: 200px;
-                padding-top: 60%;
+                padding-top: 56%;
+            }
+            .item-info .item-title {
+                font-size: 26px;
             }
         }
 
@@ -711,17 +743,16 @@
                 display: block;
             }
             .gallery-hero {
-                padding: 120px 0 20px;
+                padding: 120px 0 10px;
             }
             .gallery-hero h1 {
                 font-size: 32px;
             }
-            .gallery-grid {
-                gap: 24px;
-                padding: 20px 0 60px;
+            .gallery-items {
+                padding: 20px 0 0;
             }
             .item-info .item-title {
-                font-size: 24px;
+                font-size: 22px;
             }
             .item-info .item-desc {
                 font-size: 14px;
@@ -732,6 +763,9 @@
                 width: 52px;
                 height: 52px;
                 font-size: 24px;
+            }
+            .item-preview .number-badge {
+                font-size: 30px;
             }
         }
 
@@ -745,14 +779,18 @@
             .gallery-hero p {
                 font-size: 15px;
             }
-            .gallery-grid {
-                gap: 18px;
+            .gallery-item {
+                border-radius: 14px;
+                margin-bottom: 28px;
             }
             .item-info .item-title {
-                font-size: 20px;
+                font-size: 19px;
             }
-            .item-info .item-subtitle {
+            .item-info .item-sub {
                 font-size: 12px;
+            }
+            .item-info .item-desc {
+                font-size: 13px;
             }
             .item-preview {
                 min-height: 160px;
@@ -761,6 +799,11 @@
             .item-info .item-link {
                 font-size: 13px;
                 padding: 10px 18px;
+            }
+            .item-preview .number-badge {
+                font-size: 24px;
+                bottom: 12px;
+                left: 12px;
             }
             .whatsapp-float {
                 width: 48px;
@@ -873,27 +916,29 @@
     <!-- Gallery Hero -->
     <section class="gallery-hero">
         <div class="container">
-            <div class="hero-eyebrow">Complete Site Gallery</div>
+            <div class="hero-eyebrow">Portfolio Gallery</div>
             <h1>Every site, <em>in one place</em></h1>
             <p>Live previews of every website I've designed and built — from photography apps to trade and service businesses.</p>
+            <div class="counter">07 projects</div>
         </div>
     </section>
 
-    <!-- Gallery Grid -->
-    <section class="container">
-        <div class="gallery-grid">
+    <!-- Gallery Items -->
+    <section class="gallery-items">
+        <div class="container">
 
             <!-- 1. Exposure Boost -->
             <div class="gallery-item">
                 <div class="item-preview">
                     <div class="preview-loader" id="g-loader-1"><div class="spinner"></div><p>Loading...</p></div>
                     <iframe src="https://exposureboost.co.uk" loading="lazy" onload="document.getElementById('g-loader-1').classList.add('hidden')"></iframe>
-                    <span class="preview-badge">Live</span>
+                    <span class="badge">Live</span>
+                    <span class="number-badge">01</span>
                 </div>
                 <div class="item-info">
-                    <div class="item-number">01</div>
+                    <div class="item-tag">Web App</div>
                     <div class="item-title">Exposure Boost</div>
-                    <div class="item-subtitle">Photography Web App</div>
+                    <div class="item-sub">Photography Web App</div>
                     <p class="item-desc">Interactive galleries, real-time image filters, and dark/light mode — built with vanilla JavaScript.</p>
                     <div class="item-tech">
                         <span>JavaScript</span>
@@ -904,17 +949,40 @@
                 </div>
             </div>
 
-            <!-- 2. AR Building -->
+            <!-- 2. Hamilton Decorating -->
             <div class="gallery-item">
                 <div class="item-preview">
                     <div class="preview-loader" id="g-loader-2"><div class="spinner"></div><p>Loading...</p></div>
-                    <iframe src="https://arbuildingservices.co.uk" loading="lazy" onload="document.getElementById('g-loader-2').classList.add('hidden')"></iframe>
-                    <span class="preview-badge">Live</span>
+                    <iframe src="https://megablaze757.github.io/HamiltonDecorating" loading="lazy" onload="document.getElementById('g-loader-2').classList.add('hidden')"></iframe>
+                    <span class="badge">Live</span>
+                    <span class="number-badge">02</span>
                 </div>
                 <div class="item-info">
-                    <div class="item-number">02</div>
+                    <div class="item-tag">Service Site</div>
+                    <div class="item-title">Hamilton Decorating</div>
+                    <div class="item-sub">Decorating &amp; Interiors</div>
+                    <p class="item-desc">A clean, service-led website for a decorating business, showcasing work and making it easy to request a quote.</p>
+                    <div class="item-tech">
+                        <span>HTML/CSS</span>
+                        <span>Service Pages</span>
+                        <span>Contact Forms</span>
+                    </div>
+                    <a href="https://megablaze757.github.io/HamiltonDecorating" target="_blank" class="item-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
+                </div>
+            </div>
+
+            <!-- 3. AR Building -->
+            <div class="gallery-item">
+                <div class="item-preview">
+                    <div class="preview-loader" id="g-loader-3"><div class="spinner"></div><p>Loading...</p></div>
+                    <iframe src="https://arbuildingservices.co.uk" loading="lazy" onload="document.getElementById('g-loader-3').classList.add('hidden')"></iframe>
+                    <span class="badge">Live</span>
+                    <span class="number-badge">03</span>
+                </div>
+                <div class="item-info">
+                    <div class="item-tag">Lead Gen</div>
                     <div class="item-title">AR Building Services</div>
-                    <div class="item-subtitle">Construction Company</div>
+                    <div class="item-sub">Construction Company</div>
                     <p class="item-desc">Lead-generation site optimized for local SEO with strategic CTAs and a project gallery. 35% increase in inquiries.</p>
                     <div class="item-tech">
                         <span>HTML/CSS</span>
@@ -925,17 +993,18 @@
                 </div>
             </div>
 
-            <!-- 3. Green Glo -->
+            <!-- 4. Green Glo -->
             <div class="gallery-item">
                 <div class="item-preview">
-                    <div class="preview-loader" id="g-loader-3"><div class="spinner"></div><p>Loading...</p></div>
-                    <iframe src="https://greenglocleaningco.com" loading="lazy" onload="document.getElementById('g-loader-3').classList.add('hidden')"></iframe>
-                    <span class="preview-badge">Live</span>
+                    <div class="preview-loader" id="g-loader-4"><div class="spinner"></div><p>Loading...</p></div>
+                    <iframe src="https://greenglocleaningco.com" loading="lazy" onload="document.getElementById('g-loader-4').classList.add('hidden')"></iframe>
+                    <span class="badge">Live</span>
+                    <span class="number-badge">04</span>
                 </div>
                 <div class="item-info">
-                    <div class="item-number">03</div>
+                    <div class="item-tag">Web App</div>
                     <div class="item-title">Green Glo Cleaning</div>
-                    <div class="item-subtitle">Booking System</div>
+                    <div class="item-sub">Booking System</div>
                     <p class="item-desc">Real-time booking, admin dashboard, and automated notifications. 40% increase in booking conversions.</p>
                     <div class="item-tech">
                         <span>JavaScript</span>
@@ -946,17 +1015,18 @@
                 </div>
             </div>
 
-            <!-- 4. JR Sash -->
+            <!-- 5. JR Sash -->
             <div class="gallery-item">
                 <div class="item-preview">
-                    <div class="preview-loader" id="g-loader-4"><div class="spinner"></div><p>Loading...</p></div>
-                    <iframe src="https://jrsashsolutions.co.uk" loading="lazy" onload="document.getElementById('g-loader-4').classList.add('hidden')"></iframe>
-                    <span class="preview-badge">Live</span>
+                    <div class="preview-loader" id="g-loader-5"><div class="spinner"></div><p>Loading...</p></div>
+                    <iframe src="https://jrsashsolutions.co.uk" loading="lazy" onload="document.getElementById('g-loader-5').classList.add('hidden')"></iframe>
+                    <span class="badge">Live</span>
+                    <span class="number-badge">05</span>
                 </div>
                 <div class="item-info">
-                    <div class="item-number">04</div>
+                    <div class="item-tag">Lead Gen</div>
                     <div class="item-title">JR Sash Solutions</div>
-                    <div class="item-subtitle">Heritage Restoration</div>
+                    <div class="item-sub">Heritage Restoration</div>
                     <p class="item-desc">Conversion-focused site with verified reviews, clear service breakdowns, and a simple enquiry flow.</p>
                     <div class="item-tech">
                         <span>Lead Gen</span>
@@ -967,17 +1037,18 @@
                 </div>
             </div>
 
-            <!-- 5. 203 Carpentry -->
+            <!-- 6. 203 Carpentry -->
             <div class="gallery-item">
                 <div class="item-preview">
-                    <div class="preview-loader" id="g-loader-5"><div class="spinner"></div><p>Loading...</p></div>
-                    <iframe src="https://203carpentry.co.uk" loading="lazy" onload="document.getElementById('g-loader-5').classList.add('hidden')"></iframe>
-                    <span class="preview-badge">Live</span>
+                    <div class="preview-loader" id="g-loader-6"><div class="spinner"></div><p>Loading...</p></div>
+                    <iframe src="https://203carpentry.co.uk" loading="lazy" onload="document.getElementById('g-loader-6').classList.add('hidden')"></iframe>
+                    <span class="badge">Live</span>
+                    <span class="number-badge">06</span>
                 </div>
                 <div class="item-info">
-                    <div class="item-number">05</div>
+                    <div class="item-tag">Service Site</div>
                     <div class="item-title">203 Carpentry</div>
-                    <div class="item-subtitle">Carpentry &amp; Joinery</div>
+                    <div class="item-sub">Carpentry &amp; Joinery</div>
                     <p class="item-desc">Clean, service-led website showcasing completed work with a simple quote request flow.</p>
                     <div class="item-tech">
                         <span>HTML/CSS</span>
@@ -985,6 +1056,28 @@
                         <span>Contact Forms</span>
                     </div>
                     <a href="https://203carpentry.co.uk" target="_blank" class="item-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
+                </div>
+            </div>
+
+            <!-- 7. Hastings Build Co -->
+            <div class="gallery-item">
+                <div class="item-preview">
+                    <div class="preview-loader" id="g-loader-7"><div class="spinner"></div><p>Loading...</p></div>
+                    <iframe src="https://megablaze757.github.io/HastingsBuildCo" loading="lazy" onload="document.getElementById('g-loader-7').classList.add('hidden')"></iframe>
+                    <span class="badge">Live</span>
+                    <span class="number-badge">07</span>
+                </div>
+                <div class="item-info">
+                    <div class="item-tag">Lead Gen</div>
+                    <div class="item-title">Hastings Build Co</div>
+                    <div class="item-sub">Construction &amp; Renovation</div>
+                    <p class="item-desc">A bold, trustworthy site for a construction company with 30+ years of experience, featuring project galleries and service breakdowns.</p>
+                    <div class="item-tech">
+                        <span>HTML/CSS</span>
+                        <span>Local SEO</span>
+                        <span>Project Gallery</span>
+                    </div>
+                    <a href="https://megablaze757.github.io/HastingsBuildCo" target="_blank" class="item-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
                 </div>
             </div>
 
@@ -1107,7 +1200,6 @@
                 el.addEventListener('mouseleave', () => ring.classList.remove('cursor-hover'));
             });
 
-            // Magnetic buttons
             document.querySelectorAll('.btn, .theme-toggle, .item-link').forEach(btn => {
                 btn.style.transition =
                     'transform 0.15s ease-out, background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease, gap 0.35s ease';
@@ -1122,7 +1214,6 @@
                 });
             });
 
-            // Item 3D tilt
             document.querySelectorAll('.gallery-item').forEach(item => {
                 item.addEventListener('mouseenter', () => {
                     item.style.transition = 'none';
@@ -1132,7 +1223,7 @@
                     const px = (e.clientX - r.left) / r.width - 0.5;
                     const py = (e.clientY - r.top) / r.height - 0.5;
                     item.style.transform =
-                        `perspective(1200px) rotateX(${-py * 3}deg) rotateY(${px * 3}deg) translateY(-6px)`;
+                        `perspective(1200px) rotateX(${-py * 2.5}deg) rotateY(${px * 2.5}deg) translateY(-6px)`;
                 });
                 item.addEventListener('mouseleave', () => {
                     item.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
