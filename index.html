@@ -27,7 +27,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <!-- Structured data -->
     <script type="application/ld+json">
@@ -73,7 +73,6 @@
             line-height: 1.6;
             overflow-x: hidden;
             position: relative;
-            /* IMPROVED: Better momentum scrolling */
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             scrollbar-width: thin;
@@ -81,7 +80,6 @@
             transition: background-color 0.4s ease, color 0.4s ease;
         }
 
-        /* IMPROVED: Custom scrollbar for better UX */
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -99,7 +97,6 @@
             background: #3b5fd9;
         }
 
-        /* IMPROVED: Smooth transitions */
         * {
             margin: 0;
             padding: 0;
@@ -125,7 +122,6 @@
             --iframe-radius: 14px;
             --font-display: 'Fraunces', Georgia, serif;
 
-            /* Theme-aware surface tokens (dark = default) */
             --surface: rgba(255, 255, 255, 0.03);
             --surface-hover: rgba(255, 255, 255, 0.05);
             --surface-border: rgba(255, 255, 255, 0.09);
@@ -145,6 +141,7 @@
             --grad-portfolio: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(2, 6, 23, 0.9) 100%);
             --grad-contact: linear-gradient(135deg, rgba(2, 6, 23, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);
             --grad-calc: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(2, 6, 23, 0.9) 100%);
+            --card-colors: #3b5fd9, #6b8afd, #c9a668, #d9553b, #2fb380;
         }
 
         /* Light theme overrides */
@@ -274,6 +271,33 @@
 
         .mobile-menu-btn:hover {
             color: var(--primary-light);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
+        .theme-toggle {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--surface);
+            border: 1px solid var(--surface-border);
+            color: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 15px;
+            transition: var(--transition), background-color 0.4s ease;
+            flex-shrink: 0;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--primary-light);
+            background: var(--surface-hover);
         }
 
         /* Hero Section with Stats */
@@ -454,7 +478,7 @@
             border-color: var(--btn-secondary-hover-border);
         }
 
-        /* IMPROVED Browser Window Container */
+        /* Browser Window Container */
         .browser-window {
             background: var(--surface-strong);
             border-radius: var(--iframe-radius);
@@ -479,6 +503,8 @@
         .browser-window:nth-child(1) { animation-delay: 0.1s; }
         .browser-window:nth-child(2) { animation-delay: 0.2s; }
         .browser-window:nth-child(3) { animation-delay: 0.3s; }
+        .browser-window:nth-child(4) { animation-delay: 0.4s; }
+        .browser-window:nth-child(5) { animation-delay: 0.5s; }
 
         .browser-window:hover {
             border-color: rgba(107, 138, 253, 0.3);
@@ -531,7 +557,6 @@
             min-width: 200px;
         }
 
-        /* IMPROVED Viewport Controls */
         .viewport-controls {
             display: flex;
             gap: 8px;
@@ -570,14 +595,12 @@
             box-shadow: 0 4px 12px rgba(59, 95, 217, 0.3);
         }
 
-        /* ENHANCED Device Frames */
         .device-frame {
             position: relative;
             transition: var(--transition);
             will-change: transform;
         }
 
-        /* Desktop Frame */
         .desktop-frame {
             width: 100%;
             height: 600px;
@@ -587,7 +610,6 @@
             position: relative;
         }
 
-        /* Tablet Frame */
         .tablet-frame {
             width: 768px;
             max-width: 90%;
@@ -614,7 +636,6 @@
             z-index: 10;
         }
 
-        /* Mobile Frame */
         .mobile-frame {
             width: 375px;
             max-width: 90%;
@@ -655,7 +676,6 @@
             z-index: 10;
         }
 
-        /* Device Frame Content */
         .device-content {
             width: 100%;
             height: 100%;
@@ -762,7 +782,7 @@
             width: 34px;
             height: 34px;
             border: 1.5px solid rgba(107, 138, 253, 0.45);
-            transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+            transition: width 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
         }
 
         .cursor-ring.cursor-hover {
@@ -782,305 +802,422 @@
         @media (hover: none), (pointer: coarse) {
             .cursor-dot, .cursor-ring { display: none !important; }
         }
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 22px;
-        }
 
-        .theme-toggle {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            background: var(--surface);
-            border: 1px solid var(--surface-border);
-            color: var(--light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 15px;
-            transition: var(--transition), background-color 0.4s ease;
-            flex-shrink: 0;
-        }
-
-        .theme-toggle:hover {
-            border-color: var(--primary-light);
-            background: var(--surface-hover);
-        }
-
-        /* Live Design Playground Section */
-        .playground-section {
-            padding: 90px 0 100px;
-            background: var(--grad-calc);
+        /* ============================================================
+               DESIGN CANVAS — Premium 3D Interactive Showcase
+               ============================================================ */
+        .design-canvas {
+            padding: 100px 0 120px;
             position: relative;
+            background: var(--grad-calc);
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
         }
 
-        .playground-card {
-            margin-top: 50px;
+        .design-canvas::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(59, 95, 217, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 50%, rgba(201, 166, 104, 0.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .design-canvas .container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+
+        .canvas-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .canvas-header .section-title {
+            margin-bottom: 16px;
+        }
+
+        .canvas-header p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 18px;
+        }
+
+        /* The 3D card grid */
+        .canvas-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            perspective: 1200px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .canvas-card {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            aspect-ratio: 4 / 5;
             background: var(--surface-strong);
             border: 1px solid var(--surface-border);
-            border-radius: 24px;
             box-shadow: var(--shadow-xl);
-            display: grid;
-            grid-template-columns: 0.85fr 1.15fr;
-            overflow: hidden;
-            transition: background-color 0.4s ease;
-        }
-
-        .pg-controls {
-            padding: 48px 44px;
-            border-right: 1px solid var(--surface-border);
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+                        box-shadow 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            transform-style: preserve-3d;
+            will-change: transform;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
             opacity: 0;
-            transform: translateX(-24px);
-            animation: fadeInLeft 0.8s ease forwards;
+            transform: translateY(40px) rotateX(8deg) rotateY(-4deg);
+            animation: cardAppear 0.9s cubic-bezier(0.23, 1, 0.32, 1) forwards;
         }
 
-        @keyframes fadeInLeft {
-            to { opacity: 1; transform: translateX(0); }
+        .canvas-card:nth-child(1) { animation-delay: 0.05s; }
+        .canvas-card:nth-child(2) { animation-delay: 0.15s; }
+        .canvas-card:nth-child(3) { animation-delay: 0.25s; }
+        .canvas-card:nth-child(4) { animation-delay: 0.35s; }
+        .canvas-card:nth-child(5) { animation-delay: 0.45s; }
+        .canvas-card:nth-child(6) { animation-delay: 0.55s; }
+
+        @keyframes cardAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0) rotateX(0) rotateY(0);
+            }
         }
 
-        .pg-field {
-            margin-bottom: 30px;
+        .canvas-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+            border-color: rgba(107, 138, 253, 0.3);
         }
 
-        .pg-field:last-child {
-            margin-bottom: 0;
+        /* Card background gradient overlays */
+        .canvas-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.7) 100%);
+            z-index: 1;
+            pointer-events: none;
         }
 
-        .pg-field label {
-            display: block;
-            font-size: 13px;
+        .canvas-card .card-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .canvas-card:hover .card-bg {
+            transform: scale(1.08);
+        }
+
+        /* Colorful accent strips */
+        .canvas-card .card-accent {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            z-index: 2;
+            border-radius: 24px 24px 0 0;
+        }
+
+        .canvas-card .card-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+        }
+
+        .canvas-card .card-tag {
+            display: inline-block;
+            font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--gray);
+            letter-spacing: 2px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             margin-bottom: 14px;
         }
 
-        .pg-field label span {
-            color: var(--light);
-            font-weight: 600;
-            text-transform: none;
-            letter-spacing: 0;
+        .canvas-card .card-title {
+            font-family: var(--font-display);
+            font-size: 26px;
+            font-weight: 500;
+            letter-spacing: -0.3px;
+            margin-bottom: 6px;
+            line-height: 1.2;
         }
 
-        .pg-field input[type="range"] {
-            width: 100%;
-            accent-color: var(--primary);
-            height: 6px;
-            cursor: pointer;
-        }
-
-        .pg-swatches {
-            display: flex;
-            gap: 12px;
-        }
-
-        .pg-swatch {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            border: 2px solid transparent;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .pg-swatch.active {
-            border-color: var(--light);
-            transform: scale(1.12);
-        }
-
-        .pg-toggle {
-            display: flex;
-            gap: 10px;
-        }
-
-        .pg-toggle-btn {
-            flex: 1;
-            padding: 12px 10px;
-            border-radius: 10px;
-            border: 1px solid var(--surface-border);
-            background: var(--surface);
-            color: var(--gray);
-            font-weight: 700;
+        .canvas-card .card-subtitle {
             font-size: 14px;
-            cursor: pointer;
-            transition: var(--transition);
+            opacity: 0.8;
+            font-weight: 400;
         }
 
-        .pg-toggle-btn:hover {
-            border-color: var(--primary-light);
-            color: var(--light);
-        }
-
-        .pg-toggle-btn.active {
-            background: var(--gradient);
-            border-color: transparent;
-            color: #fff;
-        }
-
-        .pg-preview {
-            padding: 48px 44px;
-            display: flex;
-            flex-direction: column;
-            opacity: 0;
-            transform: translateX(24px);
-            animation: fadeInRight 0.8s ease 0.15s forwards;
-        }
-
-        @keyframes fadeInRight {
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        .pg-stage {
-            flex: 1;
-            min-height: 180px;
-            border-radius: 16px;
-            background:
-                linear-gradient(45deg, rgba(128,128,128,0.06) 25%, transparent 25%),
-                linear-gradient(-45deg, rgba(128,128,128,0.06) 25%, transparent 25%),
-                linear-gradient(45deg, transparent 75%, rgba(128,128,128,0.06) 75%),
-                linear-gradient(-45deg, transparent 75%, rgba(128,128,128,0.06) 75%);
-            background-size: 20px 20px;
-            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
-            border: 1px solid var(--surface-border);
+        .canvas-card .card-arrow {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 22px;
-        }
-
-        .pg-button {
-            --pg-radius: 14px;
-            --pg-shadow: 0 10px 26px rgba(59, 95, 217, 0.35);
-            --pg-c1: #3b5fd9;
-            --pg-c2: #6b8afd;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 18px 34px;
-            border-radius: var(--pg-radius);
-            font-weight: 700;
             font-size: 16px;
-            font-family: 'Inter', sans-serif;
-            border: 2px solid transparent;
-            cursor: pointer;
-            background: linear-gradient(135deg, var(--pg-c1) 0%, var(--pg-c2) 100%);
-            color: #fff;
-            box-shadow: var(--pg-shadow);
-            transition: border-radius 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+            color: white;
+            transition: transform 0.4s ease, background 0.4s ease;
+            z-index: 2;
         }
 
-        .pg-button.pg-outline {
-            background: transparent;
-            border-color: var(--pg-c1);
-            color: var(--pg-c1);
+        .canvas-card:hover .card-arrow {
+            transform: translateX(6px) scale(1.1);
+            background: rgba(255, 255, 255, 0.2);
         }
 
-        .pg-button.pg-glass {
-            background: rgba(107, 138, 253, 0.18);
-            background: linear-gradient(135deg, color-mix(in srgb, var(--pg-c1) 25%, transparent), color-mix(in srgb, var(--pg-c2) 15%, transparent));
-            border-color: rgba(107, 138, 253, 0.4);
-            border-color: color-mix(in srgb, var(--pg-c1) 40%, transparent);
-            color: var(--light);
-            backdrop-filter: blur(6px);
-        }
+        /* Card backgrounds — using gradients as placeholders */
+        .card-bg-1 { background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); }
+        .card-bg-2 { background: linear-gradient(135deg, #1e1e2f, #2d1b3d, #4a1942); }
+        .card-bg-3 { background: linear-gradient(135deg, #0d1b2a, #1b2f4a, #2d4a6b); }
+        .card-bg-4 { background: linear-gradient(135deg, #1a2a1a, #2d4a2d, #1a3a1a); }
+        .card-bg-5 { background: linear-gradient(135deg, #2a1a1a, #4a2d2d, #3a1a1a); }
+        .card-bg-6 { background: linear-gradient(135deg, #1a1a2e, #2d2d4a, #1a1a3e); }
 
-        .pg-code {
-            background: #0a0e17;
-            border-radius: 14px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-        }
+        .card-accent-1 { background: linear-gradient(90deg, #3b5fd9, #6b8afd); }
+        .card-accent-2 { background: linear-gradient(90deg, #c9a668, #e0c393); }
+        .card-accent-3 { background: linear-gradient(90deg, #d9553b, #ef8a6b); }
+        .card-accent-4 { background: linear-gradient(90deg, #2fb380, #6bd9a8); }
+        .card-accent-5 { background: linear-gradient(90deg, #8b5cf6, #a78bfa); }
+        .card-accent-6 { background: linear-gradient(90deg, #ec4899, #f472b6); }
 
-        .pg-code-header {
-            display: flex;
-            justify-content: space-between;
+        /* Project info overlay on click */
+        .card-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(24px);
             align-items: center;
-            padding: 10px 16px;
-            background: #12161f;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            justify-content: center;
+            padding: 40px 20px;
+            animation: modalFade 0.4s ease;
         }
 
-        .pg-code-header span {
-            color: #6b7280;
-            font-size: 12.5px;
-            font-family: 'SF Mono', Monaco, monospace;
+        .card-modal.active {
+            display: flex;
         }
 
-        .pg-copy-btn {
-            background: transparent;
+        @keyframes modalFade {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .card-modal-inner {
+            max-width: 600px;
+            width: 100%;
+            background: var(--surface-strong);
+            border-radius: 32px;
+            padding: 48px 40px;
+            border: 1px solid var(--surface-border);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+            position: relative;
+        }
+
+        .card-modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
             border: none;
-            color: #6b7280;
+            color: var(--gray);
+            font-size: 24px;
             cursor: pointer;
-            font-size: 12.5px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
             transition: var(--transition);
         }
 
-        .pg-copy-btn:hover {
+        .card-modal-close:hover {
+            color: var(--light);
+            transform: rotate(90deg);
+        }
+
+        .card-modal .modal-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            background: rgba(59, 95, 217, 0.15);
             color: var(--primary-light);
+            border: 1px solid rgba(59, 95, 217, 0.2);
+            margin-bottom: 16px;
         }
 
-        .pg-code pre {
-            margin: 0;
-            padding: 18px 16px;
-            font-family: 'SF Mono', Monaco, Consolas, monospace;
+        .card-modal h2 {
+            font-family: var(--font-display);
+            font-size: 32px;
+            font-weight: 500;
+            color: var(--light);
+            margin-bottom: 8px;
+        }
+
+        .card-modal .modal-sub {
+            color: var(--gray);
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .card-modal .modal-desc {
+            color: var(--gray);
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 28px;
+        }
+
+        .card-modal .modal-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 28px;
+        }
+
+        .card-modal .modal-tech span {
+            background: var(--surface);
+            border: 1px solid var(--surface-border);
+            padding: 6px 16px;
+            border-radius: 20px;
             font-size: 13px;
-            line-height: 1.7;
-            color: #e0c393;
-            white-space: pre-wrap;
-            word-break: break-word;
+            color: var(--light);
+            font-weight: 500;
         }
 
-        @media (max-width: 860px) {
-            .playground-card {
-                grid-template-columns: 1fr;
-            }
-
-            .pg-controls {
-                border-right: none;
-                border-bottom: 1px solid var(--surface-border);
-            }
+        .card-modal .modal-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 14px;
+            background: var(--gradient);
+            color: white;
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
         }
 
-        /* Scroll-triggered reveals: elements below the fold hold at their
-           opacity:0 start-frame until they enter the viewport, then play. */
-        .browser-window,
-        .skill-card,
-        .contact-info,
-        .showcase-item,
-        .section-title,
-        .section-title::after,
-        .pg-controls,
-        .pg-preview {
-            animation-play-state: paused;
+        .card-modal .modal-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(59, 95, 217, 0.4);
         }
 
-        .browser-window.revealed,
-        .skill-card.revealed,
-        .contact-info.revealed,
-        .showcase-item.revealed,
-        .section-title.revealed,
-        .section-title.revealed::after,
-        .pg-controls.revealed,
-        .pg-preview.revealed {
-            animation-play-state: running;
-        }
-
-        .browser-window {
-            perspective: 1200px;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .browser-window, .skill-card, .contact-info, .showcase-item, .section-title {
-                animation-play-state: running !important;
-                transition: none !important;
+        /* Responsive canvas */
+        @media (max-width: 900px) {
+            .canvas-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
             }
         }
+
+        @media (max-width: 600px) {
+            .canvas-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 14px;
+            }
+
+            .canvas-card {
+                padding: 18px;
+                aspect-ratio: 3 / 4;
+            }
+
+            .canvas-card .card-title {
+                font-size: 18px;
+            }
+
+            .canvas-card .card-subtitle {
+                font-size: 12px;
+            }
+
+            .canvas-card .card-arrow {
+                width: 34px;
+                height: 34px;
+                font-size: 12px;
+                bottom: 18px;
+                right: 18px;
+            }
+
+            .canvas-card .card-tag {
+                font-size: 9px;
+                padding: 4px 10px;
+            }
+
+            .card-modal-inner {
+                padding: 32px 24px;
+            }
+
+            .card-modal h2 {
+                font-size: 26px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .canvas-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .canvas-card {
+                padding: 14px;
+                aspect-ratio: 3 / 4;
+                border-radius: 16px;
+            }
+
+            .canvas-card .card-title {
+                font-size: 15px;
+            }
+
+            .canvas-card .card-subtitle {
+                font-size: 10px;
+            }
+
+            .canvas-card .card-arrow {
+                width: 28px;
+                height: 28px;
+                font-size: 10px;
+                bottom: 12px;
+                right: 12px;
+            }
+
+            .canvas-card .card-tag {
+                font-size: 8px;
+                padding: 3px 8px;
+                margin-bottom: 8px;
+            }
+        }
+
+        /* ============================================================
+               END DESIGN CANVAS
+               ============================================================ */
 
         /* Work Showcase Section */
         .work-showcase {
@@ -1125,7 +1262,7 @@
             }
         }
 
-        /* Project Info Section - UPDATED: Removed source code button */
+        /* Project Info Section */
         .project-info {
             padding: 30px;
             background: var(--browser-header-bg);
@@ -1517,7 +1654,6 @@
             color: var(--primary-light);
         }
 
-        /* Skills Button Container */
         .skills-button-container {
             text-align: center;
             margin-top: 60px;
@@ -1527,7 +1663,7 @@
             will-change: transform, opacity;
         }
 
-        /* NEW: Real Portfolio Showcase */
+        /* Real Portfolio Showcase */
         .portfolio-showcase {
             padding: 100px 0;
             background: var(--grad-portfolio);
@@ -1745,49 +1881,48 @@
             .nav-links {
                 display: none;
             }
-            
+
             .mobile-menu-btn {
                 display: block;
             }
-            
+
             .hero {
                 padding: 140px 0 60px;
             }
-            
+
             .hero-title {
                 font-size: clamp(36px, 8vw, 48px);
             }
-            
+
             .hero-stats {
                 gap: 20px;
             }
-            
+
             .stat-number {
                 font-size: 32px;
             }
-            
+
             .btn-group {
                 flex-direction: column;
                 width: 100%;
             }
-            
+
             .btn {
                 width: 100%;
                 justify-content: center;
             }
-            
-            /* Improved Mobile Iframes */
+
             .desktop-frame {
                 height: 400px;
             }
-            
+
             .tablet-frame {
                 width: 90%;
                 height: 500px;
                 border-width: 8px;
                 border-radius: 16px;
             }
-            
+
             .mobile-frame {
                 width: 90%;
                 max-width: 375px;
@@ -1795,42 +1930,42 @@
                 border-width: 8px;
                 border-radius: 30px;
             }
-            
+
             .mobile-frame::before,
             .mobile-frame::after {
                 width: 80px;
                 height: 20px;
             }
-            
+
             .browser-header {
                 flex-direction: column;
                 gap: 15px;
                 align-items: stretch;
             }
-            
+
             .browser-url {
                 min-width: auto;
             }
-            
+
             .viewport-controls {
                 justify-content: center;
             }
-            
+
             .project-header {
                 flex-direction: column;
             }
-            
+
             .project-actions {
                 width: 100%;
                 justify-content: center;
             }
-            
+
             .skills-grid,
             .contact-grid,
             .showcase-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .whatsapp-float {
                 bottom: 20px;
                 right: 20px;
@@ -1844,49 +1979,77 @@
             .container {
                 padding: 0 16px;
             }
-            
+
             .section-title {
                 font-size: 32px;
             }
-            
+
             .desktop-frame {
                 height: 300px;
             }
-            
+
             .tablet-frame {
                 height: 400px;
             }
-            
+
             .mobile-frame {
                 height: 400px;
             }
-            
+
             .browser-url {
                 display: none;
             }
-            
+
             .viewport-controls {
                 width: 100%;
                 justify-content: space-between;
             }
-            
+
             .viewport-btn {
                 padding: 8px 12px;
                 font-size: 12px;
             }
-            
+
             .timeline::before {
                 left: 25px;
             }
-            
+
             .timeline-marker {
                 width: 50px;
                 height: 50px;
                 font-size: 16px;
             }
-            
+
             .project-features {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll-triggered reveals */
+        .browser-window,
+        .skill-card,
+        .contact-info,
+        .showcase-item,
+        .section-title {
+            animation-play-state: paused;
+        }
+
+        .browser-window.revealed,
+        .skill-card.revealed,
+        .contact-info.revealed,
+        .showcase-item.revealed,
+        .section-title.revealed {
+            animation-play-state: running;
+        }
+
+        .browser-window {
+            perspective: 1200px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .browser-window, .skill-card, .contact-info, .showcase-item, .section-title {
+                animation-play-state: running !important;
+                transition: none !important;
             }
         }
     </style>
@@ -1895,6 +2058,7 @@
 <body>
 
     <div class="scroll-progress" id="scrollProgress"></div>
+
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <button class="close-menu" id="closeMenu">
@@ -1903,7 +2067,7 @@
         <a href="#home" class="nav-link" onclick="closeMobileMenu()">Home</a>
         <a href="#work" class="nav-link" onclick="closeMobileMenu()">Projects</a>
         <a href="gallery.html" class="nav-link">Gallery</a>
-        <a href="#playground" class="nav-link" onclick="closeMobileMenu()">Playground</a>
+        <a href="#design" class="nav-link" onclick="closeMobileMenu()">Design</a>
         <a href="#backend" class="nav-link" onclick="closeMobileMenu()">Backend</a>
         <a href="#process" class="nav-link" onclick="closeMobileMenu()">Process</a>
         <a href="#skills" class="nav-link" onclick="closeMobileMenu()">Skills</a>
@@ -1929,7 +2093,7 @@
                         <a href="#home" class="nav-link">Home</a>
                         <a href="#work" class="nav-link">Projects</a>
                         <a href="gallery.html" class="nav-link">Gallery</a>
-                        <a href="#playground" class="nav-link">Playground</a>
+                        <a href="#design" class="nav-link">Design</a>
                         <a href="#backend" class="nav-link">Backend</a>
                         <a href="#skills" class="nav-link">Skills</a>
                         <a href="#contact" class="nav-link">Contact</a>
@@ -1955,7 +2119,7 @@
                 <p style="font-size: 20px; color: var(--gray); margin-bottom: 20px; max-width: 600px; line-height: 1.7;">
                     I design and build <strong style="color: var(--light); font-weight: 600;">high-performance websites</strong> — front-end interfaces, backend systems and APIs, and on-page SEO — built on strategic design, clean code, and data-driven optimization.
                 </p>
-                
+
                 <div class="hero-stats">
                     <div class="stat-item">
                         <div class="stat-number">50+</div>
@@ -1974,7 +2138,7 @@
                         <div class="stat-label">Avg. Response Time</div>
                     </div>
                 </div>
-                
+
                 <div class="btn-group">
                     <a href="#work" class="btn btn-primary">
                         <span>View My Work</span>
@@ -1989,65 +2153,115 @@
         </div>
     </section>
 
-    <!-- Live Design Playground -->
-    <section class="playground-section" id="playground">
+    <!-- ============================================================
+    DESIGN CANVAS — Premium 3D Interactive Showcase
+    ============================================================ -->
+    <section class="design-canvas" id="design">
         <div class="container">
-            <h2 class="section-title">Live Design Playground</h2>
-            <p style="text-align: center; color: var(--gray); max-width: 700px; margin: 0 auto; font-size: 18px;">
-                Tweak the controls and watch the component — and its actual CSS — update in real time.
-            </p>
+            <div class="canvas-header">
+                <h2 class="section-title">Design Canvas</h2>
+                <p>Explore my design language through these interactive cards — each one tells a story of craftsmanship and attention to detail.</p>
+            </div>
 
-            <div class="playground-card">
-                <div class="pg-controls">
-                    <div class="pg-field">
-                        <label>Accent Color</label>
-                        <div class="pg-swatches">
-                            <button class="pg-swatch active" style="background: linear-gradient(135deg, #3b5fd9, #6b8afd);" data-c1="#3b5fd9" data-c2="#6b8afd" aria-label="Blue"></button>
-                            <button class="pg-swatch" style="background: linear-gradient(135deg, #c9a668, #e0c393);" data-c1="#c9a668" data-c2="#e0c393" aria-label="Gold"></button>
-                            <button class="pg-swatch" style="background: linear-gradient(135deg, #d9553b, #ef8a6b);" data-c1="#d9553b" data-c2="#ef8a6b" aria-label="Coral"></button>
-                            <button class="pg-swatch" style="background: linear-gradient(135deg, #2fb380, #6bd9a8);" data-c1="#2fb380" data-c2="#6bd9a8" aria-label="Green"></button>
-                        </div>
+            <div class="canvas-grid" id="canvasGrid">
+                <!-- Card 1 -->
+                <div class="canvas-card" data-project="0">
+                    <div class="card-bg card-bg-1"></div>
+                    <div class="card-accent card-accent-1"></div>
+                    <div class="card-content">
+                        <span class="card-tag">Brand Identity</span>
+                        <h3 class="card-title">AR Building</h3>
+                        <p class="card-subtitle">Construction &amp; Renovation</p>
                     </div>
-
-                    <div class="pg-field">
-                        <label>Corner Radius: <span id="pgRadiusValue">14px</span></label>
-                        <input type="range" id="pgRadiusRange" min="0" max="40" value="14">
-                    </div>
-
-                    <div class="pg-field">
-                        <label>Shadow Depth: <span id="pgShadowValue">Medium</span></label>
-                        <input type="range" id="pgShadowRange" min="0" max="3" value="2" step="1">
-                    </div>
-
-                    <div class="pg-field">
-                        <label>Style</label>
-                        <div class="pg-toggle">
-                            <button class="pg-toggle-btn active" data-style="solid">Solid</button>
-                            <button class="pg-toggle-btn" data-style="outline">Outline</button>
-                            <button class="pg-toggle-btn" data-style="glass">Glass</button>
-                        </div>
-                    </div>
+                    <div class="card-arrow"><i class="fas fa-arrow-right"></i></div>
                 </div>
 
-                <div class="pg-preview">
-                    <div class="pg-stage">
-                        <button class="pg-button" id="pgButton">
-                            <i class="fas fa-bolt"></i>
-                            <span>Get Started</span>
-                        </button>
+                <!-- Card 2 -->
+                <div class="canvas-card" data-project="1">
+                    <div class="card-bg card-bg-2"></div>
+                    <div class="card-accent card-accent-2"></div>
+                    <div class="card-content">
+                        <span class="card-tag">Luxury Branding</span>
+                        <h3 class="card-title">Exposure Boost</h3>
+                        <p class="card-subtitle">Photography &amp; Creative</p>
                     </div>
+                    <div class="card-arrow"><i class="fas fa-arrow-right"></i></div>
+                </div>
 
-                    <div class="pg-code">
-                        <div class="pg-code-header">
-                            <span>style.css</span>
-                            <button class="pg-copy-btn" id="pgCopyBtn"><i class="fas fa-copy"></i> Copy</button>
-                        </div>
-                        <pre id="pgCodeOutput"></pre>
+                <!-- Card 3 -->
+                <div class="canvas-card" data-project="2">
+                    <div class="card-bg card-bg-3"></div>
+                    <div class="card-accent card-accent-3"></div>
+                    <div class="card-content">
+                        <span class="card-tag">Clean &amp; Fresh</span>
+                        <h3 class="card-title">Green Glo</h3>
+                        <p class="card-subtitle">Cleaning &amp; Maintenance</p>
                     </div>
+                    <div class="card-arrow"><i class="fas fa-arrow-right"></i></div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="canvas-card" data-project="3">
+                    <div class="card-bg card-bg-4"></div>
+                    <div class="card-accent card-accent-4"></div>
+                    <div class="card-content">
+                        <span class="card-tag">Heritage Craft</span>
+                        <h3 class="card-title">JR Sash</h3>
+                        <p class="card-subtitle">Timber &amp; Restoration</p>
+                    </div>
+                    <div class="card-arrow"><i class="fas fa-arrow-right"></i></div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="canvas-card" data-project="4">
+                    <div class="card-bg card-bg-5"></div>
+                    <div class="card-accent card-accent-5"></div>
+                    <div class="card-content">
+                        <span class="card-tag">Craftsmanship</span>
+                        <h3 class="card-title">203 Carpentry</h3>
+                        <p class="card-subtitle">Joinery &amp; Woodwork</p>
+                    </div>
+                    <div class="card-arrow"><i class="fas fa-arrow-right"></i></div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="canvas-card" data-project="5">
+                    <div class="card-bg card-bg-6"></div>
+                    <div class="card-accent card-accent-6"></div>
+                    <div class="card-content">
+                        <span class="card-tag">Digital Product</span>
+                        <h3 class="card-title">NFC Business</h3>
+                        <p class="card-subtitle">Smart Contact Cards</p>
+                    </div>
+                    <div class="card-arrow"><i class="fas fa-arrow-right"></i></div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Card Modal -->
+    <div class="card-modal" id="cardModal">
+        <div class="card-modal-inner">
+            <button class="card-modal-close" id="cardModalClose"><i class="fas fa-times"></i></button>
+            <span class="modal-tag" id="modalTag">Brand Identity</span>
+            <h2 id="modalTitle">AR Building</h2>
+            <p class="modal-sub" id="modalSub">Construction &amp; Renovation</p>
+            <p class="modal-desc" id="modalDesc">A bold, trustworthy brand language built for the construction industry. Strong typography, earthy tones, and a sense of permanence.</p>
+            <div class="modal-tech" id="modalTech">
+                <span>Typography</span>
+                <span>Color Theory</span>
+                <span>Visual Hierarchy</span>
+            </div>
+            <a href="#work" class="modal-btn" id="modalBtn">
+                <span>View Project</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    END DESIGN CANVAS
+    ============================================================ -->
 
     <!-- Main Website Showcase -->
     <section class="work-showcase" id="work">
@@ -2078,7 +2292,7 @@
                         </button>
                     </div>
                 </div>
-                
+
                 <!-- Desktop View -->
                 <div class="device-frame desktop-frame" id="frame-1-desktop">
                     <div class="viewport-notice">Desktop View</div>
@@ -2087,7 +2301,7 @@
                             <div class="spinner"></div>
                             <p>Loading Exposure Boost...</p>
                         </div>
-                        <iframe src="https://megablaze757.github.io/ExposureBoost" 
+                        <iframe src="https://megablaze757.github.io/ExposureBoost"
                                 class="preview-iframe"
                                 loading="lazy"
                                 allow="fullscreen"
@@ -2095,7 +2309,7 @@
                         </iframe>
                     </div>
                 </div>
-                
+
                 <!-- Tablet View -->
                 <div class="device-frame tablet-frame" id="frame-1-tablet" style="display: none;">
                     <div class="viewport-notice">Tablet View</div>
@@ -2104,7 +2318,7 @@
                             <div class="spinner"></div>
                             <p>Loading tablet view...</p>
                         </div>
-                        <iframe src="https://megablaze757.github.io/ExposureBoost" 
+                        <iframe src="https://megablaze757.github.io/ExposureBoost"
                                 class="preview-iframe"
                                 loading="lazy"
                                 allow="fullscreen"
@@ -2112,7 +2326,7 @@
                         </iframe>
                     </div>
                 </div>
-                
+
                 <!-- Mobile View -->
                 <div class="device-frame mobile-frame" id="frame-1-mobile" style="display: none;">
                     <div class="viewport-notice">Mobile View</div>
@@ -2121,7 +2335,7 @@
                             <div class="spinner"></div>
                             <p>Loading mobile view...</p>
                         </div>
-                        <iframe src="https://megablaze757.github.io/ExposureBoost" 
+                        <iframe src="https://megablaze757.github.io/ExposureBoost"
                                 class="preview-iframe"
                                 loading="lazy"
                                 allow="fullscreen"
@@ -2129,7 +2343,7 @@
                         </iframe>
                     </div>
                 </div>
-                
+
                 <div class="project-info">
                     <div class="project-header">
                         <div>
@@ -2142,11 +2356,11 @@
                             </a>
                         </div>
                     </div>
-                    
+
                     <p style="color: var(--gray); margin-bottom: 20px; font-size: 16px; line-height: 1.7;">
                         A modern photography web application featuring interactive galleries, real-time image filters, dark/light mode toggle, and smooth animations. Built with vanilla JavaScript and CSS transitions.
                     </p>
-                    
+
                     <div class="tech-stack">
                         <span class="tech-tag">Vanilla JavaScript</span>
                         <span class="tech-tag">CSS Animations</span>
@@ -2154,7 +2368,7 @@
                         <span class="tech-tag">Responsive Design</span>
                         <span class="tech-tag">Image Optimization</span>
                     </div>
-                    
+
                     <div class="project-features">
                         <div class="feature-item">
                             <div class="feature-icon">
@@ -2208,7 +2422,7 @@
                         </button>
                     </div>
                 </div>
-                
+
                 <!-- Desktop View -->
                 <div class="device-frame desktop-frame" id="frame-2-desktop">
                     <div class="viewport-notice">Desktop View</div>
@@ -2217,7 +2431,7 @@
                             <div class="spinner"></div>
                             <p>Loading AR Building Services...</p>
                         </div>
-                        <iframe src="https://arbuildingservices.co.uk" 
+                        <iframe src="https://arbuildingservices.co.uk"
                                 class="preview-iframe"
                                 loading="lazy"
                                 allow="fullscreen"
@@ -2225,7 +2439,7 @@
                         </iframe>
                     </div>
                 </div>
-                
+
                 <!-- Tablet View -->
                 <div class="device-frame tablet-frame" id="frame-2-tablet" style="display: none;">
                     <div class="viewport-notice">Tablet View</div>
@@ -2234,7 +2448,7 @@
                             <div class="spinner"></div>
                             <p>Loading tablet view...</p>
                         </div>
-                        <iframe src="https://arbuildingservices.co.uk" 
+                        <iframe src="https://arbuildingservices.co.uk"
                                 class="preview-iframe"
                                 loading="lazy"
                                 allow="fullscreen"
@@ -2242,7 +2456,7 @@
                         </iframe>
                     </div>
                 </div>
-                
+
                 <!-- Mobile View -->
                 <div class="device-frame mobile-frame" id="frame-2-mobile" style="display: none;">
                     <div class="viewport-notice">Mobile View</div>
@@ -2251,7 +2465,7 @@
                             <div class="spinner"></div>
                             <p>Loading mobile view...</p>
                         </div>
-                        <iframe src="https://arbuildingservices.co.uk" 
+                        <iframe src="https://arbuildingservices.co.uk"
                                 class="preview-iframe"
                                 loading="lazy"
                                 allow="fullscreen"
@@ -2259,7 +2473,7 @@
                         </iframe>
                     </div>
                 </div>
-                
+
                 <div class="project-info">
                     <div class="project-header">
                         <div>
@@ -2275,11 +2489,11 @@
                             </a>
                         </div>
                     </div>
-                    
+
                     <p style="color: var(--gray); margin-bottom: 20px; font-size: 16px; line-height: 1.7;">
                         A lead-generation focused website for a construction company, optimized for local SEO with strategic CTAs, service pages, and a project gallery. Increased client inquiries by 35%.
                     </p>
-                    
+
                     <div class="tech-stack">
                         <span class="tech-tag">HTML5/CSS3</span>
                         <span class="tech-tag">Local SEO</span>
@@ -2287,7 +2501,7 @@
                         <span class="tech-tag">Contact Forms</span>
                         <span class="tech-tag">Project Gallery</span>
                     </div>
-                    
+
                     <div class="project-features">
                         <div class="feature-item">
                             <div class="feature-icon">
@@ -2341,7 +2555,7 @@
                         </button>
                     </div>
                 </div>
-                
+
                 <!-- Desktop View -->
                 <div class="device-frame desktop-frame" id="frame-3-desktop">
                     <div class="viewport-notice">Desktop View</div>
@@ -2350,7 +2564,7 @@
                             <div class="spinner"></div>
                             <p>Loading Green Glo Cleaning...</p>
                         </div>
-                        <iframe src="https://greenglocleaningco.com" 
+                        <iframe src="https://greenglocleaningco.com"
                                 class="preview-iframe"
                                 loading="lazy"
                                 allow="fullscreen"
@@ -2358,7 +2572,7 @@
                         </iframe>
                     </div>
                 </div>
-                
+
                 <!-- Tablet View -->
                 <div class="device-frame tablet-frame" id="frame-3-tablet" style="display: none;">
                     <div class="viewport-notice">Tablet View</div>
@@ -2367,7 +2581,7 @@
                             <div class="spinner"></div>
                             <p>Loading tablet view...</p>
                         </div>
-                        <iframe src="https://greenglocleaningco.com" 
+                        <iframe src="https://greenglocleaningco.com"
                                 class="preview-iframe"
                                 loading="lazy"
                                 allow="fullscreen"
@@ -2375,7 +2589,7 @@
                         </iframe>
                     </div>
                 </div>
-                
+
                 <!-- Mobile View -->
                 <div class="device-frame mobile-frame" id="frame-3-mobile" style="display: none;">
                     <div class="viewport-notice">Mobile View</div>
@@ -2384,7 +2598,7 @@
                             <div class="spinner"></div>
                             <p>Loading mobile view...</p>
                         </div>
-                        <iframe src="https://greenglocleaningco.com" 
+                        <iframe src="https://greenglocleaningco.com"
                                 class="preview-iframe"
                                 loading="lazy"
                                 allow="fullscreen"
@@ -2392,7 +2606,7 @@
                         </iframe>
                     </div>
                 </div>
-                
+
                 <div class="project-info">
                     <div class="project-header">
                         <div>
@@ -2408,11 +2622,11 @@
                             </a>
                         </div>
                     </div>
-                    
+
                     <p style="color: var(--gray); margin-bottom: 20px; font-size: 16px; line-height: 1.7;">
                         A complete booking system with real-time availability tracking, customer management dashboard, and automated notifications. Increased booking conversions by 40% with intuitive UX.
                     </p>
-                    
+
                     <div class="tech-stack">
                         <span class="tech-tag">JavaScript</span>
                         <span class="tech-tag">Booking System</span>
@@ -2420,7 +2634,7 @@
                         <span class="tech-tag">Email Automation</span>
                         <span class="tech-tag">Payment Integration</span>
                     </div>
-                    
+
                     <div class="project-features">
                         <div class="feature-item">
                             <div class="feature-icon">
@@ -2735,7 +2949,7 @@
             <p style="text-align: center; color: var(--gray); max-width: 700px; margin: 0 auto 60px; font-size: 18px;">
                 A structured approach ensures every project delivers exceptional results, on time and within budget.
             </p>
-            
+
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-marker">
@@ -2746,7 +2960,7 @@
                         <p style="color: var(--gray);">Understanding your goals, target audience, and technical requirements to create a detailed project plan.</p>
                     </div>
                 </div>
-                
+
                 <div class="timeline-item">
                     <div class="timeline-marker">
                         <i class="fas fa-pencil-ruler"></i>
@@ -2756,7 +2970,7 @@
                         <p style="color: var(--gray);">Creating wireframes and interactive prototypes to visualize the user experience before development.</p>
                     </div>
                 </div>
-                
+
                 <div class="timeline-item">
                     <div class="timeline-marker">
                         <i class="fas fa-code"></i>
@@ -2766,7 +2980,7 @@
                         <p style="color: var(--gray);">Building with clean, optimized code followed by rigorous testing across all devices and browsers.</p>
                     </div>
                 </div>
-                
+
                 <div class="timeline-item">
                     <div class="timeline-marker">
                         <i class="fas fa-rocket"></i>
@@ -2842,7 +3056,7 @@
     <section class="skills-section" id="skills">
         <div class="container">
             <h2 class="section-title">Technical Expertise</h2>
-            
+
             <div class="skills-grid">
                 <div class="skill-card">
                     <div class="skill-icon">
@@ -2885,7 +3099,6 @@
                 </div>
             </div>
 
-            <!-- Working Skills Button -->
             <div class="skills-button-container">
                 <a href="#contact" class="btn btn-primary">
                     <span>Start Your Project</span>
@@ -2895,14 +3108,14 @@
         </div>
     </section>
 
-    <!-- Portfolio Showcase Section (Replaced Testimonials) -->
+    <!-- Portfolio Showcase Section -->
     <section class="portfolio-showcase" id="showcase">
         <div class="container">
             <h2 class="section-title">Additional Services</h2>
             <p style="text-align: center; color: var(--gray); max-width: 700px; margin: 0 auto 60px; font-size: 18px;">
                 Beyond web development, I offer comprehensive digital solutions to help your business grow.
             </p>
-            
+
             <div class="showcase-grid">
                 <div class="showcase-item">
                     <div class="showcase-icon">
@@ -2913,7 +3126,7 @@
                         Improve your search rankings with technical SEO audits, keyword optimization, and content strategy.
                     </p>
                 </div>
-                
+
                 <div class="showcase-item">
                     <div class="showcase-icon">
                         <i class="fas fa-chart-line"></i>
@@ -2923,7 +3136,7 @@
                         Track user behavior, conversion rates, and site performance with detailed analytics implementation.
                     </p>
                 </div>
-                
+
                 <div class="showcase-item">
                     <div class="showcase-icon">
                         <i class="fas fa-shield-alt"></i>
@@ -2941,11 +3154,11 @@
     <section class="contact-section" id="contact">
         <div class="container">
             <h2 class="section-title">Ready to Build Something?</h2>
-            
+
             <div class="contact-grid">
                 <div class="contact-info">
                     <h3 style="font-size: 26px; margin-bottom: 30px; color: var(--light);">Get In Touch</h3>
-                    
+
                     <div class="contact-method">
                         <div class="contact-icon">
                             <i class="fas fa-phone"></i>
@@ -2984,7 +3197,7 @@
 
                 <div class="contact-info">
                     <h3 style="font-size: 26px; margin-bottom: 30px; color: var(--light);">Why Work With Me</h3>
-                    
+
                     <ul style="list-style: none;">
                         <li style="margin-bottom: 15px; padding-left: 25px; position: relative;">
                             <i class="fas fa-check" style="color: var(--accent); position: absolute; left: 0;"></i>
@@ -3007,7 +3220,7 @@
                             <strong>Conversion Focus:</strong> Every design decision drives business results
                         </li>
                     </ul>
-                    
+
                     <div style="margin-top: 30px; padding: 20px; background: rgba(201, 166, 104, 0.1); border-radius: 16px; border: 1px solid rgba(201, 166, 104, 0.2);">
                         <p style="color: var(--accent); font-size: 15px; margin: 0; line-height: 1.6;">
                             <i class="fas fa-lightbulb" style="margin-right: 10px; font-size: 18px;"></i>
@@ -3045,7 +3258,7 @@
 
     <script>
         // Theme Toggle (light / dark) with saved preference
-        (function () {
+        (function() {
             const root = document.documentElement;
             const toggleBtn = document.getElementById('themeToggle');
             const toggleBtnMobile = document.getElementById('themeToggleMobile');
@@ -3086,119 +3299,11 @@
             toggleBtnMobile.addEventListener('click', toggleTheme);
         })();
 
-        // Live Design Playground
-        (function () {
-            const btn = document.getElementById('pgButton');
-            const radiusRange = document.getElementById('pgRadiusRange');
-            const shadowRange = document.getElementById('pgShadowRange');
-            const radiusValue = document.getElementById('pgRadiusValue');
-            const shadowValue = document.getElementById('pgShadowValue');
-            const swatches = document.querySelectorAll('.pg-swatch');
-            const styleBtns = document.querySelectorAll('.pg-toggle-btn');
-            const codeOutput = document.getElementById('pgCodeOutput');
-            const copyBtn = document.getElementById('pgCopyBtn');
-
-            if (!btn) return; // section not present, skip safely
-
-            const shadowLevels = [
-                { label: 'None', value: 'none' },
-                { label: 'Light', value: '0 4px 14px rgba(0, 0, 0, 0.18)' },
-                { label: 'Medium', value: '0 10px 26px rgba(0, 0, 0, 0.28)' },
-                { label: 'Strong', value: '0 20px 45px rgba(0, 0, 0, 0.38)' }
-            ];
-
-            let state = {
-                c1: '#3b5fd9',
-                c2: '#6b8afd',
-                radius: 14,
-                shadowIndex: 2,
-                style: 'solid'
-            };
-
-            function render() {
-                btn.style.setProperty('--pg-radius', state.radius + 'px');
-                btn.style.setProperty('--pg-c1', state.c1);
-                btn.style.setProperty('--pg-c2', state.c2);
-                const shadow = state.style === 'outline' || state.style === 'glass'
-                    ? (state.shadowIndex === 0 ? 'none' : '0 6px 18px rgba(0, 0, 0, 0.15)')
-                    : shadowLevels[state.shadowIndex].value;
-                btn.style.setProperty('--pg-shadow', shadow);
-
-                btn.classList.remove('pg-outline', 'pg-glass');
-                if (state.style === 'outline') btn.classList.add('pg-outline');
-                if (state.style === 'glass') btn.classList.add('pg-glass');
-
-                radiusValue.textContent = state.radius + 'px';
-                shadowValue.textContent = shadowLevels[state.shadowIndex].label;
-
-                const bg = state.style === 'solid'
-                    ? `linear-gradient(135deg, ${state.c1} 0%, ${state.c2} 100%)`
-                    : state.style === 'outline'
-                        ? 'transparent'
-                        : `linear-gradient(135deg, ${state.c1}33, ${state.c2}22)`;
-
-                codeOutput.textContent =
-`.button {
-  border-radius: ${state.radius}px;
-  background: ${bg};
-  box-shadow: ${shadow};
-  border: 2px solid ${state.style === 'outline' ? state.c1 : 'transparent'};
-  color: ${state.style === 'solid' ? '#ffffff' : state.c1};
-  padding: 18px 34px;
-  font-weight: 700;
-  transition: all 0.25s ease;
-}`;
-            }
-
-            radiusRange.addEventListener('input', () => {
-                state.radius = parseInt(radiusRange.value, 10);
-                render();
-            });
-
-            shadowRange.addEventListener('input', () => {
-                state.shadowIndex = parseInt(shadowRange.value, 10);
-                render();
-            });
-
-            swatches.forEach(sw => {
-                sw.addEventListener('click', () => {
-                    swatches.forEach(s => s.classList.remove('active'));
-                    sw.classList.add('active');
-                    state.c1 = sw.dataset.c1;
-                    state.c2 = sw.dataset.c2;
-                    render();
-                });
-            });
-
-            styleBtns.forEach(sb => {
-                sb.addEventListener('click', () => {
-                    styleBtns.forEach(s => s.classList.remove('active'));
-                    sb.classList.add('active');
-                    state.style = sb.dataset.style;
-                    render();
-                });
-            });
-
-            if (copyBtn) {
-                copyBtn.addEventListener('click', async () => {
-                    try {
-                        await navigator.clipboard.writeText(codeOutput.textContent);
-                        const original = copyBtn.innerHTML;
-                        copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied';
-                        setTimeout(() => { copyBtn.innerHTML = original; }, 1500);
-                    } catch (e) {
-                        // Clipboard API unavailable — fail silently, code is still visible to select/copy manually
-                    }
-                });
-            }
-
-            render();
-        })();
-
         // Scroll progress bar
-        (function () {
+        (function() {
             const bar = document.getElementById('scrollProgress');
             if (!bar) return;
+
             function updateProgress() {
                 const scrollable = document.documentElement.scrollHeight - window.innerHeight;
                 const pct = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
@@ -3208,10 +3313,10 @@
             updateProgress();
         })();
 
-        // Reveal-on-scroll: elements play their entrance animation only once in view
-        (function () {
+        // Reveal-on-scroll
+        (function() {
             const targets = document.querySelectorAll(
-                '.browser-window, .skill-card, .contact-info, .showcase-item, .section-title, .pg-controls, .pg-preview'
+                '.browser-window, .skill-card, .contact-info, .showcase-item, .section-title'
             );
             if (!('IntersectionObserver' in window) || targets.length === 0) {
                 targets.forEach(el => el.classList.add('revealed'));
@@ -3229,12 +3334,11 @@
         })();
 
         // Custom cursor + magnetic buttons + card tilt — desktop pointer devices only
-        (function () {
+        (function() {
             const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
             const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             if (!canHover || reduceMotion) return;
 
-            // Custom cursor
             const dot = document.createElement('div');
             dot.className = 'cursor-dot';
             const ring = document.createElement('div');
@@ -3243,8 +3347,10 @@
             document.body.appendChild(ring);
             document.body.classList.add('has-custom-cursor');
 
-            let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
-            let ringX = mouseX, ringY = mouseY;
+            let mouseX = window.innerWidth / 2,
+                mouseY = window.innerHeight / 2;
+            let ringX = mouseX,
+                ringY = mouseY;
 
             window.addEventListener('mousemove', (e) => {
                 mouseX = e.clientX;
@@ -3260,13 +3366,13 @@
             }
             animateRing();
 
-            document.querySelectorAll('a, button, .browser-window, input[type="range"]').forEach(el => {
+            document.querySelectorAll('a, button, .browser-window').forEach(el => {
                 el.addEventListener('mouseenter', () => ring.classList.add('cursor-hover'));
                 el.addEventListener('mouseleave', () => ring.classList.remove('cursor-hover'));
             });
 
             // Magnetic buttons
-            document.querySelectorAll('.btn, .theme-toggle, .pg-toggle-btn, .pg-copy-btn, .terminal-replay').forEach(btn => {
+            document.querySelectorAll('.btn, .theme-toggle, .terminal-replay').forEach(btn => {
                 btn.style.transition = 'transform 0.15s ease-out, background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease';
                 btn.addEventListener('mousemove', (e) => {
                     const r = btn.getBoundingClientRect();
@@ -3290,7 +3396,8 @@
                     const py = (e.clientY - r.top) / r.height - 0.5;
                     const rotateY = px * 6;
                     const rotateX = -py * 6;
-                    card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+                    card.style.transform =
+                        `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
                 });
                 card.addEventListener('mouseleave', () => {
                     card.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
@@ -3315,7 +3422,7 @@
         })();
 
         // Backend Terminal Showcase — typewriter effect
-        (function () {
+        (function() {
             const body = document.getElementById('terminalBody');
             const replayBtn = document.getElementById('terminalReplay');
             if (!body) return;
@@ -3424,82 +3531,67 @@
         mobileMenuBtn.addEventListener('click', openMobileMenu);
         closeMenuBtn.addEventListener('click', closeMobileMenu);
 
-        // Close menu when clicking on links
         document.querySelectorAll('.mobile-menu .nav-link').forEach(link => {
             link.addEventListener('click', closeMobileMenu);
         });
 
-        // IMPROVED: Enhanced Viewport Switching with Better Performance
+        // Viewport Switching
         document.querySelectorAll('.viewport-btn').forEach(button => {
             button.addEventListener('click', function() {
                 const projectId = this.dataset.project;
                 const viewport = this.dataset.viewport;
-                
-                // Update active button
+
                 const controls = this.parentElement;
                 controls.querySelectorAll('.viewport-btn').forEach(btn => {
                     btn.classList.remove('active');
                 });
                 this.classList.add('active');
-                
-                // Hide all frames for this project
+
                 const projectContainer = document.getElementById(`project-${projectId}`);
                 projectContainer.querySelectorAll('.device-frame').forEach(frame => {
                     frame.style.display = 'none';
                 });
-                
-                // Show selected frame
+
                 const selectedFrame = document.getElementById(`frame-${projectId}-${viewport}`);
                 selectedFrame.style.display = 'block';
-                
-                // Force iframe reload for better mobile simulation
+
                 const iframe = selectedFrame.querySelector('iframe');
                 if (iframe) {
-                    // Show loader
                     const loaderId = `loader-${projectId}-${viewport}`;
                     const loader = document.getElementById(loaderId);
                     if (loader) {
                         loader.classList.remove('hidden');
                     }
-                    
-                    // Add viewport parameter for better mobile simulation
                     const currentSrc = iframe.src.split('?')[0];
-                    let newSrc = currentSrc;
-                    
-                    // Add timestamp to prevent caching issues
-                    newSrc += `?t=${Date.now()}&viewport=${viewport}`;
-                    
-                    iframe.src = newSrc;
+                    iframe.src = currentSrc + `?t=${Date.now()}&viewport=${viewport}`;
                 }
             });
         });
 
-        // IMPROVED: Enhanced Smooth Scrolling with Momentum
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
-                
+
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     const headerHeight = document.querySelector('header').offsetHeight;
                     const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-                    
-                    // Use smooth scroll with better easing
+
                     window.scrollTo({
                         top: targetPosition - headerHeight,
                         behavior: 'smooth',
                         block: 'start'
                     });
-                    
-                    // Update URL hash without scrolling
+
                     history.pushState(null, null, targetId);
                 }
             });
         });
 
-        // IMPROVED: Header Scroll Effect with Performance
+        // Header scroll effect
         let ticking = false;
         window.addEventListener('scroll', () => {
             if (!ticking) {
@@ -3514,153 +3606,133 @@
                 });
                 ticking = true;
             }
-            
-            // Animate elements on scroll
-            animateOnScroll();
         });
 
-        // IMPROVED: Lazy Loading for iframes with Intersection Observer
-        const iframeObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const iframe = entry.target;
-                    if (!iframe.dataset.loaded) {
-                        iframe.dataset.loaded = true;
-                        // Store original src and reload
-                        if (iframe.src && !iframe.src.includes('t=')) {
-                            iframe.src = iframe.src.split('?')[0] + '?t=' + Date.now();
-                        }
-                    }
-                }
-            });
-        }, { 
-            threshold: 0.1,
-            rootMargin: '100px' // Load iframes before they enter viewport
-        });
+        // ============================================================
+        // DESIGN CANVAS — Card interactions and modal
+        // ============================================================
+        (function() {
+            const cards = document.querySelectorAll('.canvas-card');
+            const modal = document.getElementById('cardModal');
+            const modalClose = document.getElementById('cardModalClose');
+            const modalTag = document.getElementById('modalTag');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalSub = document.getElementById('modalSub');
+            const modalDesc = document.getElementById('modalDesc');
+            const modalTech = document.getElementById('modalTech');
+            const modalBtn = document.getElementById('modalBtn');
 
-        // Observe all iframes
-        document.querySelectorAll('iframe').forEach(iframe => {
-            iframeObserver.observe(iframe);
-        });
+            const projectData = [{
+                tag: 'Brand Identity',
+                title: 'AR Building',
+                sub: 'Construction & Renovation',
+                desc: 'A bold, trustworthy brand language built for the construction industry. Strong typography, earthy tones, and a sense of permanence that reflects quality craftsmanship.',
+                tech: ['Typography', 'Color Theory', 'Visual Hierarchy', 'Brand Positioning'],
+                link: '#project-2'
+            }, {
+                tag: 'Luxury Branding',
+                title: 'Exposure Boost',
+                sub: 'Photography & Creative',
+                desc: 'A premium, modern aesthetic designed for creative professionals. Clean layouts, bold imagery, and a sophisticated color palette that elevates the brand.',
+                tech: ['Visual Design', 'Motion', 'Color Psychology', 'Typography'],
+                link: '#project-1'
+            }, {
+                tag: 'Clean & Fresh',
+                title: 'Green Glo',
+                sub: 'Cleaning & Maintenance',
+                desc: 'A fresh, approachable brand identity built for trust. Soft greens, clean whites, and a friendly tone that makes professional cleaning feel accessible.',
+                tech: ['Brand Identity', 'UI Design', 'Color Theory', 'Typography'],
+                link: '#project-3'
+            }, {
+                tag: 'Heritage Craft',
+                title: 'JR Sash',
+                sub: 'Timber & Restoration',
+                desc: 'A refined, heritage-inspired brand for period property specialists. Warm wood tones, classic typography, and a sense of tradition and expertise.',
+                tech: ['Heritage Branding', 'Typography', 'Color Theory', 'Visual Design'],
+                link: '#project-4'
+            }, {
+                tag: 'Craftsmanship',
+                title: '203 Carpentry',
+                sub: 'Joinery & Woodwork',
+                desc: 'A warm, artisan brand identity for a carpentry business. Earthy tones, handcrafted feel, and a focus on quality and attention to detail.',
+                tech: ['Brand Identity', 'Typography', 'Color Theory', 'Visual Design'],
+                link: '#project-5'
+            }, {
+                tag: 'Digital Product',
+                title: 'NFC Business',
+                sub: 'Smart Contact Cards',
+                desc: 'A sleek, tech-forward brand for a modern business solution. Clean lines, bold colors, and a minimalist approach that feels premium and innovative.',
+                tech: ['Product Design', 'UI/UX', 'Brand Identity', 'Typography'],
+                link: '#contact'
+            }];
 
-        // IMPROVED: Handle iframe loading errors with better UX
-        document.querySelectorAll('iframe').forEach(iframe => {
-            iframe.addEventListener('error', function() {
-                const parent = this.parentElement;
-                const loader = parent.querySelector('.iframe-loader');
-                if (loader) {
-                    loader.innerHTML = `
-                        <div style="text-align: center; padding: 40px 20px;">
-                            <div style="width: 80px; height: 80px; background: rgba(59, 95, 217, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
-                                <i class="fas fa-external-link-alt" style="font-size: 32px; color: var(--primary);"></i>
-                            </div>
-                            <p style="color: var(--light); margin-bottom: 10px; font-size: 16px;">Preview Restricted</p>
-                            <p style="color: var(--gray); margin-bottom: 20px; font-size: 14px;">
-                                This website prevents embedding for security
-                            </p>
-                            <a href="${this.src.split('?')[0]}" target="_blank" 
-                               class="btn" 
-                               style="background: var(--primary); color: white; padding: 12px 24px; border-radius: 12px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
-                                <i class="fas fa-external-link-alt"></i> Open Site
-                            </a>
-                        </div>
-                    `;
-                }
-            });
-        });
+            let currentProject = 0;
 
-        // Enhanced Browser Controls Animation
-        document.querySelectorAll('.control-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                this.style.transform = 'scale(0.8)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                }, 200);
-            });
-        });
+            function openModal(index) {
+                const data = projectData[index];
+                if (!data) return;
+                currentProject = index;
+                modalTag.textContent = data.tag;
+                modalTitle.textContent = data.title;
+                modalSub.textContent = data.sub;
+                modalDesc.textContent = data.desc;
+                modalTech.innerHTML = data.tech.map(t => `<span>${t}</span>`).join('');
+                modalBtn.href = data.link;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
 
-        // IMPROVED: Scroll Animation with RequestAnimationFrame
-        function animateOnScroll() {
-            const timelineItems = document.querySelectorAll('.timeline-item');
-            const skillCards = document.querySelectorAll('.skill-card');
-            const windowHeight = window.innerHeight;
-            
-            timelineItems.forEach(item => {
-                const position = item.getBoundingClientRect().top;
-                if (position < windowHeight - 100) {
-                    item.style.opacity = '1';
-                    item.style.transform = 'translateX(0)';
-                }
-            });
-            
-            skillCards.forEach(card => {
-                const position = card.getBoundingClientRect().top;
-                if (position < windowHeight - 100) {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }
-            });
-        }
+            function closeModal() {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
 
-        // Initialize everything with better performance
+            cards.forEach((card, index) => {
+                card.addEventListener('click', () => openModal(index));
+            });
+
+            modalClose.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeModal();
+            });
+
+            // 3D tilt on canvas cards
+            const grid = document.getElementById('canvasGrid');
+            if (grid) {
+                grid.addEventListener('mousemove', (e) => {
+                    const r = grid.getBoundingClientRect();
+                    const px = (e.clientX - r.left) / r.width - 0.5;
+                    const py = (e.clientY - r.top) / r.height - 0.5;
+                    cards.forEach((card, i) => {
+                        const offset = (i - cards.length / 2) * 0.02;
+                        const rotateY = px * 6 + offset * 8;
+                        const rotateX = -py * 4;
+                        card.style.transform =
+                            `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+                    });
+                });
+                grid.addEventListener('mouseleave', () => {
+                    cards.forEach(card => {
+                        card.style.transform = '';
+                    });
+                });
+            }
+        })();
+        // ============================================================
+        // END DESIGN CANVAS
+        // ============================================================
+
+        // Initialize viewport buttons
         document.addEventListener('DOMContentLoaded', () => {
-            // Initialize all viewport buttons to desktop view
             document.querySelectorAll('.viewport-btn.active').forEach(btn => {
                 btn.click();
             });
-            
-            // Set up initial animations
-            animateOnScroll();
-            
-            // Add loaded class for CSS transitions
-            setTimeout(() => {
-                document.body.classList.add('loaded');
-            }, 100);
-            
-            // Preload important resources
-            preloadResources();
-            
-            console.log('Portfolio loaded with improved overscroll behavior and clean design');
-        });
-
-        // Preload resources for better performance
-        function preloadResources() {
-            const preloadLinks = [
-                'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
-            ];
-            
-            preloadLinks.forEach(href => {
-                const link = document.createElement('link');
-                link.rel = 'preload';
-                link.href = href;
-                link.as = 'style';
-                document.head.appendChild(link);
-            });
-        }
-
-        // IMPROVED: Touch event handling for mobile
-        document.addEventListener('touchstart', function() {}, {passive: true});
-        document.addEventListener('touchmove', function() {}, {passive: true});
-
-        // IMPROVED: Prevent rubber banding on mobile
-        document.body.addEventListener('touchmove', function(e) {
-            if (e.target.closest('.device-content') || e.target.closest('.preview-iframe')) {
-                // Allow scrolling within iframes
-                return;
-            }
-        }, { passive: true });
-
-        // IMPROVED: Better resize handling
-        let resizeTimeout;
-        window.addEventListener('resize', function() {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(function() {
-                // Reinitialize viewport switching on resize
-                document.querySelectorAll('.viewport-btn.active').forEach(btn => {
-                    btn.click();
-                });
-            }, 250);
         });
     </script>
 </body>
+
 </html>
