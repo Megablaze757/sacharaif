@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Gallery | Sacha Raif</title>
+    <meta name="description" content="A gallery of live websites designed and built by Sacha Raif, full-stack developer and conversion specialist.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --primary: #3b5fd9;
+            --primary-dark: #2b47b0;
+            --primary-light: #6b8afd;
+            --accent: #c9a668;
+            --accent-light: #e0c393;
+            --dark: #0e1420;
+            --darker: #05070d;
+            --light: #f1f4f9;
+            --gray: #8d96a8;
+            --gradient: linear-gradient(135deg, #3b5fd9 0%, #6b8afd 100%);
+            --shadow-xl: 0 25px 50px rgba(0, 0, 0, 0.35);
+            --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-display: 'Fraunces', Georgia, serif;
+
+            --surface: rgba(255, 255, 255, 0.03);
+            --surface-hover: rgba(255, 255, 255, 0.05);
+            --surface-border: rgba(255, 255, 255, 0.09);
+            --header-bg: rgba(5, 7, 13, 0.95);
+            --frame-bar-bg: rgba(15, 23, 42, 0.85);
+            --frame-url-bg: rgba(30, 41, 59, 0.7);
+        }
+
+        [data-theme="light"] {
+            --primary: #3452c4;
+            --primary-light: #5372e8;
+            --accent: #9c7a3c;
+            --accent-light: #b8934f;
+            --dark: #eef1f7;
+            --darker: #f7f8fc;
+            --light: #12151f;
+            --gray: #5c6474;
+            --shadow-xl: 0 25px 50px rgba(20, 26, 43, 0.12);
+
+            --surface: rgba(15, 23, 42, 0.035);
+            --surface-hover: rgba(15, 23, 42, 0.06);
+            --surface-border: rgba(15, 23, 42, 0.1);
+            --header-bg: rgba(247, 248, 252, 0.9);
+            --frame-bar-bg: #eef1f7;
+            --frame-url-bg: rgba(15, 23, 42, 0.05);
+        }
+
+        body {
+            margin: 0;
+            background: var(--darker);
+            color: var(--light);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary) var(--dark);
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header (matches main site) */
+        header {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 18px 0;
+            background: var(--header-bg);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--surface-border);
+            transition: background-color 0.4s ease;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 26px;
+            font-weight: 500;
+            font-style: italic;
+            color: var(--light);
+            text-decoration: none;
+        }
+
+        .logo:hover {
+            color: var(--accent-light);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+        }
+
+        .nav-link {
+            color: var(--gray);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--light);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        /* Page intro */
+        .gallery-hero {
+            padding: 90px 0 50px;
+            text-align: center;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent-light);
+            margin-bottom: 20px;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            width: 36px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        .gallery-hero h1 {
+            font-family: var(--font-display);
+            font-weight: 500;
+            font-size: clamp(36px, 5vw, 54px);
+            letter-spacing: -0.5px;
+            margin-bottom: 18px;
+        }
+
+        .gallery-hero p {
+            color: var(--gray);
+            max-width: 640px;
+            margin: 0 auto;
+            font-size: 18px;
+        }
+
+        /* Gallery grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 32px;
+            padding: 40px 0 100px;
+        }
+
+        .gallery-card {
+            background: var(--surface);
+            border: 1px solid var(--surface-border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: var(--transition), background-color 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(107, 138, 253, 0.3);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .frame-browser-bar {
+            background: var(--frame-bar-bg);
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid var(--surface-border);
+        }
+
+        .frame-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+        }
+
+        .frame-dot.close { background: #ff5f56; }
+        .frame-dot.min { background: #ffbd2e; }
+        .frame-dot.max { background: #27ca3f; }
+
+        .frame-url {
+            flex: 1;
+            background: var(--frame-url-bg);
+            color: var(--gray);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-family: 'SF Mono', Monaco, monospace;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .gallery-frame {
+            position: relative;
+            width: 100%;
+            padding-top: 62%;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .gallery-frame iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 400%;
+            height: 400%;
+            border: 0;
+            transform: scale(0.25);
+            transform-origin: top left;
+            pointer-events: none;
+        }
+
+        .gallery-frame-loader {
+            position: absolute;
+            inset: 0;
+            background: var(--darker);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-frame-loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .gallery-spinner {
+            width: 34px;
+            height: 34px;
+            border: 3px solid rgba(107, 138, 253, 0.25);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .gallery-frame-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+        }
+
+        .gallery-info {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .gallery-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--light);
+        }
+
+        .gallery-subtitle {
+            color: var(--accent-light);
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+
+        .gallery-desc {
+            color: var(--gray);
+            font-size: 14.5px;
+            line-height: 1.65;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .gallery-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            border: 1px solid rgba(107, 138, 253, 0.3);
+            background: rgba(59, 95, 217, 0.1);
+            padding: 10px 18px;
+            border-radius: 10px;
+            transition: var(--transition);
+            align-self: flex-start;
+        }
+
+        .gallery-link:hover {
+            background: rgba(59, 95, 217, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* CTA section */
+        .gallery-cta {
+            text-align: center;
+            padding: 60px 0 110px;
+        }
+
+        .gallery-cta p {
+            color: var(--gray);
+            margin-bottom: 24px;
+            font-size: 17px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 32px;
+            border-radius: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 15px;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 10px 26px rgba(59, 95, 217, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 32px rgba(59, 95, 217, 0.4);
+        }
+
+        footer {
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid var(--surface-border);
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-weight: 500;
+            font-style: italic;
+            color: var(--light);
+            margin-bottom: 14px;
+            display: inline-block;
+        }
+
+        footer p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        footer a {
+            color: var(--gray);
+        }
+
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0%;
+            background: var(--gradient);
+            z-index: 2000;
+            pointer-events: none;
+        }
+
+        .cursor-dot, .cursor-ring {
+            position: fixed;
+            top: 0;
+            left: 0;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            will-change: transform;
+        }
+
+        .cursor-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--primary-light);
+        }
+
+        .cursor-ring {
+            width: 34px;
+            height: 34px;
+            border: 1.5px solid rgba(107, 138, 253, 0.45);
+            transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+        }
+
+        .cursor-ring.cursor-hover {
+            width: 58px;
+            height: 58px;
+            border-color: var(--accent-light);
+            background: rgba(201, 166, 104, 0.08);
+        }
+
+        body.has-custom-cursor, body.has-custom-cursor a, body.has-custom-cursor button {
+            cursor: none;
+        }
+
+        @media (hover: none), (pointer: coarse) {
+            .cursor-dot, .cursor-ring { display: none !important; }
+        }
+
+        .gallery-card {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: cardFadeIn 0.7s ease forwards;
+            animation-play-state: paused;
+            perspective: 1000px;
+        }
+
+        .gallery-card.revealed {
+            animation-play-state: running;
+        }
+
+        @keyframes cardFadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .theme-toggle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--surface);
+            border: 1px solid var(--surface-border);
+            color: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 14px;
+            transition: var(--transition), background-color 0.4s ease;
+            flex-shrink: 0;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--primary-light);
+            background: var(--surface-hover);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html#home" class="logo">Sacha Raif</a>
+                <div class="header-actions">
+                    <nav class="nav-links">
+                        <a href="index.html#home" class="nav-link">Home</a>
+                        <a href="index.html#work" class="nav-link">Projects</a>
+                        <a href="gallery.html" class="nav-link active">Gallery</a>
+                        <a href="index.html#playground" class="nav-link">Playground</a>
+                        <a href="index.html#contact" class="nav-link">Contact</a>
+                    </nav>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark theme">
+                        <i class="fas fa-sun" id="themeIcon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="gallery-hero">
+        <div class="container">
+            <div class="hero-eyebrow">Complete Site Gallery</div>
+            <h1>Every site, <em style="font-style: italic; background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent;">in one place</em></h1>
+            <p>Live previews of every website I've designed and built — from photography apps to trade and service businesses. Click through to explore any of them in full.</p>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="gallery-grid" id="galleryGrid">
+
+            <!-- Exposure Boost -->
+            <div class="gallery-card">
+                <div class="frame-browser-bar">
+                    <div class="frame-dot close"></div>
+                    <div class="frame-dot min"></div>
+                    <div class="frame-dot max"></div>
+                    <div class="frame-url">megablaze757.github.io/ExposureBoost</div>
+                </div>
+                <div class="gallery-frame">
+                    <div class="gallery-frame-loader" id="g-loader-1"><div class="gallery-spinner"></div></div>
+                    <div class="gallery-frame-overlay"></div>
+                    <iframe src="https://megablaze757.github.io/ExposureBoost" loading="lazy" onload="document.getElementById('g-loader-1').classList.add('hidden')"></iframe>
+                </div>
+                <div class="gallery-info">
+                    <div class="gallery-title">Exposure Boost</div>
+                    <div class="gallery-subtitle">Interactive Photography Web App</div>
+                    <p class="gallery-desc">A photography web app with interactive galleries, real-time image filters, and dark/light mode, built with vanilla JavaScript.</p>
+                    <a href="https://megablaze757.github.io/ExposureBoost" target="_blank" class="gallery-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
+                </div>
+            </div>
+
+            <!-- AR Building Services -->
+            <div class="gallery-card">
+                <div class="frame-browser-bar">
+                    <div class="frame-dot close"></div>
+                    <div class="frame-dot min"></div>
+                    <div class="frame-dot max"></div>
+                    <div class="frame-url">arbuildingservices.co.uk</div>
+                </div>
+                <div class="gallery-frame">
+                    <div class="gallery-frame-loader" id="g-loader-2"><div class="gallery-spinner"></div></div>
+                    <div class="gallery-frame-overlay"></div>
+                    <iframe src="https://arbuildingservices.co.uk" loading="lazy" onload="document.getElementById('g-loader-2').classList.add('hidden')"></iframe>
+                </div>
+                <div class="gallery-info">
+                    <div class="gallery-title">AR Building Services</div>
+                    <div class="gallery-subtitle">Construction Company Website</div>
+                    <p class="gallery-desc">A lead-generation site for a construction company, optimized for local SEO with strategic CTAs and a project gallery.</p>
+                    <a href="https://arbuildingservices.co.uk" target="_blank" class="gallery-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
+                </div>
+            </div>
+
+            <!-- Green Glo Cleaning -->
+            <div class="gallery-card">
+                <div class="frame-browser-bar">
+                    <div class="frame-dot close"></div>
+                    <div class="frame-dot min"></div>
+                    <div class="frame-dot max"></div>
+                    <div class="frame-url">greenglocleaningco.com</div>
+                </div>
+                <div class="gallery-frame">
+                    <div class="gallery-frame-loader" id="g-loader-3"><div class="gallery-spinner"></div></div>
+                    <div class="gallery-frame-overlay"></div>
+                    <iframe src="https://greenglocleaningco.com" loading="lazy" onload="document.getElementById('g-loader-3').classList.add('hidden')"></iframe>
+                </div>
+                <div class="gallery-info">
+                    <div class="gallery-title">Green Glo Cleaning Co.</div>
+                    <div class="gallery-subtitle">Booking System & Admin Dashboard</div>
+                    <p class="gallery-desc">A complete booking system with real-time availability, a customer management dashboard, and automated notifications.</p>
+                    <a href="https://greenglocleaningco.com" target="_blank" class="gallery-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
+                </div>
+            </div>
+
+            <!-- JR Sash Solutions -->
+            <div class="gallery-card">
+                <div class="frame-browser-bar">
+                    <div class="frame-dot close"></div>
+                    <div class="frame-dot min"></div>
+                    <div class="frame-dot max"></div>
+                    <div class="frame-url">jrsashsolutions.co.uk</div>
+                </div>
+                <div class="gallery-frame">
+                    <div class="gallery-frame-loader" id="g-loader-4"><div class="gallery-spinner"></div></div>
+                    <div class="gallery-frame-overlay"></div>
+                    <iframe src="https://jrsashsolutions.co.uk" loading="lazy" onload="document.getElementById('g-loader-4').classList.add('hidden')"></iframe>
+                </div>
+                <div class="gallery-info">
+                    <div class="gallery-title">JR Sash Solutions</div>
+                    <div class="gallery-subtitle">Trade & Heritage Restoration Site</div>
+                    <p class="gallery-desc">A conversion-focused site for a sash window and joinery specialist, built around service clarity, reviews, and a simple enquiry flow.</p>
+                    <a href="https://jrsashsolutions.co.uk" target="_blank" class="gallery-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
+                </div>
+            </div>
+
+            <!-- 203 Carpentry -->
+            <div class="gallery-card">
+                <div class="frame-browser-bar">
+                    <div class="frame-dot close"></div>
+                    <div class="frame-dot min"></div>
+                    <div class="frame-dot max"></div>
+                    <div class="frame-url">203carpentry.com</div>
+                </div>
+                <div class="gallery-frame">
+                    <div class="gallery-frame-loader" id="g-loader-5"><div class="gallery-spinner"></div></div>
+                    <div class="gallery-frame-overlay"></div>
+                    <iframe src="https://203carpentry.com" loading="lazy" onload="document.getElementById('g-loader-5').classList.add('hidden')"></iframe>
+                </div>
+                <div class="gallery-info">
+                    <div class="gallery-title">203 Carpentry</div>
+                    <div class="gallery-subtitle">Carpentry & Joinery Business Site</div>
+                    <p class="gallery-desc">A clean, service-led website for a carpentry business, built to showcase completed work and make it easy to request a quote.</p>
+                    <a href="https://203carpentry.com" target="_blank" class="gallery-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="gallery-cta">
+        <div class="container">
+            <p>Want a site like one of these built for your business?</p>
+            <a href="index.html#contact" class="btn btn-primary">
+                <span>Start a Project</span>
+                <i class="fas fa-rocket"></i>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <a href="index.html#home" class="footer-logo">Sacha Raif</a>
+            <p><a href="index.html#home">&larr; Back to main site</a></p>
+            <p style="margin-top: 10px;">&copy; 2026 Sacha Raif. All rights reserved. | Live website previews may be subject to external site policies.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll progress bar
+        (function () {
+            const bar = document.getElementById('scrollProgress');
+            function update() {
+                const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+                bar.style.width = (scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0) + '%';
+            }
+            window.addEventListener('scroll', update, { passive: true });
+            update();
+        })();
+
+        // Reveal cards on scroll
+        (function () {
+            const cards = document.querySelectorAll('.gallery-card');
+            if (!('IntersectionObserver' in window)) {
+                cards.forEach(c => c.classList.add('revealed'));
+                return;
+            }
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+            cards.forEach((c, i) => {
+                c.style.animationDelay = (i % 3) * 0.1 + 's';
+                observer.observe(c);
+            });
+        })();
+
+        // Custom cursor + tilt — desktop pointer devices only
+        (function () {
+            const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (!canHover || reduceMotion) return;
+
+            const dot = document.createElement('div');
+            dot.className = 'cursor-dot';
+            const ring = document.createElement('div');
+            ring.className = 'cursor-ring';
+            document.body.appendChild(dot);
+            document.body.appendChild(ring);
+            document.body.classList.add('has-custom-cursor');
+
+            let mouseX = innerWidth / 2, mouseY = innerHeight / 2, ringX = mouseX, ringY = mouseY;
+            window.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX; mouseY = e.clientY;
+                dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+            });
+            (function loop() {
+                ringX += (mouseX - ringX) * 0.18;
+                ringY += (mouseY - ringY) * 0.18;
+                ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+                requestAnimationFrame(loop);
+            })();
+
+            document.querySelectorAll('a, button, .gallery-card').forEach(el => {
+                el.addEventListener('mouseenter', () => ring.classList.add('cursor-hover'));
+                el.addEventListener('mouseleave', () => ring.classList.remove('cursor-hover'));
+            });
+
+            document.querySelectorAll('.gallery-card').forEach(card => {
+                card.addEventListener('mouseenter', () => { card.style.transition = 'none'; });
+                card.addEventListener('mousemove', (e) => {
+                    const r = card.getBoundingClientRect();
+                    const px = (e.clientX - r.left) / r.width - 0.5;
+                    const py = (e.clientY - r.top) / r.height - 0.5;
+                    card.style.transform = `perspective(1000px) rotateX(${-py * 5}deg) rotateY(${px * 5}deg) translateY(-4px)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                    card.style.transform = '';
+                });
+            });
+        })();
+
+        // Theme Toggle — shares the same saved preference as the main site
+        (function () {
+            const root = document.documentElement;
+            const toggleBtn = document.getElementById('themeToggle');
+            const icon = document.getElementById('themeIcon');
+
+            function applyTheme(theme) {
+                if (theme === 'light') {
+                    root.setAttribute('data-theme', 'light');
+                    icon.className = 'fas fa-moon';
+                } else {
+                    root.removeAttribute('data-theme');
+                    icon.className = 'fas fa-sun';
+                }
+            }
+
+            let saved = null;
+            try { saved = localStorage.getItem('sr-theme'); } catch (e) {}
+
+            if (saved) {
+                applyTheme(saved);
+            } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                applyTheme('light');
+            } else {
+                applyTheme('dark');
+            }
+
+            toggleBtn.addEventListener('click', () => {
+                const isLight = root.getAttribute('data-theme') === 'light';
+                const next = isLight ? 'dark' : 'light';
+                applyTheme(next);
+                try { localStorage.setItem('sr-theme', next); } catch (e) {}
+            });
+        })();
+
+        // If an iframe is blocked from embedding (X-Frame-Options), quietly hide the loader after a timeout
+        // so the card doesn't spin forever, and let the "Visit Site" link do the work.
+        document.querySelectorAll('.gallery-frame-loader').forEach(loader => {
+            setTimeout(() => loader.classList.add('hidden'), 4000);
+        });
+    </script>
+</body>
+
+</html>
