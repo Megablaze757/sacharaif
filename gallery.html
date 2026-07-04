@@ -559,6 +559,33 @@
             border: 1px solid rgba(59, 95, 217, 0.06);
         }
 
+        .mag-info .mag-features {
+            list-style: none;
+            margin-bottom: 18px;
+        }
+        .mag-info .mag-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: var(--gray);
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+        .mag-info .mag-features li i {
+            flex-shrink: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: rgba(126, 217, 154, 0.15);
+            color: #7ed99a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            margin-top: 2px;
+        }
+
         .mag-info .mag-link {
             display: inline-flex;
             align-items: center;
@@ -798,6 +825,9 @@
                 font-size: 13px;
                 margin-bottom: 12px;
             }
+            .mag-info .mag-features li {
+                font-size: 12px;
+            }
             .mag-info .mag-tech {
                 margin-bottom: 14px;
             }
@@ -850,47 +880,6 @@
             }
         }
 
-        /* ── cursor ── */
-        .cursor-dot,
-        .cursor-ring {
-            position: fixed;
-            top: 0;
-            left: 0;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9998;
-            transform: translate(-50%, -50%);
-            will-change: transform;
-        }
-        .cursor-dot {
-            width: 7px;
-            height: 7px;
-            background: var(--primary-light);
-        }
-        .cursor-ring {
-            width: 34px;
-            height: 34px;
-            border: 1.5px solid rgba(107, 138, 253, 0.45);
-            transition: width 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
-        }
-        .cursor-ring.cursor-hover {
-            width: 58px;
-            height: 58px;
-            border-color: var(--accent-light);
-            background: rgba(201, 166, 104, 0.08);
-        }
-        body.has-custom-cursor,
-        body.has-custom-cursor a,
-        body.has-custom-cursor button {
-            cursor: none;
-        }
-        @media (hover: none),
-        (pointer: coarse) {
-            .cursor-dot,
-            .cursor-ring {
-                display: none !important;
-            }
-        }
     </style>
 </head>
 
@@ -969,11 +958,16 @@
                     <div class="mag-tag">Web App</div>
                     <div class="mag-title">Exposure Boost</div>
                     <div class="mag-sub">Photography Web App</div>
-                    <p class="mag-desc">Interactive galleries, real-time image filters, and dark/light mode — built with vanilla JavaScript.</p>
+                    <p class="mag-desc">A personal project exploring what's possible for a photography showcase — interactive galleries, live image filters, and a smooth dark/light mode, all running quickly in the browser.</p>
+                    <ul class="mag-features">
+                        <li><i class="fas fa-check"></i> Browse photo galleries with live filters</li>
+                        <li><i class="fas fa-check"></i> Instant switch between light and dark themes</li>
+                        <li><i class="fas fa-check"></i> Loads fast, works well on any screen</li>
+                    </ul>
                     <div class="mag-tech">
-                        <span>JavaScript</span>
-                        <span>CSS</span>
-                        <span>LocalStorage</span>
+                        <span>Photo Galleries</span>
+                        <span>Dark Mode</span>
+                        <span>Lightweight &amp; Fast</span>
                     </div>
                     <a href="https://exposureboost.co.uk" target="_blank" class="mag-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
                 </div>
@@ -991,11 +985,16 @@
                     <div class="mag-tag">Service Site</div>
                     <div class="mag-title">Hamilton Decorating</div>
                     <div class="mag-sub">Decorating &amp; Interiors</div>
-                    <p class="mag-desc">A clean, service-led website for a decorating business, showcasing work and making it easy to request a quote.</p>
+                    <p class="mag-desc">This decorating and interiors business needed a simple site to show off past work and make it easy for new customers to get in touch. The result is clean, fast, and built to bring in enquiries.</p>
+                    <ul class="mag-features">
+                        <li><i class="fas fa-check"></i> Photo gallery of completed jobs</li>
+                        <li><i class="fas fa-check"></i> Simple "request a quote" form</li>
+                        <li><i class="fas fa-check"></i> Loads fast on mobile</li>
+                    </ul>
                     <div class="mag-tech">
-                        <span>HTML/CSS</span>
-                        <span>Service Pages</span>
-                        <span>Contact Forms</span>
+                        <span>Photo Gallery</span>
+                        <span>Quote Requests</span>
+                        <span>Mobile Friendly</span>
                     </div>
                     <a href="https://megablaze757.github.io/HamiltonDecorating" target="_blank" class="mag-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
                 </div>
@@ -1013,11 +1012,16 @@
                     <div class="mag-tag">Lead Gen</div>
                     <div class="mag-title">AR Building Services</div>
                     <div class="mag-sub">Construction Company</div>
-                    <p class="mag-desc">Lead-generation site optimized for local SEO with strategic CTAs and a project gallery. 35% increase in inquiries.</p>
+                    <p class="mag-desc">AR Building wanted more calls and enquiries from customers searching locally. We built a site focused on ranking well on Google in their area and turning visitors into enquiries — leading to a 35% increase in enquiries.</p>
+                    <ul class="mag-features">
+                        <li><i class="fas fa-check"></i> Ranks well for local searches</li>
+                        <li><i class="fas fa-check"></i> Clear "get a quote" buttons throughout</li>
+                        <li><i class="fas fa-check"></i> Project gallery to build trust</li>
+                    </ul>
                     <div class="mag-tech">
-                        <span>HTML/CSS</span>
                         <span>Local SEO</span>
-                        <span>Lead Gen</span>
+                        <span>Lead Generation</span>
+                        <span>+35% Enquiries</span>
                     </div>
                     <a href="https://arbuildingservices.co.uk" target="_blank" class="mag-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
                 </div>
@@ -1035,11 +1039,16 @@
                     <div class="mag-tag">Web App</div>
                     <div class="mag-title">Green Glo Cleaning</div>
                     <div class="mag-sub">Booking System</div>
-                    <p class="mag-desc">Real-time booking, admin dashboard, and automated notifications. 40% increase in booking conversions.</p>
+                    <p class="mag-desc">Green Glo needed a way for customers to book cleaning jobs online instead of relying on phone calls. We built a live booking system with a simple screen to manage jobs, so bookings come in automatically and get confirmed by email — a 40% jump in bookings.</p>
+                    <ul class="mag-features">
+                        <li><i class="fas fa-check"></i> Customers book online, no phone calls needed</li>
+                        <li><i class="fas fa-check"></i> Automatic confirmation emails</li>
+                        <li><i class="fas fa-check"></i> Simple screen to manage upcoming jobs</li>
+                    </ul>
                     <div class="mag-tech">
-                        <span>JavaScript</span>
-                        <span>Booking System</span>
-                        <span>Dashboard</span>
+                        <span>Online Booking</span>
+                        <span>Auto Confirmations</span>
+                        <span>+40% Bookings</span>
                     </div>
                     <a href="https://greenglocleaningco.com" target="_blank" class="mag-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
                 </div>
@@ -1057,11 +1066,16 @@
                     <div class="mag-tag">Lead Gen</div>
                     <div class="mag-title">JR Sash Solutions</div>
                     <div class="mag-sub">Heritage Restoration</div>
-                    <p class="mag-desc">Conversion-focused site with verified reviews, clear service breakdowns, and a simple enquiry flow.</p>
+                    <p class="mag-desc">A heritage window restoration specialist needed a site that builds trust and makes it easy for homeowners to get a quote. We added verified customer reviews, clear service breakdowns, and a simple enquiry form.</p>
+                    <ul class="mag-features">
+                        <li><i class="fas fa-check"></i> Verified customer reviews front and centre</li>
+                        <li><i class="fas fa-check"></i> Easy-to-understand service breakdowns</li>
+                        <li><i class="fas fa-check"></i> One-click enquiry form</li>
+                    </ul>
                     <div class="mag-tech">
-                        <span>Lead Gen</span>
-                        <span>Reviews</span>
-                        <span>Forms</span>
+                        <span>Customer Reviews</span>
+                        <span>Lead Generation</span>
+                        <span>Simple Enquiry Form</span>
                     </div>
                     <a href="https://jrsashsolutions.co.uk" target="_blank" class="mag-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
                 </div>
@@ -1079,11 +1093,16 @@
                     <div class="mag-tag">Service Site</div>
                     <div class="mag-title">203 Carpentry</div>
                     <div class="mag-sub">Carpentry &amp; Joinery</div>
-                    <p class="mag-desc">Clean, service-led website showcasing completed work with a simple quote request flow.</p>
+                    <p class="mag-desc">This carpentry and joinery business wanted a simple, professional site to show off completed projects and make it easy for new customers to request a quote.</p>
+                    <ul class="mag-features">
+                        <li><i class="fas fa-check"></i> Gallery of finished carpentry work</li>
+                        <li><i class="fas fa-check"></i> Simple quote request form</li>
+                        <li><i class="fas fa-check"></i> Fast-loading on any device</li>
+                    </ul>
                     <div class="mag-tech">
-                        <span>HTML/CSS</span>
-                        <span>Service Pages</span>
-                        <span>Contact Forms</span>
+                        <span>Project Gallery</span>
+                        <span>Quote Requests</span>
+                        <span>Mobile Friendly</span>
                     </div>
                     <a href="https://203carpentry.co.uk" target="_blank" class="mag-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
                 </div>
@@ -1170,43 +1189,11 @@
             update();
         })();
 
-        // ── Custom Cursor ──
+        // ── Button hover micro-interaction ──
         (function() {
             const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
             const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             if (!canHover || reduceMotion) return;
-
-            const dot = document.createElement('div');
-            dot.className = 'cursor-dot';
-            const ring = document.createElement('div');
-            ring.className = 'cursor-ring';
-            document.body.appendChild(dot);
-            document.body.appendChild(ring);
-            document.body.classList.add('has-custom-cursor');
-
-            let mouseX = window.innerWidth / 2,
-                mouseY = window.innerHeight / 2;
-            let ringX = mouseX,
-                ringY = mouseY;
-
-            window.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-                dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
-            });
-
-            function animateRing() {
-                ringX += (mouseX - ringX) * 0.18;
-                ringY += (mouseY - ringY) * 0.18;
-                ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
-                requestAnimationFrame(animateRing);
-            }
-            animateRing();
-
-            document.querySelectorAll('a, button, .magazine-item').forEach(el => {
-                el.addEventListener('mouseenter', () => ring.classList.add('cursor-hover'));
-                el.addEventListener('mouseleave', () => ring.classList.remove('cursor-hover'));
-            });
 
             document.querySelectorAll('.btn, .theme-toggle, .mag-link').forEach(btn => {
                 btn.style.transition =
