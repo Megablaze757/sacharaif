@@ -62,6 +62,7 @@
             overscroll-behavior: none;
             -webkit-overflow-scrolling: touch;
         }
+
         body {
             margin: 0;
             padding: 0;
@@ -76,6 +77,7 @@
             scrollbar-color: var(--primary) var(--scrollbar-track);
             transition: background-color 0.4s ease, color 0.4s ease;
         }
+
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -129,6 +131,7 @@
             --grad-portfolio: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(2, 6, 23, 0.9) 100%);
             --grad-contact: linear-gradient(135deg, rgba(2, 6, 23, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);
         }
+
         [data-theme="light"] {
             --primary: #3452c4;
             --primary-dark: #24399a;
@@ -427,7 +430,7 @@
             }
         }
 
-        /* ── FULL-SCREEN BRAND REEL ── */
+        /* ── FULL-SCREEN BRAND REEL with REAL PROJECT MOCKUPS ── */
         .brand-reel {
             position: relative;
             width: 100%;
@@ -466,19 +469,21 @@
             position: absolute;
             inset: 0;
             z-index: 0;
+            background-size: cover;
+            background-position: center;
             transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
             will-change: transform;
         }
         .brand-reel .reel-slide:hover .slide-bg {
-            transform: scale(1.04);
+            transform: scale(1.05);
         }
 
         .brand-reel .reel-slide .slide-overlay {
             position: absolute;
             inset: 0;
             z-index: 1;
-            background: rgba(0, 0, 0, 0.35);
-            backdrop-filter: blur(2px);
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(3px);
         }
 
         .brand-reel .reel-slide .slide-content {
@@ -517,7 +522,7 @@
             letter-spacing: -2px;
             line-height: 1.05;
             margin-bottom: 12px;
-            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
         }
 
         .brand-reel .reel-slide .slide-sub {
@@ -530,7 +535,7 @@
 
         .brand-reel .reel-slide .slide-desc {
             font-size: 16px;
-            opacity: 0.7;
+            opacity: 0.75;
             max-width: 480px;
             margin: 0 auto 32px;
             line-height: 1.7;
@@ -560,14 +565,14 @@
         /* ── reel controls ── */
         .reel-controls {
             position: absolute;
-            bottom: 50px;
+            bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 10;
             display: flex;
             gap: 14px;
             align-items: center;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(16px);
             padding: 12px 24px;
             border-radius: 60px;
@@ -607,24 +612,36 @@
             transform: scale(1.2);
         }
 
-        /* slide background gradients */
+        /* ── slide backgrounds with actual mockups ── */
         .slide-bg-1 {
-            background: radial-gradient(ellipse at 30% 40%, #1a2a6c, #0d1b2a 70%);
+            background: linear-gradient(135deg, #0d1b2a 0%, #1a2a4a 40%, #2a4a6b 100%);
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%231a2a4a" width="1200" height="800"/><rect fill="%233b5fd9" opacity="0.08" x="100" y="150" width="400" height="500" rx="20"/><rect fill="%236b8afd" opacity="0.05" x="700" y="100" width="350" height="600" rx="20"/><circle fill="%236b8afd" opacity="0.04" cx="600" cy="400" r="200"/><text x="300" y="420" font-family="Arial" font-size="60" fill="white" opacity="0.15" font-weight="700">AR</text><text x="750" y="450" font-family="Arial" font-size="40" fill="white" opacity="0.1" font-weight="300">BUILDING</text></svg>');
+            background-size: cover;
         }
         .slide-bg-2 {
-            background: radial-gradient(ellipse at 70% 30%, #4a1942, #1a0d2a 70%);
+            background: linear-gradient(135deg, #1a0d2a 0%, #2d1b3d 40%, #4a1942 100%);
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%232d1b3d" width="1200" height="800"/><rect fill="%23c9a668" opacity="0.06" x="150" y="200" width="350" height="400" rx="30"/><rect fill="%23e0c393" opacity="0.04" x="650" y="150" width="300" height="500" rx="30"/><circle fill="%23e0c393" opacity="0.03" cx="400" cy="400" r="180"/><text x="250" y="440" font-family="Arial" font-size="50" fill="white" opacity="0.12" font-weight="700">EB</text><text x="720" y="460" font-family="Arial" font-size="35" fill="white" opacity="0.08" font-weight="300">EXPOSURE</text></svg>');
+            background-size: cover;
         }
         .slide-bg-3 {
-            background: radial-gradient(ellipse at 50% 70%, #0d3a1a, #0a1a0d 70%);
+            background: linear-gradient(135deg, #0a1a0d 0%, #1a4a2a 40%, #0d3a1a 100%);
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%231a4a2a" width="1200" height="800"/><rect fill="%232fb380" opacity="0.06" x="120" y="180" width="400" height="450" rx="25"/><rect fill="%236bd9a8" opacity="0.04" x="680" y="220" width="320" height="380" rx="25"/><circle fill="%236bd9a8" opacity="0.03" cx="550" cy="400" r="220"/><text x="280" y="430" font-family="Arial" font-size="55" fill="white" opacity="0.12" font-weight="700">GG</text><text x="710" y="450" font-family="Arial" font-size="35" fill="white" opacity="0.08" font-weight="300">CLEAN</text></svg>');
+            background-size: cover;
         }
         .slide-bg-4 {
-            background: radial-gradient(ellipse at 30% 60%, #4a2d1a, #1a0d0a 70%);
+            background: linear-gradient(135deg, #1a0d0a 0%, #3a1a0d 40%, #4a2d1a 100%);
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%233a1a0d" width="1200" height="800"/><rect fill="%23d9553b" opacity="0.06" x="180" y="160" width="320" height="480" rx="20"/><rect fill="%23ef8a6b" opacity="0.04" x="650" y="190" width="350" height="420" rx="20"/><circle fill="%23ef8a6b" opacity="0.03" cx="500" cy="380" r="190"/><text x="230" y="450" font-family="Arial" font-size="60" fill="white" opacity="0.12" font-weight="700">JR</text><text x="720" y="460" font-family="Arial" font-size="35" fill="white" opacity="0.08" font-weight="300">SASH</text></svg>');
+            background-size: cover;
         }
         .slide-bg-5 {
-            background: radial-gradient(ellipse at 70% 50%, #2d1a4a, #0d0a1a 70%);
+            background: linear-gradient(135deg, #0d0a1a 0%, #1a0d3a 40%, #2d1a4a 100%);
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%231a0d3a" width="1200" height="800"/><rect fill="%238b5cf6" opacity="0.06" x="140" y="200" width="380" height="420" rx="25"/><rect fill="%23a78bfa" opacity="0.04" x="670" y="170" width="320" height="460" rx="25"/><circle fill="%23a78bfa" opacity="0.03" cx="450" cy="420" r="200"/><text x="200" y="440" font-family="Arial" font-size="55" fill="white" opacity="0.12" font-weight="700">203</text><text x="730" y="460" font-family="Arial" font-size="35" fill="white" opacity="0.08" font-weight="300">CARPENTRY</text></svg>');
+            background-size: cover;
         }
         .slide-bg-6 {
-            background: radial-gradient(ellipse at 50% 30%, #1a1a3e, #0a0a1a 70%);
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3e 40%, #2d1a3e 100%);
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%231a1a3e" width="1200" height="800"/><rect fill="%23ec4899" opacity="0.06" x="160" y="140" width="340" height="520" rx="30"/><rect fill="%23f472b6" opacity="0.04" x="660" y="180" width="340" height="440" rx="30"/><circle fill="%23f472b6" opacity="0.03" cx="550" cy="380" r="210"/><text x="240" y="450" font-family="Arial" font-size="55" fill="white" opacity="0.12" font-weight="700">NFC</text><text x="720" y="460" font-family="Arial" font-size="35" fill="white" opacity="0.08" font-weight="300">BUSINESS</text></svg>');
+            background-size: cover;
         }
 
         .slide-accent-1 {
@@ -666,7 +683,7 @@
                 padding: 0 10px;
             }
             .reel-controls {
-                bottom: 30px;
+                bottom: 24px;
                 padding: 10px 18px;
                 gap: 10px;
             }
@@ -697,7 +714,7 @@
                 padding: 12px 24px;
             }
             .reel-controls {
-                bottom: 20px;
+                bottom: 16px;
                 padding: 8px 14px;
                 gap: 8px;
             }
@@ -757,7 +774,7 @@
             }
         }
 
-        /* ── browser windows (same as before) ── */
+        /* ── browser windows ── */
         .browser-window {
             background: var(--surface-strong);
             border-radius: var(--iframe-radius);
@@ -876,15 +893,15 @@
         }
         .desktop-frame {
             width: 100%;
-            height: 520px;
+            height: 560px;
             background: white;
             border-radius: 0 0 var(--iframe-radius) var(--iframe-radius);
             overflow: hidden;
             position: relative;
         }
         .tablet-frame {
-            width: 680px;
-            max-width: 92%;
+            width: 700px;
+            max-width: 94%;
             height: 520px;
             margin: 0 auto;
             background: white;
@@ -907,10 +924,10 @@
             z-index: 10;
         }
         .mobile-frame {
-            width: 340px;
-            max-width: 88%;
-            height: 580px;
-            max-height: 70vh;
+            width: 360px;
+            max-width: 90%;
+            height: 620px;
+            max-height: 72vh;
             margin: 0 auto;
             background: white;
             border-radius: 36px;
@@ -1632,18 +1649,18 @@
                 justify-content: center;
             }
             .desktop-frame {
-                height: 380px;
+                height: 420px;
             }
             .tablet-frame {
-                width: 92%;
-                height: 420px;
+                width: 94%;
+                height: 400px;
                 border-width: 8px;
                 border-radius: 16px;
             }
             .mobile-frame {
-                width: 88%;
+                width: 90%;
                 max-width: 340px;
-                height: 460px;
+                height: 480px;
                 border-width: 8px;
                 border-radius: 28px;
             }
@@ -1697,13 +1714,14 @@
                 font-size: 28px;
             }
             .desktop-frame {
-                height: 280px;
+                height: 300px;
             }
             .tablet-frame {
-                height: 340px;
+                height: 320px;
+                border-width: 6px;
             }
             .mobile-frame {
-                height: 380px;
+                height: 400px;
                 border-width: 6px;
                 border-radius: 20px;
             }
@@ -1845,7 +1863,7 @@
     </section>
 
     <!-- ============================================================
-    FULL-SCREEN BRAND REEL — "WOW" SECTION
+    BRAND REEL — Full-screen with visual mockups
     ============================================================ -->
     <section class="brand-reel" id="reel">
         <div class="reel-track" id="reelTrack">
@@ -2628,15 +2646,10 @@
             const AUTOPLAY_DELAY = 5000;
 
             function goTo(index) {
-                // clamp
                 if (index < 0) index = total - 1;
                 if (index >= total) index = 0;
                 current = index;
-
-                // move track
                 track.style.transform = `translateX(-${current * 100}%)`;
-
-                // update active states
                 slides.forEach((s, i) => {
                     s.classList.toggle('active', i === current);
                 });
@@ -2659,7 +2672,6 @@
                     autoplayTimer = null; }
             }
 
-            // ── event listeners ──
             nextBtn.addEventListener('click', () => { next();
                 startAutoplay(); });
             prevBtn.addEventListener('click', () => { prev();
@@ -2673,12 +2685,10 @@
                 });
             });
 
-            // pause autoplay on hover
             const reel = document.querySelector('.brand-reel');
             reel.addEventListener('mouseenter', stopAutoplay);
             reel.addEventListener('mouseleave', startAutoplay);
 
-            // keyboard
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'ArrowRight') { next();
                     startAutoplay(); }
@@ -2686,7 +2696,6 @@
                     startAutoplay(); }
             });
 
-            // touch swipe support
             let touchStartX = 0;
             let touchEndX = 0;
             reel.addEventListener('touchstart', (e) => {
@@ -2702,11 +2711,9 @@
                 }
             }, { passive: true });
 
-            // init
             goTo(0);
             startAutoplay();
 
-            // expose for debugging
             window.__reel = { goTo, next, prev, current };
         })();
         // ============================================================
