@@ -295,7 +295,7 @@
 
         /* ── gallery hero ── */
         .gallery-hero {
-            padding: 140px 0 20px;
+            padding: 140px 0 30px;
             text-align: center;
             position: relative;
         }
@@ -344,79 +344,45 @@
         }
 
         .gallery-hero .counter {
-            margin-top: 24px;
+            margin-top: 20px;
             font-size: 13px;
             color: var(--gray);
             letter-spacing: 2px;
             font-weight: 500;
-            opacity: 0.6;
+            opacity: 0.5;
         }
 
-        /* ── gallery items ── */
-        .gallery-items {
-            padding: 40px 0 20px;
+        /* ── FEATURED PROJECT (Hero card) ── */
+        .featured-project {
+            margin: 30px 0 60px;
+            position: relative;
         }
 
-        .gallery-item {
+        .featured-project .featured-inner {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
+            grid-template-columns: 1.4fr 0.6fr;
             gap: 0;
-            margin-bottom: 60px;
             background: var(--surface-strong);
-            border-radius: 20px;
+            border-radius: 24px;
             overflow: hidden;
             border: 1px solid var(--surface-border);
-            transition: var(--transition), background-color 0.4s ease;
-            opacity: 0;
-            transform: translateY(50px);
-            animation: fadeUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            transition: var(--transition);
         }
 
-        .gallery-item:nth-child(1) {
-            animation-delay: 0.05s;
-        }
-        .gallery-item:nth-child(2) {
-            animation-delay: 0.12s;
-        }
-        .gallery-item:nth-child(3) {
-            animation-delay: 0.19s;
-        }
-        .gallery-item:nth-child(4) {
-            animation-delay: 0.26s;
-        }
-        .gallery-item:nth-child(5) {
-            animation-delay: 0.33s;
-        }
-        .gallery-item:nth-child(6) {
-            animation-delay: 0.40s;
-        }
-        .gallery-item:nth-child(7) {
-            animation-delay: 0.47s;
-        }
-
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-6px);
+        .featured-project .featured-inner:hover {
             border-color: rgba(107, 138, 253, 0.2);
             box-shadow: var(--shadow-xl);
+            transform: translateY(-4px);
         }
 
-        /* ── preview side ── */
-        .item-preview {
+        .featured-project .featured-preview {
             position: relative;
-            padding-top: 70%;
+            padding-top: 60%;
             overflow: hidden;
             background: var(--darker);
-            min-height: 300px;
         }
 
-        .item-preview iframe {
+        .featured-project .featured-preview iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -425,14 +391,9 @@
             border: 0;
             pointer-events: none;
             background: white;
-            transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-        .gallery-item:hover .item-preview iframe {
-            transform: scale(1.03);
-        }
-
-        .item-preview .preview-loader {
+        .featured-project .featured-preview .preview-loader {
             position: absolute;
             inset: 0;
             background: var(--darker);
@@ -444,14 +405,14 @@
             transition: opacity 0.4s ease;
         }
 
-        .item-preview .preview-loader.hidden {
+        .featured-project .featured-preview .preview-loader.hidden {
             opacity: 0;
             pointer-events: none;
         }
 
-        .item-preview .preview-loader .spinner {
-            width: 32px;
-            height: 32px;
+        .featured-project .featured-preview .preview-loader .spinner {
+            width: 36px;
+            height: 36px;
             border: 3px solid rgba(59, 95, 217, 0.2);
             border-radius: 50%;
             border-top-color: var(--primary);
@@ -464,93 +425,72 @@
             }
         }
 
-        .item-preview .preview-loader p {
-            color: var(--gray);
-            font-size: 13px;
-        }
-
-        .item-preview .badge {
+        .featured-project .featured-preview .featured-badge {
             position: absolute;
-            top: 16px;
-            left: 16px;
+            top: 20px;
+            left: 20px;
             z-index: 3;
-            background: rgba(0, 0, 0, 0.65);
-            backdrop-filter: blur(10px);
-            padding: 4px 14px;
+            background: var(--gradient);
+            padding: 6px 18px;
             border-radius: 20px;
-            font-size: 10px;
-            font-weight: 600;
+            font-size: 11px;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            color: rgba(255, 255, 255, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: #fff;
+            border: none;
             pointer-events: none;
+            box-shadow: 0 8px 24px rgba(59, 95, 217, 0.3);
         }
 
-        .item-preview .number-badge {
-            position: absolute;
-            bottom: 16px;
-            left: 16px;
-            z-index: 3;
-            font-family: var(--font-display);
-            font-size: 42px;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.06);
-            pointer-events: none;
-            letter-spacing: -2px;
-            line-height: 1;
-        }
-
-        /* ── info side ── */
-        .item-info {
+        .featured-project .featured-info {
             padding: 40px 44px 40px 40px;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
-        .item-info .item-tag {
+        .featured-project .featured-info .fi-label {
             font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             color: var(--accent);
             margin-bottom: 8px;
         }
 
-        .item-info .item-title {
+        .featured-project .featured-info .fi-title {
             font-family: var(--font-display);
-            font-size: 30px;
+            font-size: 34px;
             font-weight: 500;
             color: var(--light);
             letter-spacing: -0.5px;
             margin-bottom: 4px;
-            line-height: 1.15;
+            line-height: 1.1;
         }
 
-        .item-info .item-sub {
-            font-size: 14px;
+        .featured-project .featured-info .fi-sub {
+            font-size: 15px;
             color: var(--gray);
             margin-bottom: 14px;
-            font-weight: 400;
         }
 
-        .item-info .item-desc {
+        .featured-project .featured-info .fi-desc {
             color: var(--gray);
             font-size: 15px;
             line-height: 1.7;
             margin-bottom: 20px;
-            max-width: 420px;
+            max-width: 400px;
         }
 
-        .item-info .item-tech {
+        .featured-project .featured-info .fi-tech {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
             margin-bottom: 22px;
         }
 
-        .item-info .item-tech span {
+        .featured-project .featured-info .fi-tech span {
             background: rgba(59, 95, 217, 0.08);
             color: var(--primary-light);
             padding: 4px 14px;
@@ -560,7 +500,7 @@
             border: 1px solid rgba(59, 95, 217, 0.06);
         }
 
-        .item-info .item-link {
+        .featured-project .featured-info .fi-link {
             display: inline-flex;
             align-items: center;
             gap: 10px;
@@ -576,26 +516,180 @@
             box-shadow: 0 8px 24px rgba(59, 95, 217, 0.2);
         }
 
-        .item-info .item-link:hover {
+        .featured-project .featured-info .fi-link:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 32px rgba(59, 95, 217, 0.3);
             gap: 14px;
         }
 
-        .item-info .item-link i {
-            font-size: 13px;
+        /* ── gallery grid (compact cards) ── */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            padding: 20px 0 60px;
         }
 
-        /* ── alternating ── */
-        .gallery-item:nth-child(even) {
-            grid-template-columns: 0.8fr 1.2fr;
+        .grid-card {
+            background: var(--surface-strong);
+            border: 1px solid var(--surface-border);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: var(--transition), background-color 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            display: flex;
+            flex-direction: column;
         }
-        .gallery-item:nth-child(even) .item-preview {
-            order: 2;
+
+        .grid-card:nth-child(1) {
+            animation-delay: 0.05s;
         }
-        .gallery-item:nth-child(even) .item-info {
-            padding: 40px 40px 40px 44px;
-            order: 1;
+        .grid-card:nth-child(2) {
+            animation-delay: 0.10s;
+        }
+        .grid-card:nth-child(3) {
+            animation-delay: 0.15s;
+        }
+        .grid-card:nth-child(4) {
+            animation-delay: 0.20s;
+        }
+        .grid-card:nth-child(5) {
+            animation-delay: 0.25s;
+        }
+        .grid-card:nth-child(6) {
+            animation-delay: 0.30s;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .grid-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(107, 138, 253, 0.2);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .grid-card .gc-preview {
+            position: relative;
+            padding-top: 66%;
+            overflow: hidden;
+            background: var(--darker);
+        }
+
+        .grid-card .gc-preview iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            pointer-events: none;
+            background: white;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .grid-card:hover .gc-preview iframe {
+            transform: scale(1.04);
+        }
+
+        .grid-card .gc-preview .gc-loader {
+            position: absolute;
+            inset: 0;
+            background: var(--darker);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            transition: opacity 0.4s ease;
+        }
+
+        .grid-card .gc-preview .gc-loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .grid-card .gc-preview .gc-loader .spinner {
+            width: 28px;
+            height: 28px;
+            border: 3px solid rgba(59, 95, 217, 0.2);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s linear infinite;
+            margin-bottom: 10px;
+        }
+
+        .grid-card .gc-preview .gc-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            z-index: 3;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            padding: 3px 12px;
+            border-radius: 16px;
+            font-size: 9px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            pointer-events: none;
+        }
+
+        .grid-card .gc-info {
+            padding: 18px 20px 22px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .grid-card .gc-info .gc-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--light);
+            margin-bottom: 2px;
+        }
+
+        .grid-card .gc-info .gc-sub {
+            font-size: 12px;
+            color: var(--gray);
+            margin-bottom: 10px;
+        }
+
+        .grid-card .gc-info .gc-desc {
+            color: var(--gray);
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 14px;
+            flex: 1;
+        }
+
+        .grid-card .gc-info .gc-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            transition: var(--transition);
+            align-self: flex-start;
+        }
+
+        .grid-card .gc-info .gc-link:hover {
+            gap: 12px;
+            color: var(--light);
+        }
+
+        .grid-card .gc-info .gc-link i {
+            font-size: 12px;
         }
 
         /* ── cta ── */
@@ -711,27 +805,25 @@
         }
 
         /* ── responsive ── */
-        @media (max-width: 900px) {
-            .gallery-item {
-                grid-template-columns: 1fr !important;
-                margin-bottom: 40px;
+        @media (max-width: 992px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
             }
-            .gallery-item:nth-child(even) .item-preview {
-                order: 1;
+        }
+
+        @media (max-width: 820px) {
+            .featured-project .featured-inner {
+                grid-template-columns: 1fr;
             }
-            .gallery-item:nth-child(even) .item-info {
-                padding: 24px 28px 32px !important;
-                order: 2;
-            }
-            .item-info {
-                padding: 24px 28px 32px !important;
-            }
-            .item-preview {
-                min-height: 200px;
+            .featured-project .featured-preview {
                 padding-top: 56%;
             }
-            .item-info .item-title {
-                font-size: 26px;
+            .featured-project .featured-info {
+                padding: 28px 30px 32px;
+            }
+            .featured-project .featured-info .fi-title {
+                font-size: 28px;
             }
         }
 
@@ -743,19 +835,18 @@
                 display: block;
             }
             .gallery-hero {
-                padding: 120px 0 10px;
+                padding: 120px 0 20px;
             }
             .gallery-hero h1 {
                 font-size: 32px;
             }
-            .gallery-items {
-                padding: 20px 0 0;
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+                padding: 10px 0 40px;
             }
-            .item-info .item-title {
-                font-size: 22px;
-            }
-            .item-info .item-desc {
-                font-size: 14px;
+            .grid-card .gc-preview {
+                padding-top: 56%;
             }
             .whatsapp-float {
                 bottom: 18px;
@@ -763,9 +854,6 @@
                 width: 52px;
                 height: 52px;
                 font-size: 24px;
-            }
-            .item-preview .number-badge {
-                font-size: 30px;
             }
         }
 
@@ -779,31 +867,17 @@
             .gallery-hero p {
                 font-size: 15px;
             }
-            .gallery-item {
-                border-radius: 14px;
-                margin-bottom: 28px;
-            }
-            .item-info .item-title {
-                font-size: 19px;
-            }
-            .item-info .item-sub {
-                font-size: 12px;
-            }
-            .item-info .item-desc {
-                font-size: 13px;
-            }
-            .item-preview {
-                min-height: 160px;
-                padding-top: 60%;
-            }
-            .item-info .item-link {
-                font-size: 13px;
-                padding: 10px 18px;
-            }
-            .item-preview .number-badge {
+            .featured-project .featured-info .fi-title {
                 font-size: 24px;
-                bottom: 12px;
-                left: 12px;
+            }
+            .featured-project .featured-info .fi-desc {
+                font-size: 14px;
+            }
+            .grid-card .gc-info .gc-title {
+                font-size: 16px;
+            }
+            .grid-card .gc-info .gc-desc {
+                font-size: 13px;
             }
             .whatsapp-float {
                 width: 48px;
@@ -815,7 +889,8 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .gallery-item {
+            .grid-card,
+            .featured-project .featured-inner {
                 animation-play-state: running !important;
                 transition: none !important;
             }
@@ -923,164 +998,131 @@
         </div>
     </section>
 
-    <!-- Gallery Items -->
-    <section class="gallery-items">
+    <!-- ============================================================
+    FEATURED PROJECT — Exposure Boost (Hero card)
+    ============================================================ -->
+    <section class="featured-project">
         <div class="container">
-
-            <!-- 1. Exposure Boost -->
-            <div class="gallery-item">
-                <div class="item-preview">
-                    <div class="preview-loader" id="g-loader-1"><div class="spinner"></div><p>Loading...</p></div>
-                    <iframe src="https://exposureboost.co.uk" loading="lazy" onload="document.getElementById('g-loader-1').classList.add('hidden')"></iframe>
-                    <span class="badge">Live</span>
-                    <span class="number-badge">01</span>
+            <div class="featured-inner">
+                <div class="featured-preview">
+                    <div class="preview-loader" id="f-loader"><div class="spinner"></div><p>Loading...</p></div>
+                    <iframe src="https://exposureboost.co.uk" loading="lazy" onload="document.getElementById('f-loader').classList.add('hidden')"></iframe>
+                    <span class="featured-badge">Featured</span>
                 </div>
-                <div class="item-info">
-                    <div class="item-tag">Web App</div>
-                    <div class="item-title">Exposure Boost</div>
-                    <div class="item-sub">Photography Web App</div>
-                    <p class="item-desc">Interactive galleries, real-time image filters, and dark/light mode — built with vanilla JavaScript.</p>
-                    <div class="item-tech">
+                <div class="featured-info">
+                    <div class="fi-label">Web App</div>
+                    <div class="fi-title">Exposure Boost</div>
+                    <div class="fi-sub">Photography Web App</div>
+                    <p class="fi-desc">Interactive galleries, real-time image filters, and dark/light mode — built with vanilla JavaScript.</p>
+                    <div class="fi-tech">
                         <span>JavaScript</span>
                         <span>CSS</span>
                         <span>LocalStorage</span>
                     </div>
-                    <a href="https://exposureboost.co.uk" target="_blank" class="item-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
+                    <a href="https://exposureboost.co.uk" target="_blank" class="fi-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- 2. Hamilton Decorating -->
-            <div class="gallery-item">
-                <div class="item-preview">
-                    <div class="preview-loader" id="g-loader-2"><div class="spinner"></div><p>Loading...</p></div>
-                    <iframe src="https://megablaze757.github.io/HamiltonDecorating" loading="lazy" onload="document.getElementById('g-loader-2').classList.add('hidden')"></iframe>
-                    <span class="badge">Live</span>
-                    <span class="number-badge">02</span>
-                </div>
-                <div class="item-info">
-                    <div class="item-tag">Service Site</div>
-                    <div class="item-title">Hamilton Decorating</div>
-                    <div class="item-sub">Decorating &amp; Interiors</div>
-                    <p class="item-desc">A clean, service-led website for a decorating business, showcasing work and making it easy to request a quote.</p>
-                    <div class="item-tech">
-                        <span>HTML/CSS</span>
-                        <span>Service Pages</span>
-                        <span>Contact Forms</span>
+    <!-- ============================================================
+    GALLERY GRID — All other projects
+    ============================================================ -->
+    <section class="gallery-grid-section">
+        <div class="container">
+            <div class="gallery-grid">
+
+                <!-- Hamilton Decorating -->
+                <div class="grid-card">
+                    <div class="gc-preview">
+                        <div class="gc-loader" id="g-loader-1"><div class="spinner"></div><p style="color:var(--gray);font-size:11px;">Loading...</p></div>
+                        <iframe src="https://megablaze757.github.io/HamiltonDecorating" loading="lazy" onload="document.getElementById('g-loader-1').classList.add('hidden')"></iframe>
+                        <span class="gc-badge">Live</span>
                     </div>
-                    <a href="https://megablaze757.github.io/HamiltonDecorating" target="_blank" class="item-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
-                </div>
-            </div>
-
-            <!-- 3. AR Building -->
-            <div class="gallery-item">
-                <div class="item-preview">
-                    <div class="preview-loader" id="g-loader-3"><div class="spinner"></div><p>Loading...</p></div>
-                    <iframe src="https://arbuildingservices.co.uk" loading="lazy" onload="document.getElementById('g-loader-3').classList.add('hidden')"></iframe>
-                    <span class="badge">Live</span>
-                    <span class="number-badge">03</span>
-                </div>
-                <div class="item-info">
-                    <div class="item-tag">Lead Gen</div>
-                    <div class="item-title">AR Building Services</div>
-                    <div class="item-sub">Construction Company</div>
-                    <p class="item-desc">Lead-generation site optimized for local SEO with strategic CTAs and a project gallery. 35% increase in inquiries.</p>
-                    <div class="item-tech">
-                        <span>HTML/CSS</span>
-                        <span>Local SEO</span>
-                        <span>Lead Gen</span>
+                    <div class="gc-info">
+                        <div class="gc-title">Hamilton Decorating</div>
+                        <div class="gc-sub">Decorating &amp; Interiors</div>
+                        <p class="gc-desc">Clean, service-led site for a decorating business with quote requests.</p>
+                        <a href="https://megablaze757.github.io/HamiltonDecorating" target="_blank" class="gc-link">Visit Site <i class="fas fa-arrow-right"></i></a>
                     </div>
-                    <a href="https://arbuildingservices.co.uk" target="_blank" class="item-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
                 </div>
-            </div>
 
-            <!-- 4. Green Glo -->
-            <div class="gallery-item">
-                <div class="item-preview">
-                    <div class="preview-loader" id="g-loader-4"><div class="spinner"></div><p>Loading...</p></div>
-                    <iframe src="https://greenglocleaningco.com" loading="lazy" onload="document.getElementById('g-loader-4').classList.add('hidden')"></iframe>
-                    <span class="badge">Live</span>
-                    <span class="number-badge">04</span>
-                </div>
-                <div class="item-info">
-                    <div class="item-tag">Web App</div>
-                    <div class="item-title">Green Glo Cleaning</div>
-                    <div class="item-sub">Booking System</div>
-                    <p class="item-desc">Real-time booking, admin dashboard, and automated notifications. 40% increase in booking conversions.</p>
-                    <div class="item-tech">
-                        <span>JavaScript</span>
-                        <span>Booking System</span>
-                        <span>Dashboard</span>
+                <!-- AR Building -->
+                <div class="grid-card">
+                    <div class="gc-preview">
+                        <div class="gc-loader" id="g-loader-2"><div class="spinner"></div><p style="color:var(--gray);font-size:11px;">Loading...</p></div>
+                        <iframe src="https://arbuildingservices.co.uk" loading="lazy" onload="document.getElementById('g-loader-2').classList.add('hidden')"></iframe>
+                        <span class="gc-badge">Live</span>
                     </div>
-                    <a href="https://greenglocleaningco.com" target="_blank" class="item-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
-                </div>
-            </div>
-
-            <!-- 5. JR Sash -->
-            <div class="gallery-item">
-                <div class="item-preview">
-                    <div class="preview-loader" id="g-loader-5"><div class="spinner"></div><p>Loading...</p></div>
-                    <iframe src="https://jrsashsolutions.co.uk" loading="lazy" onload="document.getElementById('g-loader-5').classList.add('hidden')"></iframe>
-                    <span class="badge">Live</span>
-                    <span class="number-badge">05</span>
-                </div>
-                <div class="item-info">
-                    <div class="item-tag">Lead Gen</div>
-                    <div class="item-title">JR Sash Solutions</div>
-                    <div class="item-sub">Heritage Restoration</div>
-                    <p class="item-desc">Conversion-focused site with verified reviews, clear service breakdowns, and a simple enquiry flow.</p>
-                    <div class="item-tech">
-                        <span>Lead Gen</span>
-                        <span>Reviews</span>
-                        <span>Forms</span>
+                    <div class="gc-info">
+                        <div class="gc-title">AR Building Services</div>
+                        <div class="gc-sub">Construction Company</div>
+                        <p class="gc-desc">Lead-gen site with local SEO. 35% increase in inquiries.</p>
+                        <a href="https://arbuildingservices.co.uk" target="_blank" class="gc-link">Visit Site <i class="fas fa-arrow-right"></i></a>
                     </div>
-                    <a href="https://jrsashsolutions.co.uk" target="_blank" class="item-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
                 </div>
-            </div>
 
-            <!-- 6. 203 Carpentry -->
-            <div class="gallery-item">
-                <div class="item-preview">
-                    <div class="preview-loader" id="g-loader-6"><div class="spinner"></div><p>Loading...</p></div>
-                    <iframe src="https://203carpentry.co.uk" loading="lazy" onload="document.getElementById('g-loader-6').classList.add('hidden')"></iframe>
-                    <span class="badge">Live</span>
-                    <span class="number-badge">06</span>
-                </div>
-                <div class="item-info">
-                    <div class="item-tag">Service Site</div>
-                    <div class="item-title">203 Carpentry</div>
-                    <div class="item-sub">Carpentry &amp; Joinery</div>
-                    <p class="item-desc">Clean, service-led website showcasing completed work with a simple quote request flow.</p>
-                    <div class="item-tech">
-                        <span>HTML/CSS</span>
-                        <span>Service Pages</span>
-                        <span>Contact Forms</span>
+                <!-- Green Glo -->
+                <div class="grid-card">
+                    <div class="gc-preview">
+                        <div class="gc-loader" id="g-loader-3"><div class="spinner"></div><p style="color:var(--gray);font-size:11px;">Loading...</p></div>
+                        <iframe src="https://greenglocleaningco.com" loading="lazy" onload="document.getElementById('g-loader-3').classList.add('hidden')"></iframe>
+                        <span class="gc-badge">Live</span>
                     </div>
-                    <a href="https://203carpentry.co.uk" target="_blank" class="item-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
-                </div>
-            </div>
-
-            <!-- 7. Hastings Build Co -->
-            <div class="gallery-item">
-                <div class="item-preview">
-                    <div class="preview-loader" id="g-loader-7"><div class="spinner"></div><p>Loading...</p></div>
-                    <iframe src="https://megablaze757.github.io/HastingsBuildCo" loading="lazy" onload="document.getElementById('g-loader-7').classList.add('hidden')"></iframe>
-                    <span class="badge">Live</span>
-                    <span class="number-badge">07</span>
-                </div>
-                <div class="item-info">
-                    <div class="item-tag">Lead Gen</div>
-                    <div class="item-title">Hastings Build Co</div>
-                    <div class="item-sub">Construction &amp; Renovation</div>
-                    <p class="item-desc">A bold, trustworthy site for a construction company with 30+ years of experience, featuring project galleries and service breakdowns.</p>
-                    <div class="item-tech">
-                        <span>HTML/CSS</span>
-                        <span>Local SEO</span>
-                        <span>Project Gallery</span>
+                    <div class="gc-info">
+                        <div class="gc-title">Green Glo Cleaning</div>
+                        <div class="gc-sub">Booking System</div>
+                        <p class="gc-desc">Real-time booking &amp; admin dashboard. 40% conversion increase.</p>
+                        <a href="https://greenglocleaningco.com" target="_blank" class="gc-link">Visit Site <i class="fas fa-arrow-right"></i></a>
                     </div>
-                    <a href="https://megablaze757.github.io/HastingsBuildCo" target="_blank" class="item-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
                 </div>
-            </div>
 
+                <!-- JR Sash -->
+                <div class="grid-card">
+                    <div class="gc-preview">
+                        <div class="gc-loader" id="g-loader-4"><div class="spinner"></div><p style="color:var(--gray);font-size:11px;">Loading...</p></div>
+                        <iframe src="https://jrsashsolutions.co.uk" loading="lazy" onload="document.getElementById('g-loader-4').classList.add('hidden')"></iframe>
+                        <span class="gc-badge">Live</span>
+                    </div>
+                    <div class="gc-info">
+                        <div class="gc-title">JR Sash Solutions</div>
+                        <div class="gc-sub">Heritage Restoration</div>
+                        <p class="gc-desc">Conversion-focused site with verified reviews and enquiry flow.</p>
+                        <a href="https://jrsashsolutions.co.uk" target="_blank" class="gc-link">Visit Site <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- 203 Carpentry -->
+                <div class="grid-card">
+                    <div class="gc-preview">
+                        <div class="gc-loader" id="g-loader-5"><div class="spinner"></div><p style="color:var(--gray);font-size:11px;">Loading...</p></div>
+                        <iframe src="https://203carpentry.co.uk" loading="lazy" onload="document.getElementById('g-loader-5').classList.add('hidden')"></iframe>
+                        <span class="gc-badge">Live</span>
+                    </div>
+                    <div class="gc-info">
+                        <div class="gc-title">203 Carpentry</div>
+                        <div class="gc-sub">Carpentry &amp; Joinery</div>
+                        <p class="gc-desc">Service-led site showcasing work with quote request flow.</p>
+                        <a href="https://203carpentry.co.uk" target="_blank" class="gc-link">Visit Site <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Hastings Build Co -->
+                <div class="grid-card">
+                    <div class="gc-preview">
+                        <div class="gc-loader" id="g-loader-6"><div class="spinner"></div><p style="color:var(--gray);font-size:11px;">Loading...</p></div>
+                        <iframe src="https://megablaze757.github.io/HastingsBuildCo" loading="lazy" onload="document.getElementById('g-loader-6').classList.add('hidden')"></iframe>
+                        <span class="gc-badge">Live</span>
+                    </div>
+                    <div class="gc-info">
+                        <div class="gc-title">Hastings Build Co</div>
+                        <div class="gc-sub">Construction &amp; Renovation</div>
+                        <p class="gc-desc">Bold, trustworthy site for a construction company with 30+ years experience.</p>
+                        <a href="https://megablaze757.github.io/HastingsBuildCo" target="_blank" class="gc-link">Visit Site <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </section>
 
@@ -1195,12 +1237,12 @@
             }
             animateRing();
 
-            document.querySelectorAll('a, button, .gallery-item').forEach(el => {
+            document.querySelectorAll('a, button, .grid-card, .featured-inner').forEach(el => {
                 el.addEventListener('mouseenter', () => ring.classList.add('cursor-hover'));
                 el.addEventListener('mouseleave', () => ring.classList.remove('cursor-hover'));
             });
 
-            document.querySelectorAll('.btn, .theme-toggle, .item-link').forEach(btn => {
+            document.querySelectorAll('.btn, .theme-toggle, .fi-link, .gc-link').forEach(btn => {
                 btn.style.transition =
                     'transform 0.15s ease-out, background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease, gap 0.35s ease';
                 btn.addEventListener('mousemove', (e) => {
@@ -1211,23 +1253,6 @@
                 });
                 btn.addEventListener('mouseleave', () => {
                     btn.style.transform = '';
-                });
-            });
-
-            document.querySelectorAll('.gallery-item').forEach(item => {
-                item.addEventListener('mouseenter', () => {
-                    item.style.transition = 'none';
-                });
-                item.addEventListener('mousemove', (e) => {
-                    const r = item.getBoundingClientRect();
-                    const px = (e.clientX - r.left) / r.width - 0.5;
-                    const py = (e.clientY - r.top) / r.height - 0.5;
-                    item.style.transform =
-                        `perspective(1200px) rotateX(${-py * 2.5}deg) rotateY(${px * 2.5}deg) translateY(-6px)`;
-                });
-                item.addEventListener('mouseleave', () => {
-                    item.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-                    item.style.transform = '';
                 });
             });
         })();
@@ -1281,7 +1306,7 @@
         });
 
         // ── Hide loaders after timeout ──
-        document.querySelectorAll('.preview-loader').forEach(loader => {
+        document.querySelectorAll('.preview-loader, .gc-loader').forEach(loader => {
             setTimeout(() => loader.classList.add('hidden'), 4000);
         });
     </script>
