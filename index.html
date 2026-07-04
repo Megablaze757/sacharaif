@@ -2,1569 +2,940 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Sacha Raif | Full-Stack Developer & Conversion Specialist</title>
-    <meta name="description" content="Sacha Raif — full-stack developer building fast, conversion-focused websites with front-end interfaces, backend systems & APIs, and on-page SEO baked in." />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://sacharaif.com/" />
-    <meta name="theme-color" content="#05070d" />
-
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Sacha Raif | Full-Stack Developer & Conversion Specialist" />
-    <meta property="og:description" content="Full-stack development — front-end, backend & APIs, and on-page SEO — for websites built to convert." />
-    <meta property="og:url" content="https://sacharaif.com/" />
-    <meta property="og:image" content="https://sacharaif.com/cover.png" />
-    <meta property="og:site_name" content="Sacha Raif" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Sacha Raif | Full-Stack Developer & Conversion Specialist" />
-    <meta name="twitter:description" content="Full-stack development — front-end, backend & APIs, and on-page SEO — for websites built to convert." />
-    <meta name="twitter:image" content="https://sacharaif.com/cover.png" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>203 Carpentry | Bespoke Joinery in Sussex</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
     <style>
-        /* ── reset & base ── */
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px;
-            overscroll-behavior: none;
-            -webkit-overflow-scrolling: touch;
+        /* Base Styles - Luxury Design */
+        :root {
+            --primary: #0A2540;
+            --secondary: #9E2A2B;
+            --accent: #C5A572;
+            --light: #FFFFFF;
+            --dark: #1A1A1A;
+            --text: #4A4A4A;
+            --light-bg: #F8F7F4;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.12);
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            margin: 0;
-            padding: 0;
-            background: var(--darker);
-            color: var(--light);
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-            font-size: 16px;
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background-color: var(--light);
+            font-weight: 400;
             overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            scrollbar-width: thin;
-            scrollbar-color: var(--primary) var(--scrollbar-track);
-            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--scrollbar-track);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #6b8afd;
-            border-radius: 5px;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        /* ── vars ── */
-        :root {
-            --primary: #3b5fd9;
-            --primary-dark: #2b47b0;
-            --primary-light: #6b8afd;
-            --accent: #c9a668;
-            --accent-light: #e0c393;
-            --dark: #0e1420;
-            --darker: #05070d;
-            --light: #f1f4f9;
-            --gray: #8d96a8;
-            --gradient: linear-gradient(135deg, #3b5fd9 0%, #6b8afd 100%);
-            --shadow-xl: 0 25px 50px rgba(0, 0, 0, 0.35);
-            --shadow-glow: 0 0 40px rgba(59, 95, 217, 0.25);
-            --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            --font-display: 'Fraunces', Georgia, serif;
-            --surface: rgba(255, 255, 255, 0.03);
-            --surface-hover: rgba(255, 255, 255, 0.05);
-            --surface-border: rgba(255, 255, 255, 0.09);
-            --surface-strong: rgba(30, 41, 59, 0.5);
-            --surface-2: rgba(30, 41, 59, 0.7);
-            --header-bg: rgba(5, 7, 13, 0.95);
-            --header-bg-solid: rgba(5, 7, 13, 0.98);
-            --btn-secondary-bg: rgba(255, 255, 255, 0.06);
-            --btn-secondary-border: rgba(255, 255, 255, 0.15);
-            --btn-secondary-hover-bg: rgba(255, 255, 255, 0.1);
-            --btn-secondary-hover-border: rgba(255, 255, 255, 0.25);
-            --scrollbar-track: #0f172a;
-            --grad-process: linear-gradient(180deg, rgba(15, 23, 42, 0.9) 0%, rgba(2, 6, 23, 0.9) 100%);
-            --grad-skills: linear-gradient(135deg, rgba(2, 6, 23, 0.9) 0%, rgba(15, 23, 42, 0.9) 100%);
-            --grad-portfolio: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(2, 6, 23, 0.9) 100%);
-            --grad-contact: linear-gradient(135deg, rgba(2, 6, 23, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);
-        }
-
-        [data-theme="light"] {
-            --primary: #3452c4;
-            --primary-dark: #24399a;
-            --primary-light: #5372e8;
-            --accent: #9c7a3c;
-            --accent-light: #b8934f;
-            --dark: #eef1f7;
-            --darker: #f7f8fc;
-            --light: #12151f;
-            --gray: #5c6474;
-            --shadow-xl: 0 25px 50px rgba(20, 26, 43, 0.12);
-            --shadow-glow: 0 0 40px rgba(52, 82, 196, 0.15);
-            --surface: rgba(15, 23, 42, 0.035);
-            --surface-hover: rgba(15, 23, 42, 0.06);
-            --surface-border: rgba(15, 23, 42, 0.1);
-            --surface-strong: #ffffff;
-            --surface-2: rgba(15, 23, 42, 0.045);
-            --header-bg: rgba(247, 248, 252, 0.9);
-            --header-bg-solid: rgba(247, 248, 252, 0.98);
-            --btn-secondary-bg: rgba(15, 23, 42, 0.04);
-            --btn-secondary-border: rgba(15, 23, 42, 0.14);
-            --btn-secondary-hover-bg: rgba(15, 23, 42, 0.07);
-            --btn-secondary-hover-border: rgba(15, 23, 42, 0.22);
-            --scrollbar-track: #e3e7f0;
-            --grad-process: linear-gradient(180deg, #eef1f7 0%, #ffffff 100%);
-            --grad-skills: linear-gradient(135deg, #ffffff 0%, #eef1f7 100%);
-            --grad-portfolio: linear-gradient(135deg, #eef1f7 0%, #ffffff 100%);
-            --grad-contact: linear-gradient(135deg, #ffffff 0%, #eef1f7 100%);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* ── header ── */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 18px 0;
-            background: var(--header-bg);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--surface-border);
-            transition: var(--transition), background-color 0.4s ease;
-        }
-        header.scrolled {
-            padding: 12px 0;
-            background: var(--header-bg-solid);
-            box-shadow: var(--shadow-xl);
-        }
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            font-family: var(--font-display);
-            font-size: 24px;
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
             font-weight: 500;
-            font-style: italic;
-            color: var(--light);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        .logo:hover {
-            color: var(--accent-light);
-        }
-        .nav-links {
-            display: flex;
-            gap: 28px;
-        }
-        .nav-link {
-            color: var(--gray);
-            text-decoration: none;
-            font-weight: 600;
-            position: relative;
-            padding: 6px 0;
-            transition: var(--transition);
-            font-size: 14px;
-        }
-        .nav-link:hover {
-            color: var(--light);
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient);
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--light);
-            font-size: 22px;
-            cursor: pointer;
-            padding: 8px;
-        }
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-        }
-        .theme-toggle {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: var(--surface);
-            border: 1px solid var(--surface-border);
-            color: var(--light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 14px;
-            transition: var(--transition), background-color 0.4s ease;
-            flex-shrink: 0;
-        }
-        .theme-toggle:hover {
-            border-color: var(--primary-light);
-            background: var(--surface-hover);
+            line-height: 1.2;
+            color: var(--primary);
+            letter-spacing: -0.02em;
         }
 
-        /* ── hero ── */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 140px 0 60px;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero-bg-wrap {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            will-change: transform;
-            transition: transform 0.3s ease-out;
-        }
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 20% 80%, rgba(59, 95, 217, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(201, 166, 104, 0.1) 0%, transparent 50%);
-            animation: gradientShift 20s ease infinite alternate;
-        }
-        @keyframes gradientShift {
-            0% {
-                transform: scale(1);
-            }
-            100% {
-                transform: scale(1.1);
-            }
-        }
-        .hero-eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--accent-light);
-            margin-bottom: 18px;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 0.05s forwards;
-        }
-        .hero-eyebrow::before {
-            content: '';
-            width: 30px;
-            height: 1px;
-            background: var(--accent);
-        }
-        .hero-title {
-            font-family: var(--font-display);
-            font-size: clamp(36px, 5.2vw, 62px);
-            font-weight: 500;
-            line-height: 1.12;
-            letter-spacing: -0.5px;
-            margin-bottom: 20px;
-            color: var(--light);
-        }
-        .hero-title em {
-            font-style: italic;
-            font-weight: 500;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .hero-stats {
-            display: flex;
-            gap: 32px;
-            margin: 30px 0;
-            flex-wrap: wrap;
-        }
-        .stat-item {
-            display: flex;
-            flex-direction: column;
-        }
-        .stat-number {
-            font-size: 34px;
-            font-weight: 800;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            line-height: 1;
-        }
-        .stat-label {
-            font-size: 13px;
-            color: var(--gray);
-            margin-top: 6px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .btn-group {
-            display: flex;
-            gap: 16px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
+        .container { width: 90%; max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+        .container-narrow { max-width: 1200px; }
+
+        img { max-width: 100%; height: auto; display: block; }
+
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            padding: 16px 32px;
-            border-radius: 14px;
-            font-weight: 700;
+            gap: 10px;
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 34px;
+            border: 1px solid var(--primary);
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: 500;
             text-decoration: none;
             transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            font-size: 15px;
-            position: relative;
-            overflow: hidden;
-            transform: translateZ(0);
-            will-change: transform;
-        }
-        .btn::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-        .btn:active::after {
-            width: 300px;
-            height: 300px;
-        }
-        .btn-primary {
-            background: var(--gradient);
-            color: white;
-            box-shadow: 0 10px 30px rgba(59, 95, 217, 0.3);
-        }
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 16px 32px rgba(59, 95, 217, 0.4);
-        }
-        .btn-secondary {
-            background: var(--btn-secondary-bg);
-            color: var(--light);
-            border: 1px solid var(--btn-secondary-border);
-        }
-        .btn-secondary:hover {
-            background: var(--btn-secondary-hover-bg);
-            transform: translateY(-3px);
-            border-color: var(--btn-secondary-hover-border);
-        }
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
 
-        /* ── FULL-SCREEN IFRAME CAROUSEL ── */
-        .iframe-carousel {
+        .btn:hover { background-color: #0d3050; border-color: #0d3050; transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+
+        .btn-secondary { background-color: transparent; border-color: var(--accent); color: var(--primary); }
+        .btn-secondary:hover { background-color: var(--accent); border-color: var(--accent); color: var(--primary); }
+
+        .btn-outline { background-color: transparent; border: 1px solid var(--primary); color: var(--primary); }
+        .btn-outline:hover { background-color: var(--primary); color: white; }
+
+        section { padding: 100px 0; }
+
+        .section-title { text-align: center; margin-bottom: 70px; }
+
+        .section-title h2 {
+            font-size: 3.5rem;
+            color: var(--primary);
             position: relative;
+            display: inline-block;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 80px; height: 2px;
+            background-color: var(--accent);
+        }
+
+        .section-title p { font-size: 1.2rem; max-width: 600px; margin: 0 auto; color: var(--text); font-weight: 300; }
+
+        /* Sticky Social Media Bar */
+        .sticky-social-bar {
+            position: fixed;
+            bottom: 0; left: 0;
             width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+            z-index: 998;
+            padding: 15px 0;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            transition: var(--transition);
+            transform: translateY(100%);
+        }
+
+        .sticky-social-bar.visible { transform: translateY(0); }
+
+        .sticky-social-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .sticky-social-text { display: flex; align-items: center; gap: 15px; }
+        .sticky-social-text h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--primary); margin: 0; }
+        .sticky-social-text p { font-size: 0.9rem; color: var(--text); margin: 0; }
+
+        .sticky-social-icons { display: flex; gap: 15px; }
+
+        .sticky-social-icons a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px; height: 40px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .sticky-social-icons a:hover { background-color: var(--secondary); transform: translateY(-3px); }
+
+        .sticky-social-close {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 5px;
+            border-radius: 50%;
+            width: 30px; height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sticky-social-close:hover { background-color: rgba(0,0,0,0.05); color: var(--primary); }
+
+        /* Header */
+        header {
+            background-color: #ffffff;
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin-left: 40px; }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px; left: 0;
+            width: 0; height: 1px;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover { color: var(--accent); }
+        nav ul li a:hover::after { width: 100%; }
+
+        .mobile-menu-btn { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--primary); }
+
+        /* Hero */
+        html { scroll-behavior: smooth; }
+
+        .hero {
+            position: relative;
             height: 100vh;
             min-height: 560px;
             overflow: hidden;
-            background: var(--darker);
-        }
-
-        .iframe-carousel .carousel-track {
             display: flex;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
-            will-change: transform;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
         }
 
-        .iframe-carousel .carousel-slide {
-            flex: 0 0 100%;
-            height: 100%;
-            position: relative;
-            overflow: hidden;
-            background: var(--darker);
-        }
-
-        .iframe-carousel .carousel-slide .slide-iframe-wrap {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .iframe-carousel .carousel-slide .slide-iframe-wrap iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            background: white;
-            pointer-events: auto;
-        }
-
-        .iframe-carousel .carousel-slide .slide-loader {
+        .hero-media {
             position: absolute;
             inset: 0;
-            background: var(--darker);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 5;
-            transition: opacity 0.4s ease;
-        }
-        .iframe-carousel .carousel-slide .slide-loader.hidden {
-            opacity: 0;
-            pointer-events: none;
+            z-index: 0;
         }
 
-        .iframe-carousel .carousel-slide .slide-loader .spinner {
-            width: 40px;
-            height: 40px;
-            border: 3px solid rgba(59, 95, 217, 0.2);
-            border-radius: 50%;
-            border-top-color: var(--primary);
-            animation: spin 1s linear infinite;
-            margin-bottom: 14px;
-        }
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* Slide overlay with project info */
-        .iframe-carousel .carousel-slide .slide-overlay-info {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 10;
-            padding: 30px 40px 35px;
-            background: linear-gradient(0deg, rgba(0, 0, 0, 0.85) 0%, transparent 100%);
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            flex-wrap: wrap;
-            gap: 16px;
-            pointer-events: none;
-        }
-
-        .iframe-carousel .carousel-slide .slide-overlay-info>* {
-            pointer-events: auto;
-        }
-
-        .iframe-carousel .carousel-slide .slide-overlay-info .info-left .slide-name {
-            font-size: 24px;
-            font-weight: 700;
-            color: #fff;
-            font-family: var(--font-display);
-            letter-spacing: -0.5px;
-        }
-
-        .iframe-carousel .carousel-slide .slide-overlay-info .info-left .slide-type {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.6);
-            font-weight: 400;
-        }
-
-        .iframe-carousel .carousel-slide .slide-overlay-info .info-right {
-            display: flex;
-            gap: 12px;
-        }
-
-        .iframe-carousel .carousel-slide .slide-overlay-info .info-right .visit-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 22px;
-            border-radius: 30px;
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: #fff;
-            font-weight: 600;
-            font-size: 14px;
-            text-decoration: none;
-            transition: var(--transition);
-            pointer-events: auto;
-        }
-
-        .iframe-carousel .carousel-slide .slide-overlay-info .info-right .visit-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-        }
-
-        /* ── Carousel controls — BIGGER TAP TARGETS ── */
-        .carousel-controls {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 20;
-            display: flex;
-            gap: 16px;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.55);
-            backdrop-filter: blur(16px);
-            padding: 12px 24px;
-            border-radius: 60px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .carousel-controls .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-            padding: 0;
-            min-width: 10px;
-            min-height: 10px;
-        }
-        .carousel-controls .dot.active {
-            background: #fff;
-            width: 32px;
-            border-radius: 6px;
-            min-width: 32px;
-        }
-        .carousel-controls .dot:hover {
-            background: rgba(255, 255, 255, 0.5);
-        }
-
-        .carousel-controls .arrow {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 18px;
-            cursor: pointer;
-            padding: 12px 16px;
-            border-radius: 50%;
-            transition: var(--transition);
-            min-width: 48px;
-            min-height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
-            user-select: none;
-        }
-        .carousel-controls .arrow:hover {
-            color: #fff;
-            background: rgba(255, 255, 255, 0.15);
-            transform: scale(1.05);
-        }
-        .carousel-controls .arrow:active {
-            transform: scale(0.92);
-        }
-
-        /* ── responsive carousel ── */
-        @media (max-width: 768px) {
-            .iframe-carousel {
-                min-height: 480px;
-                height: 90vh;
-            }
-            .iframe-carousel .carousel-slide .slide-overlay-info {
-                padding: 20px 20px 28px;
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .iframe-carousel .carousel-slide .slide-overlay-info .info-left .slide-name {
-                font-size: 20px;
-            }
-            .iframe-carousel .carousel-slide .slide-overlay-info .info-left .slide-type {
-                font-size: 13px;
-            }
-            .iframe-carousel .carousel-slide .slide-overlay-info .info-right .visit-btn {
-                padding: 8px 18px;
-                font-size: 13px;
-            }
-            .carousel-controls {
-                bottom: 20px;
-                padding: 10px 18px;
-                gap: 12px;
-            }
-            .carousel-controls .dot {
-                width: 8px;
-                height: 8px;
-                min-width: 8px;
-                min-height: 8px;
-            }
-            .carousel-controls .dot.active {
-                width: 24px;
-                min-width: 24px;
-            }
-            .carousel-controls .arrow {
-                padding: 10px 14px;
-                min-width: 44px;
-                min-height: 44px;
-                font-size: 16px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .iframe-carousel {
-                min-height: 420px;
-                height: 85vh;
-            }
-            .iframe-carousel .carousel-slide .slide-overlay-info {
-                padding: 16px 16px 22px;
-            }
-            .iframe-carousel .carousel-slide .slide-overlay-info .info-left .slide-name {
-                font-size: 17px;
-            }
-            .iframe-carousel .carousel-slide .slide-overlay-info .info-left .slide-type {
-                font-size: 12px;
-            }
-            .iframe-carousel .carousel-slide .slide-overlay-info .info-right .visit-btn {
-                padding: 6px 14px;
-                font-size: 12px;
-            }
-            .carousel-controls {
-                padding: 8px 14px;
-                gap: 10px;
-                bottom: 16px;
-            }
-            .carousel-controls .dot {
-                width: 7px;
-                height: 7px;
-                min-width: 7px;
-                min-height: 7px;
-            }
-            .carousel-controls .dot.active {
-                width: 20px;
-                min-width: 20px;
-            }
-            .carousel-controls .arrow {
-                padding: 8px 12px;
-                min-width: 40px;
-                min-height: 40px;
-                font-size: 14px;
-            }
-        }
-
-        /* ── scroll progress ── */
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            width: 0%;
-            background: var(--gradient);
-            z-index: 2000;
-            pointer-events: none;
-        }
-
-        /* ── section title ── */
-        .section-title {
-            font-family: var(--font-display);
-            font-size: clamp(30px, 3.8vw, 44px);
-            font-weight: 500;
-            letter-spacing: -0.3px;
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease forwards;
-            will-change: transform, opacity;
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -16px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 48px;
-            height: 2px;
-            background: var(--accent);
-            border-radius: 3px;
-            animation: lineExpand 1s ease 0.5s forwards;
-            transform-origin: center;
-            transform: scaleX(0);
-        }
-        @keyframes lineExpand {
-            to {
-                transform: translateX(-50%) scaleX(1);
-            }
-        }
-
-        /* ── process ── */
-        .process-section {
-            padding: 90px 0;
-            background: var(--grad-process);
-            position: relative;
-            overflow: hidden;
-        }
-        .timeline {
-            max-width: 800px;
-            margin: 50px auto 0;
-            position: relative;
-        }
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 30px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--gradient);
-        }
-        .timeline-item {
-            display: flex;
-            gap: 30px;
-            margin-bottom: 36px;
-            position: relative;
-            opacity: 0;
-            transform: translateX(-20px);
-            animation: slideInRight 0.8s ease forwards;
-            will-change: transform, opacity;
-        }
-        .timeline-item:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-        .timeline-item:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-        .timeline-item:nth-child(3) {
-            animation-delay: 0.3s;
-        }
-        .timeline-item:nth-child(4) {
-            animation-delay: 0.4s;
-        }
-        @keyframes slideInRight {
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        .timeline-marker {
-            width: 52px;
-            height: 52px;
-            background: var(--gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 17px;
-            flex-shrink: 0;
-            position: relative;
-            z-index: 2;
-        }
-        .timeline-title {
-            font-size: 19px;
-            margin-bottom: 6px;
-            color: var(--light);
-        }
-
-        /* ── backend ── */
-        .backend-section {
-            padding: 80px 0 90px;
-            background: var(--grad-portfolio);
-        }
-        .backend-grid {
-            display: grid;
-            grid-template-columns: 0.9fr 1.1fr;
-            gap: 50px;
-            align-items: center;
-            margin-top: 40px;
-        }
-        .backend-feature-list {
-            list-style: none;
-        }
-        .backend-feature-list li {
-            display: flex;
-            gap: 16px;
-            align-items: flex-start;
-            margin-bottom: 24px;
-        }
-        .backend-feature-list .feature-icon {
-            flex-shrink: 0;
-            width: 22px;
-            height: 22px;
-            background: var(--gradient);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 11px;
-        }
-        .backend-feature-list h4 {
-            color: var(--light);
-            font-size: 17px;
-            margin-bottom: 4px;
-        }
-        .backend-feature-list p {
-            color: var(--gray);
-            font-size: 14px;
-            line-height: 1.6;
-        }
-        .terminal-window {
-            background: #0a0e17;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: var(--shadow-xl);
-            border: 1px solid var(--surface-border);
-        }
-        .terminal-header {
-            background: #12161f;
-            padding: 12px 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        }
-        .terminal-dot {
-            width: 11px;
-            height: 11px;
-            border-radius: 50%;
-        }
-        .terminal-dot.red {
-            background: #ff5f56;
-        }
-        .terminal-dot.yellow {
-            background: #ffbd2e;
-        }
-        .terminal-dot.green {
-            background: #27ca3f;
-        }
-        .terminal-title {
-            flex: 1;
-            text-align: center;
-            color: #6b7280;
-            font-size: 13px;
-            font-family: 'SF Mono', Monaco, monospace;
-        }
-        .terminal-replay {
-            background: transparent;
-            border: none;
-            color: #6b7280;
-            cursor: pointer;
-            font-size: 13px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: var(--transition);
-            padding: 6px 10px;
-            border-radius: 8px;
-        }
-        .terminal-replay:hover {
-            color: var(--primary-light);
-            background: rgba(255, 255, 255, 0.05);
-        }
-        .terminal-body {
-            padding: 22px 20px;
-            font-family: 'SF Mono', Monaco, Consolas, monospace;
-            font-size: 13px;
-            line-height: 1.8;
-            min-height: 220px;
-            color: #d1d5db;
-        }
-        .terminal-line {
-            white-space: pre-wrap;
-            word-break: break-word;
-        }
-        .terminal-line .prompt {
-            color: #6b8afd;
-            margin-right: 8px;
-        }
-        .terminal-line.t-cmd .type-target {
-            color: #e5e7eb;
-        }
-        .terminal-line.t-out .type-target {
-            color: #7ed99a;
-        }
-        .terminal-line.t-json .type-target {
-            color: #e0c393;
-        }
-        .term-cursor {
-            display: inline-block;
-            width: 8px;
-            height: 16px;
-            background: #6b8afd;
-            margin-left: 2px;
-            vertical-align: middle;
-            animation: blink 1s step-start infinite;
-        }
-        @keyframes blink {
-            50% {
-                opacity: 0;
-            }
-        }
-        @media (max-width: 900px) {
-            .backend-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* ── skills ── */
-        .skills-section {
-            padding: 100px 0;
-            position: relative;
-            background: var(--grad-skills);
-            overflow: hidden;
-        }
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 28px;
-            margin-top: 50px;
-        }
-        .skill-card {
-            background: var(--surface);
-            border: 1px solid var(--surface-border);
-            border-radius: 18px;
-            padding: 36px 28px;
-            text-align: center;
-            transition: var(--transition), background-color 0.4s ease;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease forwards;
-            will-change: transform;
-        }
-        .skill-card:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-        .skill-card:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-        .skill-card:nth-child(3) {
-            animation-delay: 0.3s;
-        }
-        .skill-card:nth-child(4) {
-            animation-delay: 0.4s;
-        }
-        .skill-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            border-color: rgba(107, 138, 253, 0.3);
-            box-shadow: var(--shadow-xl);
-            background: var(--surface-hover);
-        }
-        .skill-icon {
-            font-size: 42px;
-            margin-bottom: 20px;
-            color: var(--primary);
-            transition: var(--transition);
-        }
-        .skill-card:hover .skill-icon {
-            transform: scale(1.15);
-            color: var(--primary-light);
-        }
-        .skills-button-container {
-            text-align: center;
-            margin-top: 50px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s ease 0.5s forwards;
-        }
-
-        /* ── showcase ── */
-        .portfolio-showcase {
-            padding: 80px 0;
-            background: var(--grad-portfolio);
-        }
-        .showcase-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 28px;
-            margin-top: 50px;
-        }
-        .showcase-item {
-            background: var(--surface);
-            border: 1px solid var(--surface-border);
-            border-radius: 18px;
-            padding: 36px 28px;
-            text-align: center;
-            transition: var(--transition), background-color 0.4s ease;
-        }
-        .showcase-item:hover {
-            transform: translateY(-8px);
-            border-color: rgba(107, 138, 253, 0.3);
-            box-shadow: var(--shadow-glow);
-        }
-        .showcase-icon {
-            font-size: 42px;
-            margin-bottom: 18px;
-            color: var(--accent);
-        }
-
-        /* ── contact ── */
-        .contact-section {
-            padding: 100px 0;
-            background: var(--grad-contact);
-            position: relative;
-            overflow: hidden;
-        }
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 50px;
-        }
-        .contact-info {
-            background: var(--surface);
-            border: 1px solid var(--surface-border);
-            border-radius: 18px;
-            padding: 36px;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease forwards;
-            will-change: transform, opacity;
-        }
-        .contact-info:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-        .contact-info:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-        .contact-method {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            margin-bottom: 24px;
-            padding: 16px 18px;
-            background: var(--surface);
-            border-radius: 14px;
-            transition: var(--transition), background-color 0.4s ease;
-        }
-        .contact-method:hover {
-            background: rgba(59, 95, 217, 0.1);
-            transform: translateX(8px);
-        }
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--gradient);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            color: white;
-            transition: var(--transition);
-            flex-shrink: 0;
-        }
-        .contact-method:hover .contact-icon {
-            transform: rotate(12deg) scale(1.08);
-        }
-
-        /* ── whatsapp float ── */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 28px;
-            right: 28px;
-            width: 60px;
-            height: 60px;
-            background: #25D366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 28px;
-            text-decoration: none;
-            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4);
-            z-index: 1000;
-            transition: var(--transition);
-            animation: float 3s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%,
-            100% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-8px) rotate(4deg);
-            }
-        }
-        .whatsapp-float:hover {
-            transform: scale(1.12) rotate(12deg);
-            box-shadow: 0 20px 45px rgba(37, 211, 102, 0.6);
-        }
-
-        /* ── footer ── */
-        footer {
-            padding: 60px 0 30px;
-            text-align: center;
-            border-top: 1px solid var(--surface-border);
-            position: relative;
-            overflow: hidden;
-        }
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: var(--gradient);
-            transform: scaleX(0);
-            animation: footerLineExpand 1.5s ease 0.5s forwards;
-        }
-        @keyframes footerLineExpand {
-            to {
-                transform: scaleX(1);
-            }
-        }
-        .footer-logo {
-            font-family: var(--font-display);
-            font-size: 28px;
-            font-weight: 500;
-            font-style: italic;
-            color: var(--light);
-            margin-bottom: 16px;
-            display: inline-block;
-        }
-
-        /* ── mobile menu ── */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
+        .hero-media img {
             width: 100%;
             height: 100%;
-            background: var(--header-bg-solid);
-            backdrop-filter: blur(20px);
-            z-index: 9999;
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 28px;
+            object-fit: cover;
+            object-position: center 30%;
+            transform: scale(1.12);
+            animation: heroZoom 12s ease-out forwards;
         }
-        .mobile-menu.active {
-            display: flex;
-            animation: fadeIn 0.3s ease;
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        .mobile-menu .nav-link {
-            font-size: 22px;
-            color: var(--light);
-        }
-        .close-menu {
+
+        .hero-media::after {
+            content: '';
             position: absolute;
-            top: 28px;
-            right: 28px;
-            background: none;
-            border: none;
-            color: var(--light);
-            font-size: 28px;
-            cursor: pointer;
-            transition: var(--transition);
-            padding: 12px;
-        }
-        .close-menu:hover {
-            color: var(--primary-light);
-            transform: rotate(90deg);
+            inset: 0;
+            background: linear-gradient(180deg, rgba(10,37,64,0.65) 0%, rgba(10,37,64,0.4) 45%, rgba(10,37,64,0.75) 100%);
         }
 
-        /* ── responsive general ── */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .mobile-menu-btn {
-                display: block;
-            }
-            .hero {
-                padding: 120px 0 40px;
-            }
-            .hero-title {
-                font-size: clamp(32px, 7vw, 42px);
-            }
-            .hero-stats {
-                gap: 16px;
-            }
-            .stat-number {
-                font-size: 28px;
-            }
-            .btn-group {
-                flex-direction: column;
-                width: 100%;
-            }
-            .btn {
-                width: 100%;
-                justify-content: center;
-                padding: 14px 24px;
-            }
-            .skills-grid,
-            .contact-grid,
-            .showcase-grid {
-                grid-template-columns: 1fr;
-            }
-            .whatsapp-float {
-                bottom: 18px;
-                right: 18px;
-                width: 52px;
-                height: 52px;
-                font-size: 24px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 16px;
-            }
-            .section-title {
-                font-size: 26px;
-            }
-            .timeline::before {
-                left: 22px;
-            }
-            .timeline-marker {
-                width: 40px;
-                height: 40px;
-                font-size: 14px;
-            }
-            .timeline-item {
-                gap: 20px;
-            }
-            .whatsapp-float {
-                width: 48px;
-                height: 48px;
-                font-size: 20px;
-                bottom: 14px;
-                right: 14px;
-            }
-        }
-
-        .section-title,
-        .skill-card,
-        .contact-info,
-        .showcase-item {
-            animation-play-state: paused;
-        }
-        .section-title.revealed,
-        .skill-card.revealed,
-        .contact-info.revealed,
-        .showcase-item.revealed {
-            animation-play-state: running;
+        @keyframes heroZoom {
+            to { transform: scale(1); }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .section-title,
-            .skill-card,
-            .contact-info,
-            .showcase-item {
-                animation-play-state: running !important;
-                transition: none !important;
+            .hero-media img { animation: none; transform: scale(1); }
+        }
+
+        .hero-content { position: relative; z-index: 2; max-width: 900px; padding: 0 20px; }
+
+        /* Scroll reveal — visible by default; only hidden once JS confirms setup succeeded.
+           Opacity-only by design, so it never competes with hover transforms elsewhere. */
+        .reveal { opacity: 1; }
+        html.reveal-ready .reveal {
+            opacity: 0;
+            transition: opacity 0.6s ease-out;
+        }
+        html.reveal-ready .reveal.active { opacity: 1; }
+        @media (prefers-reduced-motion: reduce) {
+            html.reveal-ready .reveal { opacity: 1; transition: none; }
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards 0.5s;
+            font-weight: 500;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            color: white;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards 0.8s;
+            font-weight: 300;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .hero .btn {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards 1.1s;
+            margin: 0 15px;
+        }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px; left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            opacity: 0.7;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .scroll-indicator:hover { opacity: 1; }
+        .scroll-indicator span { font-size: 0.8rem; margin-bottom: 10px; letter-spacing: 0.1em; }
+        .scroll-indicator i { font-size: 1.2rem; animation: bounce 2s infinite; }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* Carousel (used by Services and Recent Work) */
+        .carousel { position: relative; }
+
+        .carousel-track {
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            padding: 6px 6px 10px;
+            margin: 0 -6px;
+            scrollbar-width: none;
+        }
+        .carousel-track::-webkit-scrollbar { display: none; }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 40%;
+            transform: translateY(-50%);
+            width: 48px; height: 48px;
+            border-radius: 50%;
+            border: 1px solid rgba(10, 37, 64, 0.12);
+            background: white;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            z-index: 3;
+        }
+        .carousel-arrow:hover { background: var(--primary); color: white; border-color: var(--primary); }
+        .carousel-arrow.prev { left: -22px; }
+        .carousel-arrow.next { right: -22px; }
+        .carousel-arrow[hidden] { display: none; }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 26px;
+        }
+        .carousel-dots:empty { display: none; }
+        .carousel-dots button {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(10, 37, 64, 0.18);
+            cursor: pointer;
+            padding: 0;
+            transition: var(--transition);
+        }
+        .carousel-dots button.active { background: var(--accent); width: 22px; border-radius: 4px; }
+
+        @media (max-width: 900px) {
+            .carousel-arrow { width: 40px; height: 40px; }
+            .carousel-arrow.prev { left: 6px; }
+            .carousel-arrow.next { right: 6px; }
+        }
+
+        /* About */
+        .about { background-color: var(--light-bg); position: relative; }
+
+        .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+
+        .about-text h3 { font-size: 2.5rem; margin-bottom: 30px; color: var(--primary); }
+        .about-text p { margin-bottom: 25px; font-size: 1.1rem; line-height: 1.8; }
+
+        .about-image { position: relative; }
+
+        .about-image img { border-radius: 5px; box-shadow: var(--shadow); transition: var(--transition); }
+        .about-image:hover img { transform: scale(1.02); box-shadow: var(--shadow-hover); }
+
+        .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 50px; }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .stat-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+
+        .stat-number { font-size: 3rem; font-weight: 300; color: var(--accent); margin-bottom: 10px; font-family: 'Cormorant Garamond', serif; }
+        .stat-text { font-size: 1rem; color: var(--primary); font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
+
+        /* Services */
+        .services { background-color: var(--light); }
+
+        .services-grid { display: flex; }
+
+        .service-card {
+            flex: 0 0 360px;
+            scroll-snap-align: start;
+            background-color: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+        }
+
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); }
+
+        .service-img { height: 250px; overflow: hidden; }
+
+        .service-img img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+        .service-card:hover .service-img img { transform: scale(1.1); }
+
+        .service-content { padding: 30px; }
+        .service-content h3 { font-size: 1.8rem; margin-bottom: 15px; color: var(--primary); }
+
+        /* Portfolio */
+        .portfolio { background-color: var(--light-bg); }
+
+        .portfolio-grid {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .portfolio-item {
+            flex: 0 0 380px;
+            scroll-snap-align: start;
+            position: relative;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 350px;
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+
+        .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+        .portfolio-item:hover img { transform: scale(1.05); }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(10, 37, 64, 0.85);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: var(--transition);
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+
+        .portfolio-overlay h3 { font-size: 1.8rem; margin-bottom: 15px; color: white; }
+        .portfolio-overlay p { margin-bottom: 20px; }
+
+        .portfolio-btn { text-align: center; }
+
+        /* Contact */
+        .contact { background-color: var(--light); }
+
+        .contact-content { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+
+        .contact-info h3, .contact-form h3 { font-size: 2.2rem; margin-bottom: 30px; color: var(--primary); }
+
+        .contact-details { margin-bottom: 40px; }
+
+        .contact-detail { display: flex; align-items: flex-start; margin-bottom: 25px; }
+        .contact-detail i { color: var(--accent); margin-right: 20px; font-size: 1.3rem; margin-top: 5px; }
+        .contact-detail-content h4 { font-size: 1.2rem; margin-bottom: 5px; color: var(--primary); }
+
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; margin-bottom: 10px; font-weight: 500; color: var(--primary); }
+
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: white;
+        }
+
+        .form-control:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px rgba(197,165,114,0.2); }
+        textarea.form-control { min-height: 150px; resize: vertical; }
+
+        /* Footer */
+        footer { background-color: var(--primary); color: white; padding: 80px 0 30px; }
+
+        .footer-content { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 50px; margin-bottom: 60px; }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+            color: white;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 50px; height: 2px;
+            background-color: var(--accent);
+        }
+
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: rgba(255,255,255,0.7); text-decoration: none; transition: var(--transition); }
+        .footer-links a:hover { color: var(--accent); padding-left: 5px; }
+
+        .social-links { display: flex; gap: 15px; margin-top: 25px; }
+
+        .social-links a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px; height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover { background-color: var(--accent); transform: translateY(-3px); }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .footer-logo {
+            height: 45px;
+            width: auto;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero h1 { font-size: 4rem; }
+            .section-title h2 { font-size: 3rem; }
+            .about-content, .contact-content { gap: 50px; }
+        }
+
+        @media (max-width: 992px) {
+            .about-content, .contact-content { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 3.5rem; }
+            .footer-content { grid-template-columns: 1fr 1fr; gap: 40px; }
+            .sticky-social-container { flex-direction: column; gap: 15px; text-align: center; }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn { display: block; }
+
+            nav ul {
+                position: fixed;
+                top: 90px; left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 30px 0;
+                box-shadow: var(--shadow);
+                transform: translateY(-150%);
+                transition: var(--transition);
+                z-index: 999;
             }
+
+            nav ul.active { transform: translateY(0); }
+            nav ul li { margin: 15px 0; }
+            .hero { padding: 120px 0; }
+            .hero h1 { font-size: 2.8rem; }
+            section { padding: 80px 0; }
+            .service-card, .portfolio-item { flex-basis: 82vw; }
+            .footer-content { grid-template-columns: 1fr; }
+            .sticky-social-text { flex-direction: column; gap: 5px; }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 { font-size: 2.2rem; }
+            .section-title h2 { font-size: 2.5rem; }
+            .hero .btn { display: block; margin: 10px auto; width: 80%; }
+            .about-stats { grid-template-columns: 1fr; }
+            .sticky-social-bar { padding: 10px 0; }
         }
     </style>
 </head>
 
 <body>
-
-    <div class="scroll-progress" id="scrollProgress"></div>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <button class="close-menu" id="closeMenu"><i class="fas fa-times"></i></button>
-        <a href="#home" class="nav-link" onclick="closeMobileMenu()">Home</a>
-        <a href="#projects" class="nav-link" onclick="closeMobileMenu()">Projects</a>
-        <a href="gallery.html" class="nav-link">Gallery</a>
-        <a href="#backend" class="nav-link" onclick="closeMobileMenu()">Backend</a>
-        <a href="#skills" class="nav-link" onclick="closeMobileMenu()">Skills</a>
-        <a href="#contact" class="nav-link" onclick="closeMobileMenu()">Contact</a>
-        <button class="theme-toggle" id="themeToggleMobile" aria-label="Toggle light and dark theme" style="margin-top:10px;">
-            <i class="fas fa-sun" id="themeIconMobile"></i>
-        </button>
+    <!-- Sticky Social Media Bar -->
+    <div class="sticky-social-bar" id="stickySocialBar">
+        <div class="sticky-social-container">
+            <div class="sticky-social-text">
+                <h4>Follow Our Work</h4>
+                <p>See our latest projects on Instagram</p>
+            </div>
+            <div class="sticky-social-icons">
+                <a href="https://www.instagram.com/203_carpentry/" target="_blank" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="mailto:info@203carpentryjoinery.org" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="tel:07368860029" title="Call">
+                    <i class="fas fa-phone"></i>
+                </a>
+            </div>
+            <button class="sticky-social-close" id="closeStickySocial" title="Close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
     </div>
 
-    <!-- WhatsApp Float -->
-    <a href="https://wa.me/447543737488" class="whatsapp-float" target="_blank" aria-label="Contact on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
     <!-- Header -->
-    <header id="header">
-        <div class="container">
-            <div class="header-content">
-                <a href="#home" class="logo">Sacha Raif</a>
-                <div class="header-actions">
-                    <nav class="nav-links">
-                        <a href="#home" class="nav-link">Home</a>
-                        <a href="#projects" class="nav-link">Projects</a>
-                        <a href="gallery.html" class="nav-link">Gallery</a>
-                        <a href="#backend" class="nav-link">Backend</a>
-                        <a href="#skills" class="nav-link">Skills</a>
-                        <a href="#contact" class="nav-link">Contact</a>
-                    </nav>
-                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark theme">
-                        <i class="fas fa-sun" id="themeIcon"></i>
-                    </button>
-                    <button class="mobile-menu-btn" id="mobileMenuBtn">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
-            </div>
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo"><img src="logo.jpg" alt="203 Carpentry &amp; Joinery"></a>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
     <!-- Hero -->
     <section class="hero" id="home">
-        <div class="hero-bg-wrap" id="heroBgWrap"><div class="hero-bg"></div></div>
+        <div class="hero-media">
+            <img src="IMG_9663.jpeg" alt="Bespoke joinery craftsmanship by 203 Carpentry">
+        </div>
+        <div class="hero-content">
+            <h1>Bespoke Joinery in Sussex</h1>
+            <p>Transforming spaces with custom-crafted woodwork that combines timeless elegance with modern functionality.</p>
+            <a href="#contact" class="btn">Start Your Project</a>
+            <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-secondary">View Our Latest Work</a>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll to Explore</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-eyebrow">Full-Stack Development &amp; Digital Strategy</div>
-                <h1 class="hero-title">Websites built to look <em>sharp</em> and perform even better</h1>
-                <p style="font-size:18px;color:var(--gray);margin-bottom:16px;max-width:560px;line-height:1.7;">
-                    I design and build <strong style="color:var(--light);font-weight:600;">high-performance websites</strong> — front-end, backend, APIs, and on-page SEO — built on strategic design and clean code.
-                </p>
-                <div class="hero-stats">
-                    <div class="stat-item"><div class="stat-number">50+</div><div class="stat-label">Projects Delivered</div></div>
-                    <div class="stat-item"><div class="stat-number">99%</div><div class="stat-label">Client Satisfaction</div></div>
-                    <div class="stat-item"><div class="stat-number">40%</div><div class="stat-label">Avg. Conversion Increase</div></div>
-                    <div class="stat-item"><div class="stat-number">24h</div><div class="stat-label">Avg. Response Time</div></div>
+            <div class="section-title reveal">
+                <h2>About Us</h2>
+                <p>Based in Sussex, we create bespoke joinery that transforms spaces with quality craftsmanship.</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text reveal">
+                    <h3>Crafting Excellence in Sussex</h3>
+                    <p>At 203 Carpentry, we blend traditional craftsmanship with contemporary design to create exceptional woodwork. Our skilled artisans take pride in every detail, ensuring each piece is not just furniture, but a work of art.</p>
+                    <p>Whether it's custom cabinetry, elegant windows and doors, or bespoke bedroom furniture, we work closely with our clients throughout Sussex to bring their vision to life. See our work on <a href="https://www.instagram.com/203_carpentry/" target="_blank" style="color: var(--accent);">Instagram</a> for our latest projects.</p>
+                    <a href="gallery.html" class="btn">View Full Gallery</a>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">100+</div>
+                            <div class="stat-text">Projects Completed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-text">Sussex Based</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="btn-group">
-                    <a href="#projects" class="btn btn-primary"><span>View My Work</span><i class="fas fa-arrow-down"></i></a>
-                    <a href="#contact" class="btn btn-secondary"><span>Start a Project</span><i class="fas fa-rocket"></i></a>
+                <div class="about-image reveal">
+                    <img src="IMG_9176.jpeg" alt="Bespoke media wall with herringbone oak floor">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ============================================================
-    FULL-SCREEN IFRAME CAROUSEL — MAIN WOW FACTOR
-    ============================================================ -->
-    <section class="iframe-carousel" id="projects">
-        <div class="carousel-track" id="carouselTrack">
-
-            <!-- Slide 1: Exposure Boost -->
-            <div class="carousel-slide" data-index="0">
-                <div class="slide-iframe-wrap">
-                    <div class="slide-loader" id="cloader-0"><div class="spinner"></div><p style="color:var(--gray);font-size:13px;">Loading...</p></div>
-                    <iframe src="https://exposureboost.co.uk" loading="lazy" onload="document.getElementById('cloader-0').classList.add('hidden')"></iframe>
-                </div>
-                <div class="slide-overlay-info">
-                    <div class="info-left">
-                        <div class="slide-name">Exposure Boost</div>
-                        <div class="slide-type">Photography Web App</div>
-                    </div>
-                    <div class="info-right">
-                        <a href="https://exposureboost.co.uk" target="_blank" class="visit-btn"><i class="fas fa-external-link-alt"></i> Visit</a>
-                    </div>
-                </div>
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="container container-narrow">
+            <div class="section-title reveal">
+                <h2>Our Services</h2>
+                <p>We offer a comprehensive range of bespoke joinery services tailored to your specific needs.</p>
             </div>
-
-            <!-- Slide 2: AR Building -->
-            <div class="carousel-slide" data-index="1">
-                <div class="slide-iframe-wrap">
-                    <div class="slide-loader" id="cloader-1"><div class="spinner"></div><p style="color:var(--gray);font-size:13px;">Loading...</p></div>
-                    <iframe src="https://arbuildingservices.co.uk" loading="lazy" onload="document.getElementById('cloader-1').classList.add('hidden')"></iframe>
-                </div>
-                <div class="slide-overlay-info">
-                    <div class="info-left">
-                        <div class="slide-name">AR Building Services</div>
-                        <div class="slide-type">Construction Company</div>
+            <div class="carousel">
+                <button class="carousel-arrow prev" data-prev hidden aria-label="Previous service"><i class="fas fa-chevron-left"></i></button>
+                <div class="services-grid" data-track>
+                    <div class="service-card">
+                        <div class="service-img">
+                            <img src="IMG_8958.jpeg" alt="Bespoke built-in media wall with LED shelving">
+                        </div>
+                        <div class="service-content">
+                            <h3>Built-in Cabinetry &amp; Media Walls</h3>
+                            <p>Floor-to-ceiling bespoke units with integrated lighting, panelled doors and oak shelving — designed to make a statement in any living space.</p>
+                        </div>
                     </div>
-                    <div class="info-right">
-                        <a href="https://arbuildingservices.co.uk" target="_blank" class="visit-btn"><i class="fas fa-external-link-alt"></i> Visit</a>
+                    <div class="service-card">
+                        <div class="service-img">
+                            <img src="IMG_9280.jpeg" alt="Attic bathroom with bespoke panelling and clawfoot bath">
+                        </div>
+                        <div class="service-content">
+                            <h3>Bathroom Joinery &amp; Panelling</h3>
+                            <p>Bespoke wall panelling, wainscoting and fitted joinery that bring character and craftsmanship to bathrooms of every style.</p>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-img">
+                            <img src="IMG_0659.jpeg" alt="Bespoke timber sash bay window">
+                        </div>
+                        <div class="service-content">
+                            <h3>Doors &amp; Windows</h3>
+                            <p>Handcrafted timber sash windows, bay window surrounds and bespoke doors that honour period architecture while meeting modern standards.</p>
+                        </div>
                     </div>
                 </div>
+                <button class="carousel-arrow next" data-next hidden aria-label="Next service"><i class="fas fa-chevron-right"></i></button>
             </div>
-
-            <!-- Slide 3: Green Glo -->
-            <div class="carousel-slide" data-index="2">
-                <div class="slide-iframe-wrap">
-                    <div class="slide-loader" id="cloader-2"><div class="spinner"></div><p style="color:var(--gray);font-size:13px;">Loading...</p></div>
-                    <iframe src="https://greenglocleaningco.com" loading="lazy" onload="document.getElementById('cloader-2').classList.add('hidden')"></iframe>
-                </div>
-                <div class="slide-overlay-info">
-                    <div class="info-left">
-                        <div class="slide-name">Green Glo Cleaning</div>
-                        <div class="slide-type">Booking System</div>
-                    </div>
-                    <div class="info-right">
-                        <a href="https://greenglocleaningco.com" target="_blank" class="visit-btn"><i class="fas fa-external-link-alt"></i> Visit</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 4: JR Sash -->
-            <div class="carousel-slide" data-index="3">
-                <div class="slide-iframe-wrap">
-                    <div class="slide-loader" id="cloader-3"><div class="spinner"></div><p style="color:var(--gray);font-size:13px;">Loading...</p></div>
-                    <iframe src="https://jrsashsolutions.co.uk" loading="lazy" onload="document.getElementById('cloader-3').classList.add('hidden')"></iframe>
-                </div>
-                <div class="slide-overlay-info">
-                    <div class="info-left">
-                        <div class="slide-name">JR Sash Solutions</div>
-                        <div class="slide-type">Heritage Restoration</div>
-                    </div>
-                    <div class="info-right">
-                        <a href="https://jrsashsolutions.co.uk" target="_blank" class="visit-btn"><i class="fas fa-external-link-alt"></i> Visit</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 5: 203 Carpentry -->
-            <div class="carousel-slide" data-index="4">
-                <div class="slide-iframe-wrap">
-                    <div class="slide-loader" id="cloader-4"><div class="spinner"></div><p style="color:var(--gray);font-size:13px;">Loading...</p></div>
-                    <iframe src="https://203carpentry.co.uk" loading="lazy" onload="document.getElementById('cloader-4').classList.add('hidden')"></iframe>
-                </div>
-                <div class="slide-overlay-info">
-                    <div class="info-left">
-                        <div class="slide-name">203 Carpentry</div>
-                        <div class="slide-type">Carpentry &amp; Joinery</div>
-                    </div>
-                    <div class="info-right">
-                        <a href="https://203carpentry.co.uk" target="_blank" class="visit-btn"><i class="fas fa-external-link-alt"></i> Visit</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Carousel Controls -->
-        <div class="carousel-controls">
-            <button class="arrow" id="carouselPrev" aria-label="Previous project"><i class="fas fa-chevron-left"></i></button>
-            <button class="dot active" data-index="0" aria-label="Project 1"></button>
-            <button class="dot" data-index="1" aria-label="Project 2"></button>
-            <button class="dot" data-index="2" aria-label="Project 3"></button>
-            <button class="dot" data-index="3" aria-label="Project 4"></button>
-            <button class="dot" data-index="4" aria-label="Project 5"></button>
-            <button class="arrow" id="carouselNext" aria-label="Next project"><i class="fas fa-chevron-right"></i></button>
+            <div class="carousel-dots" data-dots></div>
         </div>
     </section>
 
-    <!-- Process -->
-    <section class="process-section" id="process">
+    <!-- Portfolio -->
+    <section class="portfolio" id="portfolio">
         <div class="container">
-            <h2 class="section-title">My Development Process</h2>
-            <p style="text-align:center;color:var(--gray);max-width:700px;margin:0 auto 50px;font-size:17px;">A structured approach ensures every project delivers exceptional results, on time and within budget.</p>
-            <div class="timeline">
-                <div class="timeline-item"><div class="timeline-marker"><i class="fas fa-search"></i></div><div class="timeline-content"><h3 class="timeline-title">Discovery & Strategy</h3><p style="color:var(--gray);">Understanding your goals, target audience, and technical requirements.</p></div></div>
-                <div class="timeline-item"><div class="timeline-marker"><i class="fas fa-pencil-ruler"></i></div><div class="timeline-content"><h3 class="timeline-title">Design & Prototyping</h3><p style="color:var(--gray);">Creating wireframes and interactive prototypes to visualize the user experience.</p></div></div>
-                <div class="timeline-item"><div class="timeline-marker"><i class="fas fa-code"></i></div><div class="timeline-content"><h3 class="timeline-title">Development & Testing</h3><p style="color:var(--gray);">Building with clean, optimized code followed by rigorous testing across all devices.</p></div></div>
-                <div class="timeline-item"><div class="timeline-marker"><i class="fas fa-rocket"></i></div><div class="timeline-content"><h3 class="timeline-title">Launch & Optimization</h3><p style="color:var(--gray);">Deploying the final product and monitoring performance with ongoing optimization.</p></div></div>
+            <div class="section-title reveal">
+                <h2>Our Recent Work</h2>
+                <p>Explore our latest projects showcasing our craftsmanship and attention to detail.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Backend -->
-    <section class="backend-section" id="backend">
-        <div class="container">
-            <h2 class="section-title">What's Running Behind the Interface</h2>
-            <p style="text-align:center;color:var(--gray);max-width:700px;margin:0 auto;font-size:17px;">A polished front end is only half the job — here's the kind of backend work that powers bookings, logins, and data behind the sites I build.</p>
-            <div class="backend-grid">
-                <div class="backend-info">
-                    <ul class="backend-feature-list">
-                        <li><div class="feature-icon"><i class="fas fa-plug"></i></div><div><h4>APIs & Server Logic</h4><p>Node.js & Express REST APIs connecting your front end to real data and business logic.</p></div></li>
-                        <li><div class="feature-icon"><i class="fas fa-database"></i></div><div><h4>Databases</h4><p>Schema design and queries in PostgreSQL and MongoDB, built to scale with your data.</p></div></li>
-                        <li><div class="feature-icon"><i class="fas fa-lock"></i></div><div><h4>Authentication & Security</h4><p>Secure logins, sessions, and role-based access for dashboards and customer accounts.</p></div></li>
-                        <li><div class="feature-icon"><i class="fas fa-cloud-upload-alt"></i></div><div><h4>Deployment & Hosting</h4><p>Server setup, environment config, and deployment pipelines so it stays online and fast.</p></div></li>
-                    </ul>
+            <div class="carousel">
+                <button class="carousel-arrow prev" data-prev hidden aria-label="Previous project"><i class="fas fa-chevron-left"></i></button>
+                <div class="portfolio-grid" data-track>
+                    <div class="portfolio-item">
+                        <img src="IMG_8958.jpeg" alt="Bespoke Media Wall with LED Shelving">
+                        <div class="portfolio-overlay">
+                            <h3>Bespoke Media Wall</h3>
+                            <p>Full-width built-in unit with LED-lit shelving &amp; panelled cabinets</p>
+                            <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-outline" style="border-color:white;color:white;">View on Instagram</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="IMG_9280.jpeg" alt="Attic Bathroom with Clawfoot Bath and Panelling">
+                        <div class="portfolio-overlay">
+                            <h3>Attic Bathroom</h3>
+                            <p>Bespoke wall panelling, clawfoot bath &amp; Velux skylight</p>
+                            <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-outline" style="border-color:white;color:white;">View on Instagram</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="IMG_0714.jpeg" alt="Heritage Bathroom with Arched Tiled Shower">
+                        <div class="portfolio-overlay">
+                            <h3>Heritage Bathroom</h3>
+                            <p>Tongue &amp; groove panelling with gold-trimmed arched shower enclosure</p>
+                            <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-outline" style="border-color:white;color:white;">View on Instagram</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="IMG_1347.jpeg" alt="Bespoke Dark Bedroom Wardrobes">
+                        <div class="portfolio-overlay">
+                            <h3>Bespoke Bedroom Wardrobes</h3>
+                            <p>Dark-painted freestanding wardrobes flanking a period fireplace</p>
+                            <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-outline" style="border-color:white;color:white;">View on Instagram</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="IMG_0659.jpeg" alt="Bespoke Timber Sash Bay Window">
+                        <div class="portfolio-overlay">
+                            <h3>Bespoke Sash Bay Window</h3>
+                            <p>Handcrafted timber sash windows with glazing bars in a period bay</p>
+                            <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-outline" style="border-color:white;color:white;">View on Instagram</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="ADAEB7DB-8D0A-458F-A250-CF7D9DE23A45.jpeg" alt="Built-in Alcove TV Unit with Oak Shelving">
+                        <div class="portfolio-overlay">
+                            <h3>Alcove TV Unit</h3>
+                            <p>Built-in media unit with solid oak shelving &amp; painted panelled cabinets</p>
+                            <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-outline" style="border-color:white;color:white;">View on Instagram</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="terminal-window">
-                    <div class="terminal-header"><div class="terminal-dot red"></div><div class="terminal-dot yellow"></div><div class="terminal-dot green"></div><div class="terminal-title">api-server — node</div><button class="terminal-replay" id="terminalReplay"><i class="fas fa-rotate-right"></i> Replay</button></div>
-                    <div class="terminal-body" id="terminalBody"></div>
-                </div>
+                <button class="carousel-arrow next" data-next hidden aria-label="Next project"><i class="fas fa-chevron-right"></i></button>
             </div>
-        </div>
-    </section>
-
-    <!-- Skills -->
-    <section class="skills-section" id="skills">
-        <div class="container">
-            <h2 class="section-title">Technical Expertise</h2>
-            <div class="skills-grid">
-                <div class="skill-card"><div class="skill-icon"><i class="fas fa-code"></i></div><h3 style="color:var(--light);margin-bottom:10px;font-size:20px;">Frontend Development</h3><p style="color:var(--gray);font-size:14px;line-height:1.6;">HTML5, CSS3, JavaScript, React, responsive design, accessibility, and performance optimization.</p></div>
-                <div class="skill-card"><div class="skill-icon"><i class="fas fa-terminal"></i></div><h3 style="color:var(--light);margin-bottom:10px;font-size:20px;">Backend Development</h3><p style="color:var(--gray);font-size:14px;line-height:1.6;">Node.js & Express APIs, PostgreSQL/MongoDB, authentication, booking & admin systems, and server deployment.</p></div>
-                <div class="skill-card"><div class="skill-icon"><i class="fas fa-search"></i></div><h3 style="color:var(--light);margin-bottom:10px;font-size:20px;">On-Page & Technical SEO</h3><p style="color:var(--gray);font-size:14px;line-height:1.6;">Page speed, meta data, structured data, semantic HTML, sitemaps, mobile performance, and Core Web Vitals.</p></div>
-                <div class="skill-card"><div class="skill-icon"><i class="fas fa-mobile-alt"></i></div><h3 style="color:var(--light);margin-bottom:10px;font-size:20px;">Mobile-First Design</h3><p style="color:var(--gray);font-size:14px;line-height:1.6;">Progressive Web Apps, responsive frameworks, touch optimization, and cross-browser compatibility.</p></div>
-            </div>
-            <div class="skills-button-container"><a href="#contact" class="btn btn-primary"><span>Start Your Project</span><i class="fas fa-rocket"></i></a></div>
-        </div>
-    </section>
-
-    <!-- Showcase -->
-    <section class="portfolio-showcase" id="showcase">
-        <div class="container">
-            <h2 class="section-title">Additional Services</h2>
-            <p style="text-align:center;color:var(--gray);max-width:700px;margin:0 auto 50px;font-size:17px;">Beyond web development, I offer comprehensive digital solutions to help your business grow.</p>
-            <div class="showcase-grid">
-                <div class="showcase-item"><div class="showcase-icon"><i class="fas fa-search-dollar"></i></div><h3 style="color:var(--light);margin-bottom:12px;font-size:20px;">SEO Optimization</h3><p style="color:var(--gray);font-size:14px;line-height:1.6;">Improve your search rankings with technical SEO audits, keyword optimization, and content strategy.</p></div>
-                <div class="showcase-item"><div class="showcase-icon"><i class="fas fa-chart-line"></i></div><h3 style="color:var(--light);margin-bottom:12px;font-size:20px;">Performance Analytics</h3><p style="color:var(--gray);font-size:14px;line-height:1.6;">Track user behavior, conversion rates, and site performance with detailed analytics implementation.</p></div>
-                <div class="showcase-item"><div class="showcase-icon"><i class="fas fa-shield-alt"></i></div><h3 style="color:var(--light);margin-bottom:12px;font-size:20px;">Security & Maintenance</h3><p style="color:var(--gray);font-size:14px;line-height:1.6;">Regular updates, security patches, and performance monitoring to keep your site running smoothly.</p></div>
+            <div class="carousel-dots" data-dots></div>
+            <div class="portfolio-btn">
+                <a href="gallery.html" class="btn btn-secondary">View Full Gallery</a>
+                <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn" style="margin-left: 15px;">Follow on Instagram</a>
             </div>
         </div>
     </section>
 
     <!-- Contact -->
-    <section class="contact-section" id="contact">
+    <section class="contact" id="contact">
         <div class="container">
-            <h2 class="section-title">Ready to Build Something?</h2>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3 style="font-size:24px;margin-bottom:24px;color:var(--light);">Get In Touch</h3>
-                    <div class="contact-method"><div class="contact-icon"><i class="fas fa-phone"></i></div><div><h4 style="color:var(--gray);margin-bottom:4px;">Call or WhatsApp</h4><p style="font-size:18px;color:var(--light);font-weight:600;">+44 7543 737488</p></div></div>
-                    <div class="contact-method"><div class="contact-icon"><i class="fas fa-envelope"></i></div><div><h4 style="color:var(--gray);margin-bottom:4px;">Email</h4><p style="font-size:18px;color:var(--light);font-weight:600;">sacharaif@gmail.com</p></div></div>
-                    <div class="contact-method"><div class="contact-icon"><i class="fas fa-clock"></i></div><div><h4 style="color:var(--gray);margin-bottom:4px;">Response Time</h4><p style="font-size:18px;color:var(--light);font-weight:600;">Within 24 hours</p></div></div>
-                    <a href="mailto:sacharaif@gmail.com" class="btn btn-primary" style="width:100%;margin-top:16px;"><span>Send Email</span><i class="fas fa-paper-plane"></i></a>
+            <div class="section-title reveal">
+                <h2>Contact Us</h2>
+                <p>Ready to start your bespoke joinery project in Sussex? Get in touch with us today.</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info reveal">
+                    <h3>Get In Touch</h3>
+                    <p>Contact us to discuss your project requirements and schedule a consultation.</p>
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="contact-detail-content">
+                                <h4>Our Location</h4>
+                                <p>Sussex, United Kingdom</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-phone"></i>
+                            <div class="contact-detail-content">
+                                <h4>Phone</h4>
+                                <p><a href="tel:07368860029" style="color:var(--text);text-decoration:none;">07368 860029</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            <div class="contact-detail-content">
+                                <h4>Email Address</h4>
+                                <p>info@203carpentryjoinery.org</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fab fa-instagram"></i>
+                            <div class="contact-detail-content">
+                                <h4>Follow Us</h4>
+                                <p>@203_carpentry</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="contact-info">
-                    <h3 style="font-size:24px;margin-bottom:24px;color:var(--light);">Why Work With Me</h3>
-                    <ul style="list-style:none;">
-                        <li style="margin-bottom:14px;padding-left:24px;position:relative;"><i class="fas fa-check" style="color:var(--accent);position:absolute;left:0;font-size:14px;"></i><strong>End-to-End Service:</strong> From concept to launch and ongoing support</li>
-                        <li style="margin-bottom:14px;padding-left:24px;position:relative;"><i class="fas fa-check" style="color:var(--accent);position:absolute;left:0;font-size:14px;"></i><strong>Transparent Pricing:</strong> Clear quotes with no hidden costs</li>
-                        <li style="margin-bottom:14px;padding-left:24px;position:relative;"><i class="fas fa-check" style="color:var(--accent);position:absolute;left:0;font-size:14px;"></i><strong>Regular Updates:</strong> Weekly progress reports and demos</li>
-                        <li style="margin-bottom:14px;padding-left:24px;position:relative;"><i class="fas fa-check" style="color:var(--accent);position:absolute;left:0;font-size:14px;"></i><strong>Post-Launch Support:</strong> Maintenance and optimization included</li>
-                        <li style="margin-bottom:14px;padding-left:24px;position:relative;"><i class="fas fa-check" style="color:var(--accent);position:absolute;left:0;font-size:14px;"></i><strong>Conversion Focus:</strong> Every design decision drives business results</li>
-                    </ul>
-                    <div style="margin-top:24px;padding:18px;background:rgba(201,166,104,0.1);border-radius:14px;border:1px solid rgba(201,166,104,0.2);"><p style="color:var(--accent);font-size:14px;margin:0;line-height:1.6;"><i class="fas fa-lightbulb" style="margin-right:10px;font-size:16px;"></i><strong>Free 30-minute consultation:</strong> Let's discuss your project and create a plan that works for your business.</p></div>
+                <div class="contact-form reveal">
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message via WhatsApp</button>
+                    </form>
+                    <script>
+                        document.getElementById('contactForm').addEventListener('submit', function (e) {
+                            e.preventDefault();
+                            const name = document.getElementById('name').value.trim();
+                            const email = document.getElementById('email').value.trim();
+                            const subject = document.getElementById('subject').value.trim();
+                            const message = document.getElementById('message').value.trim();
+
+                            const text =
+                                `New enquiry from the website%0A%0A` +
+                                `*Name:* ${encodeURIComponent(name)}%0A` +
+                                `*Email:* ${encodeURIComponent(email)}%0A` +
+                                `*Subject:* ${encodeURIComponent(subject)}%0A%0A` +
+                                `${encodeURIComponent(message)}`;
+
+                            const whatsappNumber = '447368860029'; // 07368 860029 in international format
+                            const url = `https://wa.me/${whatsappNumber}?text=${text}`;
+                            window.open(url, '_blank');
+                        });
+                    </script>
                 </div>
             </div>
         </div>
@@ -1573,391 +944,212 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-logo">Sacha Raif</div>
-            <p style="color:var(--gray);margin-bottom:16px;max-width:500px;margin-left:auto;margin-right:auto;font-size:14px;">Full-Stack Developer | SEO & Conversion Specialist | Business Growth Partner</p>
-            <div style="display:flex;justify-content:center;gap:18px;margin-bottom:24px;">
-                <a href="https://github.com/megablaze757" target="_blank" style="color:var(--gray);font-size:22px;transition:var(--transition);"><i class="fab fa-github"></i></a>
-                <a href="https://linkedin.com/in/sacha-raif" target="_blank" style="color:var(--gray);font-size:22px;transition:var(--transition);"><i class="fab fa-linkedin"></i></a>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <img src="logo-white.png" alt="203 Carpentry &amp; Joinery" class="footer-logo">
+                    <p>Creating exceptional custom woodwork in Sussex that transforms spaces.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/203_carpentry/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="mailto:info@203carpentryjoinery.org" title="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="tel:07368860029" title="Call"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#services">Built-in Cabinetry</a></li>
+                        <li><a href="#services">Media Walls</a></li>
+                        <li><a href="#services">Bathroom Panelling</a></li>
+                        <li><a href="#services">Doors &amp; Windows</a></li>
+                        <li><a href="#services">Bedroom Furniture</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Sussex, United Kingdom</li>
+                        <li><i class="fas fa-phone"></i> <a href="tel:07368860029">07368 860029</a></li>
+                        <li><i class="fas fa-envelope"></i> info@203carpentryjoinery.org</li>
+                        <li><i class="fab fa-instagram"></i> @203_carpentry</li>
+                    </ul>
+                </div>
             </div>
-            <p style="color:var(--gray);font-size:13px;margin-bottom:8px;"><a href="gallery.html" style="color:var(--gray);text-decoration:none;">View full site gallery &rarr;</a></p>
-            <p style="color:var(--gray);font-size:12px;">&copy; 2026 Sacha Raif. All rights reserved.</p>
+            <div class="copyright">
+                <p>&copy; 2024 203 Carpentry. Based in Sussex. All Rights Reserved.</p>
+            </div>
         </div>
     </footer>
 
     <script>
-        // ── Theme Toggle ──
-        (function() {
-            const root = document.documentElement;
-            const toggleBtn = document.getElementById('themeToggle');
-            const toggleBtnMobile = document.getElementById('themeToggleMobile');
-            const icon = document.getElementById('themeIcon');
-            const iconMobile = document.getElementById('themeIconMobile');
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('nav ul');
+        mobileMenuBtn.addEventListener('click', () => navMenu.classList.toggle('active'));
 
-            function applyTheme(theme) {
-                if (theme === 'light') {
-                    root.setAttribute('data-theme', 'light');
-                    icon.className = 'fas fa-moon';
-                    iconMobile.className = 'fas fa-moon';
-                } else {
-                    root.removeAttribute('data-theme');
-                    icon.className = 'fas fa-sun';
-                    iconMobile.className = 'fas fa-sun';
-                }
-            }
-            let saved = null;
-            try { saved = localStorage.getItem('sr-theme'); } catch (e) {}
-            if (saved) applyTheme(saved);
-            else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) applyTheme('light');
-            else applyTheme('dark');
-
-            function toggleTheme() {
-                const isLight = root.getAttribute('data-theme') === 'light';
-                const next = isLight ? 'dark' : 'light';
-                applyTheme(next);
-                try { localStorage.setItem('sr-theme', next); } catch (e) {}
-            }
-            toggleBtn.addEventListener('click', toggleTheme);
-            toggleBtnMobile.addEventListener('click', toggleTheme);
-        })();
-
-        // ── Scroll Progress ──
-        (function() {
-            const bar = document.getElementById('scrollProgress');
-            if (!bar) return;
-
-            function update() {
-                const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-                bar.style.width = (scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0) + '%';
-            }
-            window.addEventListener('scroll', update, { passive: true });
-            update();
-        })();
-
-        // ── Reveal-on-scroll ──
-        (function() {
-            const targets = document.querySelectorAll(
-                '.section-title, .skill-card, .contact-info, .showcase-item'
-            );
-            if (!('IntersectionObserver' in window) || targets.length === 0) {
-                targets.forEach(el => el.classList.add('revealed'));
-                return;
-            }
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('revealed');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
-            targets.forEach(el => observer.observe(el));
-        })();
-
-        // ── Custom Cursor ──
-        (function() {
-            const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            if (!canHover || reduceMotion) return;
-
-            const dot = document.createElement('div');
-            dot.className = 'cursor-dot';
-            const ring = document.createElement('div');
-            ring.className = 'cursor-ring';
-            document.body.appendChild(dot);
-            document.body.appendChild(ring);
-            document.body.classList.add('has-custom-cursor');
-
-            let mouseX = window.innerWidth / 2,
-                mouseY = window.innerHeight / 2;
-            let ringX = mouseX,
-                ringY = mouseY;
-
-            window.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-                dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
-            });
-
-            function animateRing() {
-                ringX += (mouseX - ringX) * 0.18;
-                ringY += (mouseY - ringY) * 0.18;
-                ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
-                requestAnimationFrame(animateRing);
-            }
-            animateRing();
-
-            document.querySelectorAll('a, button, .carousel-slide').forEach(el => {
-                el.addEventListener('mouseenter', () => ring.classList.add('cursor-hover'));
-                el.addEventListener('mouseleave', () => ring.classList.remove('cursor-hover'));
-            });
-
-            document.querySelectorAll('.btn, .theme-toggle, .terminal-replay, .carousel-controls button, .visit-btn')
-                .forEach(btn => {
-                    btn.style.transition =
-                        'transform 0.15s ease-out, background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease';
-                    btn.addEventListener('mousemove', (e) => {
-                        const r = btn.getBoundingClientRect();
-                        const x = e.clientX - r.left - r.width / 2;
-                        const y = e.clientY - r.top - r.height / 2;
-                        btn.style.transform = `translate(${x * 0.2}px, ${y * 0.3}px)`;
-                    });
-                    btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
-                });
-
-            const heroBg = document.getElementById('heroBgWrap');
-            const hero = document.querySelector('.hero');
-            if (heroBg && hero) {
-                hero.addEventListener('mousemove', (e) => {
-                    const r = hero.getBoundingClientRect();
-                    const px = (e.clientX - r.left) / r.width - 0.5;
-                    const py = (e.clientY - r.top) / r.height - 0.5;
-                    heroBg.style.transform = `translate(${px * -20}px, ${py * -20}px)`;
-                });
-                hero.addEventListener('mouseleave', () => { heroBg.style.transform = ''; });
-            }
-        })();
-
-        // ── Terminal Typewriter ──
-        (function() {
-            const body = document.getElementById('terminalBody');
-            const replayBtn = document.getElementById('terminalReplay');
-            if (!body) return;
-
-            const script = [
-                { type: 'cmd', text: 'node server.js' },
-                { type: 'out', text: '✓ Server listening on port 3000\n✓ Connected to PostgreSQL' },
-                { type: 'cmd', text: "curl -X POST /api/bookings -d '{ \"service\": \"consult\", \"email\": \"client@business.co.uk\" }'" },
-                { type: 'json', text: '{\n  "status": "success",\n  "bookingId": "bk_8f21ac",\n  "confirmed": true,\n  "emailSent": true\n}' }
-            ];
-
-            let cancelled = false;
-
-            function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
-
-            async function typeLine(line) {
-                const lineEl = document.createElement('div');
-                lineEl.className = 'terminal-line t-' + line.type;
-                if (line.type === 'cmd') {
-                    const prompt = document.createElement('span');
-                    prompt.className = 'prompt';
-                    prompt.textContent = '$';
-                    lineEl.appendChild(prompt);
-                }
-                const target = document.createElement('span');
-                target.className = 'type-target';
-                lineEl.appendChild(target);
-                const cursor = document.createElement('span');
-                cursor.className = 'term-cursor';
-                lineEl.appendChild(cursor);
-                body.appendChild(lineEl);
-
-                const speed = line.type === 'cmd' ? 32 : 8;
-                for (let i = 0; i < line.text.length; i++) {
-                    if (cancelled) return;
-                    target.textContent += line.text[i];
-                    await sleep(speed);
-                }
-                cursor.remove();
-            }
-
-            async function runSequence() {
-                cancelled = false;
-                body.innerHTML = '';
-                for (const line of script) {
-                    if (cancelled) return;
-                    await typeLine(line);
-                    await sleep(line.type === 'cmd' ? 300 : 550);
-                }
-                if (cancelled) return;
-                const idle = document.createElement('div');
-                idle.className = 'terminal-line';
-                const idleCursor = document.createElement('span');
-                idleCursor.className = 'term-cursor';
-                idle.appendChild(idleCursor);
-                body.appendChild(idle);
-            }
-
-            function startWhenVisible() {
-                if (!('IntersectionObserver' in window)) { runSequence(); return; }
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) { runSequence();
-                            observer.disconnect(); }
-                    });
-                }, { threshold: 0.3 });
-                observer.observe(body);
-            }
-            startWhenVisible();
-            if (replayBtn) {
-                replayBtn.addEventListener('click', () => { cancelled = true;
-                    setTimeout(runSequence, 50); });
-            }
-        })();
-
-        // ── Mobile Menu ──
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const closeMenuBtn = document.getElementById('closeMenu');
-
-        function openMobileMenu() { mobileMenu.classList.add('active');
-            document.body.style.overflow = 'hidden'; }
-
-        function closeMobileMenu() { mobileMenu.classList.remove('active');
-            document.body.style.overflow = ''; }
-        mobileMenuBtn.addEventListener('click', openMobileMenu);
-        closeMenuBtn.addEventListener('click', closeMobileMenu);
-        document.querySelectorAll('.mobile-menu .nav-link').forEach(link => {
-            link.addEventListener('click', closeMobileMenu);
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => navMenu.classList.remove('active'));
         });
 
-        // ── Smooth Scroll ──
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
-                const target = document.querySelector(targetId);
-                if (target) {
-                    const headerHeight = document.querySelector('header').offsetHeight;
-                    window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - headerHeight,
-                        behavior: 'smooth' });
-                    history.pushState(null, null, targetId);
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({ top: targetElement.offsetTop - 100, behavior: 'smooth' });
                 }
             });
         });
 
-        // ── Header Scroll ──
-        let ticking = false;
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    const header = document.querySelector('header');
-                    if (window.scrollY > 50) header.classList.add('scrolled');
-                    else header.classList.remove('scrolled');
-                    ticking = false;
-                });
-                ticking = true;
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = '#ffffff';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.backgroundColor = '#ffffff';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
             }
         });
 
-        // ============================================================
-        // IFRAME CAROUSEL
-        // ============================================================
-        (function() {
-            const track = document.getElementById('carouselTrack');
-            const slides = track.querySelectorAll('.carousel-slide');
-            const dots = document.querySelectorAll('.carousel-controls .dot');
-            const prevBtn = document.getElementById('carouselPrev');
-            const nextBtn = document.getElementById('carouselNext');
-            let current = 0;
-            const total = slides.length;
-            let autoplayTimer = null;
-            const AUTOPLAY_DELAY = 5500;
+        const stickySocialBar = document.getElementById('stickySocialBar');
+        const closeStickySocial = document.getElementById('closeStickySocial');
 
-            function goTo(index) {
-                if (index < 0) index = total - 1;
-                if (index >= total) index = 0;
-                current = index;
-                track.style.transform = `translateX(-${current * 100}%)`;
-                dots.forEach((d, i) => {
-                    d.classList.toggle('active', i === current);
-                });
-            }
+        setTimeout(() => stickySocialBar.classList.add('visible'), 3000);
+        closeStickySocial.addEventListener('click', () => stickySocialBar.classList.remove('visible'));
 
-            function next() { goTo(current + 1); }
-
-            function prev() { goTo(current - 1); }
-
-            function startAutoplay() {
-                stopAutoplay();
-                autoplayTimer = setInterval(next, AUTOPLAY_DELAY);
-            }
-
-            function stopAutoplay() {
-                if (autoplayTimer) { clearInterval(autoplayTimer);
-                    autoplayTimer = null; }
-            }
-
-            // ── click/tap events ──
-            nextBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                next();
-                startAutoplay();
+        const footer = document.querySelector('footer');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) stickySocialBar.classList.remove('visible');
             });
-            prevBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                prev();
-                startAutoplay();
-            });
+        }, { threshold: 0.1 });
+        observer.observe(footer);
 
-            // ── touch events for arrows (prevents zoom) ──
-            nextBtn.addEventListener('touchstart', function(e) {
-                e.preventDefault();
-                next();
-                startAutoplay();
-            }, { passive: false });
-            prevBtn.addEventListener('touchstart', function(e) {
-                e.preventDefault();
-                prev();
-                startAutoplay();
-            }, { passive: false });
-
-            dots.forEach(dot => {
-                dot.addEventListener('click', function() {
-                    const idx = parseInt(this.dataset.index, 10);
-                    goTo(idx);
-                    startAutoplay();
-                });
-                dot.addEventListener('touchstart', function(e) {
-                    e.preventDefault();
-                    const idx = parseInt(this.dataset.index, 10);
-                    goTo(idx);
-                    startAutoplay();
-                }, { passive: false });
-            });
-
-            const carousel = document.querySelector('.iframe-carousel');
-            carousel.addEventListener('mouseenter', stopAutoplay);
-            carousel.addEventListener('mouseleave', startAutoplay);
-
-            // ── keyboard ──
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowRight') { next();
-                    startAutoplay(); }
-                if (e.key === 'ArrowLeft') { prev();
-                    startAutoplay(); }
-            });
-
-            // ── touch swipe ──
-            let touchStartX = 0;
-            let touchEndX = 0;
-            carousel.addEventListener('touchstart', (e) => {
-                touchStartX = e.changedTouches[0].screenX;
-            }, { passive: true });
-            carousel.addEventListener('touchend', (e) => {
-                touchEndX = e.changedTouches[0].screenX;
-                const diff = touchStartX - touchEndX;
-                if (Math.abs(diff) > 40) {
-                    if (diff > 0) { next();
-                        startAutoplay(); } else { prev();
-                        startAutoplay(); }
-                }
-            }, { passive: true });
-
-            goTo(0);
-            startAutoplay();
-        })();
-
-        // ── Hide loaders after timeout ──
-        document.querySelectorAll('.slide-loader').forEach(loader => {
-            setTimeout(() => loader.classList.add('hidden'), 4000);
+        document.querySelector('.scroll-indicator').addEventListener('click', () => {
+            window.scrollTo({ top: document.getElementById('about').offsetTop - 100, behavior: 'smooth' });
         });
+    </script>
 
-        // ── Init ──
-        document.addEventListener('DOMContentLoaded', () => {
-            // Any init logic here
+    <!-- Scroll reveal: isolated so a problem here (or elsewhere) can't hide page content -->
+    <script>
+        try {
+            const revealEls = document.querySelectorAll('.reveal');
+            if (revealEls.length && 'IntersectionObserver' in window) {
+                const revealParents = new Map();
+                revealEls.forEach((el) => {
+                    const parent = el.parentElement;
+                    const index = revealParents.has(parent) ? revealParents.get(parent) : 0;
+                    el.style.transitionDelay = `${Math.min(index * 0.1, 0.4)}s`;
+                    revealParents.set(parent, index + 1);
+                });
+
+                const revealObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('active');
+                            revealObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: '0px 0px -10% 0px' });
+
+                // Only now switch content to the hidden/animate-in state, right before observing it
+                document.documentElement.classList.add('reveal-ready');
+                revealEls.forEach((el) => revealObserver.observe(el));
+
+                // Safety net: if anything is somehow missed, force it visible after 3s
+                setTimeout(() => revealEls.forEach((el) => el.classList.add('active')), 3000);
+            }
+        } catch (err) {
+            // If anything goes wrong, do nothing — content stays visible by default
+        }
+    </script>
+
+    <!-- Carousels: progressive enhancement over native horizontal scroll-snap.
+         If this script fails entirely, the tracks are still swipeable/scrollable on their own. -->
+    <script>
+        function initCarousel(carousel) {
+            const track = carousel.querySelector('[data-track]');
+            const prevBtn = carousel.querySelector('[data-prev]');
+            const nextBtn = carousel.querySelector('[data-next]');
+            const dotsWrap = carousel.parentElement.querySelector('[data-dots]');
+            if (!track) return;
+
+            const slides = Array.from(track.children);
+            if (!slides.length) return;
+
+            // Nothing to scroll (all slides already fit) — leave arrows/dots hidden
+            if (track.scrollWidth <= track.clientWidth + 4) return;
+
+            let currentIndex = 0;
+
+            function scrollToSlide(i, smooth) {
+                const slide = slides[i];
+                const delta = slide.getBoundingClientRect().left - track.getBoundingClientRect().left;
+                track.scrollTo({ left: track.scrollLeft + delta, behavior: smooth ? 'smooth' : 'auto' });
+            }
+
+            function updateDots() {
+                if (!dotsWrap) return;
+                dotsWrap.querySelectorAll('button').forEach((b, i) => b.classList.toggle('active', i === currentIndex));
+            }
+
+            function goTo(i) {
+                const wrapped = i < 0 || i >= slides.length;
+                currentIndex = (i + slides.length) % slides.length;
+                scrollToSlide(currentIndex, !wrapped);
+                updateDots();
+            }
+
+            if (dotsWrap) {
+                slides.forEach((_, i) => {
+                    const dot = document.createElement('button');
+                    dot.type = 'button';
+                    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+                    dot.addEventListener('click', () => goTo(i));
+                    dotsWrap.appendChild(dot);
+                });
+                updateDots();
+            }
+
+            if (prevBtn) { prevBtn.hidden = false; prevBtn.addEventListener('click', () => goTo(currentIndex - 1)); }
+            if (nextBtn) { nextBtn.hidden = false; nextBtn.addEventListener('click', () => goTo(currentIndex + 1)); }
+
+            // Keep the active dot in sync when someone swipes manually
+            const sync = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const idx = slides.indexOf(entry.target);
+                        if (idx !== -1) { currentIndex = idx; updateDots(); }
+                    }
+                });
+            }, { root: track, threshold: 0.6 });
+            slides.forEach((s) => sync.observe(s));
+
+            // Gentle autoplay; paused on hover/touch, skipped for reduced-motion preference
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                let timer = setInterval(() => goTo(currentIndex + 1), 6000);
+                const restart = () => { clearInterval(timer); timer = setInterval(() => goTo(currentIndex + 1), 6000); };
+                carousel.addEventListener('mouseenter', () => clearInterval(timer));
+                carousel.addEventListener('mouseleave', restart);
+                carousel.addEventListener('touchstart', () => clearInterval(timer), { passive: true });
+            }
+        }
+
+        document.querySelectorAll('.carousel').forEach((carousel) => {
+            try { initCarousel(carousel); } catch (err) { /* native scroll keeps working regardless */ }
         });
     </script>
 </body>
-
 </html>

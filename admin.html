@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | 203 Carpentry — Gallery Manager</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0C1F2C;
+            --accent: #B89B5E;
+            --accent-light: #D4BA82;
+            --light: #FAFAF8;
+            --cream: #F3F1EC;
+            --text: #525252;
+            --text-light: #888;
+            --green: #27ae60;
+            --shadow: 0 8px 32px rgba(0,0,0,0.06);
+            --radius: 4px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 {
+            font-family: 'DM Serif Display', serif;
+            font-weight: 400;
+            color: var(--primary);
+        }
+
+        .admin-header {
+            background: var(--primary);
+            color: white;
+            padding: 16px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .admin-header h1 { color: white; font-size: 1.4rem; display: flex; align-items: center; gap: 12px; }
+        .admin-header h1 img { height: 32px; width: auto; }
+        .admin-header h1 span { color: rgba(255,255,255,0.5); font-weight: 300; }
+        .admin-header-links { display: flex; gap: 20px; }
+        .admin-header-links a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.2s;
+        }
+        .admin-header-links a:hover { color: var(--accent-light); }
+
+        .admin-body { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+        /* Tabs */
+        .admin-tabs { display: flex; margin-bottom: 32px; border-bottom: 2px solid #ddd; }
+        .admin-tab {
+            padding: 12px 28px;
+            background: none;
+            border: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-light);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.2s;
+        }
+        .admin-tab:hover { color: var(--primary); }
+        .admin-tab.active { color: var(--primary); border-bottom-color: var(--accent); }
+
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+
+        /* Card */
+        .card {
+            background: white;
+            padding: 36px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 28px;
+        }
+        .card h2 { font-size: 1.5rem; margin-bottom: 8px; }
+        .card > p.subtitle { font-size: 0.95rem; color: var(--text-light); margin-bottom: 28px; line-height: 1.6; }
+
+        /* Form */
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .form-group.full { grid-column: span 2; }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--primary);
+        }
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: var(--radius);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            background: var(--light);
+            transition: border-color 0.2s;
+            color: var(--text);
+        }
+        .form-control:focus { border-color: var(--accent); outline: none; }
+        .hint { font-size: 0.8rem; color: var(--text-light); margin-top: 6px; }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border: 2px solid var(--primary);
+            background: var(--primary);
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s;
+            border-radius: var(--radius);
+        }
+        .btn:hover { background: transparent; color: var(--primary); }
+        .btn-accent { background: var(--accent); border-color: var(--accent); color: var(--primary); }
+        .btn-accent:hover { background: transparent; color: var(--accent); }
+        .btn-green { background: var(--green); border-color: var(--green); color: white; }
+        .btn-green:hover { background: transparent; color: var(--green); }
+
+        .form-actions { grid-column: span 2; display: flex; gap: 12px; margin-top: 8px; }
+
+        /* Steps */
+        .steps { display: flex; margin-bottom: 32px; }
+        .step-indicator {
+            flex: 1;
+            text-align: center;
+            padding: 16px 12px;
+            position: relative;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+        .step-indicator::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%; height: 3px;
+            background: #e0e0e0;
+        }
+        .step-indicator.active { color: var(--primary); }
+        .step-indicator.active::after { background: var(--accent); }
+        .step-indicator.done { color: var(--green); }
+        .step-indicator.done::after { background: var(--green); }
+        .step-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .step-indicator.active .step-num { background: var(--accent); color: var(--primary); }
+        .step-indicator.done .step-num { background: var(--green); }
+
+        /* Code output */
+        .code-output-wrapper { margin-top: 28px; display: none; }
+        .code-output-wrapper.visible { display: block; }
+        .code-output-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .code-output-header h3 { font-size: 1.1rem; }
+        .code-output {
+            background: var(--primary);
+            color: #a8d8a8;
+            padding: 24px;
+            border-radius: var(--radius);
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: 0.82rem;
+            line-height: 1.7;
+            overflow-x: auto;
+            white-space: pre;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        /* Info boxes */
+        .info-box {
+            background: white;
+            padding: 28px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+            border-left: 4px solid var(--accent);
+        }
+        .info-box h3 { font-size: 1.15rem; margin-bottom: 12px; }
+        .info-box p { font-size: 0.9rem; color: var(--text-light); line-height: 1.75; margin-bottom: 8px; }
+        .info-box p:last-child { margin-bottom: 0; }
+        .info-box code {
+            background: var(--cream);
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 0.85rem;
+            color: var(--primary);
+        }
+        .info-box a { color: var(--accent); }
+
+        .numbered-steps { counter-reset: step; list-style: none; padding: 0; margin: 16px 0 0; }
+        .numbered-steps li {
+            counter-increment: step;
+            padding: 12px 0 12px 44px;
+            position: relative;
+            font-size: 0.9rem;
+            color: var(--text);
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+        }
+        .numbered-steps li:last-child { border-bottom: none; }
+        .numbered-steps li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0; top: 12px;
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            background: var(--cream);
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 24px; right: 24px;
+            padding: 14px 24px;
+            background: var(--green);
+            color: white;
+            border-radius: var(--radius);
+            font-size: 0.9rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 200;
+        }
+        .toast.visible { transform: translateY(0); opacity: 1; }
+
+        @media (max-width: 768px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .form-group.full, .form-actions { grid-column: span 1; }
+            .form-actions { flex-direction: column; }
+            .admin-header { padding: 12px 16px; flex-direction: column; gap: 8px; }
+            .admin-body { padding: 24px 16px; }
+            .steps { flex-direction: column; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="admin-header">
+        <h1><img src="logo-white.png" alt="203 Carpentry"> <span>— Gallery Manager</span></h1>
+        <div class="admin-header-links">
+            <a href="index.html"><i class="fas fa-external-link-alt"></i> View Site</a>
+            <a href="gallery.html"><i class="fas fa-images"></i> View Gallery</a>
+        </div>
+    </div>
+
+    <div class="admin-body">
+        <div class="admin-tabs">
+            <button class="admin-tab active" data-tab="generator">Add Images</button>
+            <button class="admin-tab" data-tab="instagram">Instagram Feed</button>
+            <button class="admin-tab" data-tab="guide">Quick Guide</button>
+        </div>
+
+        <!-- ══ ADD IMAGES ══ -->
+        <div class="tab-panel active" id="tab-generator">
+            <div class="steps">
+                <div class="step-indicator active" id="step1"><div class="step-num">1</div><br>Fill in details</div>
+                <div class="step-indicator" id="step2"><div class="step-num">2</div><br>Copy the code</div>
+                <div class="step-indicator" id="step3"><div class="step-num">3</div><br>Paste into gallery.html</div>
+            </div>
+
+            <div class="card">
+                <h2>Add a New Gallery Image</h2>
+                <p class="subtitle">Fill in the details below and this tool generates the exact HTML code to paste into your gallery page. Your image file needs to be in the same folder as your HTML files.</p>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="fileName">Image Filename</label>
+                        <input type="text" id="fileName" class="form-control" placeholder="e.g. kitchen-island.jpeg">
+                        <p class="hint">The exact filename including extension (.jpeg, .jpg, .png)</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="imgCategory">Category</label>
+                        <select id="imgCategory" class="form-control">
+                            <option value="cabinetry">Cabinetry &amp; Media</option>
+                            <option value="bathroom">Bathrooms</option>
+                            <option value="bedroom">Bedrooms</option>
+                            <option value="windows">Doors &amp; Windows</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="imgTitle">Title</label>
+                        <input type="text" id="imgTitle" class="form-control" placeholder="e.g. Shaker Kitchen Island">
+                    </div>
+                    <div class="form-group">
+                        <label for="imgDesc">Short Description</label>
+                        <input type="text" id="imgDesc" class="form-control" placeholder="e.g. Handcrafted oak island with storage">
+                    </div>
+                    <div class="form-group full">
+                        <label for="imgAlt">Alt Text (for accessibility &amp; SEO)</label>
+                        <input type="text" id="imgAlt" class="form-control" placeholder="e.g. Bespoke shaker-style kitchen island in solid oak">
+                        <p class="hint">Describe what the image shows — this helps with search engine ranking</p>
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn btn-accent" id="generateBtn"><i class="fas fa-code"></i> Generate Code</button>
+                        <button class="btn" id="clearBtn" style="background:transparent;color:var(--text);border-color:#ddd;"><i class="fas fa-undo"></i> Clear</button>
+                    </div>
+                </div>
+
+                <div class="code-output-wrapper" id="codeWrapper">
+                    <div class="code-output-header">
+                        <h3><i class="fas fa-check-circle" style="color:var(--green);margin-right:8px;"></i> Your code is ready</h3>
+                        <button class="btn btn-green" id="copyBtn"><i class="fas fa-copy"></i> Copy Code</button>
+                    </div>
+                    <div class="code-output" id="codeOutput"></div>
+                    <p class="hint" style="margin-top:12px;">
+                        <strong>Next:</strong> Open <code>gallery.html</code> in a text editor. Find the <code>&lt;div class="gallery-grid"&gt;</code> section and paste this code just before its closing <code>&lt;/div&gt;</code>. Then upload both the image file and the updated <code>gallery.html</code> to your web host.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Batch -->
+            <div class="card">
+                <h2>Batch Add Multiple Images</h2>
+                <p class="subtitle">Got several images to add at once? List them below and get all the code in one go.</p>
+                <div class="form-group" style="margin-bottom:20px;">
+                    <label for="batchInput">Image List</label>
+                    <textarea id="batchInput" class="form-control" style="min-height:160px;font-family:'SF Mono','Fira Code','Consolas',monospace;font-size:0.82rem;line-height:1.8;" placeholder="Format: filename | title | description | category
+
+Example:
+kitchen-01.jpeg | Kitchen Island | Oak island with integrated storage | cabinetry
+bathroom-new.jpeg | Ensuite Renovation | Marble panelling with brass fittings | bathroom
+wardrobe-master.jpeg | Master Bedroom | Floor-to-ceiling fitted wardrobes | bedroom"></textarea>
+                    <p class="hint">One image per line. Separate with <code>|</code> — filename | title | description | category</p>
+                    <p class="hint">Categories: <code>cabinetry</code> <code>bathroom</code> <code>bedroom</code> <code>windows</code></p>
+                </div>
+                <button class="btn btn-accent" id="batchBtn"><i class="fas fa-layer-group"></i> Generate All Code</button>
+
+                <div class="code-output-wrapper" id="batchCodeWrapper">
+                    <div class="code-output-header">
+                        <h3><i class="fas fa-check-circle" style="color:var(--green);margin-right:8px;"></i> Batch code ready</h3>
+                        <button class="btn btn-green" id="batchCopyBtn"><i class="fas fa-copy"></i> Copy All</button>
+                    </div>
+                    <div class="code-output" id="batchCodeOutput"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ INSTAGRAM ══ -->
+        <div class="tab-panel" id="tab-instagram">
+            <div class="card">
+                <h2>Show Your Instagram Feed on the Site</h2>
+                <p class="subtitle">The easiest way to automatically display your latest Instagram posts is with an embed widget. These pull your posts directly — no coding beyond a simple paste.</p>
+            </div>
+
+            <div class="info-box">
+                <h3><i class="fab fa-instagram" style="color:var(--accent);margin-right:8px;"></i> Option 1: LightWidget (Free)</h3>
+                <ol class="numbered-steps">
+                    <li>Go to <a href="https://lightwidget.com/" target="_blank">lightwidget.com</a> and sign in with Instagram.</li>
+                    <li>Customise the grid layout, colours and number of posts.</li>
+                    <li>Copy the embed code (it looks like <code>&lt;iframe src="..."&gt;</code>).</li>
+                    <li>Paste it into <code>index.html</code> — see "Where to paste" below.</li>
+                </ol>
+            </div>
+
+            <div class="info-box">
+                <h3><i class="fas fa-puzzle-piece" style="color:var(--accent);margin-right:8px;"></i> Option 2: Elfsight (Free tier)</h3>
+                <ol class="numbered-steps">
+                    <li>Go to <a href="https://elfsight.com/instagram-feed-instashow/" target="_blank">elfsight.com</a> and create a free account.</li>
+                    <li>Create an Instagram Feed widget, connect your account and customise.</li>
+                    <li>Copy the <code>&lt;script&gt;</code> and <code>&lt;div&gt;</code> embed code.</li>
+                    <li>Paste into <code>index.html</code> as shown below.</li>
+                </ol>
+            </div>
+
+            <div class="info-box">
+                <h3><i class="fas fa-code" style="color:var(--accent);margin-right:8px;"></i> Where to paste the embed code</h3>
+                <p>Open <code>index.html</code>, find the line <code>&lt;!-- Contact --&gt;</code>, and paste this block just <strong>above</strong> it:</p>
+                <div class="code-output" style="margin-top:12px;font-size:0.8rem;">
+&lt;!-- Instagram Feed --&gt;
+&lt;section style="padding: 80px 0; background: var(--light);"&gt;
+  &lt;div class="container" style="text-align:center;"&gt;
+    &lt;span class="section-label"&gt;Follow Along&lt;/span&gt;
+    &lt;h2 class="section-heading" style="margin:0 auto 40px;"&gt;
+      Latest from Instagram
+    &lt;/h2&gt;
+
+    &lt;!-- PASTE YOUR WIDGET EMBED CODE HERE --&gt;
+
+  &lt;/div&gt;
+&lt;/section&gt;</div>
+            </div>
+        </div>
+
+        <!-- ══ GUIDE ══ -->
+        <div class="tab-panel" id="tab-guide">
+            <div class="info-box">
+                <h3>How to Add a New Image to Your Gallery</h3>
+                <ol class="numbered-steps">
+                    <li><strong>Prepare your image.</strong> Name it with no spaces (use hyphens), e.g. <code>kitchen-island-oak.jpeg</code>. Keep it under 2 MB — compress free at <a href="https://tinypng.com" target="_blank">tinypng.com</a>.</li>
+                    <li><strong>Upload the image file</strong> to the same folder as your HTML files on your web host.</li>
+                    <li><strong>Use the "Add Images" tab</strong> to generate the HTML code block.</li>
+                    <li><strong>Open <code>gallery.html</code></strong> in a text editor (VS Code, Notepad++, or even Notepad).</li>
+                    <li><strong>Find <code>gallery-grid</code></strong> and paste your code just before the closing <code>&lt;/div&gt;</code> of that grid.</li>
+                    <li><strong>Save and upload</strong> the updated <code>gallery.html</code>. Done!</li>
+                </ol>
+            </div>
+
+            <div class="info-box">
+                <h3>Updating the Home Page Portfolio</h3>
+                <p>The portfolio section on <code>index.html</code> works the same way — items are inside <code>&lt;div class="portfolio-grid"&gt;</code>. Copy an existing <code>portfolio-item</code> block, change the image/title/description, and save.</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Image Tips</h3>
+                <p><strong>Format:</strong> JPEG for photos. PNG only if you need transparency.</p>
+                <p><strong>Size:</strong> 1200–1600 px on the long edge is ideal. Larger just slows the page.</p>
+                <p><strong>Naming:</strong> Lowercase, hyphens, no special characters. Good: <code>media-wall-led.jpeg</code>. Bad: <code>IMG_1234 (2).JPEG</code>.</p>
+                <p><strong>Compression:</strong> Run images through <a href="https://tinypng.com" target="_blank">TinyPNG</a> or <a href="https://squoosh.app" target="_blank">Squoosh</a> first — typically cuts 60–80% with no visible quality loss.</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Contact Form Setup</h3>
+                <p>The contact form uses <a href="https://formspree.io" target="_blank">Formspree</a> (free, up to 50 submissions/month):</p>
+                <ol class="numbered-steps">
+                    <li>Go to <a href="https://formspree.io" target="_blank">formspree.io</a> and create a free account.</li>
+                    <li>Create a new form and copy the form ID (e.g. <code>xpzvkrwq</code>).</li>
+                    <li>Open <code>index.html</code>, search for <code>YOUR_FORM_ID</code>, and replace it with your ID.</li>
+                    <li>Upload — submissions will go straight to your email.</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // Tabs
+        document.querySelectorAll('.admin-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+            });
+        });
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.add('visible');
+            setTimeout(() => toast.classList.remove('visible'), 2500);
+        }
+
+        function generateItemHTML(filename, title, desc, alt, category) {
+            return `<div class="gallery-item reveal" data-category="${category}">
+    <img src="${filename}" alt="${alt || title}" loading="lazy">
+    <div class="gallery-overlay">
+        <h3>${title}</h3>
+        <p>${desc}</p>
+    </div>
+</div>`;
+        }
+
+        function copyText(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('Copied to clipboard!');
+            }).catch(() => {
+                const ta = document.createElement('textarea');
+                ta.value = text;
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                showToast('Copied!');
+            });
+        }
+
+        // Generate single
+        document.getElementById('generateBtn').addEventListener('click', () => {
+            const filename = document.getElementById('fileName').value.trim();
+            const title = document.getElementById('imgTitle').value.trim();
+            const desc = document.getElementById('imgDesc').value.trim();
+            const alt = document.getElementById('imgAlt').value.trim();
+            const category = document.getElementById('imgCategory').value;
+
+            if (!filename) { alert('Please enter the image filename.'); return; }
+            if (!title) { alert('Please enter a title.'); return; }
+
+            const code = generateItemHTML(filename, title, desc, alt, category);
+            document.getElementById('codeOutput').textContent = code;
+            document.getElementById('codeWrapper').classList.add('visible');
+
+            document.getElementById('step1').className = 'step-indicator done';
+            document.getElementById('step2').className = 'step-indicator active';
+
+            document.getElementById('codeWrapper').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+
+        document.getElementById('copyBtn').addEventListener('click', () => {
+            copyText(document.getElementById('codeOutput').textContent);
+            document.getElementById('step2').className = 'step-indicator done';
+            document.getElementById('step3').className = 'step-indicator active';
+        });
+
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            ['fileName', 'imgTitle', 'imgDesc', 'imgAlt'].forEach(id => document.getElementById(id).value = '');
+            document.getElementById('imgCategory').value = 'cabinetry';
+            document.getElementById('codeWrapper').classList.remove('visible');
+            document.getElementById('step1').className = 'step-indicator active';
+            document.getElementById('step2').className = 'step-indicator';
+            document.getElementById('step3').className = 'step-indicator';
+        });
+
+        // Batch
+        document.getElementById('batchBtn').addEventListener('click', () => {
+            const input = document.getElementById('batchInput').value.trim();
+            if (!input) { alert('Please enter at least one image line.'); return; }
+
+            const lines = input.split('\n').filter(l => l.trim());
+            const blocks = [];
+
+            for (const line of lines) {
+                const parts = line.split('|').map(p => p.trim());
+                if (parts.length < 2) continue;
+                blocks.push(generateItemHTML(parts[0], parts[1], parts[2] || '', parts[1], parts[3] || 'cabinetry'));
+            }
+
+            if (!blocks.length) { alert('No valid lines found. Use: filename | title | description | category'); return; }
+
+            document.getElementById('batchCodeOutput').textContent = blocks.join('\n\n');
+            document.getElementById('batchCodeWrapper').classList.add('visible');
+            document.getElementById('batchCodeOutput').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+
+        document.getElementById('batchCopyBtn').addEventListener('click', () => {
+            copyText(document.getElementById('batchCodeOutput').textContent);
+        });
+    </script>
+</body>
+</html>
