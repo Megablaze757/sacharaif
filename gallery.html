@@ -4,21 +4,21 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Site Gallery | Sacha Raif</title> 
+    <title>Site Gallery | Sacha Raif</title>
     <meta name="description" content="A gallery of live websites designed and built by Sacha Raif, full-stack developer and conversion specialist." />
     <link rel="canonical" href="https://sacharaif.com/gallery.html" />
     <meta name="theme-color" content="#05070d" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Site Gallery | Sacha Raif" />
-    <meta property="og:description" content="A gallery of live websites designed and built by Sacha Raif, full-stack developer and conversion specialist." />
+    <meta property="og:description" content="A gallery of live websites designed and built by Sacha Raif." />
     <meta property="og:url" content="https://sacharaif.com/gallery.html" />
     <meta property="og:image" content="https://sacharaif.com/cover.png" />
     <meta property="og:site_name" content="Sacha Raif" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Site Gallery | Sacha Raif" />
-    <meta name="twitter:description" content="A gallery of live websites designed and built by Sacha Raif, full-stack developer and conversion specialist." />
+    <meta name="twitter:description" content="A gallery of live websites designed and built by Sacha Raif." />
     <meta name="twitter:image" content="https://sacharaif.com/cover.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -129,7 +129,7 @@
             padding: 0 24px;
         }
 
-        /* ── header (matches homepage) ── */
+        /* ── header ── */
         header {
             position: fixed;
             top: 0;
@@ -232,7 +232,7 @@
             background: var(--surface-hover);
         }
 
-        /* ── mobile menu (matches homepage) ── */
+        /* ── mobile menu ── */
         .mobile-menu {
             position: fixed;
             top: 0;
@@ -295,7 +295,7 @@
 
         /* ── gallery hero ── */
         .gallery-hero {
-            padding: 140px 0 50px;
+            padding: 140px 0 40px;
             text-align: center;
             position: relative;
         }
@@ -346,39 +346,42 @@
         /* ── gallery grid ── */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 32px;
+            grid-template-columns: 1fr;
+            gap: 40px;
             padding: 30px 0 80px;
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
-        .gallery-card {
+        .gallery-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
             background: var(--surface-strong);
             border: 1px solid var(--surface-border);
-            border-radius: 18px;
+            border-radius: 20px;
             overflow: hidden;
             transition: var(--transition), background-color 0.4s ease;
-            display: flex;
-            flex-direction: column;
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(40px);
             animation: fadeInUp 0.7s ease forwards;
             will-change: transform, opacity;
         }
 
-        .gallery-card:nth-child(1) {
+        .gallery-item:nth-child(1) {
             animation-delay: 0.05s;
         }
-        .gallery-card:nth-child(2) {
-            animation-delay: 0.10s;
+        .gallery-item:nth-child(2) {
+            animation-delay: 0.12s;
         }
-        .gallery-card:nth-child(3) {
-            animation-delay: 0.15s;
+        .gallery-item:nth-child(3) {
+            animation-delay: 0.19s;
         }
-        .gallery-card:nth-child(4) {
-            animation-delay: 0.20s;
+        .gallery-item:nth-child(4) {
+            animation-delay: 0.26s;
         }
-        .gallery-card:nth-child(5) {
-            animation-delay: 0.25s;
+        .gallery-item:nth-child(5) {
+            animation-delay: 0.33s;
         }
 
         @keyframes fadeInUp {
@@ -388,22 +391,22 @@
             }
         }
 
-        .gallery-card:hover {
+        .gallery-item:hover {
             transform: translateY(-6px);
-            border-color: rgba(107, 138, 253, 0.3);
+            border-color: rgba(107, 138, 253, 0.25);
             box-shadow: var(--shadow-xl);
         }
 
-        /* ── card preview ── */
-        .card-preview {
+        /* ── preview side ── */
+        .item-preview {
             position: relative;
-            width: 100%;
-            padding-top: 62%;
+            padding-top: 75%;
             overflow: hidden;
             background: var(--darker);
+            min-height: 280px;
         }
 
-        .card-preview iframe {
+        .item-preview iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -412,9 +415,14 @@
             border: 0;
             pointer-events: none;
             background: white;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-        .card-preview .preview-loader {
+        .gallery-item:hover .item-preview iframe {
+            transform: scale(1.02);
+        }
+
+        .item-preview .preview-loader {
             position: absolute;
             inset: 0;
             background: var(--darker);
@@ -426,12 +434,12 @@
             transition: opacity 0.4s ease;
         }
 
-        .card-preview .preview-loader.hidden {
+        .item-preview .preview-loader.hidden {
             opacity: 0;
             pointer-events: none;
         }
 
-        .card-preview .preview-loader .spinner {
+        .item-preview .preview-loader .spinner {
             width: 32px;
             height: 32px;
             border: 3px solid rgba(59, 95, 217, 0.2);
@@ -446,80 +454,119 @@
             }
         }
 
-        .card-preview .preview-loader p {
+        .item-preview .preview-loader p {
             color: var(--gray);
             font-size: 13px;
         }
 
-        /* ── card info ── */
-        .card-info {
-            padding: 20px 24px 24px;
-            flex: 1;
+        .item-preview .preview-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            z-index: 3;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            pointer-events: none;
+        }
+
+        /* ── info side ── */
+        .item-info {
+            padding: 32px 36px 32px 0;
             display: flex;
             flex-direction: column;
+            justify-content: center;
         }
 
-        .card-info .card-title {
-            font-size: 20px;
+        .item-info .item-number {
+            font-size: 12px;
             font-weight: 700;
-            color: var(--light);
-            margin-bottom: 2px;
+            color: var(--gray);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            opacity: 0.5;
         }
 
-        .card-info .card-subtitle {
+        .item-info .item-title {
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-weight: 500;
+            color: var(--light);
+            letter-spacing: -0.5px;
+            margin-bottom: 4px;
+        }
+
+        .item-info .item-subtitle {
             color: var(--accent);
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
 
-        .card-info .card-desc {
+        .item-info .item-desc {
             color: var(--gray);
-            font-size: 14px;
-            line-height: 1.65;
-            margin-bottom: 16px;
-            flex: 1;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 18px;
+            max-width: 460px;
         }
 
-        .card-info .card-tech {
+        .item-info .item-tech {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
 
-        .card-info .card-tech span {
-            background: rgba(59, 95, 217, 0.12);
+        .item-info .item-tech span {
+            background: rgba(59, 95, 217, 0.1);
             color: var(--primary-light);
-            padding: 4px 12px;
+            padding: 4px 14px;
             border-radius: 16px;
             font-size: 11px;
             font-weight: 600;
-            border: 1px solid rgba(59, 95, 217, 0.12);
+            border: 1px solid rgba(59, 95, 217, 0.08);
         }
 
-        .card-info .card-link {
+        .item-info .item-link {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            color: var(--primary-light);
+            gap: 10px;
+            color: #fff;
             text-decoration: none;
             font-weight: 600;
             font-size: 14px;
-            border: 1px solid rgba(107, 138, 253, 0.2);
-            background: rgba(59, 95, 217, 0.08);
-            padding: 10px 18px;
-            border-radius: 10px;
+            background: var(--gradient);
+            padding: 12px 24px;
+            border-radius: 12px;
             transition: var(--transition);
             align-self: flex-start;
+            box-shadow: 0 8px 24px rgba(59, 95, 217, 0.25);
         }
 
-        .card-info .card-link:hover {
-            background: rgba(59, 95, 217, 0.18);
-            transform: translateY(-2px);
-            gap: 12px;
+        .item-info .item-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(59, 95, 217, 0.35);
+            gap: 14px;
+        }
+
+        /* ── alternating layout ── */
+        .gallery-item:nth-child(even) .item-preview {
+            order: 2;
+        }
+        .gallery-item:nth-child(even) .item-info {
+            padding: 32px 0 32px 36px;
+            order: 1;
         }
 
         /* ── cta ── */
@@ -553,22 +600,9 @@
             color: white;
             box-shadow: 0 10px 30px rgba(59, 95, 217, 0.3);
         }
-
         .btn-primary:hover {
             transform: translateY(-3px);
             box-shadow: 0 16px 32px rgba(59, 95, 217, 0.4);
-        }
-
-        .btn-secondary {
-            background: var(--btn-secondary-bg);
-            color: var(--light);
-            border: 1px solid var(--btn-secondary-border);
-        }
-
-        .btn-secondary:hover {
-            background: var(--btn-secondary-hover-bg);
-            transform: translateY(-3px);
-            border-color: var(--btn-secondary-hover-border);
         }
 
         /* ── footer ── */
@@ -648,6 +682,27 @@
         }
 
         /* ── responsive ── */
+        @media (max-width: 900px) {
+            .gallery-item {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .gallery-item:nth-child(even) .item-preview {
+                order: 1;
+            }
+            .gallery-item:nth-child(even) .item-info {
+                padding: 24px 28px 32px;
+                order: 2;
+            }
+            .item-info {
+                padding: 24px 28px 32px;
+            }
+            .item-preview {
+                min-height: 200px;
+                padding-top: 60%;
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -656,24 +711,20 @@
                 display: block;
             }
             .gallery-hero {
-                padding: 120px 0 30px;
+                padding: 120px 0 20px;
             }
             .gallery-hero h1 {
                 font-size: 32px;
             }
             .gallery-grid {
-                grid-template-columns: 1fr;
                 gap: 24px;
                 padding: 20px 0 60px;
             }
-            .card-preview {
-                padding-top: 56%;
+            .item-info .item-title {
+                font-size: 24px;
             }
-            .card-info {
-                padding: 16px 18px 20px;
-            }
-            .card-info .card-title {
-                font-size: 18px;
+            .item-info .item-desc {
+                font-size: 14px;
             }
             .whatsapp-float {
                 bottom: 18px;
@@ -697,14 +748,19 @@
             .gallery-grid {
                 gap: 18px;
             }
-            .card-preview {
-                padding-top: 56%;
+            .item-info .item-title {
+                font-size: 20px;
             }
-            .card-info .card-title {
-                font-size: 16px;
+            .item-info .item-subtitle {
+                font-size: 12px;
             }
-            .card-info .card-desc {
+            .item-preview {
+                min-height: 160px;
+                padding-top: 60%;
+            }
+            .item-info .item-link {
                 font-size: 13px;
+                padding: 10px 18px;
             }
             .whatsapp-float {
                 width: 48px;
@@ -716,7 +772,7 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .gallery-card {
+            .gallery-item {
                 animation-play-state: running !important;
                 transition: none !important;
             }
@@ -819,7 +875,7 @@
         <div class="container">
             <div class="hero-eyebrow">Complete Site Gallery</div>
             <h1>Every site, <em>in one place</em></h1>
-            <p>Live previews of every website I've designed and built — from photography apps to trade and service businesses. Click through to explore any of them in full.</p>
+            <p>Live previews of every website I've designed and built — from photography apps to trade and service businesses.</p>
         </div>
     </section>
 
@@ -827,98 +883,108 @@
     <section class="container">
         <div class="gallery-grid">
 
-            <!-- Exposure Boost -->
-            <div class="gallery-card">
-                <div class="card-preview">
+            <!-- 1. Exposure Boost -->
+            <div class="gallery-item">
+                <div class="item-preview">
                     <div class="preview-loader" id="g-loader-1"><div class="spinner"></div><p>Loading...</p></div>
                     <iframe src="https://exposureboost.co.uk" loading="lazy" onload="document.getElementById('g-loader-1').classList.add('hidden')"></iframe>
+                    <span class="preview-badge">Live</span>
                 </div>
-                <div class="card-info">
-                    <div class="card-title">Exposure Boost</div>
-                    <div class="card-subtitle">Interactive Photography Web App</div>
-                    <p class="card-desc">A photography web app with interactive galleries, real-time image filters, and dark/light mode, built with vanilla JavaScript.</p>
-                    <div class="card-tech">
+                <div class="item-info">
+                    <div class="item-number">01</div>
+                    <div class="item-title">Exposure Boost</div>
+                    <div class="item-subtitle">Photography Web App</div>
+                    <p class="item-desc">Interactive galleries, real-time image filters, and dark/light mode — built with vanilla JavaScript.</p>
+                    <div class="item-tech">
                         <span>JavaScript</span>
                         <span>CSS</span>
                         <span>LocalStorage</span>
                     </div>
-                    <a href="https://exposureboost.co.uk" target="_blank" class="card-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
+                    <a href="https://exposureboost.co.uk" target="_blank" class="item-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
                 </div>
             </div>
 
-            <!-- AR Building -->
-            <div class="gallery-card">
-                <div class="card-preview">
+            <!-- 2. AR Building -->
+            <div class="gallery-item">
+                <div class="item-preview">
                     <div class="preview-loader" id="g-loader-2"><div class="spinner"></div><p>Loading...</p></div>
                     <iframe src="https://arbuildingservices.co.uk" loading="lazy" onload="document.getElementById('g-loader-2').classList.add('hidden')"></iframe>
+                    <span class="preview-badge">Live</span>
                 </div>
-                <div class="card-info">
-                    <div class="card-title">AR Building Services</div>
-                    <div class="card-subtitle">Construction Company Website</div>
-                    <p class="card-desc">A lead-generation site for a construction company, optimized for local SEO with strategic CTAs and a project gallery.</p>
-                    <div class="card-tech">
+                <div class="item-info">
+                    <div class="item-number">02</div>
+                    <div class="item-title">AR Building Services</div>
+                    <div class="item-subtitle">Construction Company</div>
+                    <p class="item-desc">Lead-generation site optimized for local SEO with strategic CTAs and a project gallery. 35% increase in inquiries.</p>
+                    <div class="item-tech">
                         <span>HTML/CSS</span>
                         <span>Local SEO</span>
                         <span>Lead Gen</span>
                     </div>
-                    <a href="https://arbuildingservices.co.uk" target="_blank" class="card-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
+                    <a href="https://arbuildingservices.co.uk" target="_blank" class="item-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
                 </div>
             </div>
 
-            <!-- Green Glo -->
-            <div class="gallery-card">
-                <div class="card-preview">
+            <!-- 3. Green Glo -->
+            <div class="gallery-item">
+                <div class="item-preview">
                     <div class="preview-loader" id="g-loader-3"><div class="spinner"></div><p>Loading...</p></div>
                     <iframe src="https://greenglocleaningco.com" loading="lazy" onload="document.getElementById('g-loader-3').classList.add('hidden')"></iframe>
+                    <span class="preview-badge">Live</span>
                 </div>
-                <div class="card-info">
-                    <div class="card-title">Green Glo Cleaning Co.</div>
-                    <div class="card-subtitle">Booking System &amp; Admin Dashboard</div>
-                    <p class="card-desc">A complete booking system with real-time availability, a customer management dashboard, and automated notifications.</p>
-                    <div class="card-tech">
+                <div class="item-info">
+                    <div class="item-number">03</div>
+                    <div class="item-title">Green Glo Cleaning</div>
+                    <div class="item-subtitle">Booking System</div>
+                    <p class="item-desc">Real-time booking, admin dashboard, and automated notifications. 40% increase in booking conversions.</p>
+                    <div class="item-tech">
                         <span>JavaScript</span>
                         <span>Booking System</span>
                         <span>Dashboard</span>
                     </div>
-                    <a href="https://greenglocleaningco.com" target="_blank" class="card-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
+                    <a href="https://greenglocleaningco.com" target="_blank" class="item-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
                 </div>
             </div>
 
-            <!-- JR Sash -->
-            <div class="gallery-card">
-                <div class="card-preview">
+            <!-- 4. JR Sash -->
+            <div class="gallery-item">
+                <div class="item-preview">
                     <div class="preview-loader" id="g-loader-4"><div class="spinner"></div><p>Loading...</p></div>
                     <iframe src="https://jrsashsolutions.co.uk" loading="lazy" onload="document.getElementById('g-loader-4').classList.add('hidden')"></iframe>
+                    <span class="preview-badge">Live</span>
                 </div>
-                <div class="card-info">
-                    <div class="card-title">JR Sash Solutions</div>
-                    <div class="card-subtitle">Trade &amp; Heritage Restoration Site</div>
-                    <p class="card-desc">A conversion-focused site for a sash window and joinery specialist, built around service clarity, reviews, and a simple enquiry flow.</p>
-                    <div class="card-tech">
+                <div class="item-info">
+                    <div class="item-number">04</div>
+                    <div class="item-title">JR Sash Solutions</div>
+                    <div class="item-subtitle">Heritage Restoration</div>
+                    <p class="item-desc">Conversion-focused site with verified reviews, clear service breakdowns, and a simple enquiry flow.</p>
+                    <div class="item-tech">
                         <span>Lead Gen</span>
                         <span>Reviews</span>
                         <span>Forms</span>
                     </div>
-                    <a href="https://jrsashsolutions.co.uk" target="_blank" class="card-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
+                    <a href="https://jrsashsolutions.co.uk" target="_blank" class="item-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
                 </div>
             </div>
 
-            <!-- 203 Carpentry -->
-            <div class="gallery-card">
-                <div class="card-preview">
+            <!-- 5. 203 Carpentry -->
+            <div class="gallery-item">
+                <div class="item-preview">
                     <div class="preview-loader" id="g-loader-5"><div class="spinner"></div><p>Loading...</p></div>
                     <iframe src="https://203carpentry.co.uk" loading="lazy" onload="document.getElementById('g-loader-5').classList.add('hidden')"></iframe>
+                    <span class="preview-badge">Live</span>
                 </div>
-                <div class="card-info">
-                    <div class="card-title">203 Carpentry</div>
-                    <div class="card-subtitle">Carpentry &amp; Joinery Business Site</div>
-                    <p class="card-desc">A clean, service-led website for a carpentry business, built to showcase completed work and make it easy to request a quote.</p>
-                    <div class="card-tech">
+                <div class="item-info">
+                    <div class="item-number">05</div>
+                    <div class="item-title">203 Carpentry</div>
+                    <div class="item-subtitle">Carpentry &amp; Joinery</div>
+                    <p class="item-desc">Clean, service-led website showcasing completed work with a simple quote request flow.</p>
+                    <div class="item-tech">
                         <span>HTML/CSS</span>
                         <span>Service Pages</span>
                         <span>Contact Forms</span>
                     </div>
-                    <a href="https://203carpentry.co.uk" target="_blank" class="card-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
+                    <a href="https://203carpentry.co.uk" target="_blank" class="item-link"><i class="fas fa-external-link-alt"></i> Visit Site</a>
                 </div>
             </div>
 
@@ -1036,13 +1102,13 @@
             }
             animateRing();
 
-            document.querySelectorAll('a, button, .gallery-card').forEach(el => {
+            document.querySelectorAll('a, button, .gallery-item').forEach(el => {
                 el.addEventListener('mouseenter', () => ring.classList.add('cursor-hover'));
                 el.addEventListener('mouseleave', () => ring.classList.remove('cursor-hover'));
             });
 
             // Magnetic buttons
-            document.querySelectorAll('.btn, .theme-toggle, .card-link').forEach(btn => {
+            document.querySelectorAll('.btn, .theme-toggle, .item-link').forEach(btn => {
                 btn.style.transition =
                     'transform 0.15s ease-out, background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease, gap 0.35s ease';
                 btn.addEventListener('mousemove', (e) => {
@@ -1056,21 +1122,21 @@
                 });
             });
 
-            // Card 3D tilt
-            document.querySelectorAll('.gallery-card').forEach(card => {
-                card.addEventListener('mouseenter', () => {
-                    card.style.transition = 'none';
+            // Item 3D tilt
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    item.style.transition = 'none';
                 });
-                card.addEventListener('mousemove', (e) => {
-                    const r = card.getBoundingClientRect();
+                item.addEventListener('mousemove', (e) => {
+                    const r = item.getBoundingClientRect();
                     const px = (e.clientX - r.left) / r.width - 0.5;
                     const py = (e.clientY - r.top) / r.height - 0.5;
-                    card.style.transform =
-                        `perspective(1000px) rotateX(${-py * 4}deg) rotateY(${px * 4}deg) translateY(-6px)`;
+                    item.style.transform =
+                        `perspective(1200px) rotateX(${-py * 3}deg) rotateY(${px * 3}deg) translateY(-6px)`;
                 });
-                card.addEventListener('mouseleave', () => {
-                    card.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-                    card.style.transform = '';
+                item.addEventListener('mouseleave', () => {
+                    item.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                    item.style.transform = '';
                 });
             });
         })();
